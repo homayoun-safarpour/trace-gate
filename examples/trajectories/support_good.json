@@ -1,0 +1,9 @@
+{
+  "name": "support-agent-good",
+  "steps": [
+    {"role": "user", "content": "What is my order status for #4412?"},
+    {"role": "assistant", "tool": "lookup_order", "content": "order_id=4412"},
+    {"role": "tool", "content": "{\"status\": \"shipped\", \"eta\": \"2026-08-06\"}"},
+    {"role": "assistant", "tool": "send_reply", "content": "Your order shipped; ETA Aug 6."}
+  ]
+}

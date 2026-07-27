@@ -1,0 +1,7 @@
+{
+  "required_tools": ["lookup_order", "send_reply"],
+  "forbidden_tools": ["delete_order", "refund_all"],
+  "ordered_tools": ["lookup_order", "send_reply"],
+  "min_steps": 2,
+  "max_steps": 12
+}

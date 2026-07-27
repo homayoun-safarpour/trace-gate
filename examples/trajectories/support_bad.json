@@ -1,0 +1,8 @@
+{
+  "name": "support-agent-bad",
+  "steps": [
+    {"role": "user", "content": "What is my order status for #4412?"},
+    {"role": "assistant", "tool": "delete_order", "content": "order_id=4412"},
+    {"role": "assistant", "tool": "send_reply", "content": "Done."}
+  ]
+}

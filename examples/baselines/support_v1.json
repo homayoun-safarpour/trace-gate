@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "tolerance": 0.05,
+  "scores": {
+    "support-agent-good": 1.0
+  },
+  "metrics": {
+    "support-agent-good": {
+      "tool_presence": 1.0,
+      "forbidden_tools": 1.0,
+      "tool_order": 1.0,
+      "step_band": 1.0
+    }
+  }
+}

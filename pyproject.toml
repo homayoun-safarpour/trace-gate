@@ -1,0 +1,57 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "trace-gate"
+version = "0.1.0"
+description = "Gate a deploy on agent trajectory scores against a frozen baseline (exit 0 pass / 2 regression)."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [{ name = "Homayoun Safarpour Dehkordi", email = "homayoun.safarpour@gmail.com" }]
+keywords = [
+    "agent-evaluation",
+    "trajectory",
+    "ci-gate",
+    "llm-agents",
+    "ai-engineering",
+    "regression",
+]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Environment :: Console",
+    "Intended Audience :: Developers",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Software Development :: Quality Assurance",
+]
+dependencies = []
+
+[project.urls]
+Homepage = "https://github.com/homayoun-safarpour/trace-gate"
+Repository = "https://github.com/homayoun-safarpour/trace-gate"
+Issues = "https://github.com/homayoun-safarpour/trace-gate/issues"
+Documentation = "https://github.com/homayoun-safarpour/trace-gate#readme"
+
+[project.scripts]
+trace-gate = "tracegate.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.ruff]
+line-length = 100
+src = ["src", "tests"]
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "UP", "B", "SIM", "PL"]
+
+[tool.ruff.lint.per-file-ignores]
+"tests/*" = ["PLR2004"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
