@@ -70,14 +70,17 @@ def main(argv: list[str] | None = None) -> int:
         return 0
 
     if args.cmd == "freeze":
-        baseline = freeze_baseline(reports, tolerance=args.tolerance)
+        baseline = freeze_baseline(reports, tolerance=args.tolerance, rubric=rubric)
         write_baseline(args.out, baseline)
-        print(f"wrote baseline -> {args.out} ({len(baseline.scores)} trajectories)")
+        print(
+            f"wrote baseline -> {args.out} "
+            f"({len(baseline.scores)} trajectories, rubric_sha256={baseline.rubric_sha256[:12]}…)"
+        )
         return 0
 
     if args.cmd == "check":
         baseline = load_baseline(args.baseline)
-        result = check_against_baseline(reports, baseline)
+        result = check_against_baseline(reports, baseline, rubric=rubric)
         if args.json:
             print(
                 json.dumps(
@@ -89,7 +92,7 @@ def main(argv: list[str] | None = None) -> int:
             print(f"verdict: {result.verdict}")
             for line in result.details:
                 print(f"  {line}")
-        # Exit contract: 0 pass, 2 regression / missing / unknown
+        # Exit contract: 0 pass, 2 fail-closed (regression / drift / missing / unknown)
         return 0 if result.ok else 2
 
     return 2

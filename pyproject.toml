@@ -9,7 +9,7 @@ description = "Gate a deploy on agent trajectory scores against a frozen baselin
 readme = "README.md"
 requires-python = ">=3.10"
 license = { text = "MIT" }
-authors = [{ name = "Homayoun Safarpour Dehkordi", email = "homayoun.safarpour@gmail.com" }]
+authors = [{ name = "Homayoun Safarpour", email = "homayoun.safarpour@gmail.com" }]
 keywords = [
     "agent-evaluation",
     "trajectory",

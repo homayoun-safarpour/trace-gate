@@ -1,49 +1,32 @@
 # trace-gate — live project state
 
-Type R (restyle-improve) ship. Upstream inspiration: langchain-ai/agentevals (MIT).
-Sharp improvement: frozen-baseline regression gate with exit 0/2.
+Type R (restyle-improve) + advanced bar (2026-08-04).
+Upstream inspiration: langchain-ai/agentevals (MIT).
+Sharp contributions: frozen-baseline regression gate (exit 0/2) + rubric_sha256 anti-tamper.
 
-## Decision (2026-08-04)
+## Decision
 
-**Strategy A** — clone-improve of agentevals-class trajectory scoring into a
-deploy gate. Rejected full git fork of langchain-ai/agentevals: dual python/js
-tree + LangChain deps break the <30 min stranger install bar. New MIT repo with
-honest attribution + one named improvement (freeze/check baseline).
+**Strategy A** — clone-improve of agentevals-class trajectory scoring into a deploy gate.
+Not a full git fork (LangChain/js tree too heavy for <30 min install).
 
-**W1 note:** `judge-drift-sentinel` W8 PyPI remains Boss-token blocked; this Type R
-does not replace that close — it is the week's fork-engineering lane ship.
+**W1 note:** `judge-drift-sentinel` W8 PyPI remains Boss-token blocked; this ship does not replace that close.
 
 ## Interview gate
 
-See `docs/INTERVIEW.md`.
-
-### Three questions (short)
-
-1. Frozen baseline vs one-off score?
-2. Why deterministic scorers for CI?
-3. Exit 0/2 composition with agent-loop-engine?
-
-### Two-minute demo
-
-```bash
-pip install -e . pytest -q
-trace-gate check examples/trajectories/support_good.json \
-  --rubric examples/rubric.json \
-  --baseline examples/baselines/support_v1.json
-pytest -q
-```
+See `docs/INTERVIEW.md` and `docs/EXIT_CODES.md`.
 
 ## Backlog
 
 - [x] W1 Trajectory JSON loader + tool extraction (cost: S) (touched: 2026-08-04)
 - [x] W2 Deterministic rubric scorers + composite (cost: S) (touched: 2026-08-04)
 - [x] W3 `freeze` / `check` baseline + exit codes (cost: M) (touched: 2026-08-04)
-- [x] W4 Worked examples + committed baseline output (cost: S) (touched: 2026-08-04)
+- [x] W4 Worked examples + committed baseline (cost: S) (touched: 2026-08-04)
 - [x] W5 Tests + ruff + CI on 3.10/3.11/3.12 (cost: S) (touched: 2026-08-04)
-- [x] W6 Type R README: How we did it + Tutorial + attribution (cost: M) (touched: 2026-08-04)
-- [ ] W7 Adapter: convert agentevals trajectory dumps → our JSON schema (cost: M)
-- [ ] W8 PyPI publish when Boss provides token (cost: M)
+- [x] W6 Type R README + Tutorial + attribution (cost: M) (touched: 2026-08-04)
+- [x] W7 Advanced: threat model, comparison table, rubric fingerprint, EXIT_CODES (cost: M) (touched: 2026-08-04)
+- [ ] W8 Adapter: convert agentevals-shaped dumps → our JSON schema (cost: M)
+- [ ] W9 PyPI publish when Boss provides token (cost: M)
 
 ## NEXT TICK
 
-W7 adapter for agentevals-shaped dumps, or leave until a real consumer appears.
+W8 adapter, or leave until a real agentevals dump consumer appears.

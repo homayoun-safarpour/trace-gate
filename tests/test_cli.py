@@ -36,6 +36,25 @@ def test_check_cli_exits_two_on_regression(tmp_path: Path) -> None:
     assert code == 2
 
 
+def test_check_cli_exits_two_on_rubric_drift(tmp_path: Path) -> None:
+    """Softening criteria without re-freeze must fail closed (exit 2)."""
+    baseline = tmp_path / "base.json"
+    soft = tmp_path / "soft.json"
+    soft.write_text(
+        json.dumps(
+            {
+                "required_tools": [],
+                "forbidden_tools": [],
+                "ordered_tools": [],
+                "min_steps": 0,
+            }
+        ),
+        encoding="utf-8",
+    )
+    assert main(["freeze", GOOD, "--rubric", RUBRIC, "--out", str(baseline)]) == 0
+    assert main(["check", GOOD, "--rubric", str(soft), "--baseline", str(baseline)]) == 2
+
+
 def test_freeze_writes_scores(tmp_path: Path) -> None:
     baseline = tmp_path / "base.json"
     code = main(
@@ -45,3 +64,4 @@ def test_freeze_writes_scores(tmp_path: Path) -> None:
     data = json.loads(baseline.read_text(encoding="utf-8"))
     assert "support-agent-good" in data["scores"]
     assert data["tolerance"] == 0.01
+    assert len(data["rubric_sha256"]) == 64

@@ -1,6 +1,7 @@
 {
   "version": 1,
   "tolerance": 0.05,
+  "rubric_sha256": "1d90a2ae91e670f198b7ca22d306e578265d593c208ec302efef6e083bff7086",
   "scores": {
     "support-agent-good": 1.0
   },
