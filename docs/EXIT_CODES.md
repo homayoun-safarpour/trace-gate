@@ -10,10 +10,10 @@
 
 Verdicts that map to exit `2`:
 
-- `REGRESSION` — composite below `pinned - tolerance`
-- `RUBRIC_DRIFT` — rubric SHA-256 no longer matches the pin (criteria were edited)
-- `MISSING_BASELINE` — empty scores object
-- `UNKNOWN_TRAJECTORY` — no overlap between run names and baseline keys
+- `REGRESSION`: composite below `pinned - tolerance`
+- `RUBRIC_DRIFT`: rubric SHA-256 no longer matches the pin (criteria were edited)
+- `MISSING_BASELINE`: empty scores object
+- `UNKNOWN_TRAJECTORY`: no overlap between run names and baseline keys
 
 `score` and `freeze` return `0` on success and `2` on bad arguments / missing files
 (via argparse / load errors).
