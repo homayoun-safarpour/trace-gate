@@ -15,7 +15,7 @@ Agent eval libraries can score a trajectory once. CI still needs a **regression 
 | Failure | What it looks like | What trace-gate does |
 | --- | --- | --- |
 | Silent gate skip | Rubric edited so bad tool use still scores 1.0 | `RUBRIC_DRIFT` if `rubric_sha256` no longer matches the pin |
-| Unbounded “looks fine” | Scores printed in a log, never fail the job | `check` exit `2` on `REGRESSION` |
+| Unbounded "looks fine" | Scores printed in a log, never fail the job | `check` exit `2` on `REGRESSION` |
 | Flaky CI via LLM judge | Same trajectory, different grade tomorrow | Deterministic scorers only; no model calls |
 | Journal / baseline loss | Baseline deleted, check skipped in the script | Empty baseline → `MISSING_BASELINE` → exit `2` |
 | Name mismatch hide | Fixture renamed, old pin never compared | `UNKNOWN_TRAJECTORY` → exit `2` (fail closed, not silent pass) |
@@ -35,7 +35,7 @@ Skill map (hire signal, not buzzwords): **reliability engineering** (fail closed
 
 | Approach | Scores tool-use behavior | Pins last-known-good | Blocks merge/loop on drop | Rubric tamper check | LLM cost in CI |
 | --- | --- | --- | --- | --- | --- |
-| Cron + “print the score” | Maybe | No | No | No | Often |
+| Cron + "print the score" | Maybe | No | No | No | Often |
 | LangGraph / agent toy demo | Ad hoc | No | Rarely | No | Yes |
 | [langchain-ai/agentevals](https://github.com/langchain-ai/agentevals) | Yes (rich) | Not as a deploy gate | You wire it | N/A | Optional judges |
 | **trace-gate** | Yes (deterministic subset) | `freeze` | `check` exit `2` | `rubric_sha256` | None |
@@ -173,7 +173,7 @@ Trajectory-eval framing comes from **[langchain-ai/agentevals](https://github.co
 
 ## Interview notes
 
-[`docs/INTERVIEW.md`](docs/INTERVIEW.md) — three questions + two-minute demo.
+[`docs/INTERVIEW.md`](docs/INTERVIEW.md): three questions + two-minute demo.
 
 ## Citation
 
