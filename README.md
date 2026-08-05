@@ -20,7 +20,7 @@ Agent eval libraries can score a trajectory once. CI still needs a **regression 
 | Journal / baseline loss | Baseline deleted, check skipped in the script | Empty baseline → `MISSING_BASELINE` → exit `2` |
 | Name mismatch hide | Fixture renamed, old pin never compared | `UNKNOWN_TRAJECTORY` → exit `2` (fail closed, not silent pass) |
 
-Skill map (hire signal, not buzzwords): **reliability engineering** (fail closed), **eval gates** (behavior vs unit tests), **deterministic control** (same inputs → same verdict), **composition** (exit codes for agent loops).
+Design targets: fail closed, behavior-level eval gates (not only unit tests), deterministic verdicts for the same inputs, and exit codes that compose with other CI gates.
 
 ## Use this when
 
@@ -105,7 +105,7 @@ trace-gate check examples/trajectories/support_good.json \
 pytest -q
 ```
 
-## Tutorial (15 min): loop + quality gate
+## Worked example (15 min): loop + quality gate
 
 Goal: treat an agent trajectory like a test-suite artifact a loop can refuse to advance past.
 
