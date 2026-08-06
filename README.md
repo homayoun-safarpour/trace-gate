@@ -1,6 +1,6 @@
 ﻿# trace-gate
 
-**Unit tests pass while your agent starts calling forbidden tools—because pytest never sees trajectory JSON. `trace-gate check` compares deterministic trajectory scores to a frozen baseline and fails closed if the rubric file was tampered with.**
+**Unit tests pass while your agent starts calling forbidden tools: because pytest never sees trajectory JSON. `trace-gate check` compares deterministic trajectory scores to a frozen baseline and fails closed if the rubric file was tampered with.**
 
 [![CI](https://github.com/homayoun-safarpour/trace-gate/actions/workflows/ci.yml/badge.svg)](https://github.com/homayoun-safarpour/trace-gate/actions/workflows/ci.yml)
 ![Python](https://img.shields.io/badge/python-3.10%20%7C%203.11%20%7C%203.12-blue)

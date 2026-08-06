@@ -1,4 +1,4 @@
-# trace-gate — project backlog
+# trace-gate : project backlog
 
 Type R (restyle-improve) instrument.
 Upstream inspiration: langchain-ai/agentevals (MIT).
