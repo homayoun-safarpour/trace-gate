@@ -134,6 +134,14 @@ Red gate â†’ loop policy prefers repair over new backlog work. Exit contrac
 
 ### 4. See fail-closed behavior
 
+Fail path (same baseline name, forbidden tool):
+
+```bash
+trace-gate check examples/trajectories/support_regress.json \
+  --rubric examples/rubric.json --baseline examples/baselines/support_v1.json
+# REGRESSION -> exit 2 (see support_regress_OUTPUT.txt)
+```
+
 Inflate the pin (score regression) or edit the rubric without re-freeze (`RUBRIC_DRIFT`). Both must exit non-zero.
 
 ```bash
