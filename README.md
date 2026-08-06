@@ -1,6 +1,6 @@
-# trace-gate
+﻿# trace-gate
 
-**Unit tests pass while your agent starts calling the wrong tools. This gates a deploy on trajectory scores pinned to a frozen baseline, and refuses the check if someone silently softens the rubric.**
+**Unit tests pass while your agent starts calling forbidden tools—because pytest never sees trajectory JSON. `trace-gate check` compares deterministic trajectory scores to a frozen baseline and fails closed if the rubric file was tampered with.**
 
 [![CI](https://github.com/homayoun-safarpour/trace-gate/actions/workflows/ci.yml/badge.svg)](https://github.com/homayoun-safarpour/trace-gate/actions/workflows/ci.yml)
 ![Python](https://img.shields.io/badge/python-3.10%20%7C%203.11%20%7C%203.12-blue)
@@ -17,8 +17,8 @@ Agent eval libraries can score a trajectory once. CI still needs a **regression 
 | Silent gate skip | Rubric edited so bad tool use still scores 1.0 | `RUBRIC_DRIFT` if `rubric_sha256` no longer matches the pin |
 | Unbounded "looks fine" | Scores printed in a log, never fail the job | `check` exit `2` on `REGRESSION` |
 | Flaky CI via LLM judge | Same trajectory, different grade tomorrow | Deterministic scorers only; no model calls |
-| Journal / baseline loss | Baseline deleted, check skipped in the script | Empty baseline → `MISSING_BASELINE` → exit `2` |
-| Name mismatch hide | Fixture renamed, old pin never compared | `UNKNOWN_TRAJECTORY` → exit `2` (fail closed, not silent pass) |
+| Journal / baseline loss | Baseline deleted, check skipped in the script | Empty baseline â†’ `MISSING_BASELINE` â†’ exit `2` |
+| Name mismatch hide | Fixture renamed, old pin never compared | `UNKNOWN_TRAJECTORY` â†’ exit `2` (fail closed, not silent pass) |
 
 Design targets: fail closed, behavior-level eval gates (not only unit tests), deterministic verdicts for the same inputs, and exit codes that compose with other CI gates.
 
@@ -83,7 +83,7 @@ $ trace-gate check examples/trajectories/support_good.json \
     --rubric examples/rubric.json \
     --baseline examples/baselines/support_v1.json
 verdict: PASS
-  rubric_sha256 OK (…prefix…)
+  rubric_sha256 OK (â€¦prefixâ€¦)
   support-agent-good: PASS composite=1.0000 >= floor=0.9500 (pinned=1.0000)
 ```
 
@@ -117,7 +117,7 @@ JSON with `name` and `steps`. Tool steps set `"tool": "..."`. See `examples/traj
 
 `examples/rubric.json`: required tools, forbidden tools, order, step band. Scores in `[0, 1]`; composite = mean.
 
-### 3. Score → freeze → check
+### 3. Score â†’ freeze â†’ check
 
 | Step | Role |
 | --- | --- |
@@ -130,7 +130,7 @@ loop-engine tick --state LOOP_STATE.md \
   --gate "trace=trace-gate check examples/trajectories/support_good.json --rubric examples/rubric.json --baseline examples/baselines/support_v1.json"
 ```
 
-Red gate → loop policy prefers repair over new backlog work. Exit contract: [`docs/EXIT_CODES.md`](docs/EXIT_CODES.md).
+Red gate â†’ loop policy prefers repair over new backlog work. Exit contract: [`docs/EXIT_CODES.md`](docs/EXIT_CODES.md).
 
 ### 4. See fail-closed behavior
 
@@ -149,7 +149,7 @@ trace-gate check examples/trajectories/support_good.json \
 | Module | What it does | Use it when |
 | --- | --- | --- |
 | `tracegate.trajectory` | Load JSON runs; extract tools (incl. OpenAI-style `tool_calls`) | Exporter already writes messages |
-| `tracegate.score` | Deterministic rubric scorers → composite | CI without an LLM judge bill |
+| `tracegate.score` | Deterministic rubric scorers â†’ composite | CI without an LLM judge bill |
 | `tracegate.baseline` | Freeze / load / check + rubric fingerprint | Regression verdict that resists criterion drift |
 | `tracegate.cli` | `score` / `freeze` / `check` | Scripts, Actions, loop gates |
 
@@ -157,7 +157,7 @@ trace-gate check examples/trajectories/support_good.json \
 
 - Deterministic scorers only. No semantic grading of free-text replies.
 - Minimal trajectory schema. OTel / Jaeger need a converter first.
-- Baseline keys by `trajectory.name`. Rename without updating the pin → `UNKNOWN_TRAJECTORY`.
+- Baseline keys by `trajectory.name`. Rename without updating the pin â†’ `UNKNOWN_TRAJECTORY`.
 - Fingerprint covers rubric fields that affect scores, not every comment in the JSON file.
 - Not a full fork of agentevals; see attribution.
 
@@ -186,7 +186,7 @@ Trajectory-eval framing comes from **[langchain-ai/agentevals](https://github.co
 }
 ```
 
-Author: Homayoun Safarpour · [LinkedIn](https://www.linkedin.com/in/homayoun-safarpour/)
+Author: Homayoun Safarpour Â· [LinkedIn](https://www.linkedin.com/in/homayoun-safarpour/)
 
 ## License
 
