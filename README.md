@@ -56,6 +56,8 @@ Python 3.10+. Zero runtime dependencies.
 
 ## Quickstart (< 5 min)
 
+Claim boundaries: [docs/RELIABILITY_CARD.md](docs/RELIABILITY_CARD.md).
+
 ```bash
 trace-gate score examples/trajectories/support_good.json --rubric examples/rubric.json
 
