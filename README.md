@@ -185,6 +185,12 @@ Trajectory-eval framing comes from **[langchain-ai/agentevals](https://github.co
 
 AI-first QA / agentic platform jobs ask for golden sets and fail-closed eval gates. This package is the trajectory deploy gate (deterministic; no LLM in CI). Claim boundaries: [docs/RELIABILITY_CARD.md](docs/RELIABILITY_CARD.md).
 
+## Related instruments
+
+- [agent-loop-engine](https://github.com/homayoun-safarpour/agent-loop-engine) - state, gates, decide, journal
+- [judge-drift-sentinel](https://github.com/homayoun-safarpour/judge-drift-sentinel) - judge vs system drift
+- [judge-field-guide](https://github.com/homayoun-safarpour/judge-field-guide) - link-checked map of the LLM-judge ecosystem
+
 ## Interview notes
 
 [`docs/INTERVIEW.md`](docs/INTERVIEW.md): three questions + two-minute demo.
