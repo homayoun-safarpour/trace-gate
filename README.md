@@ -1,6 +1,6 @@
-﻿# trace-gate
+# trace-gate
 
-**Unit tests pass while your agent starts calling forbidden tools: because pytest never sees trajectory JSON. `trace-gate check` compares deterministic trajectory scores to a frozen baseline and fails closed if the rubric file was tampered with.**
+**Unit tests pass while your agent starts calling forbidden tools—because pytest never sees trajectory JSON. `trace-gate check` compares deterministic trajectory scores to a frozen baseline and fails closed if the rubric file was tampered with.**
 
 [![CI](https://github.com/homayoun-safarpour/trace-gate/actions/workflows/ci.yml/badge.svg)](https://github.com/homayoun-safarpour/trace-gate/actions/workflows/ci.yml)
 ![Python](https://img.shields.io/badge/python-3.10%20%7C%203.11%20%7C%203.12-blue)
@@ -136,11 +136,11 @@ Red gate â†’ loop policy prefers repair over new backlog work. Exit contrac
 
 Fail path (same baseline name, forbidden tool):
 
-```bash
+\\ash
 trace-gate check examples/trajectories/support_regress.json \
   --rubric examples/rubric.json --baseline examples/baselines/support_v1.json
-# REGRESSION -> exit 2 (see support_regress_OUTPUT.txt)
-```
+# REGRESSION → exit 2 (see support_regress_OUTPUT.txt)
+\
 
 Inflate the pin (score regression) or edit the rubric without re-freeze (`RUBRIC_DRIFT`). Both must exit non-zero.
 
@@ -178,6 +178,10 @@ Trajectory-eval framing comes from **[langchain-ai/agentevals](https://github.co
 - Zero runtime dependencies; Python 3.10+
 - Every central claim has a named test under `tests/`
 - Exit codes: `0` = PASS, `2` = fail closed (see `docs/EXIT_CODES.md`)
+
+## Field alignment
+
+AI-first QA / agentic platform jobs ask for golden sets and fail-closed eval gates. This package is the trajectory deploy gate (deterministic; no LLM in CI). Claim boundaries: [docs/RELIABILITY_CARD.md](docs/RELIABILITY_CARD.md).
 
 ## Interview notes
 
