@@ -132,12 +132,12 @@ def check_against_baseline(
             return CheckResult(
                 verdict="RUBRIC_DRIFT",
                 details=[
-                    f"rubric fingerprint mismatch: current={current[:12]}… "
-                    f"pinned={baseline.rubric_sha256[:12]}… "
+                    f"rubric fingerprint mismatch: current={current[:12]}... "
+                    f"pinned={baseline.rubric_sha256[:12]}... "
                     "(criteria changed; re-freeze deliberately or restore the rubric)"
                 ],
             )
-        details.append(f"rubric_sha256 OK ({current[:12]}…)")
+        details.append(f"rubric_sha256 OK ({current[:12]}...)")
 
     regressions = 0
     for report in reports:

@@ -1,4 +1,4 @@
-# trace-gate : project backlog
+# trace-gate — project backlog
 
 Type R (restyle-improve) instrument.
 Upstream inspiration: langchain-ai/agentevals (MIT).
@@ -28,3 +28,13 @@ See `docs/INTERVIEW.md` and `docs/EXIT_CODES.md`.
 ## Next
 
 W8 adapter when a real agentevals dump consumer is needed; otherwise W9 when packaging is ready.
+
+## BENCHMARK GATE (week of 2026-09-29, restyle)
+
+| # | Check | Status 2026-09-30 |
+| --- | --- | --- |
+| 2 | Named claim tests | `tests/test_readme.py::test_readme_first_screen_matches_top100_craft` |
+| 3 | Worked example | first screen is live `support_regress.json` REGRESSION exit 2 |
+| 6 | AI-tell README | no em-dash on first screen |
+
+NEXT TICK after this ship: field-guide or sentinel first-screen scan; Homayoun posts LinkedIn.

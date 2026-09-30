@@ -74,7 +74,7 @@ def main(argv: list[str] | None = None) -> int:
         write_baseline(args.out, baseline)
         print(
             f"wrote baseline -> {args.out} "
-            f"({len(baseline.scores)} trajectories, rubric_sha256={baseline.rubric_sha256[:12]}…)"
+            f"({len(baseline.scores)} trajectories, rubric_sha256={baseline.rubric_sha256[:12]}...)"
         )
         return 0
 
