@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="600" viewBox="0 0 1080 600" role="img" aria-labelledby="title desc">
+<title id="title">A passing average does not waive policy</title>
+<desc id="desc">Real CLI results from four synthetic cases. Clean evidence passes; a forbidden second call, an unknown case and a missing fingerprint all exit 2.</desc>
+<rect width="1080" height="600" rx="20" fill="#0c1726"/>
+<g font-family="system-ui, sans-serif" fill="#e7eff9">
+<text x="40" y="48" font-size="15" fill="#99b8d7">TRACE-GATE / SYNTHETIC CLI PROOF</text>
+<text x="40" y="94" font-size="31" font-weight="700">A passing average does not waive policy.</text>
+<text x="40" y="128" font-size="18" fill="#a9bbcf">20 forbidden names · quality floor 0.9500 · no model calls</text>
+<rect x="32" y="162" width="1016" height="70" rx="10" fill="#17283c"/>
+<text x="48" y="190" font-size="19">Clean recorded trace</text>
+<text x="48" y="215" font-size="15" fill="#a9bbcf">First case composite: 1.0000</text>
+<text x="425" y="194" font-family="monospace" font-size="18" fill="#8ce8b1">PASS</text>
+<text x="950" y="194" font-size="18" fill="#8ce8b1">exit 0</text>
+<rect x="32" y="244" width="1016" height="70" rx="10" fill="#17283c"/>
+<text x="48" y="272" font-size="19">Forbidden second call</text>
+<text x="48" y="297" font-size="15" fill="#a9bbcf">First case composite: 0.9875</text>
+<text x="425" y="276" font-family="monospace" font-size="18" fill="#ffb4a7">POLICY_VIOLATION</text>
+<text x="950" y="276" font-size="18" fill="#ffb4a7">exit 2</text>
+<rect x="32" y="326" width="1016" height="70" rx="10" fill="#17283c"/>
+<text x="48" y="354" font-size="19">Known + unknown cases</text>
+<text x="48" y="379" font-size="15" fill="#a9bbcf">First case composite: 1.0000</text>
+<text x="425" y="358" font-family="monospace" font-size="18" fill="#ffb4a7">UNKNOWN_TRAJECTORY</text>
+<text x="950" y="358" font-size="18" fill="#ffb4a7">exit 2</text>
+<rect x="32" y="408" width="1016" height="70" rx="10" fill="#17283c"/>
+<text x="48" y="436" font-size="19">Legacy pin without hash</text>
+<text x="48" y="461" font-size="15" fill="#a9bbcf">First case composite: 1.0000</text>
+<text x="425" y="440" font-family="monospace" font-size="18" fill="#ffb4a7">MISSING_RUBRIC_FINGERPRINT</text>
+<text x="950" y="440" font-size="18" fill="#ffb4a7">exit 2</text>
+<text x="40" y="526" font-size="17">Forbidden second call: deny_0. Composite 0.9875 exceeds the floor; the gate still refuses.</text>
+<text x="40" y="558" font-size="15" fill="#a9bbcf">Reproduce: python scripts/render_gate_demo.py · Recorded JSON only, not proof of agent safety.</text>
+</g></svg>

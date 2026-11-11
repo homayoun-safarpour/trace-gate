@@ -2,20 +2,123 @@ name: CI
 
 on:
   push:
-    branches: [main]
+    branches: [main, "release/**"]
   pull_request:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
   test:
     runs-on: ubuntu-latest
+    timeout-minutes: 15
     strategy:
+      fail-fast: false
       matrix:
         python-version: ["3.10", "3.11", "3.12"]
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          persist-credentials: false
+      - name: Record checked revision
+        run: echo "Checked revision $(git rev-parse HEAD)"
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5
         with:
           python-version: ${{ matrix.python-version }}
-      - run: pip install -e . pytest ruff
-      - run: ruff check src tests
-      - run: pytest -q
+      - name: Install pinned build and test tools
+        run: python -m pip install -r requirements-ci.txt
+      - name: Lint source, tests and integration verifiers
+        run: python -m ruff check src tests scripts integrations
+      - name: Build source distribution and wheel from it
+        run: python -m build --no-isolation
+      - name: Install the built wheel, not the source tree
+        run: python -m pip install --no-index --no-deps --force-reinstall dist/*.whl
+      - name: Verify packaged tests and isolated CLI
+        run: python scripts/verify_distribution.py --dist-dir dist
+
+  promptfoo:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          persist-credentials: false
+      - name: Record checked revision
+        run: echo "Checked revision $(git rev-parse HEAD)"
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5
+        with:
+          python-version: "3.12"
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
+        with:
+          node-version: "24.22.1"
+      - name: Build and install the reviewed wheel
+        run: |
+          python -m pip install -r requirements-ci.txt
+          python -m build --no-isolation
+          python -m pip install --no-index --no-deps --force-reinstall dist/*.whl
+      - name: Install pinned optional runtime without lifecycle scripts
+        working-directory: integrations/promptfoo/runtime-lock
+        run: npm ci --ignore-scripts --omit=optional --no-audit --no-fund
+      - name: Audit pinned optional runtime
+        working-directory: integrations/promptfoo/runtime-lock
+        run: npm audit --package-lock-only
+      - name: Verify real local-echo Promptfoo integration
+        run: >-
+          python -I integrations/promptfoo/verify_integration.py
+          --cli integrations/promptfoo/runtime-lock/node_modules/promptfoo/dist/src/entrypoint.js
+          --evidence "$RUNNER_TEMP/trace-gate-promptfoo"
+      - name: Verify SDK-generated offline OpenTelemetry exports
+        run: >-
+          python -I integrations/opentelemetry-js/verify_integration.py
+          --runtime-root integrations/promptfoo/runtime-lock
+          --evidence "$RUNNER_TEMP/trace-gate-otel-sdk"
+
+  loop-engine:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5
+        with:
+          python-version: "3.12"
+      - name: Check out the pinned optional companion
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          repository: homayoun-safarpour/agent-loop-engine
+          ref: 75992043ec9ae1cee04295d25846a53435f3b4fb
+          path: .optional/loop-engine
+          persist-credentials: false
+      - name: Install reviewed local wheels
+        run: |
+          python -m pip install -r requirements-ci.txt
+          python -m build --no-isolation
+          python -m pip install --no-index --no-deps dist/*.whl
+          python -m pip install --no-deps --no-build-isolation .optional/loop-engine
+      - name: Verify gate decisions and append-only demo journal
+        run: >-
+          python -I integrations/loop-engine/verify_integration.py
+          --evidence "$RUNNER_TEMP/trace-gate-loop-engine"
+
+  release-ready:
+    name: Release readiness
+    if: ${{ always() }}
+    needs: [test, promptfoo, loop-engine]
+    runs-on: ubuntu-latest
+    timeout-minutes: 2
+    steps:
+      - name: Require every validation job to pass
+        env:
+          TEST_RESULT: ${{ needs.test.result }}
+          PROMPTFOO_RESULT: ${{ needs.promptfoo.result }}
+          LOOP_RESULT: ${{ needs.loop-engine.result }}
+        run: |
+          printf 'Matrix: %s; Promptfoo: %s\n' "$TEST_RESULT" "$PROMPTFOO_RESULT"
+          test "$TEST_RESULT" = success
+          test "$PROMPTFOO_RESULT" = success
+          test "$LOOP_RESULT" = success

@@ -1,0 +1,53 @@
+{
+  "generator": "original synthetic spans through real SDK and JsonTraceSerializer",
+  "node": "v24.22.1",
+  "packages": {
+    "@opentelemetry/api": {
+      "version": "1.9.1",
+      "license": "Apache-2.0",
+      "resolved": "https://registry.npmjs.org/@opentelemetry/api/-/api-1.9.1.tgz",
+      "integrity": "sha512-gLyJlPHPZYdAk1JENA9LeHejZe1Ti77/pTeFm/nMXmQH/HFZlcS/O2XJB+L8fkbrNSqhdtlvjBVjxwUYanNH5Q==",
+      "entry_sha256": "d2ad421c473ecbbb5540907de8b808bd9b9965667304e85a9af82bfff76e4f3f"
+    },
+    "@opentelemetry/sdk-trace-base": {
+      "version": "2.12.1",
+      "license": "Apache-2.0",
+      "resolved": "https://registry.npmjs.org/@opentelemetry/sdk-trace-base/-/sdk-trace-base-2.12.1.tgz",
+      "integrity": "sha512-CMrcqFxTikYmYQCuHToBO4kQvWIseRk2ztzWidTd7VutIxj1rljvJZCZnFPJEGNOS7FvaSmRL21Jeuu3/wrCAQ==",
+      "entry_sha256": "222be00f87085c2ca56e6f4b6af5ea49f1b7ae9b4117dac8535cf59140835807"
+    },
+    "@opentelemetry/sdk-trace": {
+      "version": "2.12.1",
+      "license": "Apache-2.0",
+      "resolved": "https://registry.npmjs.org/@opentelemetry/sdk-trace/-/sdk-trace-2.12.1.tgz",
+      "integrity": "sha512-vANdmCYnn+Ka/alBKxwICMl4Koa+aQBlRC9zAZy+Ig1Obbo3RZt2oiyv+8/gET5rrBBYrO3YniPcXfwZrN01rg==",
+      "entry_sha256": "fcb697c8594972310fd344196ebab229dd2632c4ccb513531b5ae79e58fe5ef3"
+    },
+    "@opentelemetry/resources": {
+      "version": "2.12.1",
+      "license": "Apache-2.0",
+      "resolved": "https://registry.npmjs.org/@opentelemetry/resources/-/resources-2.12.1.tgz",
+      "integrity": "sha512-IwrNcuLCvnJAnNLkXxx0Uw+rjBkVW6VGQrhd7PanNf0LavOzkTk9sDAjdqegM7p/VdxefNRrii6d+wBRJfz35g==",
+      "entry_sha256": "29028e65286d390bbfe967dd64247732bd06c02c9cbd0862e00e23edbd87df9d"
+    },
+    "@opentelemetry/otlp-transformer": {
+      "version": "0.223.1",
+      "license": "Apache-2.0",
+      "resolved": "https://registry.npmjs.org/@opentelemetry/otlp-transformer/-/otlp-transformer-0.223.1.tgz",
+      "integrity": "sha512-22EJNk0qjI3klrON0aFR0BXye6FOM2vrkpjXjW8KDeSSiMez7+T4ARXfAh8+ucS3dEnhpSoGdfs4E/z4EIYjXQ==",
+      "entry_sha256": "b3e4a32640937efd8fe40e6b8251d5e6529d079be0aaf4d32d73a888ca58a3dd"
+    }
+  },
+  "runtime_lock_sha256": "c3b6a07e3f9f7eee38a6144b9cccbebf198899d62bdc5ab2eb20306275df3c7f",
+  "generator_sha256": "e74eda44e9960ea29663f50b96046a6d169b2aded8628df4a0d86db5ee1641c2",
+  "fixtures": {
+    "good.json": "93d076db16bc179bc7628147cd4edc2f58641748ffd3d19cffd140c8e8a24fb7",
+    "forbidden-generated.json": "70a1b62126df40cd52e0a0a5272a2c737bcd5f33af460bd353930360d741a2bb",
+    "repeated-name.json": "817292ba5c024cfa76417e89fb8117f7d04502e11c75b2796c51bc4477f2a4ab",
+    "events.json": "70f62fc3d4cd71d96e41705565741ea75d29b1f0ea607c19b401de5da9140867",
+    "dropped-attributes.json": "56461b41574e426a7c09348ee8b0b633158564bf44729666bc2ee48ff8348306",
+    "missing-call-id.json": "8bee0d7a93b991b86b7475508ee0429e8616d8d3b280a8009dd1fe338ddcf036"
+  },
+  "network_exporter": false,
+  "model_calls": 0
+}

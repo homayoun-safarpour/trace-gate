@@ -1,0 +1,71 @@
++ /workspace/shared/trace-gate-install-2026-11-09/venv/bin/python -I -c 
+import hashlib, importlib.metadata, json, pathlib, sys
+import tracegate
+dist = importlib.metadata.distribution('trace-gate')
+module = pathlib.Path(tracegate.__file__).resolve()
+if not module.is_relative_to(pathlib.Path(sys.prefix).resolve()):
+    raise SystemExit('tracegate was not imported from this environment')
+direct = json.loads(dist.read_text('direct_url.json') or '{}')
+if direct.get('dir_info', {}).get('editable'):
+    raise SystemExit('editable install is not distribution verification')
+if dist.requires:
+    raise SystemExit('unexpected runtime dependency: ' + repr(dist.requires))
+hashes = {
+    str(p): hashlib.sha256(dist.locate_file(p).read_bytes()).hexdigest()
+    for p in dist.files or []
+    if str(p).startswith('tracegate/') and str(p).endswith('.py')
+}
+print(json.dumps({'module': str(module), 'version': dist.version, 'hashes': hashes}))
+
+Verified non-editable wheel import: /workspace/shared/trace-gate-install-2026-11-09/venv/lib/python3.12/site-packages/tracegate/__init__.py
++ /workspace/shared/trace-gate-install-2026-11-09/venv/bin/python -I -m pytest --import-mode=importlib -q
+........................................................................ [ 65%]
+......................................                                   [100%]
+110 passed in 0.56s
++ /tmp/trace-gate-distribution-q0uijfix/runtime/bin/python -I -m pip install --no-index --no-deps --no-cache-dir /workspace/shared/trace-gate-promptfoo-2026-11-09/trace-gate/dist/trace_gate-0.1.0-py3-none-any.whl
+Processing /workspace/shared/trace-gate-promptfoo-2026-11-09/trace-gate/dist/trace_gate-0.1.0-py3-none-any.whl
+Installing collected packages: trace-gate
+Successfully installed trace-gate-0.1.0
++ /tmp/trace-gate-distribution-q0uijfix/runtime/bin/python -I -c 
+import hashlib, importlib.metadata, json, pathlib, sys
+import tracegate
+dist = importlib.metadata.distribution('trace-gate')
+module = pathlib.Path(tracegate.__file__).resolve()
+if not module.is_relative_to(pathlib.Path(sys.prefix).resolve()):
+    raise SystemExit('tracegate was not imported from this environment')
+direct = json.loads(dist.read_text('direct_url.json') or '{}')
+if direct.get('dir_info', {}).get('editable'):
+    raise SystemExit('editable install is not distribution verification')
+if dist.requires:
+    raise SystemExit('unexpected runtime dependency: ' + repr(dist.requires))
+hashes = {
+    str(p): hashlib.sha256(dist.locate_file(p).read_bytes()).hexdigest()
+    for p in dist.files or []
+    if str(p).startswith('tracegate/') and str(p).endswith('.py')
+}
+print(json.dumps({'module': str(module), 'version': dist.version, 'hashes': hashes}))
+
+Verified non-editable wheel import: /tmp/trace-gate-distribution-q0uijfix/runtime/lib/python3.12/site-packages/tracegate/__init__.py
++ /tmp/trace-gate-distribution-q0uijfix/runtime/bin/python -I /tmp/trace-gate-distribution-q0uijfix/source/trace_gate-0.1.0/tests/installed_smoke.py
+test_duplicate_call_id_rejected (__main__.InstalledCLI.test_duplicate_call_id_rejected) ... ok
+test_empty_baseline_fails_closed (__main__.InstalledCLI.test_empty_baseline_fails_closed) ... ok
+test_forbidden_tool_cannot_hide_behind_tolerance (__main__.InstalledCLI.test_forbidden_tool_cannot_hide_behind_tolerance) ... ok
+test_freeze_and_pass (__main__.InstalledCLI.test_freeze_and_pass) ... ok
+test_help_entry_point (__main__.InstalledCLI.test_help_entry_point) ... ok
+test_invalid_check_fails_closed (__main__.InstalledCLI.test_invalid_check_fails_closed) ... ok
+test_invalid_freeze_does_not_create_pin (__main__.InstalledCLI.test_invalid_freeze_does_not_create_pin) ... ok
+test_invalid_freeze_preserves_existing_pin (__main__.InstalledCLI.test_invalid_freeze_preserves_existing_pin) ... ok
+test_invalid_score_has_no_partial_report (__main__.InstalledCLI.test_invalid_score_has_no_partial_report) ... ok
+test_json_score (__main__.InstalledCLI.test_json_score) ... ok
+test_legacy_hashless_baseline_requires_migration (__main__.InstalledCLI.test_legacy_hashless_baseline_requires_migration) ... ok
+test_mixed_known_unknown_fails_closed (__main__.InstalledCLI.test_mixed_known_unknown_fails_closed) ... ok
+test_policy_refusal_preserves_pin (__main__.InstalledCLI.test_policy_refusal_preserves_pin) ... ok
+test_rubric_drift_fails_closed (__main__.InstalledCLI.test_rubric_drift_fails_closed) ... ok
+test_second_forbidden_call_is_policy_violation (__main__.InstalledCLI.test_second_forbidden_call_is_policy_violation) ... ok
+test_unknown_trajectory_fails_closed (__main__.InstalledCLI.test_unknown_trajectory_fails_closed) ... ok
+
+----------------------------------------------------------------------
+Ran 16 tests in 1.364s
+
+OK
+PASS: packaged unit tests and dependency-free runtime CLI checks

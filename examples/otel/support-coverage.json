@@ -1,0 +1,8 @@
+{
+  "profile": "openinference-otlp-v1",
+  "source_sha256": "639082c000d4c7cf66fb9c4243f0955add6b346172edc929e62a17308786bd5c",
+  "trace_id": "0123456789abcdef0123456789ABCDEF",
+  "case_name": "synthetic-otel-support",
+  "span_coverage": "complete",
+  "tool_call_coverage": "complete"
+}

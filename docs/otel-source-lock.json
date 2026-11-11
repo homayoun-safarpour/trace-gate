@@ -1,0 +1,34 @@
+{
+  "repo": "Arize-ai/openinference",
+  "commit": "6be7118f789c9cd3c71b3375810fe9250050fe31",
+  "license": "Apache-2.0",
+  "use": "Read-only standards/source inspection; no upstream runtime code copied or executed.",
+  "profile": "openinference-otlp-v1",
+  "files": [
+    {
+      "path": "spec/tool_calling.md",
+      "sha256": "0fb76f8134c2fe1657bf2891eb8ff4e91801ffd8b1aa3fdb102caf1864fa5195",
+      "url": "https://github.com/Arize-ai/openinference/blob/6be7118f789c9cd3c71b3375810fe9250050fe31/spec/tool_calling.md"
+    },
+    {
+      "path": "spec/semantic_conventions.md",
+      "sha256": "21cea5ecfaa2ac5b97ed7e2792ae81dc74cc63b3b59ad10d92d7ca0e51c28d60",
+      "url": "https://github.com/Arize-ai/openinference/blob/6be7118f789c9cd3c71b3375810fe9250050fe31/spec/semantic_conventions.md"
+    },
+    {
+      "path": "js/packages/openinference-instrumentation-mcp/test/collector.ts",
+      "sha256": "ff4925eb9dc33f2d960155cd90595d4bcb2e3fec955c3c30531f76beb54477a6",
+      "url": "https://github.com/Arize-ai/openinference/blob/6be7118f789c9cd3c71b3375810fe9250050fe31/js/packages/openinference-instrumentation-mcp/test/collector.ts"
+    },
+    {
+      "path": "python/openinference-instrumentation/src/openinference/instrumentation/config.py",
+      "sha256": "62949dfd19cf8968d116f221673b2a7663cca47fc290623a1361e5e1f30127c1",
+      "url": "https://github.com/Arize-ai/openinference/blob/6be7118f789c9cd3c71b3375810fe9250050fe31/python/openinference-instrumentation/src/openinference/instrumentation/config.py"
+    },
+    {
+      "path": "LICENSE",
+      "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+      "url": "https://github.com/Arize-ai/openinference/blob/6be7118f789c9cd3c71b3375810fe9250050fe31/LICENSE"
+    }
+  ]
+}

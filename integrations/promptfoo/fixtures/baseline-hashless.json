@@ -1,0 +1,22 @@
+{
+  "version": 1,
+  "tolerance": 0.05,
+  "scores": {
+    "synthetic-order-a": 1.0,
+    "synthetic-order-b": 1.0
+  },
+  "metrics": {
+    "synthetic-order-a": {
+      "tool_presence": 1.0,
+      "forbidden_tools": 1.0,
+      "tool_order": 1.0,
+      "step_band": 1.0
+    },
+    "synthetic-order-b": {
+      "tool_presence": 1.0,
+      "forbidden_tools": 1.0,
+      "tool_order": 1.0,
+      "step_band": 1.0
+    }
+  }
+}

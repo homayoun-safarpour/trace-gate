@@ -1,0 +1,15 @@
+# Build/test tools only. trace-gate has no runtime dependencies.
+# Python 3.10-3.12; exact versions include conditional transitive dependencies.
+build==1.2.2.post1
+setuptools==84.2.1
+wheel==0.48.0
+packaging==24.2
+pyproject-hooks==1.2.0
+pytest==9.0.3
+ruff==0.11.13
+iniconfig==2.1.0
+pluggy==1.5.0
+pygments==2.21.0
+tomli==2.2.1; python_version < "3.11"
+exceptiongroup==1.2.2; python_version < "3.11"
+colorama==0.4.6; sys_platform == "win32"

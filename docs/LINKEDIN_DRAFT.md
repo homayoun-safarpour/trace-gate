@@ -1,6 +1,8 @@
 # LinkedIn draft (public-safe) - trace-gate first-screen restyle 2026-09-30
 
-Field pain first. Homayoun posts himself.
+**Historical draft, not ready to publish.** The output and installation path below
+refer to the September version, not this unpublished candidate. Current behavior
+and verified output are in [README.md](../README.md). Homayoun posts himself.
 
 Paste verified 2026-09-30 on `examples/trajectories/support_regress.json`:
 verdict: REGRESSION

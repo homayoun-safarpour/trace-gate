@@ -1,0 +1,11 @@
+{
+  "dependencies": {
+    "@libsql/linux-x64-gnu": "0.5.29",
+    "promptfoo": "0.125.1"
+  },
+  "overrides": {
+    "basic-ftp": "6.2.6",
+    "glob": "14.0.4",
+    "minimatch": "11.0.5"
+  }
+}

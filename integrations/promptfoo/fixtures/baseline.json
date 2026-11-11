@@ -1,0 +1,23 @@
+{
+  "version": 1,
+  "tolerance": 0.05,
+  "rubric_sha256": "37a913dec9b7dbeb1f561c982f2055bb2e8cdb2e05c038d04ef2a61ef10e8215",
+  "scores": {
+    "synthetic-order-a": 1.0,
+    "synthetic-order-b": 1.0
+  },
+  "metrics": {
+    "synthetic-order-a": {
+      "tool_presence": 1.0,
+      "forbidden_tools": 1.0,
+      "tool_order": 1.0,
+      "step_band": 1.0
+    },
+    "synthetic-order-b": {
+      "tool_presence": 1.0,
+      "forbidden_tools": 1.0,
+      "tool_order": 1.0,
+      "step_band": 1.0
+    }
+  }
+}

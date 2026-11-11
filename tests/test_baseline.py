@@ -14,7 +14,7 @@ from tracegate.baseline import (
     write_baseline,
 )
 from tracegate.score import Rubric, ScoreReport, score_trajectory
-from tracegate.trajectory import load_trajectory
+from tracegate.trajectory import load_trajectory, trajectory_from_dict
 
 ROOT = Path(__file__).resolve().parents[1]
 EXAMPLES = ROOT / "examples"
@@ -41,14 +41,15 @@ def test_freeze_and_check_pass_on_same_scores() -> None:
 
 def test_check_detects_regression_below_floor() -> None:
     """Central claim: a drop below the pinned composite is REGRESSION, not silence."""
-    good = _good_report()
-    rubric = _rubric()
+    tools = ("one", "two", "three", "four", "five")
+    rubric = Rubric(required_tools=tools)
+    good = score_trajectory(trajectory_from_dict({
+        "name": "case", "steps": [{"tool": tool} for tool in tools],
+    }), rubric)
     baseline = freeze_baseline([good], tolerance=0.05, rubric=rubric)
-    degraded = ScoreReport(
-        trajectory_name=good.trajectory_name,
-        metrics=dict(good.metrics),
-        composite=good.composite - 0.2,
-    )
+    degraded = score_trajectory(trajectory_from_dict({
+        "name": "case", "steps": [{"tool": "one"}],
+    }), rubric)
     result = check_against_baseline([degraded], baseline, rubric=rubric)
     assert not result.ok
     assert result.verdict == "REGRESSION"
@@ -72,14 +73,15 @@ def test_check_refuses_when_rubric_fingerprint_mismatches() -> None:
 
 
 def test_tolerance_allows_small_drop() -> None:
-    good = _good_report()
-    rubric = _rubric()
+    tools = ("one", "two", "three", "four", "five")
+    rubric = Rubric(required_tools=tools)
+    good = score_trajectory(trajectory_from_dict({
+        "name": "case", "steps": [{"tool": tool} for tool in tools],
+    }), rubric)
     baseline = freeze_baseline([good], tolerance=0.1, rubric=rubric)
-    slight = ScoreReport(
-        trajectory_name=good.trajectory_name,
-        metrics=dict(good.metrics),
-        composite=good.composite - 0.05,
-    )
+    slight = score_trajectory(trajectory_from_dict({
+        "name": "case", "steps": [{"tool": tool} for tool in tools[:-1]],
+    }), rubric)
     result = check_against_baseline([slight], baseline, rubric=rubric)
     assert result.ok
 

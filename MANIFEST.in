@@ -1,0 +1,12 @@
+include LICENSE README.md pyproject.toml requirements-ci.txt
+recursive-include docs *.md *.svg *.json
+recursive-include examples *.json *.txt
+recursive-include scripts *.py
+recursive-include integrations/promptfoo *.py *.json *.md *.txt *.log *.diff
+recursive-include integrations/opentelemetry-js *.py *.json *.md *.cjs
+recursive-include integrations/loop-engine *.py *.json *.md
+recursive-include tests *.py
+include .github/workflows/ci.yml
+global-exclude *.py[cod]
+global-exclude __pycache__
+prune integrations/promptfoo/runtime-lock/node_modules
