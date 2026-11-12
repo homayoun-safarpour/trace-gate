@@ -1,14 +1,14 @@
 # trace-gate: regression checks for agent traces
 
-**Catch forbidden tool calls and quality regressions in recorded agent runs before your CI pipeline advances.**
+**Check what an agent did, catch forbidden calls, and spot regressions before the next CI step.**
 
 [![CI](https://github.com/homayoun-safarpour/trace-gate/actions/workflows/ci.yml/badge.svg)](https://github.com/homayoun-safarpour/trace-gate/actions/workflows/ci.yml)
 ![Python](https://img.shields.io/badge/python-3.10%20%7C%203.11%20%7C%203.12-blue)
 ![License](https://img.shields.io/badge/license-MIT-green)
 
-Compare JSON traces against a reviewed rubric and frozen baseline. Any forbidden
-tool call fails the check, even when the average score is high. The Python core
-has no runtime dependencies and makes no model calls.
+Give trace-gate a recorded JSON trace, a rubric describing your checks, and a
+reviewed baseline. A forbidden tool call fails the check even when the average
+score looks good. The Python core needs no runtime dependencies or model calls.
 
 ```bash
 # From this reviewed checkout or extracted source archive:
@@ -40,6 +40,19 @@ not a production benchmark or a competitor comparison. Reproduce it with
 [gate-proof.json](docs/gate-proof.json).
 
 ## Quickstart
+
+### Is this useful for your project?
+
+Use trace-gate when you already record agent tool calls and want a repeatable
+check in CI. For example, a support agent might complete most of a task correctly
+but call `delete_order`, which your policy forbids. That run should fail rather
+than hide behind a high average score.
+
+The check works on recorded evidence. It does not intercept a live agent or
+stop a tool call before it happens. If you need that boundary, add a separate
+runtime policy check around the executor.
+
+### Try the example
 
 Use Python 3.10+. The commands below do not invoke the recorded tools.
 
