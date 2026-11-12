@@ -23,17 +23,17 @@ def test_check_cli_exits_zero_on_pass(tmp_path: Path) -> None:
     assert main(["check", GOOD, "--rubric", RUBRIC, "--baseline", str(baseline)]) == 0
 
 
-def test_check_cli_exits_two_on_regression(tmp_path: Path) -> None:
+def test_check_cli_exits_two_on_regression(tmp_path: Path, capsys) -> None:
     """Gate contract: REGRESSION -> exit 2 so CI / loop-engine gates fail closed."""
     baseline = tmp_path / "base.json"
     assert main(["freeze", GOOD, "--rubric", RUBRIC, "--out", str(baseline)]) == 0
-    # Inflate the pinned composite so the same good trajectory falls below the floor.
-    data = json.loads(baseline.read_text(encoding="utf-8"))
-    data["scores"]["support-agent-good"] = 1.5
-    data["tolerance"] = 0.0
-    baseline.write_text(json.dumps(data), encoding="utf-8")
-    code = main(["check", GOOD, "--rubric", RUBRIC, "--baseline", str(baseline)])
+    degraded = tmp_path / "degraded.json"
+    degraded.write_text(json.dumps({
+        "name": "support-agent-good", "steps": [{"tool": "send_reply"}],
+    }), encoding="utf-8")
+    code = main(["check", str(degraded), "--rubric", RUBRIC, "--baseline", str(baseline)])
     assert code == 2
+    assert "verdict: REGRESSION" in capsys.readouterr().out
 
 
 def test_check_cli_exits_two_on_rubric_drift(tmp_path: Path) -> None:

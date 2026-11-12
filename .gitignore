@@ -11,3 +11,7 @@ venv/
 .env
 *.jsonl.bak
 .DS_Store
+
+# Optional integration runtimes are not repository source.
+node_modules/
+.optional/

@@ -1,0 +1,92 @@
+[
+  {
+    "name": "good",
+    "fixture": "fixtures/good.json",
+    "gate_pass": true,
+    "native_pass": true,
+    "verdict": "PASS",
+    "rubric_path": "fixtures/rubric.json",
+    "baseline_path": "fixtures/baseline.json"
+  },
+  {
+    "name": "forbidden-second-call",
+    "fixture": "fixtures/forbidden-second-call.json",
+    "gate_pass": false,
+    "native_pass": false,
+    "verdict": "POLICY_VIOLATION",
+    "rubric_path": "fixtures/rubric.json",
+    "baseline_path": "fixtures/baseline.json"
+  },
+  {
+    "name": "malformed-tool-calls",
+    "fixture": "fixtures/malformed-tool-calls.json",
+    "gate_pass": false,
+    "native_pass": false,
+    "verdict": "INVALID_INPUT",
+    "rubric_path": "fixtures/rubric.json",
+    "baseline_path": "fixtures/baseline.json"
+  },
+  {
+    "name": "missing-case",
+    "fixture": "fixtures/missing-case.json",
+    "gate_pass": false,
+    "native_pass": true,
+    "verdict": "MISSING_TRAJECTORY",
+    "rubric_path": "fixtures/rubric.json",
+    "baseline_path": "fixtures/baseline.json"
+  },
+  {
+    "name": "extra-case",
+    "fixture": "fixtures/extra-case.json",
+    "gate_pass": false,
+    "native_pass": true,
+    "verdict": "UNKNOWN_TRAJECTORY",
+    "rubric_path": "fixtures/rubric.json",
+    "baseline_path": "fixtures/baseline.json"
+  },
+  {
+    "name": "duplicate-case",
+    "fixture": "fixtures/duplicate-case.json",
+    "gate_pass": false,
+    "native_pass": true,
+    "verdict": "DUPLICATE_TRAJECTORY",
+    "rubric_path": "fixtures/rubric.json",
+    "baseline_path": "fixtures/baseline.json"
+  },
+  {
+    "name": "quality-regression",
+    "fixture": "fixtures/quality-regression.json",
+    "gate_pass": false,
+    "native_pass": true,
+    "verdict": "REGRESSION",
+    "rubric_path": "fixtures/rubric.json",
+    "baseline_path": "fixtures/baseline.json"
+  },
+  {
+    "name": "rubric-drift",
+    "fixture": "fixtures/rubric-drift.json",
+    "gate_pass": false,
+    "native_pass": true,
+    "verdict": "RUBRIC_DRIFT",
+    "rubric_path": "fixtures/rubric-drift-policy.json",
+    "baseline_path": "fixtures/baseline.json"
+  },
+  {
+    "name": "missing-fingerprint",
+    "fixture": "fixtures/missing-fingerprint.json",
+    "gate_pass": false,
+    "native_pass": true,
+    "verdict": "MISSING_RUBRIC_FINGERPRINT",
+    "rubric_path": "fixtures/rubric.json",
+    "baseline_path": "fixtures/baseline-hashless.json"
+  },
+  {
+    "name": "invalid-json",
+    "fixture": "fixtures/invalid-json.json",
+    "gate_pass": false,
+    "native_pass": false,
+    "verdict": "INVALID_INPUT",
+    "rubric_path": "fixtures/rubric.json",
+    "baseline_path": "fixtures/baseline.json"
+  }
+]

@@ -1,0 +1,11 @@
+{
+  "required_tools": [
+    "search"
+  ],
+  "forbidden_tools": [
+    "delete_database"
+  ],
+  "ordered_tools": [
+    "search"
+  ]
+}

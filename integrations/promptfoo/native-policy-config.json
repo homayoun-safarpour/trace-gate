@@ -1,0 +1,381 @@
+{
+  "description": "Configured native Python tool-policy check (not a capability ceiling)",
+  "prompts": [
+    "{{trace_json}}"
+  ],
+  "providers": [
+    "echo"
+  ],
+  "tests": [
+    {
+      "description": "good",
+      "vars": {
+        "trace_json": "{\n  \"trajectories\": [\n    {\n      \"name\": \"synthetic-order-a\",\n      \"steps\": [\n        {\n          \"role\": \"assistant\",\n          \"tool_calls\": [\n            {\n              \"id\": \"lookup-1\",\n              \"function\": {\n                \"name\": \"lookup_order\"\n              }\n            }\n          ]\n        },\n        {\n          \"role\": \"assistant\",\n          \"tool_calls\": [\n            {\n              \"id\": \"reply-1\",\n              \"function\": {\n                \"name\": \"send_reply\"\n              }\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"name\": \"synthetic-order-b\",\n      \"steps\": [\n        {\n          \"role\": \"assistant\",\n          \"tool_calls\": [\n            {\n              \"id\": \"lookup-1\",\n              \"function\": {\n                \"name\": \"lookup_order\"\n              }\n            }\n          ]\n        },\n        {\n          \"role\": \"assistant\",\n          \"tool_calls\": [\n            {\n              \"id\": \"reply-1\",\n              \"function\": {\n                \"name\": \"send_reply\"\n              }\n            }\n          ]\n        }\n      ]\n    }\n  ]\n}\n"
+      },
+      "assert": [
+        {
+          "type": "python",
+          "value": "file://native_policy_assert.py",
+          "weight": 1,
+          "config": {
+            "forbidden_tools": [
+              "delete_order",
+              "forbidden_demo_0",
+              "forbidden_demo_1",
+              "forbidden_demo_2",
+              "forbidden_demo_3",
+              "forbidden_demo_4",
+              "forbidden_demo_5",
+              "forbidden_demo_6",
+              "forbidden_demo_7",
+              "forbidden_demo_8",
+              "forbidden_demo_9",
+              "forbidden_demo_10",
+              "forbidden_demo_11",
+              "forbidden_demo_12",
+              "forbidden_demo_13",
+              "forbidden_demo_14",
+              "forbidden_demo_15",
+              "forbidden_demo_16",
+              "forbidden_demo_17",
+              "forbidden_demo_18"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "description": "forbidden-second-call",
+      "vars": {
+        "trace_json": "{\n  \"trajectories\": [\n    {\n      \"name\": \"synthetic-order-a\",\n      \"steps\": [\n        {\n          \"role\": \"assistant\",\n          \"tool_calls\": [\n            {\n              \"id\": \"lookup-1\",\n              \"function\": {\n                \"name\": \"lookup_order\"\n              }\n            },\n            {\n              \"id\": \"forbidden-2\",\n              \"function\": {\n                \"name\": \"delete_order\"\n              }\n            }\n          ]\n        },\n        {\n          \"role\": \"assistant\",\n          \"tool_calls\": [\n            {\n              \"id\": \"reply-1\",\n              \"function\": {\n                \"name\": \"send_reply\"\n              }\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"name\": \"synthetic-order-b\",\n      \"steps\": [\n        {\n          \"role\": \"assistant\",\n          \"tool_calls\": [\n            {\n              \"id\": \"lookup-1\",\n              \"function\": {\n                \"name\": \"lookup_order\"\n              }\n            }\n          ]\n        },\n        {\n          \"role\": \"assistant\",\n          \"tool_calls\": [\n            {\n              \"id\": \"reply-1\",\n              \"function\": {\n                \"name\": \"send_reply\"\n              }\n            }\n          ]\n        }\n      ]\n    }\n  ]\n}\n"
+      },
+      "assert": [
+        {
+          "type": "python",
+          "value": "file://native_policy_assert.py",
+          "weight": 1,
+          "config": {
+            "forbidden_tools": [
+              "delete_order",
+              "forbidden_demo_0",
+              "forbidden_demo_1",
+              "forbidden_demo_2",
+              "forbidden_demo_3",
+              "forbidden_demo_4",
+              "forbidden_demo_5",
+              "forbidden_demo_6",
+              "forbidden_demo_7",
+              "forbidden_demo_8",
+              "forbidden_demo_9",
+              "forbidden_demo_10",
+              "forbidden_demo_11",
+              "forbidden_demo_12",
+              "forbidden_demo_13",
+              "forbidden_demo_14",
+              "forbidden_demo_15",
+              "forbidden_demo_16",
+              "forbidden_demo_17",
+              "forbidden_demo_18"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "description": "malformed-tool-calls",
+      "vars": {
+        "trace_json": "{\n  \"trajectories\": [\n    {\n      \"name\": \"synthetic-order-a\",\n      \"steps\": [\n        {\n          \"role\": \"assistant\",\n          \"tool_calls\": {\n            \"function\": {\n              \"name\": \"lookup_order\"\n            }\n          }\n        },\n        {\n          \"role\": \"assistant\",\n          \"tool_calls\": [\n            {\n              \"id\": \"reply-1\",\n              \"function\": {\n                \"name\": \"send_reply\"\n              }\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"name\": \"synthetic-order-b\",\n      \"steps\": [\n        {\n          \"role\": \"assistant\",\n          \"tool_calls\": [\n            {\n              \"id\": \"lookup-1\",\n              \"function\": {\n                \"name\": \"lookup_order\"\n              }\n            }\n          ]\n        },\n        {\n          \"role\": \"assistant\",\n          \"tool_calls\": [\n            {\n              \"id\": \"reply-1\",\n              \"function\": {\n                \"name\": \"send_reply\"\n              }\n            }\n          ]\n        }\n      ]\n    }\n  ]\n}\n"
+      },
+      "assert": [
+        {
+          "type": "python",
+          "value": "file://native_policy_assert.py",
+          "weight": 1,
+          "config": {
+            "forbidden_tools": [
+              "delete_order",
+              "forbidden_demo_0",
+              "forbidden_demo_1",
+              "forbidden_demo_2",
+              "forbidden_demo_3",
+              "forbidden_demo_4",
+              "forbidden_demo_5",
+              "forbidden_demo_6",
+              "forbidden_demo_7",
+              "forbidden_demo_8",
+              "forbidden_demo_9",
+              "forbidden_demo_10",
+              "forbidden_demo_11",
+              "forbidden_demo_12",
+              "forbidden_demo_13",
+              "forbidden_demo_14",
+              "forbidden_demo_15",
+              "forbidden_demo_16",
+              "forbidden_demo_17",
+              "forbidden_demo_18"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "description": "missing-case",
+      "vars": {
+        "trace_json": "{\n  \"trajectories\": [\n    {\n      \"name\": \"synthetic-order-a\",\n      \"steps\": [\n        {\n          \"role\": \"assistant\",\n          \"tool_calls\": [\n            {\n              \"id\": \"lookup-1\",\n              \"function\": {\n                \"name\": \"lookup_order\"\n              }\n            }\n          ]\n        },\n        {\n          \"role\": \"assistant\",\n          \"tool_calls\": [\n            {\n              \"id\": \"reply-1\",\n              \"function\": {\n                \"name\": \"send_reply\"\n              }\n            }\n          ]\n        }\n      ]\n    }\n  ]\n}\n"
+      },
+      "assert": [
+        {
+          "type": "python",
+          "value": "file://native_policy_assert.py",
+          "weight": 1,
+          "config": {
+            "forbidden_tools": [
+              "delete_order",
+              "forbidden_demo_0",
+              "forbidden_demo_1",
+              "forbidden_demo_2",
+              "forbidden_demo_3",
+              "forbidden_demo_4",
+              "forbidden_demo_5",
+              "forbidden_demo_6",
+              "forbidden_demo_7",
+              "forbidden_demo_8",
+              "forbidden_demo_9",
+              "forbidden_demo_10",
+              "forbidden_demo_11",
+              "forbidden_demo_12",
+              "forbidden_demo_13",
+              "forbidden_demo_14",
+              "forbidden_demo_15",
+              "forbidden_demo_16",
+              "forbidden_demo_17",
+              "forbidden_demo_18"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "description": "extra-case",
+      "vars": {
+        "trace_json": "{\n  \"trajectories\": [\n    {\n      \"name\": \"synthetic-order-a\",\n      \"steps\": [\n        {\n          \"role\": \"assistant\",\n          \"tool_calls\": [\n            {\n              \"id\": \"lookup-1\",\n              \"function\": {\n                \"name\": \"lookup_order\"\n              }\n            }\n          ]\n        },\n        {\n          \"role\": \"assistant\",\n          \"tool_calls\": [\n            {\n              \"id\": \"reply-1\",\n              \"function\": {\n                \"name\": \"send_reply\"\n              }\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"name\": \"synthetic-order-b\",\n      \"steps\": [\n        {\n          \"role\": \"assistant\",\n          \"tool_calls\": [\n            {\n              \"id\": \"lookup-1\",\n              \"function\": {\n                \"name\": \"lookup_order\"\n              }\n            }\n          ]\n        },\n        {\n          \"role\": \"assistant\",\n          \"tool_calls\": [\n            {\n              \"id\": \"reply-1\",\n              \"function\": {\n                \"name\": \"send_reply\"\n              }\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"name\": \"synthetic-unreviewed\",\n      \"steps\": [\n        {\n          \"role\": \"assistant\",\n          \"tool_calls\": [\n            {\n              \"id\": \"lookup-1\",\n              \"function\": {\n                \"name\": \"lookup_order\"\n              }\n            }\n          ]\n        },\n        {\n          \"role\": \"assistant\",\n          \"tool_calls\": [\n            {\n              \"id\": \"reply-1\",\n              \"function\": {\n                \"name\": \"send_reply\"\n              }\n            }\n          ]\n        }\n      ]\n    }\n  ]\n}\n"
+      },
+      "assert": [
+        {
+          "type": "python",
+          "value": "file://native_policy_assert.py",
+          "weight": 1,
+          "config": {
+            "forbidden_tools": [
+              "delete_order",
+              "forbidden_demo_0",
+              "forbidden_demo_1",
+              "forbidden_demo_2",
+              "forbidden_demo_3",
+              "forbidden_demo_4",
+              "forbidden_demo_5",
+              "forbidden_demo_6",
+              "forbidden_demo_7",
+              "forbidden_demo_8",
+              "forbidden_demo_9",
+              "forbidden_demo_10",
+              "forbidden_demo_11",
+              "forbidden_demo_12",
+              "forbidden_demo_13",
+              "forbidden_demo_14",
+              "forbidden_demo_15",
+              "forbidden_demo_16",
+              "forbidden_demo_17",
+              "forbidden_demo_18"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "description": "duplicate-case",
+      "vars": {
+        "trace_json": "{\n  \"trajectories\": [\n    {\n      \"name\": \"synthetic-order-a\",\n      \"steps\": [\n        {\n          \"role\": \"assistant\",\n          \"tool_calls\": [\n            {\n              \"id\": \"lookup-1\",\n              \"function\": {\n                \"name\": \"lookup_order\"\n              }\n            }\n          ]\n        },\n        {\n          \"role\": \"assistant\",\n          \"tool_calls\": [\n            {\n              \"id\": \"reply-1\",\n              \"function\": {\n                \"name\": \"send_reply\"\n              }\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"name\": \"synthetic-order-b\",\n      \"steps\": [\n        {\n          \"role\": \"assistant\",\n          \"tool_calls\": [\n            {\n              \"id\": \"lookup-1\",\n              \"function\": {\n                \"name\": \"lookup_order\"\n              }\n            }\n          ]\n        },\n        {\n          \"role\": \"assistant\",\n          \"tool_calls\": [\n            {\n              \"id\": \"reply-1\",\n              \"function\": {\n                \"name\": \"send_reply\"\n              }\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"name\": \"synthetic-order-a\",\n      \"steps\": [\n        {\n          \"role\": \"assistant\",\n          \"tool_calls\": [\n            {\n              \"id\": \"lookup-1\",\n              \"function\": {\n                \"name\": \"lookup_order\"\n              }\n            }\n          ]\n        },\n        {\n          \"role\": \"assistant\",\n          \"tool_calls\": [\n            {\n              \"id\": \"reply-1\",\n              \"function\": {\n                \"name\": \"send_reply\"\n              }\n            }\n          ]\n        }\n      ]\n    }\n  ]\n}\n"
+      },
+      "assert": [
+        {
+          "type": "python",
+          "value": "file://native_policy_assert.py",
+          "weight": 1,
+          "config": {
+            "forbidden_tools": [
+              "delete_order",
+              "forbidden_demo_0",
+              "forbidden_demo_1",
+              "forbidden_demo_2",
+              "forbidden_demo_3",
+              "forbidden_demo_4",
+              "forbidden_demo_5",
+              "forbidden_demo_6",
+              "forbidden_demo_7",
+              "forbidden_demo_8",
+              "forbidden_demo_9",
+              "forbidden_demo_10",
+              "forbidden_demo_11",
+              "forbidden_demo_12",
+              "forbidden_demo_13",
+              "forbidden_demo_14",
+              "forbidden_demo_15",
+              "forbidden_demo_16",
+              "forbidden_demo_17",
+              "forbidden_demo_18"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "description": "quality-regression",
+      "vars": {
+        "trace_json": "{\n  \"trajectories\": [\n    {\n      \"name\": \"synthetic-order-a\",\n      \"steps\": [\n        {\n          \"role\": \"assistant\",\n          \"tool_calls\": [\n            {\n              \"id\": \"lookup-1\",\n              \"function\": {\n                \"name\": \"lookup_order\"\n              }\n            }\n          ]\n        },\n        {\n          \"role\": \"assistant\",\n          \"tool_calls\": []\n        }\n      ]\n    },\n    {\n      \"name\": \"synthetic-order-b\",\n      \"steps\": [\n        {\n          \"role\": \"assistant\",\n          \"tool_calls\": [\n            {\n              \"id\": \"lookup-1\",\n              \"function\": {\n                \"name\": \"lookup_order\"\n              }\n            }\n          ]\n        },\n        {\n          \"role\": \"assistant\",\n          \"tool_calls\": [\n            {\n              \"id\": \"reply-1\",\n              \"function\": {\n                \"name\": \"send_reply\"\n              }\n            }\n          ]\n        }\n      ]\n    }\n  ]\n}\n"
+      },
+      "assert": [
+        {
+          "type": "python",
+          "value": "file://native_policy_assert.py",
+          "weight": 1,
+          "config": {
+            "forbidden_tools": [
+              "delete_order",
+              "forbidden_demo_0",
+              "forbidden_demo_1",
+              "forbidden_demo_2",
+              "forbidden_demo_3",
+              "forbidden_demo_4",
+              "forbidden_demo_5",
+              "forbidden_demo_6",
+              "forbidden_demo_7",
+              "forbidden_demo_8",
+              "forbidden_demo_9",
+              "forbidden_demo_10",
+              "forbidden_demo_11",
+              "forbidden_demo_12",
+              "forbidden_demo_13",
+              "forbidden_demo_14",
+              "forbidden_demo_15",
+              "forbidden_demo_16",
+              "forbidden_demo_17",
+              "forbidden_demo_18"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "description": "rubric-drift",
+      "vars": {
+        "trace_json": "{\n  \"trajectories\": [\n    {\n      \"name\": \"synthetic-order-a\",\n      \"steps\": [\n        {\n          \"role\": \"assistant\",\n          \"tool_calls\": [\n            {\n              \"id\": \"lookup-1\",\n              \"function\": {\n                \"name\": \"lookup_order\"\n              }\n            }\n          ]\n        },\n        {\n          \"role\": \"assistant\",\n          \"tool_calls\": [\n            {\n              \"id\": \"reply-1\",\n              \"function\": {\n                \"name\": \"send_reply\"\n              }\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"name\": \"synthetic-order-b\",\n      \"steps\": [\n        {\n          \"role\": \"assistant\",\n          \"tool_calls\": [\n            {\n              \"id\": \"lookup-1\",\n              \"function\": {\n                \"name\": \"lookup_order\"\n              }\n            }\n          ]\n        },\n        {\n          \"role\": \"assistant\",\n          \"tool_calls\": [\n            {\n              \"id\": \"reply-1\",\n              \"function\": {\n                \"name\": \"send_reply\"\n              }\n            }\n          ]\n        }\n      ]\n    }\n  ]\n}\n"
+      },
+      "assert": [
+        {
+          "type": "python",
+          "value": "file://native_policy_assert.py",
+          "weight": 1,
+          "config": {
+            "forbidden_tools": [
+              "delete_order",
+              "forbidden_demo_0",
+              "forbidden_demo_1",
+              "forbidden_demo_2",
+              "forbidden_demo_3",
+              "forbidden_demo_4",
+              "forbidden_demo_5",
+              "forbidden_demo_6",
+              "forbidden_demo_7",
+              "forbidden_demo_8",
+              "forbidden_demo_9",
+              "forbidden_demo_10",
+              "forbidden_demo_11",
+              "forbidden_demo_12",
+              "forbidden_demo_13",
+              "forbidden_demo_14",
+              "forbidden_demo_15",
+              "forbidden_demo_16",
+              "forbidden_demo_17",
+              "forbidden_demo_18"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "description": "missing-fingerprint",
+      "vars": {
+        "trace_json": "{\n  \"trajectories\": [\n    {\n      \"name\": \"synthetic-order-a\",\n      \"steps\": [\n        {\n          \"role\": \"assistant\",\n          \"tool_calls\": [\n            {\n              \"id\": \"lookup-1\",\n              \"function\": {\n                \"name\": \"lookup_order\"\n              }\n            }\n          ]\n        },\n        {\n          \"role\": \"assistant\",\n          \"tool_calls\": [\n            {\n              \"id\": \"reply-1\",\n              \"function\": {\n                \"name\": \"send_reply\"\n              }\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"name\": \"synthetic-order-b\",\n      \"steps\": [\n        {\n          \"role\": \"assistant\",\n          \"tool_calls\": [\n            {\n              \"id\": \"lookup-1\",\n              \"function\": {\n                \"name\": \"lookup_order\"\n              }\n            }\n          ]\n        },\n        {\n          \"role\": \"assistant\",\n          \"tool_calls\": [\n            {\n              \"id\": \"reply-1\",\n              \"function\": {\n                \"name\": \"send_reply\"\n              }\n            }\n          ]\n        }\n      ]\n    }\n  ]\n}\n"
+      },
+      "assert": [
+        {
+          "type": "python",
+          "value": "file://native_policy_assert.py",
+          "weight": 1,
+          "config": {
+            "forbidden_tools": [
+              "delete_order",
+              "forbidden_demo_0",
+              "forbidden_demo_1",
+              "forbidden_demo_2",
+              "forbidden_demo_3",
+              "forbidden_demo_4",
+              "forbidden_demo_5",
+              "forbidden_demo_6",
+              "forbidden_demo_7",
+              "forbidden_demo_8",
+              "forbidden_demo_9",
+              "forbidden_demo_10",
+              "forbidden_demo_11",
+              "forbidden_demo_12",
+              "forbidden_demo_13",
+              "forbidden_demo_14",
+              "forbidden_demo_15",
+              "forbidden_demo_16",
+              "forbidden_demo_17",
+              "forbidden_demo_18"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "description": "invalid-json",
+      "vars": {
+        "trace_json": "{\"trajectories\":"
+      },
+      "assert": [
+        {
+          "type": "python",
+          "value": "file://native_policy_assert.py",
+          "weight": 1,
+          "config": {
+            "forbidden_tools": [
+              "delete_order",
+              "forbidden_demo_0",
+              "forbidden_demo_1",
+              "forbidden_demo_2",
+              "forbidden_demo_3",
+              "forbidden_demo_4",
+              "forbidden_demo_5",
+              "forbidden_demo_6",
+              "forbidden_demo_7",
+              "forbidden_demo_8",
+              "forbidden_demo_9",
+              "forbidden_demo_10",
+              "forbidden_demo_11",
+              "forbidden_demo_12",
+              "forbidden_demo_13",
+              "forbidden_demo_14",
+              "forbidden_demo_15",
+              "forbidden_demo_16",
+              "forbidden_demo_17",
+              "forbidden_demo_18"
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

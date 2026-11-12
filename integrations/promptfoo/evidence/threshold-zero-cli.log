@@ -1,0 +1,13 @@
+Cache is disabled.
+Starting evaluation eval-EQ6-2026-11-09T22:30:34
+Running 1 test cases (up to 1 at a time)...
+✓ Eval complete
+
+
+Results:
+  ✓ 1 passed (100%)
+  0 failed (0%)
+  0 errors (0%)
+Duration: 0s (concurrency: 1)
+
+Writing output to /workspace/shared/trace-gate-promptfoo-2026-11-09/trace-gate/integrations/promptfoo/evidence/threshold-zero-results.json
