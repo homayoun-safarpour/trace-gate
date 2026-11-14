@@ -10,4 +10,4 @@ Results:
   0 errors (0%)
 Duration: 0s (concurrency: 1)
 
-Writing output to /workspace/scratch/2ab4182eefa2/trace_gate_readiness/candidate/trace-gate/integrations/promptfoo/evidence/readiness/threshold-zero-results.json
+Writing output to /READINESS_REPO_ROOT/integrations/promptfoo/evidence/readiness/threshold-zero-results.json

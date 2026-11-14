@@ -36,8 +36,9 @@ The parsed report names must match baseline score keys exactly, once each.
   collapses them into one dictionary entry.
 - An empty report list cannot pass a populated baseline.
 
-The legacy parser still derives a name from `name`, then `id`, then `unnamed`
-and stringifies that value. This is not strict validation of source case IDs.
+The parser uses `name` when present, otherwise `id`, otherwise `unnamed`.
+Every supplied `name` and `id` must be a non-empty string; invalid values are
+rejected, not stringified or replaced with a fallback.
 Use explicit stable string names. For intentional subsets or CI shards, freeze
 and review distinct baseline files for the exact case set in each invocation.
 There is no implicit subset mode.
@@ -48,7 +49,8 @@ There is no implicit subset mode.
 non-empty strings when present. Bare strings, null values and invalid entries
 are refused. Step bounds must be non-negative integers, with min <= max.
 Omitted tool lists mean no constraint; an omitted min is 0 and max is unbounded.
-Additional annotation fields are allowed but are not fingerprinted or scored.
+Unknown rubric fields, including annotation fields, are rejected. Keep annotations
+outside the rubric object.
 
 Baseline scores and tolerance must be finite numbers in [0, 1], not numeric
 strings or booleans. Only baseline schema version 1 is supported. The rubric

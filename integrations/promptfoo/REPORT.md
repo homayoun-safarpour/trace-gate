@@ -11,8 +11,10 @@ The trace-gate candidate works through the real Promptfoo 0.125.1 external Pytho
 assertion interface. The complete-suite envelope preserves exact case coverage,
 matching rubric fingerprints, quality floors and forbidden-tool vetoes.
 
-The integration is private and unpublished. The original candidate was preserved.
-No repository was pushed and no package or site was published.
+At the time of this verification (2026-11-09), the integration was private and
+unpublished. The original candidate was preserved. No repository was pushed
+and no package or site was published as part of that verification. These are
+historical statements, not a claim about the current publication status.
 
 ## Actual CLI comparison
 
