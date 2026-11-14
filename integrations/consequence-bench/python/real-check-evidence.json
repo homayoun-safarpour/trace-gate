@@ -1,0 +1,158 @@
+[
+  [
+    {
+      "run_id": "cc748c374a0b465b9c4000d17b460ea5",
+      "event": "accepted",
+      "at_ns": 1794692708220465297,
+      "input": {
+        "second_tool": "deny_0",
+        "unknown": false,
+        "missing_hash": false
+      }
+    },
+    {
+      "run_id": "cc748c374a0b465b9c4000d17b460ea5",
+      "event": "baseline_started",
+      "at_ns": 1794692708221233943
+    },
+    {
+      "run_id": "cc748c374a0b465b9c4000d17b460ea5",
+      "event": "baseline_completed",
+      "at_ns": 1794692708277846160,
+      "sha256": "22fcc8e1a5e78093f1bddb0b8f0ed7d112d6669f194fec1f5cd9eb8a772e722b"
+    },
+    {
+      "run_id": "cc748c374a0b465b9c4000d17b460ea5",
+      "event": "check_started",
+      "at_ns": 1794692708277939861,
+      "trace": {
+        "name": "demo",
+        "messages": [
+          {
+            "tool_calls": [
+              {
+                "id": "first",
+                "function": {
+                  "name": "read"
+                }
+              },
+              {
+                "id": "second",
+                "function": {
+                  "name": "deny_0"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "sha256": "5a51e69068586d38d23efa80db6655c02152df322c9458f3d710764f9f6ee1b3"
+    },
+    {
+      "run_id": "cc748c374a0b465b9c4000d17b460ea5",
+      "event": "completed",
+      "at_ns": 1794692708381908762,
+      "exit_code": 2,
+      "result": {
+        "verdict": "POLICY_VIOLATION",
+        "ok": false,
+        "details": [
+          "rubric_sha256 OK (451519feabc8...)",
+          "demo: POLICY_VIOLATION forbidden_tools_used=['deny_0'] (forbidden_tools=0.9500; tolerance does not apply)"
+        ]
+      },
+      "score": {
+        "trajectory_name": "demo",
+        "metrics": {
+          "tool_presence": 1.0,
+          "forbidden_tools": 0.95,
+          "tool_order": 1.0,
+          "step_band": 1.0
+        },
+        "composite": 0.9875,
+        "forbidden_tools_used": [
+          "deny_0"
+        ],
+        "policy_ok": false,
+        "rubric_sha256": "451519feabc88689529ac3fdb9981ede37b5c440be8526fe2103aeac5186041e"
+      }
+    }
+  ],
+  [
+    {
+      "run_id": "a4176a026899453a82e26aa70c5010cd",
+      "event": "accepted",
+      "at_ns": 1794692708382031259,
+      "input": {
+        "second_tool": "read",
+        "unknown": false,
+        "missing_hash": false
+      }
+    },
+    {
+      "run_id": "a4176a026899453a82e26aa70c5010cd",
+      "event": "baseline_started",
+      "at_ns": 1794692708382231459
+    },
+    {
+      "run_id": "a4176a026899453a82e26aa70c5010cd",
+      "event": "baseline_completed",
+      "at_ns": 1794692708443674674,
+      "sha256": "22fcc8e1a5e78093f1bddb0b8f0ed7d112d6669f194fec1f5cd9eb8a772e722b"
+    },
+    {
+      "run_id": "a4176a026899453a82e26aa70c5010cd",
+      "event": "check_started",
+      "at_ns": 1794692708443759361,
+      "trace": {
+        "name": "demo",
+        "messages": [
+          {
+            "tool_calls": [
+              {
+                "id": "first",
+                "function": {
+                  "name": "read"
+                }
+              },
+              {
+                "id": "second",
+                "function": {
+                  "name": "read"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "sha256": "9e1c34901dfb664fa63d0bbe8e2f6800ae956e0d71003f8fcae86d2314bd89a4"
+    },
+    {
+      "run_id": "a4176a026899453a82e26aa70c5010cd",
+      "event": "completed",
+      "at_ns": 1794692708552445632,
+      "exit_code": 0,
+      "result": {
+        "verdict": "PASS",
+        "ok": true,
+        "details": [
+          "rubric_sha256 OK (451519feabc8...)",
+          "demo: PASS composite=1.0000 >= floor=0.9500 (pinned=1.0000)"
+        ]
+      },
+      "score": {
+        "trajectory_name": "demo",
+        "metrics": {
+          "tool_presence": 1.0,
+          "forbidden_tools": 1.0,
+          "tool_order": 1.0,
+          "step_band": 1.0
+        },
+        "composite": 1.0,
+        "forbidden_tools_used": [],
+        "policy_ok": true,
+        "rubric_sha256": "451519feabc88689529ac3fdb9981ede37b5c440be8526fe2103aeac5186041e"
+      }
+    }
+  ]
+]
