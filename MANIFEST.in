@@ -10,3 +10,6 @@ include .github/workflows/ci.yml
 global-exclude *.py[cod]
 global-exclude __pycache__
 prune integrations/promptfoo/runtime-lock/node_modules
+recursive-include integrations/consequence-bench *.py *.json *.md *.cjs *.js *.css *.html LICENSE
+exclude integrations/consequence-bench/browser/parity-result.json
+include .github/workflows/consequence-bench.yml .github/workflows/pr-recorded-trace.yml

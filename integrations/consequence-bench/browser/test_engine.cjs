@@ -1,0 +1,5 @@
+const assert=require('node:assert/strict');globalThis.crypto=require('node:crypto').webcrypto;const P=require('./dist/engine.js'),R=require('./dist/receipt.js');
+(async()=>{let n=0;
+for(const d of [{},{second_tool:'x',unknown:false,missing_hash:false,extra:1},{second_tool:'x',unknown:0,missing_hash:false},{second_tool:'x'.repeat(41),unknown:false,missing_hash:false},{second_tool:'<script>',unknown:false,missing_hash:false},null]){await assert.rejects(()=>P.evaluate(d));n++;}
+for(const d of [{second_tool:'deny_0',unknown:false,missing_hash:false},{second_tool:'read',unknown:false,missing_hash:false},{second_tool:'read',unknown:true,missing_hash:false},{second_tool:'deny_0',unknown:true,missing_hash:true}]){const es=[];await P.run(d,x=>es.push(x));const r=R.seal(es,d);assert.equal(r.events.at(-1).engine,'browser-fixture-port');n++;const bad=structuredClone(es);bad.at(-1).exit_code=bad.at(-1).exit_code===0?2:0;assert.throws(()=>R.seal(bad,d));n++;}
+console.log(n+' input/event/receipt regression cases passed');})();
