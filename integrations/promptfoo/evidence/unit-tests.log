@@ -1,0 +1,17 @@
+test_configs_do_not_weaken_gate (test_assertion.AssertionTests.test_configs_do_not_weaken_gate) ... ok
+test_duplicate_call_ids_rejected (test_assertion.AssertionTests.test_duplicate_call_ids_rejected) ... ok
+test_duplicate_json_keys_rejected (test_assertion.AssertionTests.test_duplicate_json_keys_rejected) ... ok
+test_empty_suite_does_not_skip (test_assertion.AssertionTests.test_empty_suite_does_not_skip) ... ok
+test_failed_policy_score_cannot_be_quality_composite (test_assertion.AssertionTests.test_failed_policy_score_cannot_be_quality_composite) ... ok
+test_inputs_not_mutated (test_assertion.AssertionTests.test_inputs_not_mutated) ... ok
+test_mapping_output_supported (test_assertion.AssertionTests.test_mapping_output_supported) ... ok
+test_missing_or_invalid_config_fails (test_assertion.AssertionTests.test_missing_or_invalid_config_fails) ... ok
+test_no_paths_from_provider_output (test_assertion.AssertionTests.test_no_paths_from_provider_output) ... ok
+test_nonfinite_json_rejected (test_assertion.AssertionTests.test_nonfinite_json_rejected) ... ok
+test_scenario_expectations (test_assertion.AssertionTests.test_scenario_expectations) ... ok
+test_unrelated_working_directory (test_assertion.AssertionTests.test_unrelated_working_directory) ... ok
+
+----------------------------------------------------------------------
+Ran 12 tests in 0.004s
+
+OK

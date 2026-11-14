@@ -1,0 +1,2296 @@
+{
+  "evalId": "eval-1F0-2026-11-09T22:30:18",
+  "results": {
+    "version": 3,
+    "timestamp": "2026-11-09T22:30:18.542Z",
+    "prompts": [
+      {
+        "id": "ac65945d3887a283767d1574e5d84ace842903c011a7069c48cb0e780d370c8c",
+        "raw": "{{trace_json}}",
+        "label": "{{trace_json}}",
+        "provider": "echo",
+        "metrics": {
+          "score": 7,
+          "testPassCount": 7,
+          "testFailCount": 3,
+          "testErrorCount": 0,
+          "testCacheHitCount": 0,
+          "assertPassCount": 7,
+          "assertFailCount": 3,
+          "totalLatencyMs": 16,
+          "tokenUsage": {
+            "prompt": 0,
+            "completion": 0,
+            "cached": 0,
+            "total": 0,
+            "numRequests": 10,
+            "completionDetails": {
+              "reasoning": 0,
+              "acceptedPrediction": 0,
+              "rejectedPrediction": 0,
+              "cacheReadInputTokens": 0,
+              "cacheCreationInputTokens": 0
+            },
+            "assertions": {
+              "total": 0,
+              "prompt": 0,
+              "completion": 0,
+              "cached": 0,
+              "numRequests": 0,
+              "completionDetails": {
+                "reasoning": 0,
+                "acceptedPrediction": 0,
+                "rejectedPrediction": 0,
+                "cacheReadInputTokens": 0,
+                "cacheCreationInputTokens": 0
+              }
+            }
+          },
+          "namedScores": {},
+          "namedScoresCount": {},
+          "namedScoreWeights": {},
+          "cost": 0
+        }
+      }
+    ],
+    "results": [
+      {
+        "cost": 0,
+        "gradingResult": {
+          "pass": true,
+          "score": 1,
+          "reason": "All assertions passed",
+          "namedScores": {},
+          "tokensUsed": {
+            "total": 0,
+            "prompt": 0,
+            "completion": 0,
+            "cached": 0,
+            "numRequests": 0
+          },
+          "componentResults": [
+            {
+              "pass": true,
+              "score": 1,
+              "reason": "configured native tool-policy assertion passed",
+              "assertion": {
+                "type": "python",
+                "value": "file://native_policy_assert.py",
+                "weight": 1,
+                "config": {
+                  "forbidden_tools": [
+                    "delete_order",
+                    "forbidden_demo_0",
+                    "forbidden_demo_1",
+                    "forbidden_demo_2",
+                    "forbidden_demo_3",
+                    "forbidden_demo_4",
+                    "forbidden_demo_5",
+                    "forbidden_demo_6",
+                    "forbidden_demo_7",
+                    "forbidden_demo_8",
+                    "forbidden_demo_9",
+                    "forbidden_demo_10",
+                    "forbidden_demo_11",
+                    "forbidden_demo_12",
+                    "forbidden_demo_13",
+                    "forbidden_demo_14",
+                    "forbidden_demo_15",
+                    "forbidden_demo_16",
+                    "forbidden_demo_17",
+                    "forbidden_demo_18"
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        "id": "db13386a-b387-4148-b274-e2e94b4ca81b",
+        "latencyMs": 3,
+        "namedScores": {},
+        "prompt": {
+          "raw": "{\"trajectories\":[{\"name\":\"synthetic-order-a\",\"steps\":[{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"lookup-1\",\"function\":{\"name\":\"lookup_order\"}}]},{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"reply-1\",\"function\":{\"name\":\"send_reply\"}}]}]},{\"name\":\"synthetic-order-b\",\"steps\":[{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"lookup-1\",\"function\":{\"name\":\"lookup_order\"}}]},{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"reply-1\",\"function\":{\"name\":\"send_reply\"}}]}]}]}",
+          "label": "{{trace_json}}",
+          "config": {}
+        },
+        "promptId": "ac65945d3887a283767d1574e5d84ace842903c011a7069c48cb0e780d370c8c",
+        "promptIdx": 0,
+        "provider": {
+          "id": "echo",
+          "label": ""
+        },
+        "response": {
+          "output": "{\n  \"trajectories\": [\n    {\n      \"name\": \"synthetic-order-a\",\n      \"steps\": [\n        {\n          \"role\": \"assistant\",\n          \"tool_calls\": [\n            {\n              \"id\": \"lookup-1\",\n              \"function\": {\n                \"name\": \"lookup_order\"\n              }\n            }\n          ]\n        },\n        {\n          \"role\": \"assistant\",\n          \"tool_calls\": [\n            {\n              \"id\": \"reply-1\",\n              \"function\": {\n                \"name\": \"send_reply\"\n              }\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"name\": \"synthetic-order-b\",\n      \"steps\": [\n        {\n          \"role\": \"assistant\",\n          \"tool_calls\": [\n            {\n              \"id\": \"lookup-1\",\n              \"function\": {\n                \"name\": \"lookup_order\"\n              }\n            }\n          ]\n        },\n        {\n          \"role\": \"assistant\",\n          \"tool_calls\": [\n            {\n              \"id\": \"reply-1\",\n              \"function\": {\n                \"name\": \"send_reply\"\n              }\n            }\n          ]\n        }\n      ]\n    }\n  ]\n}",
+          "raw": "{\n  \"trajectories\": [\n    {\n      \"name\": \"synthetic-order-a\",\n      \"steps\": [\n        {\n          \"role\": \"assistant\",\n          \"tool_calls\": [\n            {\n              \"id\": \"lookup-1\",\n              \"function\": {\n                \"name\": \"lookup_order\"\n              }\n            }\n          ]\n        },\n        {\n          \"role\": \"assistant\",\n          \"tool_calls\": [\n            {\n              \"id\": \"reply-1\",\n              \"function\": {\n                \"name\": \"send_reply\"\n              }\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"name\": \"synthetic-order-b\",\n      \"steps\": [\n        {\n          \"role\": \"assistant\",\n          \"tool_calls\": [\n            {\n              \"id\": \"lookup-1\",\n              \"function\": {\n                \"name\": \"lookup_order\"\n              }\n            }\n          ]\n        },\n        {\n          \"role\": \"assistant\",\n          \"tool_calls\": [\n            {\n              \"id\": \"reply-1\",\n              \"function\": {\n                \"name\": \"send_reply\"\n              }\n            }\n          ]\n        }\n      ]\n    }\n  ]\n}",
+          "cost": 0,
+          "cached": false,
+          "tokenUsage": {
+            "prompt": 0,
+            "completion": 0,
+            "cached": 0,
+            "total": 0,
+            "numRequests": 1,
+            "completionDetails": {
+              "reasoning": 0,
+              "acceptedPrediction": 0,
+              "rejectedPrediction": 0,
+              "cacheReadInputTokens": 0,
+              "cacheCreationInputTokens": 0
+            },
+            "assertions": {
+              "total": 0,
+              "prompt": 0,
+              "completion": 0,
+              "cached": 0,
+              "numRequests": 0,
+              "completionDetails": {
+                "reasoning": 0,
+                "acceptedPrediction": 0,
+                "rejectedPrediction": 0,
+                "cacheReadInputTokens": 0,
+                "cacheCreationInputTokens": 0
+              }
+            }
+          },
+          "isRefusal": false,
+          "metadata": {}
+        },
+        "score": 1,
+        "success": true,
+        "testCase": {
+          "description": "good",
+          "vars": {
+            "trace_json": "{\"trajectories\":[{\"name\":\"synthetic-order-a\",\"steps\":[{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"lookup-1\",\"function\":{\"name\":\"lookup_order\"}}]},{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"reply-1\",\"function\":{\"name\":\"send_reply\"}}]}]},{\"name\":\"synthetic-order-b\",\"steps\":[{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"lookup-1\",\"function\":{\"name\":\"lookup_order\"}}]},{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"reply-1\",\"function\":{\"name\":\"send_reply\"}}]}]}]}"
+          },
+          "assert": [
+            {
+              "type": "python",
+              "value": "file://native_policy_assert.py",
+              "weight": 1,
+              "config": {
+                "forbidden_tools": [
+                  "delete_order",
+                  "forbidden_demo_0",
+                  "forbidden_demo_1",
+                  "forbidden_demo_2",
+                  "forbidden_demo_3",
+                  "forbidden_demo_4",
+                  "forbidden_demo_5",
+                  "forbidden_demo_6",
+                  "forbidden_demo_7",
+                  "forbidden_demo_8",
+                  "forbidden_demo_9",
+                  "forbidden_demo_10",
+                  "forbidden_demo_11",
+                  "forbidden_demo_12",
+                  "forbidden_demo_13",
+                  "forbidden_demo_14",
+                  "forbidden_demo_15",
+                  "forbidden_demo_16",
+                  "forbidden_demo_17",
+                  "forbidden_demo_18"
+                ]
+              }
+            }
+          ],
+          "options": {},
+          "metadata": {}
+        },
+        "testIdx": 0,
+        "tokenUsage": {
+          "prompt": 0,
+          "completion": 0,
+          "cached": 0,
+          "total": 0,
+          "numRequests": 1,
+          "completionDetails": {
+            "reasoning": 0,
+            "acceptedPrediction": 0,
+            "rejectedPrediction": 0,
+            "cacheReadInputTokens": 0,
+            "cacheCreationInputTokens": 0
+          },
+          "assertions": {
+            "total": 0,
+            "prompt": 0,
+            "completion": 0,
+            "cached": 0,
+            "numRequests": 0,
+            "completionDetails": {
+              "reasoning": 0,
+              "acceptedPrediction": 0,
+              "rejectedPrediction": 0,
+              "cacheReadInputTokens": 0,
+              "cacheCreationInputTokens": 0
+            }
+          }
+        },
+        "vars": {
+          "trace_json": "{\"trajectories\":[{\"name\":\"synthetic-order-a\",\"steps\":[{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"lookup-1\",\"function\":{\"name\":\"lookup_order\"}}]},{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"reply-1\",\"function\":{\"name\":\"send_reply\"}}]}]},{\"name\":\"synthetic-order-b\",\"steps\":[{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"lookup-1\",\"function\":{\"name\":\"lookup_order\"}}]},{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"reply-1\",\"function\":{\"name\":\"send_reply\"}}]}]}]}"
+        },
+        "metadata": {
+          "_promptfooFileMetadata": {}
+        },
+        "failureReason": 0
+      },
+      {
+        "cost": 0,
+        "error": "forbidden tools: ['delete_order']",
+        "gradingResult": {
+          "pass": false,
+          "score": 0,
+          "reason": "forbidden tools: ['delete_order']",
+          "namedScores": {},
+          "tokensUsed": {
+            "total": 0,
+            "prompt": 0,
+            "completion": 0,
+            "cached": 0,
+            "numRequests": 0
+          },
+          "componentResults": [
+            {
+              "pass": false,
+              "score": 0,
+              "reason": "forbidden tools: ['delete_order']",
+              "assertion": {
+                "type": "python",
+                "value": "file://native_policy_assert.py",
+                "weight": 1,
+                "config": {
+                  "forbidden_tools": [
+                    "delete_order",
+                    "forbidden_demo_0",
+                    "forbidden_demo_1",
+                    "forbidden_demo_2",
+                    "forbidden_demo_3",
+                    "forbidden_demo_4",
+                    "forbidden_demo_5",
+                    "forbidden_demo_6",
+                    "forbidden_demo_7",
+                    "forbidden_demo_8",
+                    "forbidden_demo_9",
+                    "forbidden_demo_10",
+                    "forbidden_demo_11",
+                    "forbidden_demo_12",
+                    "forbidden_demo_13",
+                    "forbidden_demo_14",
+                    "forbidden_demo_15",
+                    "forbidden_demo_16",
+                    "forbidden_demo_17",
+                    "forbidden_demo_18"
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        "id": "865e902a-8fc1-4b8d-b452-d0bb27041b4a",
+        "latencyMs": 0,
+        "namedScores": {},
+        "prompt": {
+          "raw": "{\"trajectories\":[{\"name\":\"synthetic-order-a\",\"steps\":[{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"lookup-1\",\"function\":{\"name\":\"lookup_order\"}},{\"id\":\"forbidden-2\",\"function\":{\"name\":\"delete_order\"}}]},{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"reply-1\",\"function\":{\"name\":\"send_reply\"}}]}]},{\"name\":\"synthetic-order-b\",\"steps\":[{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"lookup-1\",\"function\":{\"name\":\"lookup_order\"}}]},{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"reply-1\",\"function\":{\"name\":\"send_reply\"}}]}]}]}",
+          "label": "{{trace_json}}",
+          "config": {}
+        },
+        "promptId": "ac65945d3887a283767d1574e5d84ace842903c011a7069c48cb0e780d370c8c",
+        "promptIdx": 0,
+        "provider": {
+          "id": "echo",
+          "label": ""
+        },
+        "response": {
+          "output": "{\n  \"trajectories\": [\n    {\n      \"name\": \"synthetic-order-a\",\n      \"steps\": [\n        {\n          \"role\": \"assistant\",\n          \"tool_calls\": [\n            {\n              \"id\": \"lookup-1\",\n              \"function\": {\n                \"name\": \"lookup_order\"\n              }\n            },\n            {\n              \"id\": \"forbidden-2\",\n              \"function\": {\n                \"name\": \"delete_order\"\n              }\n            }\n          ]\n        },\n        {\n          \"role\": \"assistant\",\n          \"tool_calls\": [\n            {\n              \"id\": \"reply-1\",\n              \"function\": {\n                \"name\": \"send_reply\"\n              }\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"name\": \"synthetic-order-b\",\n      \"steps\": [\n        {\n          \"role\": \"assistant\",\n          \"tool_calls\": [\n            {\n              \"id\": \"lookup-1\",\n              \"function\": {\n                \"name\": \"lookup_order\"\n              }\n            }\n          ]\n        },\n        {\n          \"role\": \"assistant\",\n          \"tool_calls\": [\n            {\n              \"id\": \"reply-1\",\n              \"function\": {\n                \"name\": \"send_reply\"\n              }\n            }\n          ]\n        }\n      ]\n    }\n  ]\n}",
+          "raw": "{\n  \"trajectories\": [\n    {\n      \"name\": \"synthetic-order-a\",\n      \"steps\": [\n        {\n          \"role\": \"assistant\",\n          \"tool_calls\": [\n            {\n              \"id\": \"lookup-1\",\n              \"function\": {\n                \"name\": \"lookup_order\"\n              }\n            },\n            {\n              \"id\": \"forbidden-2\",\n              \"function\": {\n                \"name\": \"delete_order\"\n              }\n            }\n          ]\n        },\n        {\n          \"role\": \"assistant\",\n          \"tool_calls\": [\n            {\n              \"id\": \"reply-1\",\n              \"function\": {\n                \"name\": \"send_reply\"\n              }\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"name\": \"synthetic-order-b\",\n      \"steps\": [\n        {\n          \"role\": \"assistant\",\n          \"tool_calls\": [\n            {\n              \"id\": \"lookup-1\",\n              \"function\": {\n                \"name\": \"lookup_order\"\n              }\n            }\n          ]\n        },\n        {\n          \"role\": \"assistant\",\n          \"tool_calls\": [\n            {\n              \"id\": \"reply-1\",\n              \"function\": {\n                \"name\": \"send_reply\"\n              }\n            }\n          ]\n        }\n      ]\n    }\n  ]\n}",
+          "cost": 0,
+          "cached": false,
+          "tokenUsage": {
+            "prompt": 0,
+            "completion": 0,
+            "cached": 0,
+            "total": 0,
+            "numRequests": 1,
+            "completionDetails": {
+              "reasoning": 0,
+              "acceptedPrediction": 0,
+              "rejectedPrediction": 0,
+              "cacheReadInputTokens": 0,
+              "cacheCreationInputTokens": 0
+            },
+            "assertions": {
+              "total": 0,
+              "prompt": 0,
+              "completion": 0,
+              "cached": 0,
+              "numRequests": 0,
+              "completionDetails": {
+                "reasoning": 0,
+                "acceptedPrediction": 0,
+                "rejectedPrediction": 0,
+                "cacheReadInputTokens": 0,
+                "cacheCreationInputTokens": 0
+              }
+            }
+          },
+          "isRefusal": false,
+          "metadata": {}
+        },
+        "score": 0,
+        "success": false,
+        "testCase": {
+          "description": "forbidden-second-call",
+          "vars": {
+            "trace_json": "{\"trajectories\":[{\"name\":\"synthetic-order-a\",\"steps\":[{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"lookup-1\",\"function\":{\"name\":\"lookup_order\"}},{\"id\":\"forbidden-2\",\"function\":{\"name\":\"delete_order\"}}]},{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"reply-1\",\"function\":{\"name\":\"send_reply\"}}]}]},{\"name\":\"synthetic-order-b\",\"steps\":[{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"lookup-1\",\"function\":{\"name\":\"lookup_order\"}}]},{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"reply-1\",\"function\":{\"name\":\"send_reply\"}}]}]}]}"
+          },
+          "assert": [
+            {
+              "type": "python",
+              "value": "file://native_policy_assert.py",
+              "weight": 1,
+              "config": {
+                "forbidden_tools": [
+                  "delete_order",
+                  "forbidden_demo_0",
+                  "forbidden_demo_1",
+                  "forbidden_demo_2",
+                  "forbidden_demo_3",
+                  "forbidden_demo_4",
+                  "forbidden_demo_5",
+                  "forbidden_demo_6",
+                  "forbidden_demo_7",
+                  "forbidden_demo_8",
+                  "forbidden_demo_9",
+                  "forbidden_demo_10",
+                  "forbidden_demo_11",
+                  "forbidden_demo_12",
+                  "forbidden_demo_13",
+                  "forbidden_demo_14",
+                  "forbidden_demo_15",
+                  "forbidden_demo_16",
+                  "forbidden_demo_17",
+                  "forbidden_demo_18"
+                ]
+              }
+            }
+          ],
+          "options": {},
+          "metadata": {}
+        },
+        "testIdx": 1,
+        "tokenUsage": {
+          "prompt": 0,
+          "completion": 0,
+          "cached": 0,
+          "total": 0,
+          "numRequests": 1,
+          "completionDetails": {
+            "reasoning": 0,
+            "acceptedPrediction": 0,
+            "rejectedPrediction": 0,
+            "cacheReadInputTokens": 0,
+            "cacheCreationInputTokens": 0
+          },
+          "assertions": {
+            "total": 0,
+            "prompt": 0,
+            "completion": 0,
+            "cached": 0,
+            "numRequests": 0,
+            "completionDetails": {
+              "reasoning": 0,
+              "acceptedPrediction": 0,
+              "rejectedPrediction": 0,
+              "cacheReadInputTokens": 0,
+              "cacheCreationInputTokens": 0
+            }
+          }
+        },
+        "vars": {
+          "trace_json": "{\"trajectories\":[{\"name\":\"synthetic-order-a\",\"steps\":[{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"lookup-1\",\"function\":{\"name\":\"lookup_order\"}},{\"id\":\"forbidden-2\",\"function\":{\"name\":\"delete_order\"}}]},{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"reply-1\",\"function\":{\"name\":\"send_reply\"}}]}]},{\"name\":\"synthetic-order-b\",\"steps\":[{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"lookup-1\",\"function\":{\"name\":\"lookup_order\"}}]},{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"reply-1\",\"function\":{\"name\":\"send_reply\"}}]}]}]}"
+        },
+        "metadata": {
+          "_promptfooFileMetadata": {}
+        },
+        "failureReason": 1
+      },
+      {
+        "cost": 0,
+        "error": "invalid trace: tool_calls must be an array",
+        "gradingResult": {
+          "pass": false,
+          "score": 0,
+          "reason": "invalid trace: tool_calls must be an array",
+          "namedScores": {},
+          "tokensUsed": {
+            "total": 0,
+            "prompt": 0,
+            "completion": 0,
+            "cached": 0,
+            "numRequests": 0
+          },
+          "componentResults": [
+            {
+              "pass": false,
+              "score": 0,
+              "reason": "invalid trace: tool_calls must be an array",
+              "assertion": {
+                "type": "python",
+                "value": "file://native_policy_assert.py",
+                "weight": 1,
+                "config": {
+                  "forbidden_tools": [
+                    "delete_order",
+                    "forbidden_demo_0",
+                    "forbidden_demo_1",
+                    "forbidden_demo_2",
+                    "forbidden_demo_3",
+                    "forbidden_demo_4",
+                    "forbidden_demo_5",
+                    "forbidden_demo_6",
+                    "forbidden_demo_7",
+                    "forbidden_demo_8",
+                    "forbidden_demo_9",
+                    "forbidden_demo_10",
+                    "forbidden_demo_11",
+                    "forbidden_demo_12",
+                    "forbidden_demo_13",
+                    "forbidden_demo_14",
+                    "forbidden_demo_15",
+                    "forbidden_demo_16",
+                    "forbidden_demo_17",
+                    "forbidden_demo_18"
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        "id": "60f44e5c-b95b-40cc-a684-d1a182236c04",
+        "latencyMs": 0,
+        "namedScores": {},
+        "prompt": {
+          "raw": "{\"trajectories\":[{\"name\":\"synthetic-order-a\",\"steps\":[{\"role\":\"assistant\",\"tool_calls\":{\"function\":{\"name\":\"lookup_order\"}}},{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"reply-1\",\"function\":{\"name\":\"send_reply\"}}]}]},{\"name\":\"synthetic-order-b\",\"steps\":[{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"lookup-1\",\"function\":{\"name\":\"lookup_order\"}}]},{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"reply-1\",\"function\":{\"name\":\"send_reply\"}}]}]}]}",
+          "label": "{{trace_json}}",
+          "config": {}
+        },
+        "promptId": "ac65945d3887a283767d1574e5d84ace842903c011a7069c48cb0e780d370c8c",
+        "promptIdx": 0,
+        "provider": {
+          "id": "echo",
+          "label": ""
+        },
+        "response": {
+          "output": "{\n  \"trajectories\": [\n    {\n      \"name\": \"synthetic-order-a\",\n      \"steps\": [\n        {\n          \"role\": \"assistant\",\n          \"tool_calls\": {\n            \"function\": {\n              \"name\": \"lookup_order\"\n            }\n          }\n        },\n        {\n          \"role\": \"assistant\",\n          \"tool_calls\": [\n            {\n              \"id\": \"reply-1\",\n              \"function\": {\n                \"name\": \"send_reply\"\n              }\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"name\": \"synthetic-order-b\",\n      \"steps\": [\n        {\n          \"role\": \"assistant\",\n          \"tool_calls\": [\n            {\n              \"id\": \"lookup-1\",\n              \"function\": {\n                \"name\": \"lookup_order\"\n              }\n            }\n          ]\n        },\n        {\n          \"role\": \"assistant\",\n          \"tool_calls\": [\n            {\n              \"id\": \"reply-1\",\n              \"function\": {\n                \"name\": \"send_reply\"\n              }\n            }\n          ]\n        }\n      ]\n    }\n  ]\n}",
+          "raw": "{\n  \"trajectories\": [\n    {\n      \"name\": \"synthetic-order-a\",\n      \"steps\": [\n        {\n          \"role\": \"assistant\",\n          \"tool_calls\": {\n            \"function\": {\n              \"name\": \"lookup_order\"\n            }\n          }\n        },\n        {\n          \"role\": \"assistant\",\n          \"tool_calls\": [\n            {\n              \"id\": \"reply-1\",\n              \"function\": {\n                \"name\": \"send_reply\"\n              }\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"name\": \"synthetic-order-b\",\n      \"steps\": [\n        {\n          \"role\": \"assistant\",\n          \"tool_calls\": [\n            {\n              \"id\": \"lookup-1\",\n              \"function\": {\n                \"name\": \"lookup_order\"\n              }\n            }\n          ]\n        },\n        {\n          \"role\": \"assistant\",\n          \"tool_calls\": [\n            {\n              \"id\": \"reply-1\",\n              \"function\": {\n                \"name\": \"send_reply\"\n              }\n            }\n          ]\n        }\n      ]\n    }\n  ]\n}",
+          "cost": 0,
+          "cached": false,
+          "tokenUsage": {
+            "prompt": 0,
+            "completion": 0,
+            "cached": 0,
+            "total": 0,
+            "numRequests": 1,
+            "completionDetails": {
+              "reasoning": 0,
+              "acceptedPrediction": 0,
+              "rejectedPrediction": 0,
+              "cacheReadInputTokens": 0,
+              "cacheCreationInputTokens": 0
+            },
+            "assertions": {
+              "total": 0,
+              "prompt": 0,
+              "completion": 0,
+              "cached": 0,
+              "numRequests": 0,
+              "completionDetails": {
+                "reasoning": 0,
+                "acceptedPrediction": 0,
+                "rejectedPrediction": 0,
+                "cacheReadInputTokens": 0,
+                "cacheCreationInputTokens": 0
+              }
+            }
+          },
+          "isRefusal": false,
+          "metadata": {}
+        },
+        "score": 0,
+        "success": false,
+        "testCase": {
+          "description": "malformed-tool-calls",
+          "vars": {
+            "trace_json": "{\"trajectories\":[{\"name\":\"synthetic-order-a\",\"steps\":[{\"role\":\"assistant\",\"tool_calls\":{\"function\":{\"name\":\"lookup_order\"}}},{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"reply-1\",\"function\":{\"name\":\"send_reply\"}}]}]},{\"name\":\"synthetic-order-b\",\"steps\":[{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"lookup-1\",\"function\":{\"name\":\"lookup_order\"}}]},{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"reply-1\",\"function\":{\"name\":\"send_reply\"}}]}]}]}"
+          },
+          "assert": [
+            {
+              "type": "python",
+              "value": "file://native_policy_assert.py",
+              "weight": 1,
+              "config": {
+                "forbidden_tools": [
+                  "delete_order",
+                  "forbidden_demo_0",
+                  "forbidden_demo_1",
+                  "forbidden_demo_2",
+                  "forbidden_demo_3",
+                  "forbidden_demo_4",
+                  "forbidden_demo_5",
+                  "forbidden_demo_6",
+                  "forbidden_demo_7",
+                  "forbidden_demo_8",
+                  "forbidden_demo_9",
+                  "forbidden_demo_10",
+                  "forbidden_demo_11",
+                  "forbidden_demo_12",
+                  "forbidden_demo_13",
+                  "forbidden_demo_14",
+                  "forbidden_demo_15",
+                  "forbidden_demo_16",
+                  "forbidden_demo_17",
+                  "forbidden_demo_18"
+                ]
+              }
+            }
+          ],
+          "options": {},
+          "metadata": {}
+        },
+        "testIdx": 2,
+        "tokenUsage": {
+          "prompt": 0,
+          "completion": 0,
+          "cached": 0,
+          "total": 0,
+          "numRequests": 1,
+          "completionDetails": {
+            "reasoning": 0,
+            "acceptedPrediction": 0,
+            "rejectedPrediction": 0,
+            "cacheReadInputTokens": 0,
+            "cacheCreationInputTokens": 0
+          },
+          "assertions": {
+            "total": 0,
+            "prompt": 0,
+            "completion": 0,
+            "cached": 0,
+            "numRequests": 0,
+            "completionDetails": {
+              "reasoning": 0,
+              "acceptedPrediction": 0,
+              "rejectedPrediction": 0,
+              "cacheReadInputTokens": 0,
+              "cacheCreationInputTokens": 0
+            }
+          }
+        },
+        "vars": {
+          "trace_json": "{\"trajectories\":[{\"name\":\"synthetic-order-a\",\"steps\":[{\"role\":\"assistant\",\"tool_calls\":{\"function\":{\"name\":\"lookup_order\"}}},{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"reply-1\",\"function\":{\"name\":\"send_reply\"}}]}]},{\"name\":\"synthetic-order-b\",\"steps\":[{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"lookup-1\",\"function\":{\"name\":\"lookup_order\"}}]},{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"reply-1\",\"function\":{\"name\":\"send_reply\"}}]}]}]}"
+        },
+        "metadata": {
+          "_promptfooFileMetadata": {}
+        },
+        "failureReason": 1
+      },
+      {
+        "cost": 0,
+        "gradingResult": {
+          "pass": true,
+          "score": 1,
+          "reason": "All assertions passed",
+          "namedScores": {},
+          "tokensUsed": {
+            "total": 0,
+            "prompt": 0,
+            "completion": 0,
+            "cached": 0,
+            "numRequests": 0
+          },
+          "componentResults": [
+            {
+              "pass": true,
+              "score": 1,
+              "reason": "configured native tool-policy assertion passed",
+              "assertion": {
+                "type": "python",
+                "value": "file://native_policy_assert.py",
+                "weight": 1,
+                "config": {
+                  "forbidden_tools": [
+                    "delete_order",
+                    "forbidden_demo_0",
+                    "forbidden_demo_1",
+                    "forbidden_demo_2",
+                    "forbidden_demo_3",
+                    "forbidden_demo_4",
+                    "forbidden_demo_5",
+                    "forbidden_demo_6",
+                    "forbidden_demo_7",
+                    "forbidden_demo_8",
+                    "forbidden_demo_9",
+                    "forbidden_demo_10",
+                    "forbidden_demo_11",
+                    "forbidden_demo_12",
+                    "forbidden_demo_13",
+                    "forbidden_demo_14",
+                    "forbidden_demo_15",
+                    "forbidden_demo_16",
+                    "forbidden_demo_17",
+                    "forbidden_demo_18"
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        "id": "e1f98c47-1e8a-4f46-9bba-9d3ed91e2cd9",
+        "latencyMs": 1,
+        "namedScores": {},
+        "prompt": {
+          "raw": "{\"trajectories\":[{\"name\":\"synthetic-order-a\",\"steps\":[{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"lookup-1\",\"function\":{\"name\":\"lookup_order\"}}]},{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"reply-1\",\"function\":{\"name\":\"send_reply\"}}]}]}]}",
+          "label": "{{trace_json}}",
+          "config": {}
+        },
+        "promptId": "ac65945d3887a283767d1574e5d84ace842903c011a7069c48cb0e780d370c8c",
+        "promptIdx": 0,
+        "provider": {
+          "id": "echo",
+          "label": ""
+        },
+        "response": {
+          "output": "{\n  \"trajectories\": [\n    {\n      \"name\": \"synthetic-order-a\",\n      \"steps\": [\n        {\n          \"role\": \"assistant\",\n          \"tool_calls\": [\n            {\n              \"id\": \"lookup-1\",\n              \"function\": {\n                \"name\": \"lookup_order\"\n              }\n            }\n          ]\n        },\n        {\n          \"role\": \"assistant\",\n          \"tool_calls\": [\n            {\n              \"id\": \"reply-1\",\n              \"function\": {\n                \"name\": \"send_reply\"\n              }\n            }\n          ]\n        }\n      ]\n    }\n  ]\n}",
+          "raw": "{\n  \"trajectories\": [\n    {\n      \"name\": \"synthetic-order-a\",\n      \"steps\": [\n        {\n          \"role\": \"assistant\",\n          \"tool_calls\": [\n            {\n              \"id\": \"lookup-1\",\n              \"function\": {\n                \"name\": \"lookup_order\"\n              }\n            }\n          ]\n        },\n        {\n          \"role\": \"assistant\",\n          \"tool_calls\": [\n            {\n              \"id\": \"reply-1\",\n              \"function\": {\n                \"name\": \"send_reply\"\n              }\n            }\n          ]\n        }\n      ]\n    }\n  ]\n}",
+          "cost": 0,
+          "cached": false,
+          "tokenUsage": {
+            "prompt": 0,
+            "completion": 0,
+            "cached": 0,
+            "total": 0,
+            "numRequests": 1,
+            "completionDetails": {
+              "reasoning": 0,
+              "acceptedPrediction": 0,
+              "rejectedPrediction": 0,
+              "cacheReadInputTokens": 0,
+              "cacheCreationInputTokens": 0
+            },
+            "assertions": {
+              "total": 0,
+              "prompt": 0,
+              "completion": 0,
+              "cached": 0,
+              "numRequests": 0,
+              "completionDetails": {
+                "reasoning": 0,
+                "acceptedPrediction": 0,
+                "rejectedPrediction": 0,
+                "cacheReadInputTokens": 0,
+                "cacheCreationInputTokens": 0
+              }
+            }
+          },
+          "isRefusal": false,
+          "metadata": {}
+        },
+        "score": 1,
+        "success": true,
+        "testCase": {
+          "description": "missing-case",
+          "vars": {
+            "trace_json": "{\"trajectories\":[{\"name\":\"synthetic-order-a\",\"steps\":[{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"lookup-1\",\"function\":{\"name\":\"lookup_order\"}}]},{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"reply-1\",\"function\":{\"name\":\"send_reply\"}}]}]}]}"
+          },
+          "assert": [
+            {
+              "type": "python",
+              "value": "file://native_policy_assert.py",
+              "weight": 1,
+              "config": {
+                "forbidden_tools": [
+                  "delete_order",
+                  "forbidden_demo_0",
+                  "forbidden_demo_1",
+                  "forbidden_demo_2",
+                  "forbidden_demo_3",
+                  "forbidden_demo_4",
+                  "forbidden_demo_5",
+                  "forbidden_demo_6",
+                  "forbidden_demo_7",
+                  "forbidden_demo_8",
+                  "forbidden_demo_9",
+                  "forbidden_demo_10",
+                  "forbidden_demo_11",
+                  "forbidden_demo_12",
+                  "forbidden_demo_13",
+                  "forbidden_demo_14",
+                  "forbidden_demo_15",
+                  "forbidden_demo_16",
+                  "forbidden_demo_17",
+                  "forbidden_demo_18"
+                ]
+              }
+            }
+          ],
+          "options": {},
+          "metadata": {}
+        },
+        "testIdx": 3,
+        "tokenUsage": {
+          "prompt": 0,
+          "completion": 0,
+          "cached": 0,
+          "total": 0,
+          "numRequests": 1,
+          "completionDetails": {
+            "reasoning": 0,
+            "acceptedPrediction": 0,
+            "rejectedPrediction": 0,
+            "cacheReadInputTokens": 0,
+            "cacheCreationInputTokens": 0
+          },
+          "assertions": {
+            "total": 0,
+            "prompt": 0,
+            "completion": 0,
+            "cached": 0,
+            "numRequests": 0,
+            "completionDetails": {
+              "reasoning": 0,
+              "acceptedPrediction": 0,
+              "rejectedPrediction": 0,
+              "cacheReadInputTokens": 0,
+              "cacheCreationInputTokens": 0
+            }
+          }
+        },
+        "vars": {
+          "trace_json": "{\"trajectories\":[{\"name\":\"synthetic-order-a\",\"steps\":[{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"lookup-1\",\"function\":{\"name\":\"lookup_order\"}}]},{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"reply-1\",\"function\":{\"name\":\"send_reply\"}}]}]}]}"
+        },
+        "metadata": {
+          "_promptfooFileMetadata": {}
+        },
+        "failureReason": 0
+      },
+      {
+        "cost": 0,
+        "gradingResult": {
+          "pass": true,
+          "score": 1,
+          "reason": "All assertions passed",
+          "namedScores": {},
+          "tokensUsed": {
+            "total": 0,
+            "prompt": 0,
+            "completion": 0,
+            "cached": 0,
+            "numRequests": 0
+          },
+          "componentResults": [
+            {
+              "pass": true,
+              "score": 1,
+              "reason": "configured native tool-policy assertion passed",
+              "assertion": {
+                "type": "python",
+                "value": "file://native_policy_assert.py",
+                "weight": 1,
+                "config": {
+                  "forbidden_tools": [
+                    "delete_order",
+                    "forbidden_demo_0",
+                    "forbidden_demo_1",
+                    "forbidden_demo_2",
+                    "forbidden_demo_3",
+                    "forbidden_demo_4",
+                    "forbidden_demo_5",
+                    "forbidden_demo_6",
+                    "forbidden_demo_7",
+                    "forbidden_demo_8",
+                    "forbidden_demo_9",
+                    "forbidden_demo_10",
+                    "forbidden_demo_11",
+                    "forbidden_demo_12",
+                    "forbidden_demo_13",
+                    "forbidden_demo_14",
+                    "forbidden_demo_15",
+                    "forbidden_demo_16",
+                    "forbidden_demo_17",
+                    "forbidden_demo_18"
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        "id": "2d7be3c6-8076-4ffd-b388-9c4f94fcf14a",
+        "latencyMs": 1,
+        "namedScores": {},
+        "prompt": {
+          "raw": "{\"trajectories\":[{\"name\":\"synthetic-order-a\",\"steps\":[{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"lookup-1\",\"function\":{\"name\":\"lookup_order\"}}]},{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"reply-1\",\"function\":{\"name\":\"send_reply\"}}]}]},{\"name\":\"synthetic-order-b\",\"steps\":[{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"lookup-1\",\"function\":{\"name\":\"lookup_order\"}}]},{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"reply-1\",\"function\":{\"name\":\"send_reply\"}}]}]},{\"name\":\"synthetic-unreviewed\",\"steps\":[{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"lookup-1\",\"function\":{\"name\":\"lookup_order\"}}]},{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"reply-1\",\"function\":{\"name\":\"send_reply\"}}]}]}]}",
+          "label": "{{trace_json}}",
+          "config": {}
+        },
+        "promptId": "ac65945d3887a283767d1574e5d84ace842903c011a7069c48cb0e780d370c8c",
+        "promptIdx": 0,
+        "provider": {
+          "id": "echo",
+          "label": ""
+        },
+        "response": {
+          "output": "{\n  \"trajectories\": [\n    {\n      \"name\": \"synthetic-order-a\",\n      \"steps\": [\n        {\n          \"role\": \"assistant\",\n          \"tool_calls\": [\n            {\n              \"id\": \"lookup-1\",\n              \"function\": {\n                \"name\": \"lookup_order\"\n              }\n            }\n          ]\n        },\n        {\n          \"role\": \"assistant\",\n          \"tool_calls\": [\n            {\n              \"id\": \"reply-1\",\n              \"function\": {\n                \"name\": \"send_reply\"\n              }\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"name\": \"synthetic-order-b\",\n      \"steps\": [\n        {\n          \"role\": \"assistant\",\n          \"tool_calls\": [\n            {\n              \"id\": \"lookup-1\",\n              \"function\": {\n                \"name\": \"lookup_order\"\n              }\n            }\n          ]\n        },\n        {\n          \"role\": \"assistant\",\n          \"tool_calls\": [\n            {\n              \"id\": \"reply-1\",\n              \"function\": {\n                \"name\": \"send_reply\"\n              }\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"name\": \"synthetic-unreviewed\",\n      \"steps\": [\n        {\n          \"role\": \"assistant\",\n          \"tool_calls\": [\n            {\n              \"id\": \"lookup-1\",\n              \"function\": {\n                \"name\": \"lookup_order\"\n              }\n            }\n          ]\n        },\n        {\n          \"role\": \"assistant\",\n          \"tool_calls\": [\n            {\n              \"id\": \"reply-1\",\n              \"function\": {\n                \"name\": \"send_reply\"\n              }\n            }\n          ]\n        }\n      ]\n    }\n  ]\n}",
+          "raw": "{\n  \"trajectories\": [\n    {\n      \"name\": \"synthetic-order-a\",\n      \"steps\": [\n        {\n          \"role\": \"assistant\",\n          \"tool_calls\": [\n            {\n              \"id\": \"lookup-1\",\n              \"function\": {\n                \"name\": \"lookup_order\"\n              }\n            }\n          ]\n        },\n        {\n          \"role\": \"assistant\",\n          \"tool_calls\": [\n            {\n              \"id\": \"reply-1\",\n              \"function\": {\n                \"name\": \"send_reply\"\n              }\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"name\": \"synthetic-order-b\",\n      \"steps\": [\n        {\n          \"role\": \"assistant\",\n          \"tool_calls\": [\n            {\n              \"id\": \"lookup-1\",\n              \"function\": {\n                \"name\": \"lookup_order\"\n              }\n            }\n          ]\n        },\n        {\n          \"role\": \"assistant\",\n          \"tool_calls\": [\n            {\n              \"id\": \"reply-1\",\n              \"function\": {\n                \"name\": \"send_reply\"\n              }\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"name\": \"synthetic-unreviewed\",\n      \"steps\": [\n        {\n          \"role\": \"assistant\",\n          \"tool_calls\": [\n            {\n              \"id\": \"lookup-1\",\n              \"function\": {\n                \"name\": \"lookup_order\"\n              }\n            }\n          ]\n        },\n        {\n          \"role\": \"assistant\",\n          \"tool_calls\": [\n            {\n              \"id\": \"reply-1\",\n              \"function\": {\n                \"name\": \"send_reply\"\n              }\n            }\n          ]\n        }\n      ]\n    }\n  ]\n}",
+          "cost": 0,
+          "cached": false,
+          "tokenUsage": {
+            "prompt": 0,
+            "completion": 0,
+            "cached": 0,
+            "total": 0,
+            "numRequests": 1,
+            "completionDetails": {
+              "reasoning": 0,
+              "acceptedPrediction": 0,
+              "rejectedPrediction": 0,
+              "cacheReadInputTokens": 0,
+              "cacheCreationInputTokens": 0
+            },
+            "assertions": {
+              "total": 0,
+              "prompt": 0,
+              "completion": 0,
+              "cached": 0,
+              "numRequests": 0,
+              "completionDetails": {
+                "reasoning": 0,
+                "acceptedPrediction": 0,
+                "rejectedPrediction": 0,
+                "cacheReadInputTokens": 0,
+                "cacheCreationInputTokens": 0
+              }
+            }
+          },
+          "isRefusal": false,
+          "metadata": {}
+        },
+        "score": 1,
+        "success": true,
+        "testCase": {
+          "description": "extra-case",
+          "vars": {
+            "trace_json": "{\"trajectories\":[{\"name\":\"synthetic-order-a\",\"steps\":[{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"lookup-1\",\"function\":{\"name\":\"lookup_order\"}}]},{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"reply-1\",\"function\":{\"name\":\"send_reply\"}}]}]},{\"name\":\"synthetic-order-b\",\"steps\":[{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"lookup-1\",\"function\":{\"name\":\"lookup_order\"}}]},{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"reply-1\",\"function\":{\"name\":\"send_reply\"}}]}]},{\"name\":\"synthetic-unreviewed\",\"steps\":[{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"lookup-1\",\"function\":{\"name\":\"lookup_order\"}}]},{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"reply-1\",\"function\":{\"name\":\"send_reply\"}}]}]}]}"
+          },
+          "assert": [
+            {
+              "type": "python",
+              "value": "file://native_policy_assert.py",
+              "weight": 1,
+              "config": {
+                "forbidden_tools": [
+                  "delete_order",
+                  "forbidden_demo_0",
+                  "forbidden_demo_1",
+                  "forbidden_demo_2",
+                  "forbidden_demo_3",
+                  "forbidden_demo_4",
+                  "forbidden_demo_5",
+                  "forbidden_demo_6",
+                  "forbidden_demo_7",
+                  "forbidden_demo_8",
+                  "forbidden_demo_9",
+                  "forbidden_demo_10",
+                  "forbidden_demo_11",
+                  "forbidden_demo_12",
+                  "forbidden_demo_13",
+                  "forbidden_demo_14",
+                  "forbidden_demo_15",
+                  "forbidden_demo_16",
+                  "forbidden_demo_17",
+                  "forbidden_demo_18"
+                ]
+              }
+            }
+          ],
+          "options": {},
+          "metadata": {}
+        },
+        "testIdx": 4,
+        "tokenUsage": {
+          "prompt": 0,
+          "completion": 0,
+          "cached": 0,
+          "total": 0,
+          "numRequests": 1,
+          "completionDetails": {
+            "reasoning": 0,
+            "acceptedPrediction": 0,
+            "rejectedPrediction": 0,
+            "cacheReadInputTokens": 0,
+            "cacheCreationInputTokens": 0
+          },
+          "assertions": {
+            "total": 0,
+            "prompt": 0,
+            "completion": 0,
+            "cached": 0,
+            "numRequests": 0,
+            "completionDetails": {
+              "reasoning": 0,
+              "acceptedPrediction": 0,
+              "rejectedPrediction": 0,
+              "cacheReadInputTokens": 0,
+              "cacheCreationInputTokens": 0
+            }
+          }
+        },
+        "vars": {
+          "trace_json": "{\"trajectories\":[{\"name\":\"synthetic-order-a\",\"steps\":[{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"lookup-1\",\"function\":{\"name\":\"lookup_order\"}}]},{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"reply-1\",\"function\":{\"name\":\"send_reply\"}}]}]},{\"name\":\"synthetic-order-b\",\"steps\":[{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"lookup-1\",\"function\":{\"name\":\"lookup_order\"}}]},{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"reply-1\",\"function\":{\"name\":\"send_reply\"}}]}]},{\"name\":\"synthetic-unreviewed\",\"steps\":[{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"lookup-1\",\"function\":{\"name\":\"lookup_order\"}}]},{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"reply-1\",\"function\":{\"name\":\"send_reply\"}}]}]}]}"
+        },
+        "metadata": {
+          "_promptfooFileMetadata": {}
+        },
+        "failureReason": 0
+      },
+      {
+        "cost": 0,
+        "gradingResult": {
+          "pass": true,
+          "score": 1,
+          "reason": "All assertions passed",
+          "namedScores": {},
+          "tokensUsed": {
+            "total": 0,
+            "prompt": 0,
+            "completion": 0,
+            "cached": 0,
+            "numRequests": 0
+          },
+          "componentResults": [
+            {
+              "pass": true,
+              "score": 1,
+              "reason": "configured native tool-policy assertion passed",
+              "assertion": {
+                "type": "python",
+                "value": "file://native_policy_assert.py",
+                "weight": 1,
+                "config": {
+                  "forbidden_tools": [
+                    "delete_order",
+                    "forbidden_demo_0",
+                    "forbidden_demo_1",
+                    "forbidden_demo_2",
+                    "forbidden_demo_3",
+                    "forbidden_demo_4",
+                    "forbidden_demo_5",
+                    "forbidden_demo_6",
+                    "forbidden_demo_7",
+                    "forbidden_demo_8",
+                    "forbidden_demo_9",
+                    "forbidden_demo_10",
+                    "forbidden_demo_11",
+                    "forbidden_demo_12",
+                    "forbidden_demo_13",
+                    "forbidden_demo_14",
+                    "forbidden_demo_15",
+                    "forbidden_demo_16",
+                    "forbidden_demo_17",
+                    "forbidden_demo_18"
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        "id": "e2574e58-610f-4bd7-8310-1e27c487db89",
+        "latencyMs": 1,
+        "namedScores": {},
+        "prompt": {
+          "raw": "{\"trajectories\":[{\"name\":\"synthetic-order-a\",\"steps\":[{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"lookup-1\",\"function\":{\"name\":\"lookup_order\"}}]},{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"reply-1\",\"function\":{\"name\":\"send_reply\"}}]}]},{\"name\":\"synthetic-order-b\",\"steps\":[{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"lookup-1\",\"function\":{\"name\":\"lookup_order\"}}]},{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"reply-1\",\"function\":{\"name\":\"send_reply\"}}]}]},{\"name\":\"synthetic-order-a\",\"steps\":[{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"lookup-1\",\"function\":{\"name\":\"lookup_order\"}}]},{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"reply-1\",\"function\":{\"name\":\"send_reply\"}}]}]}]}",
+          "label": "{{trace_json}}",
+          "config": {}
+        },
+        "promptId": "ac65945d3887a283767d1574e5d84ace842903c011a7069c48cb0e780d370c8c",
+        "promptIdx": 0,
+        "provider": {
+          "id": "echo",
+          "label": ""
+        },
+        "response": {
+          "output": "{\n  \"trajectories\": [\n    {\n      \"name\": \"synthetic-order-a\",\n      \"steps\": [\n        {\n          \"role\": \"assistant\",\n          \"tool_calls\": [\n            {\n              \"id\": \"lookup-1\",\n              \"function\": {\n                \"name\": \"lookup_order\"\n              }\n            }\n          ]\n        },\n        {\n          \"role\": \"assistant\",\n          \"tool_calls\": [\n            {\n              \"id\": \"reply-1\",\n              \"function\": {\n                \"name\": \"send_reply\"\n              }\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"name\": \"synthetic-order-b\",\n      \"steps\": [\n        {\n          \"role\": \"assistant\",\n          \"tool_calls\": [\n            {\n              \"id\": \"lookup-1\",\n              \"function\": {\n                \"name\": \"lookup_order\"\n              }\n            }\n          ]\n        },\n        {\n          \"role\": \"assistant\",\n          \"tool_calls\": [\n            {\n              \"id\": \"reply-1\",\n              \"function\": {\n                \"name\": \"send_reply\"\n              }\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"name\": \"synthetic-order-a\",\n      \"steps\": [\n        {\n          \"role\": \"assistant\",\n          \"tool_calls\": [\n            {\n              \"id\": \"lookup-1\",\n              \"function\": {\n                \"name\": \"lookup_order\"\n              }\n            }\n          ]\n        },\n        {\n          \"role\": \"assistant\",\n          \"tool_calls\": [\n            {\n              \"id\": \"reply-1\",\n              \"function\": {\n                \"name\": \"send_reply\"\n              }\n            }\n          ]\n        }\n      ]\n    }\n  ]\n}",
+          "raw": "{\n  \"trajectories\": [\n    {\n      \"name\": \"synthetic-order-a\",\n      \"steps\": [\n        {\n          \"role\": \"assistant\",\n          \"tool_calls\": [\n            {\n              \"id\": \"lookup-1\",\n              \"function\": {\n                \"name\": \"lookup_order\"\n              }\n            }\n          ]\n        },\n        {\n          \"role\": \"assistant\",\n          \"tool_calls\": [\n            {\n              \"id\": \"reply-1\",\n              \"function\": {\n                \"name\": \"send_reply\"\n              }\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"name\": \"synthetic-order-b\",\n      \"steps\": [\n        {\n          \"role\": \"assistant\",\n          \"tool_calls\": [\n            {\n              \"id\": \"lookup-1\",\n              \"function\": {\n                \"name\": \"lookup_order\"\n              }\n            }\n          ]\n        },\n        {\n          \"role\": \"assistant\",\n          \"tool_calls\": [\n            {\n              \"id\": \"reply-1\",\n              \"function\": {\n                \"name\": \"send_reply\"\n              }\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"name\": \"synthetic-order-a\",\n      \"steps\": [\n        {\n          \"role\": \"assistant\",\n          \"tool_calls\": [\n            {\n              \"id\": \"lookup-1\",\n              \"function\": {\n                \"name\": \"lookup_order\"\n              }\n            }\n          ]\n        },\n        {\n          \"role\": \"assistant\",\n          \"tool_calls\": [\n            {\n              \"id\": \"reply-1\",\n              \"function\": {\n                \"name\": \"send_reply\"\n              }\n            }\n          ]\n        }\n      ]\n    }\n  ]\n}",
+          "cost": 0,
+          "cached": false,
+          "tokenUsage": {
+            "prompt": 0,
+            "completion": 0,
+            "cached": 0,
+            "total": 0,
+            "numRequests": 1,
+            "completionDetails": {
+              "reasoning": 0,
+              "acceptedPrediction": 0,
+              "rejectedPrediction": 0,
+              "cacheReadInputTokens": 0,
+              "cacheCreationInputTokens": 0
+            },
+            "assertions": {
+              "total": 0,
+              "prompt": 0,
+              "completion": 0,
+              "cached": 0,
+              "numRequests": 0,
+              "completionDetails": {
+                "reasoning": 0,
+                "acceptedPrediction": 0,
+                "rejectedPrediction": 0,
+                "cacheReadInputTokens": 0,
+                "cacheCreationInputTokens": 0
+              }
+            }
+          },
+          "isRefusal": false,
+          "metadata": {}
+        },
+        "score": 1,
+        "success": true,
+        "testCase": {
+          "description": "duplicate-case",
+          "vars": {
+            "trace_json": "{\"trajectories\":[{\"name\":\"synthetic-order-a\",\"steps\":[{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"lookup-1\",\"function\":{\"name\":\"lookup_order\"}}]},{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"reply-1\",\"function\":{\"name\":\"send_reply\"}}]}]},{\"name\":\"synthetic-order-b\",\"steps\":[{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"lookup-1\",\"function\":{\"name\":\"lookup_order\"}}]},{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"reply-1\",\"function\":{\"name\":\"send_reply\"}}]}]},{\"name\":\"synthetic-order-a\",\"steps\":[{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"lookup-1\",\"function\":{\"name\":\"lookup_order\"}}]},{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"reply-1\",\"function\":{\"name\":\"send_reply\"}}]}]}]}"
+          },
+          "assert": [
+            {
+              "type": "python",
+              "value": "file://native_policy_assert.py",
+              "weight": 1,
+              "config": {
+                "forbidden_tools": [
+                  "delete_order",
+                  "forbidden_demo_0",
+                  "forbidden_demo_1",
+                  "forbidden_demo_2",
+                  "forbidden_demo_3",
+                  "forbidden_demo_4",
+                  "forbidden_demo_5",
+                  "forbidden_demo_6",
+                  "forbidden_demo_7",
+                  "forbidden_demo_8",
+                  "forbidden_demo_9",
+                  "forbidden_demo_10",
+                  "forbidden_demo_11",
+                  "forbidden_demo_12",
+                  "forbidden_demo_13",
+                  "forbidden_demo_14",
+                  "forbidden_demo_15",
+                  "forbidden_demo_16",
+                  "forbidden_demo_17",
+                  "forbidden_demo_18"
+                ]
+              }
+            }
+          ],
+          "options": {},
+          "metadata": {}
+        },
+        "testIdx": 5,
+        "tokenUsage": {
+          "prompt": 0,
+          "completion": 0,
+          "cached": 0,
+          "total": 0,
+          "numRequests": 1,
+          "completionDetails": {
+            "reasoning": 0,
+            "acceptedPrediction": 0,
+            "rejectedPrediction": 0,
+            "cacheReadInputTokens": 0,
+            "cacheCreationInputTokens": 0
+          },
+          "assertions": {
+            "total": 0,
+            "prompt": 0,
+            "completion": 0,
+            "cached": 0,
+            "numRequests": 0,
+            "completionDetails": {
+              "reasoning": 0,
+              "acceptedPrediction": 0,
+              "rejectedPrediction": 0,
+              "cacheReadInputTokens": 0,
+              "cacheCreationInputTokens": 0
+            }
+          }
+        },
+        "vars": {
+          "trace_json": "{\"trajectories\":[{\"name\":\"synthetic-order-a\",\"steps\":[{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"lookup-1\",\"function\":{\"name\":\"lookup_order\"}}]},{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"reply-1\",\"function\":{\"name\":\"send_reply\"}}]}]},{\"name\":\"synthetic-order-b\",\"steps\":[{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"lookup-1\",\"function\":{\"name\":\"lookup_order\"}}]},{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"reply-1\",\"function\":{\"name\":\"send_reply\"}}]}]},{\"name\":\"synthetic-order-a\",\"steps\":[{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"lookup-1\",\"function\":{\"name\":\"lookup_order\"}}]},{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"reply-1\",\"function\":{\"name\":\"send_reply\"}}]}]}]}"
+        },
+        "metadata": {
+          "_promptfooFileMetadata": {}
+        },
+        "failureReason": 0
+      },
+      {
+        "cost": 0,
+        "gradingResult": {
+          "pass": true,
+          "score": 1,
+          "reason": "All assertions passed",
+          "namedScores": {},
+          "tokensUsed": {
+            "total": 0,
+            "prompt": 0,
+            "completion": 0,
+            "cached": 0,
+            "numRequests": 0
+          },
+          "componentResults": [
+            {
+              "pass": true,
+              "score": 1,
+              "reason": "configured native tool-policy assertion passed",
+              "assertion": {
+                "type": "python",
+                "value": "file://native_policy_assert.py",
+                "weight": 1,
+                "config": {
+                  "forbidden_tools": [
+                    "delete_order",
+                    "forbidden_demo_0",
+                    "forbidden_demo_1",
+                    "forbidden_demo_2",
+                    "forbidden_demo_3",
+                    "forbidden_demo_4",
+                    "forbidden_demo_5",
+                    "forbidden_demo_6",
+                    "forbidden_demo_7",
+                    "forbidden_demo_8",
+                    "forbidden_demo_9",
+                    "forbidden_demo_10",
+                    "forbidden_demo_11",
+                    "forbidden_demo_12",
+                    "forbidden_demo_13",
+                    "forbidden_demo_14",
+                    "forbidden_demo_15",
+                    "forbidden_demo_16",
+                    "forbidden_demo_17",
+                    "forbidden_demo_18"
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        "id": "1d78ca32-e6b6-4600-b146-4cf47a73b106",
+        "latencyMs": 1,
+        "namedScores": {},
+        "prompt": {
+          "raw": "{\"trajectories\":[{\"name\":\"synthetic-order-a\",\"steps\":[{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"lookup-1\",\"function\":{\"name\":\"lookup_order\"}}]},{\"role\":\"assistant\",\"tool_calls\":[]}]},{\"name\":\"synthetic-order-b\",\"steps\":[{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"lookup-1\",\"function\":{\"name\":\"lookup_order\"}}]},{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"reply-1\",\"function\":{\"name\":\"send_reply\"}}]}]}]}",
+          "label": "{{trace_json}}",
+          "config": {}
+        },
+        "promptId": "ac65945d3887a283767d1574e5d84ace842903c011a7069c48cb0e780d370c8c",
+        "promptIdx": 0,
+        "provider": {
+          "id": "echo",
+          "label": ""
+        },
+        "response": {
+          "output": "{\n  \"trajectories\": [\n    {\n      \"name\": \"synthetic-order-a\",\n      \"steps\": [\n        {\n          \"role\": \"assistant\",\n          \"tool_calls\": [\n            {\n              \"id\": \"lookup-1\",\n              \"function\": {\n                \"name\": \"lookup_order\"\n              }\n            }\n          ]\n        },\n        {\n          \"role\": \"assistant\",\n          \"tool_calls\": []\n        }\n      ]\n    },\n    {\n      \"name\": \"synthetic-order-b\",\n      \"steps\": [\n        {\n          \"role\": \"assistant\",\n          \"tool_calls\": [\n            {\n              \"id\": \"lookup-1\",\n              \"function\": {\n                \"name\": \"lookup_order\"\n              }\n            }\n          ]\n        },\n        {\n          \"role\": \"assistant\",\n          \"tool_calls\": [\n            {\n              \"id\": \"reply-1\",\n              \"function\": {\n                \"name\": \"send_reply\"\n              }\n            }\n          ]\n        }\n      ]\n    }\n  ]\n}",
+          "raw": "{\n  \"trajectories\": [\n    {\n      \"name\": \"synthetic-order-a\",\n      \"steps\": [\n        {\n          \"role\": \"assistant\",\n          \"tool_calls\": [\n            {\n              \"id\": \"lookup-1\",\n              \"function\": {\n                \"name\": \"lookup_order\"\n              }\n            }\n          ]\n        },\n        {\n          \"role\": \"assistant\",\n          \"tool_calls\": []\n        }\n      ]\n    },\n    {\n      \"name\": \"synthetic-order-b\",\n      \"steps\": [\n        {\n          \"role\": \"assistant\",\n          \"tool_calls\": [\n            {\n              \"id\": \"lookup-1\",\n              \"function\": {\n                \"name\": \"lookup_order\"\n              }\n            }\n          ]\n        },\n        {\n          \"role\": \"assistant\",\n          \"tool_calls\": [\n            {\n              \"id\": \"reply-1\",\n              \"function\": {\n                \"name\": \"send_reply\"\n              }\n            }\n          ]\n        }\n      ]\n    }\n  ]\n}",
+          "cost": 0,
+          "cached": false,
+          "tokenUsage": {
+            "prompt": 0,
+            "completion": 0,
+            "cached": 0,
+            "total": 0,
+            "numRequests": 1,
+            "completionDetails": {
+              "reasoning": 0,
+              "acceptedPrediction": 0,
+              "rejectedPrediction": 0,
+              "cacheReadInputTokens": 0,
+              "cacheCreationInputTokens": 0
+            },
+            "assertions": {
+              "total": 0,
+              "prompt": 0,
+              "completion": 0,
+              "cached": 0,
+              "numRequests": 0,
+              "completionDetails": {
+                "reasoning": 0,
+                "acceptedPrediction": 0,
+                "rejectedPrediction": 0,
+                "cacheReadInputTokens": 0,
+                "cacheCreationInputTokens": 0
+              }
+            }
+          },
+          "isRefusal": false,
+          "metadata": {}
+        },
+        "score": 1,
+        "success": true,
+        "testCase": {
+          "description": "quality-regression",
+          "vars": {
+            "trace_json": "{\"trajectories\":[{\"name\":\"synthetic-order-a\",\"steps\":[{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"lookup-1\",\"function\":{\"name\":\"lookup_order\"}}]},{\"role\":\"assistant\",\"tool_calls\":[]}]},{\"name\":\"synthetic-order-b\",\"steps\":[{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"lookup-1\",\"function\":{\"name\":\"lookup_order\"}}]},{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"reply-1\",\"function\":{\"name\":\"send_reply\"}}]}]}]}"
+          },
+          "assert": [
+            {
+              "type": "python",
+              "value": "file://native_policy_assert.py",
+              "weight": 1,
+              "config": {
+                "forbidden_tools": [
+                  "delete_order",
+                  "forbidden_demo_0",
+                  "forbidden_demo_1",
+                  "forbidden_demo_2",
+                  "forbidden_demo_3",
+                  "forbidden_demo_4",
+                  "forbidden_demo_5",
+                  "forbidden_demo_6",
+                  "forbidden_demo_7",
+                  "forbidden_demo_8",
+                  "forbidden_demo_9",
+                  "forbidden_demo_10",
+                  "forbidden_demo_11",
+                  "forbidden_demo_12",
+                  "forbidden_demo_13",
+                  "forbidden_demo_14",
+                  "forbidden_demo_15",
+                  "forbidden_demo_16",
+                  "forbidden_demo_17",
+                  "forbidden_demo_18"
+                ]
+              }
+            }
+          ],
+          "options": {},
+          "metadata": {}
+        },
+        "testIdx": 6,
+        "tokenUsage": {
+          "prompt": 0,
+          "completion": 0,
+          "cached": 0,
+          "total": 0,
+          "numRequests": 1,
+          "completionDetails": {
+            "reasoning": 0,
+            "acceptedPrediction": 0,
+            "rejectedPrediction": 0,
+            "cacheReadInputTokens": 0,
+            "cacheCreationInputTokens": 0
+          },
+          "assertions": {
+            "total": 0,
+            "prompt": 0,
+            "completion": 0,
+            "cached": 0,
+            "numRequests": 0,
+            "completionDetails": {
+              "reasoning": 0,
+              "acceptedPrediction": 0,
+              "rejectedPrediction": 0,
+              "cacheReadInputTokens": 0,
+              "cacheCreationInputTokens": 0
+            }
+          }
+        },
+        "vars": {
+          "trace_json": "{\"trajectories\":[{\"name\":\"synthetic-order-a\",\"steps\":[{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"lookup-1\",\"function\":{\"name\":\"lookup_order\"}}]},{\"role\":\"assistant\",\"tool_calls\":[]}]},{\"name\":\"synthetic-order-b\",\"steps\":[{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"lookup-1\",\"function\":{\"name\":\"lookup_order\"}}]},{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"reply-1\",\"function\":{\"name\":\"send_reply\"}}]}]}]}"
+        },
+        "metadata": {
+          "_promptfooFileMetadata": {}
+        },
+        "failureReason": 0
+      },
+      {
+        "cost": 0,
+        "gradingResult": {
+          "pass": true,
+          "score": 1,
+          "reason": "All assertions passed",
+          "namedScores": {},
+          "tokensUsed": {
+            "total": 0,
+            "prompt": 0,
+            "completion": 0,
+            "cached": 0,
+            "numRequests": 0
+          },
+          "componentResults": [
+            {
+              "pass": true,
+              "score": 1,
+              "reason": "configured native tool-policy assertion passed",
+              "assertion": {
+                "type": "python",
+                "value": "file://native_policy_assert.py",
+                "weight": 1,
+                "config": {
+                  "forbidden_tools": [
+                    "delete_order",
+                    "forbidden_demo_0",
+                    "forbidden_demo_1",
+                    "forbidden_demo_2",
+                    "forbidden_demo_3",
+                    "forbidden_demo_4",
+                    "forbidden_demo_5",
+                    "forbidden_demo_6",
+                    "forbidden_demo_7",
+                    "forbidden_demo_8",
+                    "forbidden_demo_9",
+                    "forbidden_demo_10",
+                    "forbidden_demo_11",
+                    "forbidden_demo_12",
+                    "forbidden_demo_13",
+                    "forbidden_demo_14",
+                    "forbidden_demo_15",
+                    "forbidden_demo_16",
+                    "forbidden_demo_17",
+                    "forbidden_demo_18"
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        "id": "012cb944-f0bf-462a-8162-3b782b60af23",
+        "latencyMs": 1,
+        "namedScores": {},
+        "prompt": {
+          "raw": "{\"trajectories\":[{\"name\":\"synthetic-order-a\",\"steps\":[{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"lookup-1\",\"function\":{\"name\":\"lookup_order\"}}]},{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"reply-1\",\"function\":{\"name\":\"send_reply\"}}]}]},{\"name\":\"synthetic-order-b\",\"steps\":[{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"lookup-1\",\"function\":{\"name\":\"lookup_order\"}}]},{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"reply-1\",\"function\":{\"name\":\"send_reply\"}}]}]}]}",
+          "label": "{{trace_json}}",
+          "config": {}
+        },
+        "promptId": "ac65945d3887a283767d1574e5d84ace842903c011a7069c48cb0e780d370c8c",
+        "promptIdx": 0,
+        "provider": {
+          "id": "echo",
+          "label": ""
+        },
+        "response": {
+          "output": "{\n  \"trajectories\": [\n    {\n      \"name\": \"synthetic-order-a\",\n      \"steps\": [\n        {\n          \"role\": \"assistant\",\n          \"tool_calls\": [\n            {\n              \"id\": \"lookup-1\",\n              \"function\": {\n                \"name\": \"lookup_order\"\n              }\n            }\n          ]\n        },\n        {\n          \"role\": \"assistant\",\n          \"tool_calls\": [\n            {\n              \"id\": \"reply-1\",\n              \"function\": {\n                \"name\": \"send_reply\"\n              }\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"name\": \"synthetic-order-b\",\n      \"steps\": [\n        {\n          \"role\": \"assistant\",\n          \"tool_calls\": [\n            {\n              \"id\": \"lookup-1\",\n              \"function\": {\n                \"name\": \"lookup_order\"\n              }\n            }\n          ]\n        },\n        {\n          \"role\": \"assistant\",\n          \"tool_calls\": [\n            {\n              \"id\": \"reply-1\",\n              \"function\": {\n                \"name\": \"send_reply\"\n              }\n            }\n          ]\n        }\n      ]\n    }\n  ]\n}",
+          "raw": "{\n  \"trajectories\": [\n    {\n      \"name\": \"synthetic-order-a\",\n      \"steps\": [\n        {\n          \"role\": \"assistant\",\n          \"tool_calls\": [\n            {\n              \"id\": \"lookup-1\",\n              \"function\": {\n                \"name\": \"lookup_order\"\n              }\n            }\n          ]\n        },\n        {\n          \"role\": \"assistant\",\n          \"tool_calls\": [\n            {\n              \"id\": \"reply-1\",\n              \"function\": {\n                \"name\": \"send_reply\"\n              }\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"name\": \"synthetic-order-b\",\n      \"steps\": [\n        {\n          \"role\": \"assistant\",\n          \"tool_calls\": [\n            {\n              \"id\": \"lookup-1\",\n              \"function\": {\n                \"name\": \"lookup_order\"\n              }\n            }\n          ]\n        },\n        {\n          \"role\": \"assistant\",\n          \"tool_calls\": [\n            {\n              \"id\": \"reply-1\",\n              \"function\": {\n                \"name\": \"send_reply\"\n              }\n            }\n          ]\n        }\n      ]\n    }\n  ]\n}",
+          "cost": 0,
+          "cached": false,
+          "tokenUsage": {
+            "prompt": 0,
+            "completion": 0,
+            "cached": 0,
+            "total": 0,
+            "numRequests": 1,
+            "completionDetails": {
+              "reasoning": 0,
+              "acceptedPrediction": 0,
+              "rejectedPrediction": 0,
+              "cacheReadInputTokens": 0,
+              "cacheCreationInputTokens": 0
+            },
+            "assertions": {
+              "total": 0,
+              "prompt": 0,
+              "completion": 0,
+              "cached": 0,
+              "numRequests": 0,
+              "completionDetails": {
+                "reasoning": 0,
+                "acceptedPrediction": 0,
+                "rejectedPrediction": 0,
+                "cacheReadInputTokens": 0,
+                "cacheCreationInputTokens": 0
+              }
+            }
+          },
+          "isRefusal": false,
+          "metadata": {}
+        },
+        "score": 1,
+        "success": true,
+        "testCase": {
+          "description": "rubric-drift",
+          "vars": {
+            "trace_json": "{\"trajectories\":[{\"name\":\"synthetic-order-a\",\"steps\":[{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"lookup-1\",\"function\":{\"name\":\"lookup_order\"}}]},{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"reply-1\",\"function\":{\"name\":\"send_reply\"}}]}]},{\"name\":\"synthetic-order-b\",\"steps\":[{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"lookup-1\",\"function\":{\"name\":\"lookup_order\"}}]},{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"reply-1\",\"function\":{\"name\":\"send_reply\"}}]}]}]}"
+          },
+          "assert": [
+            {
+              "type": "python",
+              "value": "file://native_policy_assert.py",
+              "weight": 1,
+              "config": {
+                "forbidden_tools": [
+                  "delete_order",
+                  "forbidden_demo_0",
+                  "forbidden_demo_1",
+                  "forbidden_demo_2",
+                  "forbidden_demo_3",
+                  "forbidden_demo_4",
+                  "forbidden_demo_5",
+                  "forbidden_demo_6",
+                  "forbidden_demo_7",
+                  "forbidden_demo_8",
+                  "forbidden_demo_9",
+                  "forbidden_demo_10",
+                  "forbidden_demo_11",
+                  "forbidden_demo_12",
+                  "forbidden_demo_13",
+                  "forbidden_demo_14",
+                  "forbidden_demo_15",
+                  "forbidden_demo_16",
+                  "forbidden_demo_17",
+                  "forbidden_demo_18"
+                ]
+              }
+            }
+          ],
+          "options": {},
+          "metadata": {}
+        },
+        "testIdx": 7,
+        "tokenUsage": {
+          "prompt": 0,
+          "completion": 0,
+          "cached": 0,
+          "total": 0,
+          "numRequests": 1,
+          "completionDetails": {
+            "reasoning": 0,
+            "acceptedPrediction": 0,
+            "rejectedPrediction": 0,
+            "cacheReadInputTokens": 0,
+            "cacheCreationInputTokens": 0
+          },
+          "assertions": {
+            "total": 0,
+            "prompt": 0,
+            "completion": 0,
+            "cached": 0,
+            "numRequests": 0,
+            "completionDetails": {
+              "reasoning": 0,
+              "acceptedPrediction": 0,
+              "rejectedPrediction": 0,
+              "cacheReadInputTokens": 0,
+              "cacheCreationInputTokens": 0
+            }
+          }
+        },
+        "vars": {
+          "trace_json": "{\"trajectories\":[{\"name\":\"synthetic-order-a\",\"steps\":[{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"lookup-1\",\"function\":{\"name\":\"lookup_order\"}}]},{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"reply-1\",\"function\":{\"name\":\"send_reply\"}}]}]},{\"name\":\"synthetic-order-b\",\"steps\":[{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"lookup-1\",\"function\":{\"name\":\"lookup_order\"}}]},{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"reply-1\",\"function\":{\"name\":\"send_reply\"}}]}]}]}"
+        },
+        "metadata": {
+          "_promptfooFileMetadata": {}
+        },
+        "failureReason": 0
+      },
+      {
+        "cost": 0,
+        "gradingResult": {
+          "pass": true,
+          "score": 1,
+          "reason": "All assertions passed",
+          "namedScores": {},
+          "tokensUsed": {
+            "total": 0,
+            "prompt": 0,
+            "completion": 0,
+            "cached": 0,
+            "numRequests": 0
+          },
+          "componentResults": [
+            {
+              "pass": true,
+              "score": 1,
+              "reason": "configured native tool-policy assertion passed",
+              "assertion": {
+                "type": "python",
+                "value": "file://native_policy_assert.py",
+                "weight": 1,
+                "config": {
+                  "forbidden_tools": [
+                    "delete_order",
+                    "forbidden_demo_0",
+                    "forbidden_demo_1",
+                    "forbidden_demo_2",
+                    "forbidden_demo_3",
+                    "forbidden_demo_4",
+                    "forbidden_demo_5",
+                    "forbidden_demo_6",
+                    "forbidden_demo_7",
+                    "forbidden_demo_8",
+                    "forbidden_demo_9",
+                    "forbidden_demo_10",
+                    "forbidden_demo_11",
+                    "forbidden_demo_12",
+                    "forbidden_demo_13",
+                    "forbidden_demo_14",
+                    "forbidden_demo_15",
+                    "forbidden_demo_16",
+                    "forbidden_demo_17",
+                    "forbidden_demo_18"
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        "id": "a67e8d13-9408-45b3-bfe5-e36e95b3caec",
+        "latencyMs": 7,
+        "namedScores": {},
+        "prompt": {
+          "raw": "{\"trajectories\":[{\"name\":\"synthetic-order-a\",\"steps\":[{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"lookup-1\",\"function\":{\"name\":\"lookup_order\"}}]},{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"reply-1\",\"function\":{\"name\":\"send_reply\"}}]}]},{\"name\":\"synthetic-order-b\",\"steps\":[{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"lookup-1\",\"function\":{\"name\":\"lookup_order\"}}]},{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"reply-1\",\"function\":{\"name\":\"send_reply\"}}]}]}]}",
+          "label": "{{trace_json}}",
+          "config": {}
+        },
+        "promptId": "ac65945d3887a283767d1574e5d84ace842903c011a7069c48cb0e780d370c8c",
+        "promptIdx": 0,
+        "provider": {
+          "id": "echo",
+          "label": ""
+        },
+        "response": {
+          "output": "{\n  \"trajectories\": [\n    {\n      \"name\": \"synthetic-order-a\",\n      \"steps\": [\n        {\n          \"role\": \"assistant\",\n          \"tool_calls\": [\n            {\n              \"id\": \"lookup-1\",\n              \"function\": {\n                \"name\": \"lookup_order\"\n              }\n            }\n          ]\n        },\n        {\n          \"role\": \"assistant\",\n          \"tool_calls\": [\n            {\n              \"id\": \"reply-1\",\n              \"function\": {\n                \"name\": \"send_reply\"\n              }\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"name\": \"synthetic-order-b\",\n      \"steps\": [\n        {\n          \"role\": \"assistant\",\n          \"tool_calls\": [\n            {\n              \"id\": \"lookup-1\",\n              \"function\": {\n                \"name\": \"lookup_order\"\n              }\n            }\n          ]\n        },\n        {\n          \"role\": \"assistant\",\n          \"tool_calls\": [\n            {\n              \"id\": \"reply-1\",\n              \"function\": {\n                \"name\": \"send_reply\"\n              }\n            }\n          ]\n        }\n      ]\n    }\n  ]\n}",
+          "raw": "{\n  \"trajectories\": [\n    {\n      \"name\": \"synthetic-order-a\",\n      \"steps\": [\n        {\n          \"role\": \"assistant\",\n          \"tool_calls\": [\n            {\n              \"id\": \"lookup-1\",\n              \"function\": {\n                \"name\": \"lookup_order\"\n              }\n            }\n          ]\n        },\n        {\n          \"role\": \"assistant\",\n          \"tool_calls\": [\n            {\n              \"id\": \"reply-1\",\n              \"function\": {\n                \"name\": \"send_reply\"\n              }\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"name\": \"synthetic-order-b\",\n      \"steps\": [\n        {\n          \"role\": \"assistant\",\n          \"tool_calls\": [\n            {\n              \"id\": \"lookup-1\",\n              \"function\": {\n                \"name\": \"lookup_order\"\n              }\n            }\n          ]\n        },\n        {\n          \"role\": \"assistant\",\n          \"tool_calls\": [\n            {\n              \"id\": \"reply-1\",\n              \"function\": {\n                \"name\": \"send_reply\"\n              }\n            }\n          ]\n        }\n      ]\n    }\n  ]\n}",
+          "cost": 0,
+          "cached": false,
+          "tokenUsage": {
+            "prompt": 0,
+            "completion": 0,
+            "cached": 0,
+            "total": 0,
+            "numRequests": 1,
+            "completionDetails": {
+              "reasoning": 0,
+              "acceptedPrediction": 0,
+              "rejectedPrediction": 0,
+              "cacheReadInputTokens": 0,
+              "cacheCreationInputTokens": 0
+            },
+            "assertions": {
+              "total": 0,
+              "prompt": 0,
+              "completion": 0,
+              "cached": 0,
+              "numRequests": 0,
+              "completionDetails": {
+                "reasoning": 0,
+                "acceptedPrediction": 0,
+                "rejectedPrediction": 0,
+                "cacheReadInputTokens": 0,
+                "cacheCreationInputTokens": 0
+              }
+            }
+          },
+          "isRefusal": false,
+          "metadata": {}
+        },
+        "score": 1,
+        "success": true,
+        "testCase": {
+          "description": "missing-fingerprint",
+          "vars": {
+            "trace_json": "{\"trajectories\":[{\"name\":\"synthetic-order-a\",\"steps\":[{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"lookup-1\",\"function\":{\"name\":\"lookup_order\"}}]},{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"reply-1\",\"function\":{\"name\":\"send_reply\"}}]}]},{\"name\":\"synthetic-order-b\",\"steps\":[{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"lookup-1\",\"function\":{\"name\":\"lookup_order\"}}]},{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"reply-1\",\"function\":{\"name\":\"send_reply\"}}]}]}]}"
+          },
+          "assert": [
+            {
+              "type": "python",
+              "value": "file://native_policy_assert.py",
+              "weight": 1,
+              "config": {
+                "forbidden_tools": [
+                  "delete_order",
+                  "forbidden_demo_0",
+                  "forbidden_demo_1",
+                  "forbidden_demo_2",
+                  "forbidden_demo_3",
+                  "forbidden_demo_4",
+                  "forbidden_demo_5",
+                  "forbidden_demo_6",
+                  "forbidden_demo_7",
+                  "forbidden_demo_8",
+                  "forbidden_demo_9",
+                  "forbidden_demo_10",
+                  "forbidden_demo_11",
+                  "forbidden_demo_12",
+                  "forbidden_demo_13",
+                  "forbidden_demo_14",
+                  "forbidden_demo_15",
+                  "forbidden_demo_16",
+                  "forbidden_demo_17",
+                  "forbidden_demo_18"
+                ]
+              }
+            }
+          ],
+          "options": {},
+          "metadata": {}
+        },
+        "testIdx": 8,
+        "tokenUsage": {
+          "prompt": 0,
+          "completion": 0,
+          "cached": 0,
+          "total": 0,
+          "numRequests": 1,
+          "completionDetails": {
+            "reasoning": 0,
+            "acceptedPrediction": 0,
+            "rejectedPrediction": 0,
+            "cacheReadInputTokens": 0,
+            "cacheCreationInputTokens": 0
+          },
+          "assertions": {
+            "total": 0,
+            "prompt": 0,
+            "completion": 0,
+            "cached": 0,
+            "numRequests": 0,
+            "completionDetails": {
+              "reasoning": 0,
+              "acceptedPrediction": 0,
+              "rejectedPrediction": 0,
+              "cacheReadInputTokens": 0,
+              "cacheCreationInputTokens": 0
+            }
+          }
+        },
+        "vars": {
+          "trace_json": "{\"trajectories\":[{\"name\":\"synthetic-order-a\",\"steps\":[{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"lookup-1\",\"function\":{\"name\":\"lookup_order\"}}]},{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"reply-1\",\"function\":{\"name\":\"send_reply\"}}]}]},{\"name\":\"synthetic-order-b\",\"steps\":[{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"lookup-1\",\"function\":{\"name\":\"lookup_order\"}}]},{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"reply-1\",\"function\":{\"name\":\"send_reply\"}}]}]}]}"
+        },
+        "metadata": {
+          "_promptfooFileMetadata": {}
+        },
+        "failureReason": 0
+      },
+      {
+        "cost": 0,
+        "error": "invalid trace: Expecting value: line 1 column 17 (char 16)",
+        "gradingResult": {
+          "pass": false,
+          "score": 0,
+          "reason": "invalid trace: Expecting value: line 1 column 17 (char 16)",
+          "namedScores": {},
+          "tokensUsed": {
+            "total": 0,
+            "prompt": 0,
+            "completion": 0,
+            "cached": 0,
+            "numRequests": 0
+          },
+          "componentResults": [
+            {
+              "pass": false,
+              "score": 0,
+              "reason": "invalid trace: Expecting value: line 1 column 17 (char 16)",
+              "assertion": {
+                "type": "python",
+                "value": "file://native_policy_assert.py",
+                "weight": 1,
+                "config": {
+                  "forbidden_tools": [
+                    "delete_order",
+                    "forbidden_demo_0",
+                    "forbidden_demo_1",
+                    "forbidden_demo_2",
+                    "forbidden_demo_3",
+                    "forbidden_demo_4",
+                    "forbidden_demo_5",
+                    "forbidden_demo_6",
+                    "forbidden_demo_7",
+                    "forbidden_demo_8",
+                    "forbidden_demo_9",
+                    "forbidden_demo_10",
+                    "forbidden_demo_11",
+                    "forbidden_demo_12",
+                    "forbidden_demo_13",
+                    "forbidden_demo_14",
+                    "forbidden_demo_15",
+                    "forbidden_demo_16",
+                    "forbidden_demo_17",
+                    "forbidden_demo_18"
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        "id": "d6c1b0f2-bb0e-485f-8012-7f9265ddba4c",
+        "latencyMs": 1,
+        "namedScores": {},
+        "prompt": {
+          "raw": "{\"trajectories\":",
+          "label": "{{trace_json}}",
+          "config": {}
+        },
+        "promptId": "ac65945d3887a283767d1574e5d84ace842903c011a7069c48cb0e780d370c8c",
+        "promptIdx": 0,
+        "provider": {
+          "id": "echo",
+          "label": ""
+        },
+        "response": {
+          "output": "{\"trajectories\":",
+          "raw": "{\"trajectories\":",
+          "cost": 0,
+          "cached": false,
+          "tokenUsage": {
+            "prompt": 0,
+            "completion": 0,
+            "cached": 0,
+            "total": 0,
+            "numRequests": 1,
+            "completionDetails": {
+              "reasoning": 0,
+              "acceptedPrediction": 0,
+              "rejectedPrediction": 0,
+              "cacheReadInputTokens": 0,
+              "cacheCreationInputTokens": 0
+            },
+            "assertions": {
+              "total": 0,
+              "prompt": 0,
+              "completion": 0,
+              "cached": 0,
+              "numRequests": 0,
+              "completionDetails": {
+                "reasoning": 0,
+                "acceptedPrediction": 0,
+                "rejectedPrediction": 0,
+                "cacheReadInputTokens": 0,
+                "cacheCreationInputTokens": 0
+              }
+            }
+          },
+          "isRefusal": false,
+          "metadata": {}
+        },
+        "score": 0,
+        "success": false,
+        "testCase": {
+          "description": "invalid-json",
+          "vars": {
+            "trace_json": "{\"trajectories\":"
+          },
+          "assert": [
+            {
+              "type": "python",
+              "value": "file://native_policy_assert.py",
+              "weight": 1,
+              "config": {
+                "forbidden_tools": [
+                  "delete_order",
+                  "forbidden_demo_0",
+                  "forbidden_demo_1",
+                  "forbidden_demo_2",
+                  "forbidden_demo_3",
+                  "forbidden_demo_4",
+                  "forbidden_demo_5",
+                  "forbidden_demo_6",
+                  "forbidden_demo_7",
+                  "forbidden_demo_8",
+                  "forbidden_demo_9",
+                  "forbidden_demo_10",
+                  "forbidden_demo_11",
+                  "forbidden_demo_12",
+                  "forbidden_demo_13",
+                  "forbidden_demo_14",
+                  "forbidden_demo_15",
+                  "forbidden_demo_16",
+                  "forbidden_demo_17",
+                  "forbidden_demo_18"
+                ]
+              }
+            }
+          ],
+          "options": {},
+          "metadata": {}
+        },
+        "testIdx": 9,
+        "tokenUsage": {
+          "prompt": 0,
+          "completion": 0,
+          "cached": 0,
+          "total": 0,
+          "numRequests": 1,
+          "completionDetails": {
+            "reasoning": 0,
+            "acceptedPrediction": 0,
+            "rejectedPrediction": 0,
+            "cacheReadInputTokens": 0,
+            "cacheCreationInputTokens": 0
+          },
+          "assertions": {
+            "total": 0,
+            "prompt": 0,
+            "completion": 0,
+            "cached": 0,
+            "numRequests": 0,
+            "completionDetails": {
+              "reasoning": 0,
+              "acceptedPrediction": 0,
+              "rejectedPrediction": 0,
+              "cacheReadInputTokens": 0,
+              "cacheCreationInputTokens": 0
+            }
+          }
+        },
+        "vars": {
+          "trace_json": "{\"trajectories\":"
+        },
+        "metadata": {
+          "_promptfooFileMetadata": {}
+        },
+        "failureReason": 1
+      }
+    ],
+    "stats": {
+      "successes": 7,
+      "failures": 3,
+      "errors": 0,
+      "tokenUsage": {
+        "prompt": 0,
+        "completion": 0,
+        "cached": 0,
+        "total": 0,
+        "numRequests": 10,
+        "completionDetails": {
+          "reasoning": 0,
+          "acceptedPrediction": 0,
+          "rejectedPrediction": 0,
+          "cacheReadInputTokens": 0,
+          "cacheCreationInputTokens": 0
+        },
+        "assertions": {
+          "total": 0,
+          "prompt": 0,
+          "completion": 0,
+          "cached": 0,
+          "numRequests": 0,
+          "completionDetails": {
+            "reasoning": 0,
+            "acceptedPrediction": 0,
+            "rejectedPrediction": 0,
+            "cacheReadInputTokens": 0,
+            "cacheCreationInputTokens": 0
+          }
+        }
+      },
+      "durationMs": 1814,
+      "evaluationDurationMs": 1814
+    }
+  },
+  "config": {
+    "tags": {},
+    "description": "Configured native Python tool-policy check (not a capability ceiling)",
+    "prompts": [
+      "{{trace_json}}"
+    ],
+    "providers": [
+      "echo"
+    ],
+    "tests": [
+      {
+        "description": "good",
+        "vars": {
+          "trace_json": "{\"trajectories\":[{\"name\":\"synthetic-order-a\",\"steps\":[{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"lookup-1\",\"function\":{\"name\":\"lookup_order\"}}]},{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"reply-1\",\"function\":{\"name\":\"send_reply\"}}]}]},{\"name\":\"synthetic-order-b\",\"steps\":[{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"lookup-1\",\"function\":{\"name\":\"lookup_order\"}}]},{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"reply-1\",\"function\":{\"name\":\"send_reply\"}}]}]}]}"
+        },
+        "assert": [
+          {
+            "type": "python",
+            "value": "file://native_policy_assert.py",
+            "weight": 1,
+            "config": {
+              "forbidden_tools": [
+                "delete_order",
+                "forbidden_demo_0",
+                "forbidden_demo_1",
+                "forbidden_demo_2",
+                "forbidden_demo_3",
+                "forbidden_demo_4",
+                "forbidden_demo_5",
+                "forbidden_demo_6",
+                "forbidden_demo_7",
+                "forbidden_demo_8",
+                "forbidden_demo_9",
+                "forbidden_demo_10",
+                "forbidden_demo_11",
+                "forbidden_demo_12",
+                "forbidden_demo_13",
+                "forbidden_demo_14",
+                "forbidden_demo_15",
+                "forbidden_demo_16",
+                "forbidden_demo_17",
+                "forbidden_demo_18"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "description": "forbidden-second-call",
+        "vars": {
+          "trace_json": "{\"trajectories\":[{\"name\":\"synthetic-order-a\",\"steps\":[{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"lookup-1\",\"function\":{\"name\":\"lookup_order\"}},{\"id\":\"forbidden-2\",\"function\":{\"name\":\"delete_order\"}}]},{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"reply-1\",\"function\":{\"name\":\"send_reply\"}}]}]},{\"name\":\"synthetic-order-b\",\"steps\":[{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"lookup-1\",\"function\":{\"name\":\"lookup_order\"}}]},{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"reply-1\",\"function\":{\"name\":\"send_reply\"}}]}]}]}"
+        },
+        "assert": [
+          {
+            "type": "python",
+            "value": "file://native_policy_assert.py",
+            "weight": 1,
+            "config": {
+              "forbidden_tools": [
+                "delete_order",
+                "forbidden_demo_0",
+                "forbidden_demo_1",
+                "forbidden_demo_2",
+                "forbidden_demo_3",
+                "forbidden_demo_4",
+                "forbidden_demo_5",
+                "forbidden_demo_6",
+                "forbidden_demo_7",
+                "forbidden_demo_8",
+                "forbidden_demo_9",
+                "forbidden_demo_10",
+                "forbidden_demo_11",
+                "forbidden_demo_12",
+                "forbidden_demo_13",
+                "forbidden_demo_14",
+                "forbidden_demo_15",
+                "forbidden_demo_16",
+                "forbidden_demo_17",
+                "forbidden_demo_18"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "description": "malformed-tool-calls",
+        "vars": {
+          "trace_json": "{\"trajectories\":[{\"name\":\"synthetic-order-a\",\"steps\":[{\"role\":\"assistant\",\"tool_calls\":{\"function\":{\"name\":\"lookup_order\"}}},{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"reply-1\",\"function\":{\"name\":\"send_reply\"}}]}]},{\"name\":\"synthetic-order-b\",\"steps\":[{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"lookup-1\",\"function\":{\"name\":\"lookup_order\"}}]},{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"reply-1\",\"function\":{\"name\":\"send_reply\"}}]}]}]}"
+        },
+        "assert": [
+          {
+            "type": "python",
+            "value": "file://native_policy_assert.py",
+            "weight": 1,
+            "config": {
+              "forbidden_tools": [
+                "delete_order",
+                "forbidden_demo_0",
+                "forbidden_demo_1",
+                "forbidden_demo_2",
+                "forbidden_demo_3",
+                "forbidden_demo_4",
+                "forbidden_demo_5",
+                "forbidden_demo_6",
+                "forbidden_demo_7",
+                "forbidden_demo_8",
+                "forbidden_demo_9",
+                "forbidden_demo_10",
+                "forbidden_demo_11",
+                "forbidden_demo_12",
+                "forbidden_demo_13",
+                "forbidden_demo_14",
+                "forbidden_demo_15",
+                "forbidden_demo_16",
+                "forbidden_demo_17",
+                "forbidden_demo_18"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "description": "missing-case",
+        "vars": {
+          "trace_json": "{\"trajectories\":[{\"name\":\"synthetic-order-a\",\"steps\":[{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"lookup-1\",\"function\":{\"name\":\"lookup_order\"}}]},{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"reply-1\",\"function\":{\"name\":\"send_reply\"}}]}]}]}"
+        },
+        "assert": [
+          {
+            "type": "python",
+            "value": "file://native_policy_assert.py",
+            "weight": 1,
+            "config": {
+              "forbidden_tools": [
+                "delete_order",
+                "forbidden_demo_0",
+                "forbidden_demo_1",
+                "forbidden_demo_2",
+                "forbidden_demo_3",
+                "forbidden_demo_4",
+                "forbidden_demo_5",
+                "forbidden_demo_6",
+                "forbidden_demo_7",
+                "forbidden_demo_8",
+                "forbidden_demo_9",
+                "forbidden_demo_10",
+                "forbidden_demo_11",
+                "forbidden_demo_12",
+                "forbidden_demo_13",
+                "forbidden_demo_14",
+                "forbidden_demo_15",
+                "forbidden_demo_16",
+                "forbidden_demo_17",
+                "forbidden_demo_18"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "description": "extra-case",
+        "vars": {
+          "trace_json": "{\"trajectories\":[{\"name\":\"synthetic-order-a\",\"steps\":[{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"lookup-1\",\"function\":{\"name\":\"lookup_order\"}}]},{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"reply-1\",\"function\":{\"name\":\"send_reply\"}}]}]},{\"name\":\"synthetic-order-b\",\"steps\":[{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"lookup-1\",\"function\":{\"name\":\"lookup_order\"}}]},{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"reply-1\",\"function\":{\"name\":\"send_reply\"}}]}]},{\"name\":\"synthetic-unreviewed\",\"steps\":[{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"lookup-1\",\"function\":{\"name\":\"lookup_order\"}}]},{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"reply-1\",\"function\":{\"name\":\"send_reply\"}}]}]}]}"
+        },
+        "assert": [
+          {
+            "type": "python",
+            "value": "file://native_policy_assert.py",
+            "weight": 1,
+            "config": {
+              "forbidden_tools": [
+                "delete_order",
+                "forbidden_demo_0",
+                "forbidden_demo_1",
+                "forbidden_demo_2",
+                "forbidden_demo_3",
+                "forbidden_demo_4",
+                "forbidden_demo_5",
+                "forbidden_demo_6",
+                "forbidden_demo_7",
+                "forbidden_demo_8",
+                "forbidden_demo_9",
+                "forbidden_demo_10",
+                "forbidden_demo_11",
+                "forbidden_demo_12",
+                "forbidden_demo_13",
+                "forbidden_demo_14",
+                "forbidden_demo_15",
+                "forbidden_demo_16",
+                "forbidden_demo_17",
+                "forbidden_demo_18"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "description": "duplicate-case",
+        "vars": {
+          "trace_json": "{\"trajectories\":[{\"name\":\"synthetic-order-a\",\"steps\":[{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"lookup-1\",\"function\":{\"name\":\"lookup_order\"}}]},{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"reply-1\",\"function\":{\"name\":\"send_reply\"}}]}]},{\"name\":\"synthetic-order-b\",\"steps\":[{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"lookup-1\",\"function\":{\"name\":\"lookup_order\"}}]},{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"reply-1\",\"function\":{\"name\":\"send_reply\"}}]}]},{\"name\":\"synthetic-order-a\",\"steps\":[{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"lookup-1\",\"function\":{\"name\":\"lookup_order\"}}]},{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"reply-1\",\"function\":{\"name\":\"send_reply\"}}]}]}]}"
+        },
+        "assert": [
+          {
+            "type": "python",
+            "value": "file://native_policy_assert.py",
+            "weight": 1,
+            "config": {
+              "forbidden_tools": [
+                "delete_order",
+                "forbidden_demo_0",
+                "forbidden_demo_1",
+                "forbidden_demo_2",
+                "forbidden_demo_3",
+                "forbidden_demo_4",
+                "forbidden_demo_5",
+                "forbidden_demo_6",
+                "forbidden_demo_7",
+                "forbidden_demo_8",
+                "forbidden_demo_9",
+                "forbidden_demo_10",
+                "forbidden_demo_11",
+                "forbidden_demo_12",
+                "forbidden_demo_13",
+                "forbidden_demo_14",
+                "forbidden_demo_15",
+                "forbidden_demo_16",
+                "forbidden_demo_17",
+                "forbidden_demo_18"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "description": "quality-regression",
+        "vars": {
+          "trace_json": "{\"trajectories\":[{\"name\":\"synthetic-order-a\",\"steps\":[{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"lookup-1\",\"function\":{\"name\":\"lookup_order\"}}]},{\"role\":\"assistant\",\"tool_calls\":[]}]},{\"name\":\"synthetic-order-b\",\"steps\":[{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"lookup-1\",\"function\":{\"name\":\"lookup_order\"}}]},{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"reply-1\",\"function\":{\"name\":\"send_reply\"}}]}]}]}"
+        },
+        "assert": [
+          {
+            "type": "python",
+            "value": "file://native_policy_assert.py",
+            "weight": 1,
+            "config": {
+              "forbidden_tools": [
+                "delete_order",
+                "forbidden_demo_0",
+                "forbidden_demo_1",
+                "forbidden_demo_2",
+                "forbidden_demo_3",
+                "forbidden_demo_4",
+                "forbidden_demo_5",
+                "forbidden_demo_6",
+                "forbidden_demo_7",
+                "forbidden_demo_8",
+                "forbidden_demo_9",
+                "forbidden_demo_10",
+                "forbidden_demo_11",
+                "forbidden_demo_12",
+                "forbidden_demo_13",
+                "forbidden_demo_14",
+                "forbidden_demo_15",
+                "forbidden_demo_16",
+                "forbidden_demo_17",
+                "forbidden_demo_18"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "description": "rubric-drift",
+        "vars": {
+          "trace_json": "{\"trajectories\":[{\"name\":\"synthetic-order-a\",\"steps\":[{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"lookup-1\",\"function\":{\"name\":\"lookup_order\"}}]},{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"reply-1\",\"function\":{\"name\":\"send_reply\"}}]}]},{\"name\":\"synthetic-order-b\",\"steps\":[{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"lookup-1\",\"function\":{\"name\":\"lookup_order\"}}]},{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"reply-1\",\"function\":{\"name\":\"send_reply\"}}]}]}]}"
+        },
+        "assert": [
+          {
+            "type": "python",
+            "value": "file://native_policy_assert.py",
+            "weight": 1,
+            "config": {
+              "forbidden_tools": [
+                "delete_order",
+                "forbidden_demo_0",
+                "forbidden_demo_1",
+                "forbidden_demo_2",
+                "forbidden_demo_3",
+                "forbidden_demo_4",
+                "forbidden_demo_5",
+                "forbidden_demo_6",
+                "forbidden_demo_7",
+                "forbidden_demo_8",
+                "forbidden_demo_9",
+                "forbidden_demo_10",
+                "forbidden_demo_11",
+                "forbidden_demo_12",
+                "forbidden_demo_13",
+                "forbidden_demo_14",
+                "forbidden_demo_15",
+                "forbidden_demo_16",
+                "forbidden_demo_17",
+                "forbidden_demo_18"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "description": "missing-fingerprint",
+        "vars": {
+          "trace_json": "{\"trajectories\":[{\"name\":\"synthetic-order-a\",\"steps\":[{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"lookup-1\",\"function\":{\"name\":\"lookup_order\"}}]},{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"reply-1\",\"function\":{\"name\":\"send_reply\"}}]}]},{\"name\":\"synthetic-order-b\",\"steps\":[{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"lookup-1\",\"function\":{\"name\":\"lookup_order\"}}]},{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"reply-1\",\"function\":{\"name\":\"send_reply\"}}]}]}]}"
+        },
+        "assert": [
+          {
+            "type": "python",
+            "value": "file://native_policy_assert.py",
+            "weight": 1,
+            "config": {
+              "forbidden_tools": [
+                "delete_order",
+                "forbidden_demo_0",
+                "forbidden_demo_1",
+                "forbidden_demo_2",
+                "forbidden_demo_3",
+                "forbidden_demo_4",
+                "forbidden_demo_5",
+                "forbidden_demo_6",
+                "forbidden_demo_7",
+                "forbidden_demo_8",
+                "forbidden_demo_9",
+                "forbidden_demo_10",
+                "forbidden_demo_11",
+                "forbidden_demo_12",
+                "forbidden_demo_13",
+                "forbidden_demo_14",
+                "forbidden_demo_15",
+                "forbidden_demo_16",
+                "forbidden_demo_17",
+                "forbidden_demo_18"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "description": "invalid-json",
+        "vars": {
+          "trace_json": "{\"trajectories\":"
+        },
+        "assert": [
+          {
+            "type": "python",
+            "value": "file://native_policy_assert.py",
+            "weight": 1,
+            "config": {
+              "forbidden_tools": [
+                "delete_order",
+                "forbidden_demo_0",
+                "forbidden_demo_1",
+                "forbidden_demo_2",
+                "forbidden_demo_3",
+                "forbidden_demo_4",
+                "forbidden_demo_5",
+                "forbidden_demo_6",
+                "forbidden_demo_7",
+                "forbidden_demo_8",
+                "forbidden_demo_9",
+                "forbidden_demo_10",
+                "forbidden_demo_11",
+                "forbidden_demo_12",
+                "forbidden_demo_13",
+                "forbidden_demo_14",
+                "forbidden_demo_15",
+                "forbidden_demo_16",
+                "forbidden_demo_17",
+                "forbidden_demo_18"
+              ]
+            }
+          }
+        ]
+      }
+    ],
+    "env": {},
+    "outputPath": [
+      "/workspace/shared/trace-gate-promptfoo-2026-11-09/trace-gate/integrations/promptfoo/evidence/native-policy-results.json"
+    ],
+    "extensions": [],
+    "metadata": {},
+    "evaluateOptions": {},
+    "basePath": "/workspace/shared/trace-gate-promptfoo-2026-11-09/trace-gate/integrations/promptfoo"
+  },
+  "shareableUrl": null,
+  "metadata": {
+    "promptfooVersion": "0.125.1",
+    "nodeVersion": "v24.22.1",
+    "platform": "linux",
+    "arch": "x64",
+    "exportedAt": "2026-11-09T22:30:20.424Z",
+    "evaluationCreatedAt": "2026-11-09T22:30:18.542Z"
+  },
+  "vars": [
+    "trace_json"
+  ],
+  "runtimeOptions": {
+    "eventSource": "cli",
+    "showProgressBar": false,
+    "repeat": 1,
+    "maxConcurrency": 1,
+    "cache": false
+  }
+}

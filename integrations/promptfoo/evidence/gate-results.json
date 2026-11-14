@@ -1,0 +1,1855 @@
+{
+  "evalId": "eval-hbq-2026-11-09T22:30:11",
+  "results": {
+    "version": 3,
+    "timestamp": "2026-11-09T22:30:11.745Z",
+    "prompts": [
+      {
+        "id": "ac65945d3887a283767d1574e5d84ace842903c011a7069c48cb0e780d370c8c",
+        "raw": "{{trace_json}}",
+        "label": "{{trace_json}}",
+        "provider": "echo",
+        "metrics": {
+          "score": 1,
+          "testPassCount": 1,
+          "testFailCount": 9,
+          "testErrorCount": 0,
+          "testCacheHitCount": 0,
+          "assertPassCount": 1,
+          "assertFailCount": 9,
+          "totalLatencyMs": 58,
+          "tokenUsage": {
+            "prompt": 0,
+            "completion": 0,
+            "cached": 0,
+            "total": 0,
+            "numRequests": 10,
+            "completionDetails": {
+              "reasoning": 0,
+              "acceptedPrediction": 0,
+              "rejectedPrediction": 0,
+              "cacheReadInputTokens": 0,
+              "cacheCreationInputTokens": 0
+            },
+            "assertions": {
+              "total": 0,
+              "prompt": 0,
+              "completion": 0,
+              "cached": 0,
+              "numRequests": 0,
+              "completionDetails": {
+                "reasoning": 0,
+                "acceptedPrediction": 0,
+                "rejectedPrediction": 0,
+                "cacheReadInputTokens": 0,
+                "cacheCreationInputTokens": 0
+              }
+            }
+          },
+          "namedScores": {
+            "trace_gate": 1,
+            "quality_mean": 7.86875
+          },
+          "namedScoresCount": {
+            "trace_gate": 8,
+            "quality_mean": 8
+          },
+          "namedScoreWeights": {
+            "trace_gate": 8,
+            "quality_mean": 8
+          },
+          "cost": 0
+        }
+      }
+    ],
+    "results": [
+      {
+        "cost": 0,
+        "gradingResult": {
+          "pass": true,
+          "score": 1,
+          "reason": "All assertions passed",
+          "namedScores": {
+            "trace_gate": 1,
+            "quality_mean": 1
+          },
+          "namedScoreWeights": {
+            "trace_gate": 1,
+            "quality_mean": 1
+          },
+          "tokensUsed": {
+            "total": 0,
+            "prompt": 0,
+            "completion": 0,
+            "cached": 0,
+            "numRequests": 0
+          },
+          "componentResults": [
+            {
+              "pass": true,
+              "score": 1,
+              "reason": "PASS: rubric_sha256 OK (37a913dec9b7...); synthetic-order-a: PASS composite=1.0000 >= floor=0.9500 (pinned=1.0000); synthetic-order-b: PASS composite=1.0000 >= floor=0.9500 (pinned=1.0000)",
+              "named_scores": {
+                "trace_gate": 1,
+                "quality_mean": 1
+              },
+              "namedScores": {
+                "trace_gate": 1,
+                "quality_mean": 1
+              },
+              "assertion": {
+                "type": "python",
+                "value": "file://trace_gate_assert.py",
+                "weight": 1,
+                "config": {
+                  "rubric_path": "fixtures/rubric.json",
+                  "baseline_path": "fixtures/baseline.json"
+                }
+              }
+            }
+          ]
+        },
+        "id": "0657564c-509b-466a-9e29-517e91b3af70",
+        "latencyMs": 13,
+        "namedScores": {
+          "trace_gate": 1,
+          "quality_mean": 1
+        },
+        "prompt": {
+          "raw": "{\"trajectories\":[{\"name\":\"synthetic-order-a\",\"steps\":[{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"lookup-1\",\"function\":{\"name\":\"lookup_order\"}}]},{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"reply-1\",\"function\":{\"name\":\"send_reply\"}}]}]},{\"name\":\"synthetic-order-b\",\"steps\":[{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"lookup-1\",\"function\":{\"name\":\"lookup_order\"}}]},{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"reply-1\",\"function\":{\"name\":\"send_reply\"}}]}]}]}",
+          "label": "{{trace_json}}",
+          "config": {}
+        },
+        "promptId": "ac65945d3887a283767d1574e5d84ace842903c011a7069c48cb0e780d370c8c",
+        "promptIdx": 0,
+        "provider": {
+          "id": "echo",
+          "label": ""
+        },
+        "response": {
+          "output": "{\n  \"trajectories\": [\n    {\n      \"name\": \"synthetic-order-a\",\n      \"steps\": [\n        {\n          \"role\": \"assistant\",\n          \"tool_calls\": [\n            {\n              \"id\": \"lookup-1\",\n              \"function\": {\n                \"name\": \"lookup_order\"\n              }\n            }\n          ]\n        },\n        {\n          \"role\": \"assistant\",\n          \"tool_calls\": [\n            {\n              \"id\": \"reply-1\",\n              \"function\": {\n                \"name\": \"send_reply\"\n              }\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"name\": \"synthetic-order-b\",\n      \"steps\": [\n        {\n          \"role\": \"assistant\",\n          \"tool_calls\": [\n            {\n              \"id\": \"lookup-1\",\n              \"function\": {\n                \"name\": \"lookup_order\"\n              }\n            }\n          ]\n        },\n        {\n          \"role\": \"assistant\",\n          \"tool_calls\": [\n            {\n              \"id\": \"reply-1\",\n              \"function\": {\n                \"name\": \"send_reply\"\n              }\n            }\n          ]\n        }\n      ]\n    }\n  ]\n}",
+          "raw": "{\n  \"trajectories\": [\n    {\n      \"name\": \"synthetic-order-a\",\n      \"steps\": [\n        {\n          \"role\": \"assistant\",\n          \"tool_calls\": [\n            {\n              \"id\": \"lookup-1\",\n              \"function\": {\n                \"name\": \"lookup_order\"\n              }\n            }\n          ]\n        },\n        {\n          \"role\": \"assistant\",\n          \"tool_calls\": [\n            {\n              \"id\": \"reply-1\",\n              \"function\": {\n                \"name\": \"send_reply\"\n              }\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"name\": \"synthetic-order-b\",\n      \"steps\": [\n        {\n          \"role\": \"assistant\",\n          \"tool_calls\": [\n            {\n              \"id\": \"lookup-1\",\n              \"function\": {\n                \"name\": \"lookup_order\"\n              }\n            }\n          ]\n        },\n        {\n          \"role\": \"assistant\",\n          \"tool_calls\": [\n            {\n              \"id\": \"reply-1\",\n              \"function\": {\n                \"name\": \"send_reply\"\n              }\n            }\n          ]\n        }\n      ]\n    }\n  ]\n}",
+          "cost": 0,
+          "cached": false,
+          "tokenUsage": {
+            "prompt": 0,
+            "completion": 0,
+            "cached": 0,
+            "total": 0,
+            "numRequests": 1,
+            "completionDetails": {
+              "reasoning": 0,
+              "acceptedPrediction": 0,
+              "rejectedPrediction": 0,
+              "cacheReadInputTokens": 0,
+              "cacheCreationInputTokens": 0
+            },
+            "assertions": {
+              "total": 0,
+              "prompt": 0,
+              "completion": 0,
+              "cached": 0,
+              "numRequests": 0,
+              "completionDetails": {
+                "reasoning": 0,
+                "acceptedPrediction": 0,
+                "rejectedPrediction": 0,
+                "cacheReadInputTokens": 0,
+                "cacheCreationInputTokens": 0
+              }
+            }
+          },
+          "isRefusal": false,
+          "metadata": {}
+        },
+        "score": 1,
+        "success": true,
+        "testCase": {
+          "description": "good",
+          "vars": {
+            "trace_json": "{\"trajectories\":[{\"name\":\"synthetic-order-a\",\"steps\":[{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"lookup-1\",\"function\":{\"name\":\"lookup_order\"}}]},{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"reply-1\",\"function\":{\"name\":\"send_reply\"}}]}]},{\"name\":\"synthetic-order-b\",\"steps\":[{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"lookup-1\",\"function\":{\"name\":\"lookup_order\"}}]},{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"reply-1\",\"function\":{\"name\":\"send_reply\"}}]}]}]}"
+          },
+          "assert": [
+            {
+              "type": "python",
+              "value": "file://trace_gate_assert.py",
+              "weight": 1,
+              "config": {
+                "rubric_path": "fixtures/rubric.json",
+                "baseline_path": "fixtures/baseline.json"
+              }
+            }
+          ],
+          "options": {},
+          "metadata": {}
+        },
+        "testIdx": 0,
+        "tokenUsage": {
+          "prompt": 0,
+          "completion": 0,
+          "cached": 0,
+          "total": 0,
+          "numRequests": 1,
+          "completionDetails": {
+            "reasoning": 0,
+            "acceptedPrediction": 0,
+            "rejectedPrediction": 0,
+            "cacheReadInputTokens": 0,
+            "cacheCreationInputTokens": 0
+          },
+          "assertions": {
+            "total": 0,
+            "prompt": 0,
+            "completion": 0,
+            "cached": 0,
+            "numRequests": 0,
+            "completionDetails": {
+              "reasoning": 0,
+              "acceptedPrediction": 0,
+              "rejectedPrediction": 0,
+              "cacheReadInputTokens": 0,
+              "cacheCreationInputTokens": 0
+            }
+          }
+        },
+        "vars": {
+          "trace_json": "{\"trajectories\":[{\"name\":\"synthetic-order-a\",\"steps\":[{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"lookup-1\",\"function\":{\"name\":\"lookup_order\"}}]},{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"reply-1\",\"function\":{\"name\":\"send_reply\"}}]}]},{\"name\":\"synthetic-order-b\",\"steps\":[{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"lookup-1\",\"function\":{\"name\":\"lookup_order\"}}]},{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"reply-1\",\"function\":{\"name\":\"send_reply\"}}]}]}]}"
+        },
+        "metadata": {
+          "_promptfooFileMetadata": {}
+        },
+        "failureReason": 0
+      },
+      {
+        "cost": 0,
+        "error": "POLICY_VIOLATION: rubric_sha256 OK (37a913dec9b7...); synthetic-order-a: POLICY_VIOLATION forbidden_tools_used=['delete_order'] (forbidden_tools=0.9500; tolerance does not apply)",
+        "gradingResult": {
+          "pass": false,
+          "score": 0,
+          "reason": "POLICY_VIOLATION: rubric_sha256 OK (37a913dec9b7...); synthetic-order-a: POLICY_VIOLATION forbidden_tools_used=['delete_order'] (forbidden_tools=0.9500; tolerance does not apply)",
+          "namedScores": {
+            "trace_gate": 0,
+            "quality_mean": 0.99375
+          },
+          "namedScoreWeights": {
+            "trace_gate": 1,
+            "quality_mean": 1
+          },
+          "tokensUsed": {
+            "total": 0,
+            "prompt": 0,
+            "completion": 0,
+            "cached": 0,
+            "numRequests": 0
+          },
+          "componentResults": [
+            {
+              "pass": false,
+              "score": 0,
+              "reason": "POLICY_VIOLATION: rubric_sha256 OK (37a913dec9b7...); synthetic-order-a: POLICY_VIOLATION forbidden_tools_used=['delete_order'] (forbidden_tools=0.9500; tolerance does not apply)",
+              "named_scores": {
+                "trace_gate": 0,
+                "quality_mean": 0.99375
+              },
+              "namedScores": {
+                "trace_gate": 0,
+                "quality_mean": 0.99375
+              },
+              "assertion": {
+                "type": "python",
+                "value": "file://trace_gate_assert.py",
+                "weight": 1,
+                "config": {
+                  "rubric_path": "fixtures/rubric.json",
+                  "baseline_path": "fixtures/baseline.json"
+                }
+              }
+            }
+          ]
+        },
+        "id": "2222ec9a-edcd-42fc-b45b-3fd09b598aca",
+        "latencyMs": 1,
+        "namedScores": {
+          "trace_gate": 0,
+          "quality_mean": 0.99375
+        },
+        "prompt": {
+          "raw": "{\"trajectories\":[{\"name\":\"synthetic-order-a\",\"steps\":[{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"lookup-1\",\"function\":{\"name\":\"lookup_order\"}},{\"id\":\"forbidden-2\",\"function\":{\"name\":\"delete_order\"}}]},{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"reply-1\",\"function\":{\"name\":\"send_reply\"}}]}]},{\"name\":\"synthetic-order-b\",\"steps\":[{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"lookup-1\",\"function\":{\"name\":\"lookup_order\"}}]},{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"reply-1\",\"function\":{\"name\":\"send_reply\"}}]}]}]}",
+          "label": "{{trace_json}}",
+          "config": {}
+        },
+        "promptId": "ac65945d3887a283767d1574e5d84ace842903c011a7069c48cb0e780d370c8c",
+        "promptIdx": 0,
+        "provider": {
+          "id": "echo",
+          "label": ""
+        },
+        "response": {
+          "output": "{\n  \"trajectories\": [\n    {\n      \"name\": \"synthetic-order-a\",\n      \"steps\": [\n        {\n          \"role\": \"assistant\",\n          \"tool_calls\": [\n            {\n              \"id\": \"lookup-1\",\n              \"function\": {\n                \"name\": \"lookup_order\"\n              }\n            },\n            {\n              \"id\": \"forbidden-2\",\n              \"function\": {\n                \"name\": \"delete_order\"\n              }\n            }\n          ]\n        },\n        {\n          \"role\": \"assistant\",\n          \"tool_calls\": [\n            {\n              \"id\": \"reply-1\",\n              \"function\": {\n                \"name\": \"send_reply\"\n              }\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"name\": \"synthetic-order-b\",\n      \"steps\": [\n        {\n          \"role\": \"assistant\",\n          \"tool_calls\": [\n            {\n              \"id\": \"lookup-1\",\n              \"function\": {\n                \"name\": \"lookup_order\"\n              }\n            }\n          ]\n        },\n        {\n          \"role\": \"assistant\",\n          \"tool_calls\": [\n            {\n              \"id\": \"reply-1\",\n              \"function\": {\n                \"name\": \"send_reply\"\n              }\n            }\n          ]\n        }\n      ]\n    }\n  ]\n}",
+          "raw": "{\n  \"trajectories\": [\n    {\n      \"name\": \"synthetic-order-a\",\n      \"steps\": [\n        {\n          \"role\": \"assistant\",\n          \"tool_calls\": [\n            {\n              \"id\": \"lookup-1\",\n              \"function\": {\n                \"name\": \"lookup_order\"\n              }\n            },\n            {\n              \"id\": \"forbidden-2\",\n              \"function\": {\n                \"name\": \"delete_order\"\n              }\n            }\n          ]\n        },\n        {\n          \"role\": \"assistant\",\n          \"tool_calls\": [\n            {\n              \"id\": \"reply-1\",\n              \"function\": {\n                \"name\": \"send_reply\"\n              }\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"name\": \"synthetic-order-b\",\n      \"steps\": [\n        {\n          \"role\": \"assistant\",\n          \"tool_calls\": [\n            {\n              \"id\": \"lookup-1\",\n              \"function\": {\n                \"name\": \"lookup_order\"\n              }\n            }\n          ]\n        },\n        {\n          \"role\": \"assistant\",\n          \"tool_calls\": [\n            {\n              \"id\": \"reply-1\",\n              \"function\": {\n                \"name\": \"send_reply\"\n              }\n            }\n          ]\n        }\n      ]\n    }\n  ]\n}",
+          "cost": 0,
+          "cached": false,
+          "tokenUsage": {
+            "prompt": 0,
+            "completion": 0,
+            "cached": 0,
+            "total": 0,
+            "numRequests": 1,
+            "completionDetails": {
+              "reasoning": 0,
+              "acceptedPrediction": 0,
+              "rejectedPrediction": 0,
+              "cacheReadInputTokens": 0,
+              "cacheCreationInputTokens": 0
+            },
+            "assertions": {
+              "total": 0,
+              "prompt": 0,
+              "completion": 0,
+              "cached": 0,
+              "numRequests": 0,
+              "completionDetails": {
+                "reasoning": 0,
+                "acceptedPrediction": 0,
+                "rejectedPrediction": 0,
+                "cacheReadInputTokens": 0,
+                "cacheCreationInputTokens": 0
+              }
+            }
+          },
+          "isRefusal": false,
+          "metadata": {}
+        },
+        "score": 0,
+        "success": false,
+        "testCase": {
+          "description": "forbidden-second-call",
+          "vars": {
+            "trace_json": "{\"trajectories\":[{\"name\":\"synthetic-order-a\",\"steps\":[{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"lookup-1\",\"function\":{\"name\":\"lookup_order\"}},{\"id\":\"forbidden-2\",\"function\":{\"name\":\"delete_order\"}}]},{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"reply-1\",\"function\":{\"name\":\"send_reply\"}}]}]},{\"name\":\"synthetic-order-b\",\"steps\":[{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"lookup-1\",\"function\":{\"name\":\"lookup_order\"}}]},{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"reply-1\",\"function\":{\"name\":\"send_reply\"}}]}]}]}"
+          },
+          "assert": [
+            {
+              "type": "python",
+              "value": "file://trace_gate_assert.py",
+              "weight": 1,
+              "config": {
+                "rubric_path": "fixtures/rubric.json",
+                "baseline_path": "fixtures/baseline.json"
+              }
+            }
+          ],
+          "options": {},
+          "metadata": {}
+        },
+        "testIdx": 1,
+        "tokenUsage": {
+          "prompt": 0,
+          "completion": 0,
+          "cached": 0,
+          "total": 0,
+          "numRequests": 1,
+          "completionDetails": {
+            "reasoning": 0,
+            "acceptedPrediction": 0,
+            "rejectedPrediction": 0,
+            "cacheReadInputTokens": 0,
+            "cacheCreationInputTokens": 0
+          },
+          "assertions": {
+            "total": 0,
+            "prompt": 0,
+            "completion": 0,
+            "cached": 0,
+            "numRequests": 0,
+            "completionDetails": {
+              "reasoning": 0,
+              "acceptedPrediction": 0,
+              "rejectedPrediction": 0,
+              "cacheReadInputTokens": 0,
+              "cacheCreationInputTokens": 0
+            }
+          }
+        },
+        "vars": {
+          "trace_json": "{\"trajectories\":[{\"name\":\"synthetic-order-a\",\"steps\":[{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"lookup-1\",\"function\":{\"name\":\"lookup_order\"}},{\"id\":\"forbidden-2\",\"function\":{\"name\":\"delete_order\"}}]},{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"reply-1\",\"function\":{\"name\":\"send_reply\"}}]}]},{\"name\":\"synthetic-order-b\",\"steps\":[{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"lookup-1\",\"function\":{\"name\":\"lookup_order\"}}]},{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"reply-1\",\"function\":{\"name\":\"send_reply\"}}]}]}]}"
+        },
+        "metadata": {
+          "_promptfooFileMetadata": {}
+        },
+        "failureReason": 1
+      },
+      {
+        "cost": 0,
+        "error": "INVALID_INPUT: steps[0].tool_calls: expected a list",
+        "gradingResult": {
+          "pass": false,
+          "score": 0,
+          "reason": "INVALID_INPUT: steps[0].tool_calls: expected a list",
+          "namedScores": {},
+          "tokensUsed": {
+            "total": 0,
+            "prompt": 0,
+            "completion": 0,
+            "cached": 0,
+            "numRequests": 0
+          },
+          "componentResults": [
+            {
+              "pass": false,
+              "score": 0,
+              "reason": "INVALID_INPUT: steps[0].tool_calls: expected a list",
+              "assertion": {
+                "type": "python",
+                "value": "file://trace_gate_assert.py",
+                "weight": 1,
+                "config": {
+                  "rubric_path": "fixtures/rubric.json",
+                  "baseline_path": "fixtures/baseline.json"
+                }
+              }
+            }
+          ]
+        },
+        "id": "eab06519-c1ec-4187-a15e-aefa12fffa6c",
+        "latencyMs": 17,
+        "namedScores": {},
+        "prompt": {
+          "raw": "{\"trajectories\":[{\"name\":\"synthetic-order-a\",\"steps\":[{\"role\":\"assistant\",\"tool_calls\":{\"function\":{\"name\":\"lookup_order\"}}},{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"reply-1\",\"function\":{\"name\":\"send_reply\"}}]}]},{\"name\":\"synthetic-order-b\",\"steps\":[{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"lookup-1\",\"function\":{\"name\":\"lookup_order\"}}]},{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"reply-1\",\"function\":{\"name\":\"send_reply\"}}]}]}]}",
+          "label": "{{trace_json}}",
+          "config": {}
+        },
+        "promptId": "ac65945d3887a283767d1574e5d84ace842903c011a7069c48cb0e780d370c8c",
+        "promptIdx": 0,
+        "provider": {
+          "id": "echo",
+          "label": ""
+        },
+        "response": {
+          "output": "{\n  \"trajectories\": [\n    {\n      \"name\": \"synthetic-order-a\",\n      \"steps\": [\n        {\n          \"role\": \"assistant\",\n          \"tool_calls\": {\n            \"function\": {\n              \"name\": \"lookup_order\"\n            }\n          }\n        },\n        {\n          \"role\": \"assistant\",\n          \"tool_calls\": [\n            {\n              \"id\": \"reply-1\",\n              \"function\": {\n                \"name\": \"send_reply\"\n              }\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"name\": \"synthetic-order-b\",\n      \"steps\": [\n        {\n          \"role\": \"assistant\",\n          \"tool_calls\": [\n            {\n              \"id\": \"lookup-1\",\n              \"function\": {\n                \"name\": \"lookup_order\"\n              }\n            }\n          ]\n        },\n        {\n          \"role\": \"assistant\",\n          \"tool_calls\": [\n            {\n              \"id\": \"reply-1\",\n              \"function\": {\n                \"name\": \"send_reply\"\n              }\n            }\n          ]\n        }\n      ]\n    }\n  ]\n}",
+          "raw": "{\n  \"trajectories\": [\n    {\n      \"name\": \"synthetic-order-a\",\n      \"steps\": [\n        {\n          \"role\": \"assistant\",\n          \"tool_calls\": {\n            \"function\": {\n              \"name\": \"lookup_order\"\n            }\n          }\n        },\n        {\n          \"role\": \"assistant\",\n          \"tool_calls\": [\n            {\n              \"id\": \"reply-1\",\n              \"function\": {\n                \"name\": \"send_reply\"\n              }\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"name\": \"synthetic-order-b\",\n      \"steps\": [\n        {\n          \"role\": \"assistant\",\n          \"tool_calls\": [\n            {\n              \"id\": \"lookup-1\",\n              \"function\": {\n                \"name\": \"lookup_order\"\n              }\n            }\n          ]\n        },\n        {\n          \"role\": \"assistant\",\n          \"tool_calls\": [\n            {\n              \"id\": \"reply-1\",\n              \"function\": {\n                \"name\": \"send_reply\"\n              }\n            }\n          ]\n        }\n      ]\n    }\n  ]\n}",
+          "cost": 0,
+          "cached": false,
+          "tokenUsage": {
+            "prompt": 0,
+            "completion": 0,
+            "cached": 0,
+            "total": 0,
+            "numRequests": 1,
+            "completionDetails": {
+              "reasoning": 0,
+              "acceptedPrediction": 0,
+              "rejectedPrediction": 0,
+              "cacheReadInputTokens": 0,
+              "cacheCreationInputTokens": 0
+            },
+            "assertions": {
+              "total": 0,
+              "prompt": 0,
+              "completion": 0,
+              "cached": 0,
+              "numRequests": 0,
+              "completionDetails": {
+                "reasoning": 0,
+                "acceptedPrediction": 0,
+                "rejectedPrediction": 0,
+                "cacheReadInputTokens": 0,
+                "cacheCreationInputTokens": 0
+              }
+            }
+          },
+          "isRefusal": false,
+          "metadata": {}
+        },
+        "score": 0,
+        "success": false,
+        "testCase": {
+          "description": "malformed-tool-calls",
+          "vars": {
+            "trace_json": "{\"trajectories\":[{\"name\":\"synthetic-order-a\",\"steps\":[{\"role\":\"assistant\",\"tool_calls\":{\"function\":{\"name\":\"lookup_order\"}}},{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"reply-1\",\"function\":{\"name\":\"send_reply\"}}]}]},{\"name\":\"synthetic-order-b\",\"steps\":[{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"lookup-1\",\"function\":{\"name\":\"lookup_order\"}}]},{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"reply-1\",\"function\":{\"name\":\"send_reply\"}}]}]}]}"
+          },
+          "assert": [
+            {
+              "type": "python",
+              "value": "file://trace_gate_assert.py",
+              "weight": 1,
+              "config": {
+                "rubric_path": "fixtures/rubric.json",
+                "baseline_path": "fixtures/baseline.json"
+              }
+            }
+          ],
+          "options": {},
+          "metadata": {}
+        },
+        "testIdx": 2,
+        "tokenUsage": {
+          "prompt": 0,
+          "completion": 0,
+          "cached": 0,
+          "total": 0,
+          "numRequests": 1,
+          "completionDetails": {
+            "reasoning": 0,
+            "acceptedPrediction": 0,
+            "rejectedPrediction": 0,
+            "cacheReadInputTokens": 0,
+            "cacheCreationInputTokens": 0
+          },
+          "assertions": {
+            "total": 0,
+            "prompt": 0,
+            "completion": 0,
+            "cached": 0,
+            "numRequests": 0,
+            "completionDetails": {
+              "reasoning": 0,
+              "acceptedPrediction": 0,
+              "rejectedPrediction": 0,
+              "cacheReadInputTokens": 0,
+              "cacheCreationInputTokens": 0
+            }
+          }
+        },
+        "vars": {
+          "trace_json": "{\"trajectories\":[{\"name\":\"synthetic-order-a\",\"steps\":[{\"role\":\"assistant\",\"tool_calls\":{\"function\":{\"name\":\"lookup_order\"}}},{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"reply-1\",\"function\":{\"name\":\"send_reply\"}}]}]},{\"name\":\"synthetic-order-b\",\"steps\":[{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"lookup-1\",\"function\":{\"name\":\"lookup_order\"}}]},{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"reply-1\",\"function\":{\"name\":\"send_reply\"}}]}]}]}"
+        },
+        "metadata": {
+          "_promptfooFileMetadata": {}
+        },
+        "failureReason": 1
+      },
+      {
+        "cost": 0,
+        "error": "MISSING_TRAJECTORY: rubric_sha256 OK (37a913dec9b7...); baseline cases not supplied: ['synthetic-order-b']",
+        "gradingResult": {
+          "pass": false,
+          "score": 0,
+          "reason": "MISSING_TRAJECTORY: rubric_sha256 OK (37a913dec9b7...); baseline cases not supplied: ['synthetic-order-b']",
+          "namedScores": {
+            "trace_gate": 0,
+            "quality_mean": 1
+          },
+          "namedScoreWeights": {
+            "trace_gate": 1,
+            "quality_mean": 1
+          },
+          "tokensUsed": {
+            "total": 0,
+            "prompt": 0,
+            "completion": 0,
+            "cached": 0,
+            "numRequests": 0
+          },
+          "componentResults": [
+            {
+              "pass": false,
+              "score": 0,
+              "reason": "MISSING_TRAJECTORY: rubric_sha256 OK (37a913dec9b7...); baseline cases not supplied: ['synthetic-order-b']",
+              "named_scores": {
+                "trace_gate": 0,
+                "quality_mean": 1
+              },
+              "namedScores": {
+                "trace_gate": 0,
+                "quality_mean": 1
+              },
+              "assertion": {
+                "type": "python",
+                "value": "file://trace_gate_assert.py",
+                "weight": 1,
+                "config": {
+                  "rubric_path": "fixtures/rubric.json",
+                  "baseline_path": "fixtures/baseline.json"
+                }
+              }
+            }
+          ]
+        },
+        "id": "55ec6c06-fad3-415b-8c71-a27834c36572",
+        "latencyMs": 0,
+        "namedScores": {
+          "trace_gate": 0,
+          "quality_mean": 1
+        },
+        "prompt": {
+          "raw": "{\"trajectories\":[{\"name\":\"synthetic-order-a\",\"steps\":[{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"lookup-1\",\"function\":{\"name\":\"lookup_order\"}}]},{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"reply-1\",\"function\":{\"name\":\"send_reply\"}}]}]}]}",
+          "label": "{{trace_json}}",
+          "config": {}
+        },
+        "promptId": "ac65945d3887a283767d1574e5d84ace842903c011a7069c48cb0e780d370c8c",
+        "promptIdx": 0,
+        "provider": {
+          "id": "echo",
+          "label": ""
+        },
+        "response": {
+          "output": "{\n  \"trajectories\": [\n    {\n      \"name\": \"synthetic-order-a\",\n      \"steps\": [\n        {\n          \"role\": \"assistant\",\n          \"tool_calls\": [\n            {\n              \"id\": \"lookup-1\",\n              \"function\": {\n                \"name\": \"lookup_order\"\n              }\n            }\n          ]\n        },\n        {\n          \"role\": \"assistant\",\n          \"tool_calls\": [\n            {\n              \"id\": \"reply-1\",\n              \"function\": {\n                \"name\": \"send_reply\"\n              }\n            }\n          ]\n        }\n      ]\n    }\n  ]\n}",
+          "raw": "{\n  \"trajectories\": [\n    {\n      \"name\": \"synthetic-order-a\",\n      \"steps\": [\n        {\n          \"role\": \"assistant\",\n          \"tool_calls\": [\n            {\n              \"id\": \"lookup-1\",\n              \"function\": {\n                \"name\": \"lookup_order\"\n              }\n            }\n          ]\n        },\n        {\n          \"role\": \"assistant\",\n          \"tool_calls\": [\n            {\n              \"id\": \"reply-1\",\n              \"function\": {\n                \"name\": \"send_reply\"\n              }\n            }\n          ]\n        }\n      ]\n    }\n  ]\n}",
+          "cost": 0,
+          "cached": false,
+          "tokenUsage": {
+            "prompt": 0,
+            "completion": 0,
+            "cached": 0,
+            "total": 0,
+            "numRequests": 1,
+            "completionDetails": {
+              "reasoning": 0,
+              "acceptedPrediction": 0,
+              "rejectedPrediction": 0,
+              "cacheReadInputTokens": 0,
+              "cacheCreationInputTokens": 0
+            },
+            "assertions": {
+              "total": 0,
+              "prompt": 0,
+              "completion": 0,
+              "cached": 0,
+              "numRequests": 0,
+              "completionDetails": {
+                "reasoning": 0,
+                "acceptedPrediction": 0,
+                "rejectedPrediction": 0,
+                "cacheReadInputTokens": 0,
+                "cacheCreationInputTokens": 0
+              }
+            }
+          },
+          "isRefusal": false,
+          "metadata": {}
+        },
+        "score": 0,
+        "success": false,
+        "testCase": {
+          "description": "missing-case",
+          "vars": {
+            "trace_json": "{\"trajectories\":[{\"name\":\"synthetic-order-a\",\"steps\":[{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"lookup-1\",\"function\":{\"name\":\"lookup_order\"}}]},{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"reply-1\",\"function\":{\"name\":\"send_reply\"}}]}]}]}"
+          },
+          "assert": [
+            {
+              "type": "python",
+              "value": "file://trace_gate_assert.py",
+              "weight": 1,
+              "config": {
+                "rubric_path": "fixtures/rubric.json",
+                "baseline_path": "fixtures/baseline.json"
+              }
+            }
+          ],
+          "options": {},
+          "metadata": {}
+        },
+        "testIdx": 3,
+        "tokenUsage": {
+          "prompt": 0,
+          "completion": 0,
+          "cached": 0,
+          "total": 0,
+          "numRequests": 1,
+          "completionDetails": {
+            "reasoning": 0,
+            "acceptedPrediction": 0,
+            "rejectedPrediction": 0,
+            "cacheReadInputTokens": 0,
+            "cacheCreationInputTokens": 0
+          },
+          "assertions": {
+            "total": 0,
+            "prompt": 0,
+            "completion": 0,
+            "cached": 0,
+            "numRequests": 0,
+            "completionDetails": {
+              "reasoning": 0,
+              "acceptedPrediction": 0,
+              "rejectedPrediction": 0,
+              "cacheReadInputTokens": 0,
+              "cacheCreationInputTokens": 0
+            }
+          }
+        },
+        "vars": {
+          "trace_json": "{\"trajectories\":[{\"name\":\"synthetic-order-a\",\"steps\":[{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"lookup-1\",\"function\":{\"name\":\"lookup_order\"}}]},{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"reply-1\",\"function\":{\"name\":\"send_reply\"}}]}]}]}"
+        },
+        "metadata": {
+          "_promptfooFileMetadata": {}
+        },
+        "failureReason": 1
+      },
+      {
+        "cost": 0,
+        "error": "UNKNOWN_TRAJECTORY: rubric_sha256 OK (37a913dec9b7...); not in baseline: ['synthetic-unreviewed']",
+        "gradingResult": {
+          "pass": false,
+          "score": 0,
+          "reason": "UNKNOWN_TRAJECTORY: rubric_sha256 OK (37a913dec9b7...); not in baseline: ['synthetic-unreviewed']",
+          "namedScores": {
+            "trace_gate": 0,
+            "quality_mean": 1
+          },
+          "namedScoreWeights": {
+            "trace_gate": 1,
+            "quality_mean": 1
+          },
+          "tokensUsed": {
+            "total": 0,
+            "prompt": 0,
+            "completion": 0,
+            "cached": 0,
+            "numRequests": 0
+          },
+          "componentResults": [
+            {
+              "pass": false,
+              "score": 0,
+              "reason": "UNKNOWN_TRAJECTORY: rubric_sha256 OK (37a913dec9b7...); not in baseline: ['synthetic-unreviewed']",
+              "named_scores": {
+                "trace_gate": 0,
+                "quality_mean": 1
+              },
+              "namedScores": {
+                "trace_gate": 0,
+                "quality_mean": 1
+              },
+              "assertion": {
+                "type": "python",
+                "value": "file://trace_gate_assert.py",
+                "weight": 1,
+                "config": {
+                  "rubric_path": "fixtures/rubric.json",
+                  "baseline_path": "fixtures/baseline.json"
+                }
+              }
+            }
+          ]
+        },
+        "id": "92032dd2-9149-404e-a830-93eea96d6964",
+        "latencyMs": 2,
+        "namedScores": {
+          "trace_gate": 0,
+          "quality_mean": 1
+        },
+        "prompt": {
+          "raw": "{\"trajectories\":[{\"name\":\"synthetic-order-a\",\"steps\":[{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"lookup-1\",\"function\":{\"name\":\"lookup_order\"}}]},{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"reply-1\",\"function\":{\"name\":\"send_reply\"}}]}]},{\"name\":\"synthetic-order-b\",\"steps\":[{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"lookup-1\",\"function\":{\"name\":\"lookup_order\"}}]},{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"reply-1\",\"function\":{\"name\":\"send_reply\"}}]}]},{\"name\":\"synthetic-unreviewed\",\"steps\":[{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"lookup-1\",\"function\":{\"name\":\"lookup_order\"}}]},{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"reply-1\",\"function\":{\"name\":\"send_reply\"}}]}]}]}",
+          "label": "{{trace_json}}",
+          "config": {}
+        },
+        "promptId": "ac65945d3887a283767d1574e5d84ace842903c011a7069c48cb0e780d370c8c",
+        "promptIdx": 0,
+        "provider": {
+          "id": "echo",
+          "label": ""
+        },
+        "response": {
+          "output": "{\n  \"trajectories\": [\n    {\n      \"name\": \"synthetic-order-a\",\n      \"steps\": [\n        {\n          \"role\": \"assistant\",\n          \"tool_calls\": [\n            {\n              \"id\": \"lookup-1\",\n              \"function\": {\n                \"name\": \"lookup_order\"\n              }\n            }\n          ]\n        },\n        {\n          \"role\": \"assistant\",\n          \"tool_calls\": [\n            {\n              \"id\": \"reply-1\",\n              \"function\": {\n                \"name\": \"send_reply\"\n              }\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"name\": \"synthetic-order-b\",\n      \"steps\": [\n        {\n          \"role\": \"assistant\",\n          \"tool_calls\": [\n            {\n              \"id\": \"lookup-1\",\n              \"function\": {\n                \"name\": \"lookup_order\"\n              }\n            }\n          ]\n        },\n        {\n          \"role\": \"assistant\",\n          \"tool_calls\": [\n            {\n              \"id\": \"reply-1\",\n              \"function\": {\n                \"name\": \"send_reply\"\n              }\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"name\": \"synthetic-unreviewed\",\n      \"steps\": [\n        {\n          \"role\": \"assistant\",\n          \"tool_calls\": [\n            {\n              \"id\": \"lookup-1\",\n              \"function\": {\n                \"name\": \"lookup_order\"\n              }\n            }\n          ]\n        },\n        {\n          \"role\": \"assistant\",\n          \"tool_calls\": [\n            {\n              \"id\": \"reply-1\",\n              \"function\": {\n                \"name\": \"send_reply\"\n              }\n            }\n          ]\n        }\n      ]\n    }\n  ]\n}",
+          "raw": "{\n  \"trajectories\": [\n    {\n      \"name\": \"synthetic-order-a\",\n      \"steps\": [\n        {\n          \"role\": \"assistant\",\n          \"tool_calls\": [\n            {\n              \"id\": \"lookup-1\",\n              \"function\": {\n                \"name\": \"lookup_order\"\n              }\n            }\n          ]\n        },\n        {\n          \"role\": \"assistant\",\n          \"tool_calls\": [\n            {\n              \"id\": \"reply-1\",\n              \"function\": {\n                \"name\": \"send_reply\"\n              }\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"name\": \"synthetic-order-b\",\n      \"steps\": [\n        {\n          \"role\": \"assistant\",\n          \"tool_calls\": [\n            {\n              \"id\": \"lookup-1\",\n              \"function\": {\n                \"name\": \"lookup_order\"\n              }\n            }\n          ]\n        },\n        {\n          \"role\": \"assistant\",\n          \"tool_calls\": [\n            {\n              \"id\": \"reply-1\",\n              \"function\": {\n                \"name\": \"send_reply\"\n              }\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"name\": \"synthetic-unreviewed\",\n      \"steps\": [\n        {\n          \"role\": \"assistant\",\n          \"tool_calls\": [\n            {\n              \"id\": \"lookup-1\",\n              \"function\": {\n                \"name\": \"lookup_order\"\n              }\n            }\n          ]\n        },\n        {\n          \"role\": \"assistant\",\n          \"tool_calls\": [\n            {\n              \"id\": \"reply-1\",\n              \"function\": {\n                \"name\": \"send_reply\"\n              }\n            }\n          ]\n        }\n      ]\n    }\n  ]\n}",
+          "cost": 0,
+          "cached": false,
+          "tokenUsage": {
+            "prompt": 0,
+            "completion": 0,
+            "cached": 0,
+            "total": 0,
+            "numRequests": 1,
+            "completionDetails": {
+              "reasoning": 0,
+              "acceptedPrediction": 0,
+              "rejectedPrediction": 0,
+              "cacheReadInputTokens": 0,
+              "cacheCreationInputTokens": 0
+            },
+            "assertions": {
+              "total": 0,
+              "prompt": 0,
+              "completion": 0,
+              "cached": 0,
+              "numRequests": 0,
+              "completionDetails": {
+                "reasoning": 0,
+                "acceptedPrediction": 0,
+                "rejectedPrediction": 0,
+                "cacheReadInputTokens": 0,
+                "cacheCreationInputTokens": 0
+              }
+            }
+          },
+          "isRefusal": false,
+          "metadata": {}
+        },
+        "score": 0,
+        "success": false,
+        "testCase": {
+          "description": "extra-case",
+          "vars": {
+            "trace_json": "{\"trajectories\":[{\"name\":\"synthetic-order-a\",\"steps\":[{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"lookup-1\",\"function\":{\"name\":\"lookup_order\"}}]},{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"reply-1\",\"function\":{\"name\":\"send_reply\"}}]}]},{\"name\":\"synthetic-order-b\",\"steps\":[{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"lookup-1\",\"function\":{\"name\":\"lookup_order\"}}]},{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"reply-1\",\"function\":{\"name\":\"send_reply\"}}]}]},{\"name\":\"synthetic-unreviewed\",\"steps\":[{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"lookup-1\",\"function\":{\"name\":\"lookup_order\"}}]},{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"reply-1\",\"function\":{\"name\":\"send_reply\"}}]}]}]}"
+          },
+          "assert": [
+            {
+              "type": "python",
+              "value": "file://trace_gate_assert.py",
+              "weight": 1,
+              "config": {
+                "rubric_path": "fixtures/rubric.json",
+                "baseline_path": "fixtures/baseline.json"
+              }
+            }
+          ],
+          "options": {},
+          "metadata": {}
+        },
+        "testIdx": 4,
+        "tokenUsage": {
+          "prompt": 0,
+          "completion": 0,
+          "cached": 0,
+          "total": 0,
+          "numRequests": 1,
+          "completionDetails": {
+            "reasoning": 0,
+            "acceptedPrediction": 0,
+            "rejectedPrediction": 0,
+            "cacheReadInputTokens": 0,
+            "cacheCreationInputTokens": 0
+          },
+          "assertions": {
+            "total": 0,
+            "prompt": 0,
+            "completion": 0,
+            "cached": 0,
+            "numRequests": 0,
+            "completionDetails": {
+              "reasoning": 0,
+              "acceptedPrediction": 0,
+              "rejectedPrediction": 0,
+              "cacheReadInputTokens": 0,
+              "cacheCreationInputTokens": 0
+            }
+          }
+        },
+        "vars": {
+          "trace_json": "{\"trajectories\":[{\"name\":\"synthetic-order-a\",\"steps\":[{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"lookup-1\",\"function\":{\"name\":\"lookup_order\"}}]},{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"reply-1\",\"function\":{\"name\":\"send_reply\"}}]}]},{\"name\":\"synthetic-order-b\",\"steps\":[{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"lookup-1\",\"function\":{\"name\":\"lookup_order\"}}]},{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"reply-1\",\"function\":{\"name\":\"send_reply\"}}]}]},{\"name\":\"synthetic-unreviewed\",\"steps\":[{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"lookup-1\",\"function\":{\"name\":\"lookup_order\"}}]},{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"reply-1\",\"function\":{\"name\":\"send_reply\"}}]}]}]}"
+        },
+        "metadata": {
+          "_promptfooFileMetadata": {}
+        },
+        "failureReason": 1
+      },
+      {
+        "cost": 0,
+        "error": "DUPLICATE_TRAJECTORY: rubric_sha256 OK (37a913dec9b7...); duplicate case names: ['synthetic-order-a']",
+        "gradingResult": {
+          "pass": false,
+          "score": 0,
+          "reason": "DUPLICATE_TRAJECTORY: rubric_sha256 OK (37a913dec9b7...); duplicate case names: ['synthetic-order-a']",
+          "namedScores": {
+            "trace_gate": 0,
+            "quality_mean": 1
+          },
+          "namedScoreWeights": {
+            "trace_gate": 1,
+            "quality_mean": 1
+          },
+          "tokensUsed": {
+            "total": 0,
+            "prompt": 0,
+            "completion": 0,
+            "cached": 0,
+            "numRequests": 0
+          },
+          "componentResults": [
+            {
+              "pass": false,
+              "score": 0,
+              "reason": "DUPLICATE_TRAJECTORY: rubric_sha256 OK (37a913dec9b7...); duplicate case names: ['synthetic-order-a']",
+              "named_scores": {
+                "trace_gate": 0,
+                "quality_mean": 1
+              },
+              "namedScores": {
+                "trace_gate": 0,
+                "quality_mean": 1
+              },
+              "assertion": {
+                "type": "python",
+                "value": "file://trace_gate_assert.py",
+                "weight": 1,
+                "config": {
+                  "rubric_path": "fixtures/rubric.json",
+                  "baseline_path": "fixtures/baseline.json"
+                }
+              }
+            }
+          ]
+        },
+        "id": "51cfe83b-0f51-441c-8e58-29d2a6b74d9b",
+        "latencyMs": 10,
+        "namedScores": {
+          "trace_gate": 0,
+          "quality_mean": 1
+        },
+        "prompt": {
+          "raw": "{\"trajectories\":[{\"name\":\"synthetic-order-a\",\"steps\":[{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"lookup-1\",\"function\":{\"name\":\"lookup_order\"}}]},{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"reply-1\",\"function\":{\"name\":\"send_reply\"}}]}]},{\"name\":\"synthetic-order-b\",\"steps\":[{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"lookup-1\",\"function\":{\"name\":\"lookup_order\"}}]},{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"reply-1\",\"function\":{\"name\":\"send_reply\"}}]}]},{\"name\":\"synthetic-order-a\",\"steps\":[{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"lookup-1\",\"function\":{\"name\":\"lookup_order\"}}]},{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"reply-1\",\"function\":{\"name\":\"send_reply\"}}]}]}]}",
+          "label": "{{trace_json}}",
+          "config": {}
+        },
+        "promptId": "ac65945d3887a283767d1574e5d84ace842903c011a7069c48cb0e780d370c8c",
+        "promptIdx": 0,
+        "provider": {
+          "id": "echo",
+          "label": ""
+        },
+        "response": {
+          "output": "{\n  \"trajectories\": [\n    {\n      \"name\": \"synthetic-order-a\",\n      \"steps\": [\n        {\n          \"role\": \"assistant\",\n          \"tool_calls\": [\n            {\n              \"id\": \"lookup-1\",\n              \"function\": {\n                \"name\": \"lookup_order\"\n              }\n            }\n          ]\n        },\n        {\n          \"role\": \"assistant\",\n          \"tool_calls\": [\n            {\n              \"id\": \"reply-1\",\n              \"function\": {\n                \"name\": \"send_reply\"\n              }\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"name\": \"synthetic-order-b\",\n      \"steps\": [\n        {\n          \"role\": \"assistant\",\n          \"tool_calls\": [\n            {\n              \"id\": \"lookup-1\",\n              \"function\": {\n                \"name\": \"lookup_order\"\n              }\n            }\n          ]\n        },\n        {\n          \"role\": \"assistant\",\n          \"tool_calls\": [\n            {\n              \"id\": \"reply-1\",\n              \"function\": {\n                \"name\": \"send_reply\"\n              }\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"name\": \"synthetic-order-a\",\n      \"steps\": [\n        {\n          \"role\": \"assistant\",\n          \"tool_calls\": [\n            {\n              \"id\": \"lookup-1\",\n              \"function\": {\n                \"name\": \"lookup_order\"\n              }\n            }\n          ]\n        },\n        {\n          \"role\": \"assistant\",\n          \"tool_calls\": [\n            {\n              \"id\": \"reply-1\",\n              \"function\": {\n                \"name\": \"send_reply\"\n              }\n            }\n          ]\n        }\n      ]\n    }\n  ]\n}",
+          "raw": "{\n  \"trajectories\": [\n    {\n      \"name\": \"synthetic-order-a\",\n      \"steps\": [\n        {\n          \"role\": \"assistant\",\n          \"tool_calls\": [\n            {\n              \"id\": \"lookup-1\",\n              \"function\": {\n                \"name\": \"lookup_order\"\n              }\n            }\n          ]\n        },\n        {\n          \"role\": \"assistant\",\n          \"tool_calls\": [\n            {\n              \"id\": \"reply-1\",\n              \"function\": {\n                \"name\": \"send_reply\"\n              }\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"name\": \"synthetic-order-b\",\n      \"steps\": [\n        {\n          \"role\": \"assistant\",\n          \"tool_calls\": [\n            {\n              \"id\": \"lookup-1\",\n              \"function\": {\n                \"name\": \"lookup_order\"\n              }\n            }\n          ]\n        },\n        {\n          \"role\": \"assistant\",\n          \"tool_calls\": [\n            {\n              \"id\": \"reply-1\",\n              \"function\": {\n                \"name\": \"send_reply\"\n              }\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"name\": \"synthetic-order-a\",\n      \"steps\": [\n        {\n          \"role\": \"assistant\",\n          \"tool_calls\": [\n            {\n              \"id\": \"lookup-1\",\n              \"function\": {\n                \"name\": \"lookup_order\"\n              }\n            }\n          ]\n        },\n        {\n          \"role\": \"assistant\",\n          \"tool_calls\": [\n            {\n              \"id\": \"reply-1\",\n              \"function\": {\n                \"name\": \"send_reply\"\n              }\n            }\n          ]\n        }\n      ]\n    }\n  ]\n}",
+          "cost": 0,
+          "cached": false,
+          "tokenUsage": {
+            "prompt": 0,
+            "completion": 0,
+            "cached": 0,
+            "total": 0,
+            "numRequests": 1,
+            "completionDetails": {
+              "reasoning": 0,
+              "acceptedPrediction": 0,
+              "rejectedPrediction": 0,
+              "cacheReadInputTokens": 0,
+              "cacheCreationInputTokens": 0
+            },
+            "assertions": {
+              "total": 0,
+              "prompt": 0,
+              "completion": 0,
+              "cached": 0,
+              "numRequests": 0,
+              "completionDetails": {
+                "reasoning": 0,
+                "acceptedPrediction": 0,
+                "rejectedPrediction": 0,
+                "cacheReadInputTokens": 0,
+                "cacheCreationInputTokens": 0
+              }
+            }
+          },
+          "isRefusal": false,
+          "metadata": {}
+        },
+        "score": 0,
+        "success": false,
+        "testCase": {
+          "description": "duplicate-case",
+          "vars": {
+            "trace_json": "{\"trajectories\":[{\"name\":\"synthetic-order-a\",\"steps\":[{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"lookup-1\",\"function\":{\"name\":\"lookup_order\"}}]},{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"reply-1\",\"function\":{\"name\":\"send_reply\"}}]}]},{\"name\":\"synthetic-order-b\",\"steps\":[{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"lookup-1\",\"function\":{\"name\":\"lookup_order\"}}]},{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"reply-1\",\"function\":{\"name\":\"send_reply\"}}]}]},{\"name\":\"synthetic-order-a\",\"steps\":[{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"lookup-1\",\"function\":{\"name\":\"lookup_order\"}}]},{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"reply-1\",\"function\":{\"name\":\"send_reply\"}}]}]}]}"
+          },
+          "assert": [
+            {
+              "type": "python",
+              "value": "file://trace_gate_assert.py",
+              "weight": 1,
+              "config": {
+                "rubric_path": "fixtures/rubric.json",
+                "baseline_path": "fixtures/baseline.json"
+              }
+            }
+          ],
+          "options": {},
+          "metadata": {}
+        },
+        "testIdx": 5,
+        "tokenUsage": {
+          "prompt": 0,
+          "completion": 0,
+          "cached": 0,
+          "total": 0,
+          "numRequests": 1,
+          "completionDetails": {
+            "reasoning": 0,
+            "acceptedPrediction": 0,
+            "rejectedPrediction": 0,
+            "cacheReadInputTokens": 0,
+            "cacheCreationInputTokens": 0
+          },
+          "assertions": {
+            "total": 0,
+            "prompt": 0,
+            "completion": 0,
+            "cached": 0,
+            "numRequests": 0,
+            "completionDetails": {
+              "reasoning": 0,
+              "acceptedPrediction": 0,
+              "rejectedPrediction": 0,
+              "cacheReadInputTokens": 0,
+              "cacheCreationInputTokens": 0
+            }
+          }
+        },
+        "vars": {
+          "trace_json": "{\"trajectories\":[{\"name\":\"synthetic-order-a\",\"steps\":[{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"lookup-1\",\"function\":{\"name\":\"lookup_order\"}}]},{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"reply-1\",\"function\":{\"name\":\"send_reply\"}}]}]},{\"name\":\"synthetic-order-b\",\"steps\":[{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"lookup-1\",\"function\":{\"name\":\"lookup_order\"}}]},{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"reply-1\",\"function\":{\"name\":\"send_reply\"}}]}]},{\"name\":\"synthetic-order-a\",\"steps\":[{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"lookup-1\",\"function\":{\"name\":\"lookup_order\"}}]},{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"reply-1\",\"function\":{\"name\":\"send_reply\"}}]}]}]}"
+        },
+        "metadata": {
+          "_promptfooFileMetadata": {}
+        },
+        "failureReason": 1
+      },
+      {
+        "cost": 0,
+        "error": "REGRESSION: rubric_sha256 OK (37a913dec9b7...); synthetic-order-a: REGRESSION composite=0.7500 < floor=0.9500 (pinned=1.0000, tol=0.05); synthetic-order-b: PASS composite=1.0000 >= floor=0.9500 (pinned=1.0000)",
+        "gradingResult": {
+          "pass": false,
+          "score": 0,
+          "reason": "REGRESSION: rubric_sha256 OK (37a913dec9b7...); synthetic-order-a: REGRESSION composite=0.7500 < floor=0.9500 (pinned=1.0000, tol=0.05); synthetic-order-b: PASS composite=1.0000 >= floor=0.9500 (pinned=1.0000)",
+          "namedScores": {
+            "trace_gate": 0,
+            "quality_mean": 0.875
+          },
+          "namedScoreWeights": {
+            "trace_gate": 1,
+            "quality_mean": 1
+          },
+          "tokensUsed": {
+            "total": 0,
+            "prompt": 0,
+            "completion": 0,
+            "cached": 0,
+            "numRequests": 0
+          },
+          "componentResults": [
+            {
+              "pass": false,
+              "score": 0,
+              "reason": "REGRESSION: rubric_sha256 OK (37a913dec9b7...); synthetic-order-a: REGRESSION composite=0.7500 < floor=0.9500 (pinned=1.0000, tol=0.05); synthetic-order-b: PASS composite=1.0000 >= floor=0.9500 (pinned=1.0000)",
+              "named_scores": {
+                "trace_gate": 0,
+                "quality_mean": 0.875
+              },
+              "namedScores": {
+                "trace_gate": 0,
+                "quality_mean": 0.875
+              },
+              "assertion": {
+                "type": "python",
+                "value": "file://trace_gate_assert.py",
+                "weight": 1,
+                "config": {
+                  "rubric_path": "fixtures/rubric.json",
+                  "baseline_path": "fixtures/baseline.json"
+                }
+              }
+            }
+          ]
+        },
+        "id": "48f4eae0-bc57-47f8-90a8-ff451d683271",
+        "latencyMs": 1,
+        "namedScores": {
+          "trace_gate": 0,
+          "quality_mean": 0.875
+        },
+        "prompt": {
+          "raw": "{\"trajectories\":[{\"name\":\"synthetic-order-a\",\"steps\":[{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"lookup-1\",\"function\":{\"name\":\"lookup_order\"}}]},{\"role\":\"assistant\",\"tool_calls\":[]}]},{\"name\":\"synthetic-order-b\",\"steps\":[{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"lookup-1\",\"function\":{\"name\":\"lookup_order\"}}]},{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"reply-1\",\"function\":{\"name\":\"send_reply\"}}]}]}]}",
+          "label": "{{trace_json}}",
+          "config": {}
+        },
+        "promptId": "ac65945d3887a283767d1574e5d84ace842903c011a7069c48cb0e780d370c8c",
+        "promptIdx": 0,
+        "provider": {
+          "id": "echo",
+          "label": ""
+        },
+        "response": {
+          "output": "{\n  \"trajectories\": [\n    {\n      \"name\": \"synthetic-order-a\",\n      \"steps\": [\n        {\n          \"role\": \"assistant\",\n          \"tool_calls\": [\n            {\n              \"id\": \"lookup-1\",\n              \"function\": {\n                \"name\": \"lookup_order\"\n              }\n            }\n          ]\n        },\n        {\n          \"role\": \"assistant\",\n          \"tool_calls\": []\n        }\n      ]\n    },\n    {\n      \"name\": \"synthetic-order-b\",\n      \"steps\": [\n        {\n          \"role\": \"assistant\",\n          \"tool_calls\": [\n            {\n              \"id\": \"lookup-1\",\n              \"function\": {\n                \"name\": \"lookup_order\"\n              }\n            }\n          ]\n        },\n        {\n          \"role\": \"assistant\",\n          \"tool_calls\": [\n            {\n              \"id\": \"reply-1\",\n              \"function\": {\n                \"name\": \"send_reply\"\n              }\n            }\n          ]\n        }\n      ]\n    }\n  ]\n}",
+          "raw": "{\n  \"trajectories\": [\n    {\n      \"name\": \"synthetic-order-a\",\n      \"steps\": [\n        {\n          \"role\": \"assistant\",\n          \"tool_calls\": [\n            {\n              \"id\": \"lookup-1\",\n              \"function\": {\n                \"name\": \"lookup_order\"\n              }\n            }\n          ]\n        },\n        {\n          \"role\": \"assistant\",\n          \"tool_calls\": []\n        }\n      ]\n    },\n    {\n      \"name\": \"synthetic-order-b\",\n      \"steps\": [\n        {\n          \"role\": \"assistant\",\n          \"tool_calls\": [\n            {\n              \"id\": \"lookup-1\",\n              \"function\": {\n                \"name\": \"lookup_order\"\n              }\n            }\n          ]\n        },\n        {\n          \"role\": \"assistant\",\n          \"tool_calls\": [\n            {\n              \"id\": \"reply-1\",\n              \"function\": {\n                \"name\": \"send_reply\"\n              }\n            }\n          ]\n        }\n      ]\n    }\n  ]\n}",
+          "cost": 0,
+          "cached": false,
+          "tokenUsage": {
+            "prompt": 0,
+            "completion": 0,
+            "cached": 0,
+            "total": 0,
+            "numRequests": 1,
+            "completionDetails": {
+              "reasoning": 0,
+              "acceptedPrediction": 0,
+              "rejectedPrediction": 0,
+              "cacheReadInputTokens": 0,
+              "cacheCreationInputTokens": 0
+            },
+            "assertions": {
+              "total": 0,
+              "prompt": 0,
+              "completion": 0,
+              "cached": 0,
+              "numRequests": 0,
+              "completionDetails": {
+                "reasoning": 0,
+                "acceptedPrediction": 0,
+                "rejectedPrediction": 0,
+                "cacheReadInputTokens": 0,
+                "cacheCreationInputTokens": 0
+              }
+            }
+          },
+          "isRefusal": false,
+          "metadata": {}
+        },
+        "score": 0,
+        "success": false,
+        "testCase": {
+          "description": "quality-regression",
+          "vars": {
+            "trace_json": "{\"trajectories\":[{\"name\":\"synthetic-order-a\",\"steps\":[{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"lookup-1\",\"function\":{\"name\":\"lookup_order\"}}]},{\"role\":\"assistant\",\"tool_calls\":[]}]},{\"name\":\"synthetic-order-b\",\"steps\":[{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"lookup-1\",\"function\":{\"name\":\"lookup_order\"}}]},{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"reply-1\",\"function\":{\"name\":\"send_reply\"}}]}]}]}"
+          },
+          "assert": [
+            {
+              "type": "python",
+              "value": "file://trace_gate_assert.py",
+              "weight": 1,
+              "config": {
+                "rubric_path": "fixtures/rubric.json",
+                "baseline_path": "fixtures/baseline.json"
+              }
+            }
+          ],
+          "options": {},
+          "metadata": {}
+        },
+        "testIdx": 6,
+        "tokenUsage": {
+          "prompt": 0,
+          "completion": 0,
+          "cached": 0,
+          "total": 0,
+          "numRequests": 1,
+          "completionDetails": {
+            "reasoning": 0,
+            "acceptedPrediction": 0,
+            "rejectedPrediction": 0,
+            "cacheReadInputTokens": 0,
+            "cacheCreationInputTokens": 0
+          },
+          "assertions": {
+            "total": 0,
+            "prompt": 0,
+            "completion": 0,
+            "cached": 0,
+            "numRequests": 0,
+            "completionDetails": {
+              "reasoning": 0,
+              "acceptedPrediction": 0,
+              "rejectedPrediction": 0,
+              "cacheReadInputTokens": 0,
+              "cacheCreationInputTokens": 0
+            }
+          }
+        },
+        "vars": {
+          "trace_json": "{\"trajectories\":[{\"name\":\"synthetic-order-a\",\"steps\":[{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"lookup-1\",\"function\":{\"name\":\"lookup_order\"}}]},{\"role\":\"assistant\",\"tool_calls\":[]}]},{\"name\":\"synthetic-order-b\",\"steps\":[{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"lookup-1\",\"function\":{\"name\":\"lookup_order\"}}]},{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"reply-1\",\"function\":{\"name\":\"send_reply\"}}]}]}]}"
+        },
+        "metadata": {
+          "_promptfooFileMetadata": {}
+        },
+        "failureReason": 1
+      },
+      {
+        "cost": 0,
+        "error": "RUBRIC_DRIFT: rubric fingerprint mismatch: current=5a3f104fc252... pinned=37a913dec9b7... (criteria changed; re-freeze deliberately or restore the rubric)",
+        "gradingResult": {
+          "pass": false,
+          "score": 0,
+          "reason": "RUBRIC_DRIFT: rubric fingerprint mismatch: current=5a3f104fc252... pinned=37a913dec9b7... (criteria changed; re-freeze deliberately or restore the rubric)",
+          "namedScores": {
+            "trace_gate": 0,
+            "quality_mean": 1
+          },
+          "namedScoreWeights": {
+            "trace_gate": 1,
+            "quality_mean": 1
+          },
+          "tokensUsed": {
+            "total": 0,
+            "prompt": 0,
+            "completion": 0,
+            "cached": 0,
+            "numRequests": 0
+          },
+          "componentResults": [
+            {
+              "pass": false,
+              "score": 0,
+              "reason": "RUBRIC_DRIFT: rubric fingerprint mismatch: current=5a3f104fc252... pinned=37a913dec9b7... (criteria changed; re-freeze deliberately or restore the rubric)",
+              "named_scores": {
+                "trace_gate": 0,
+                "quality_mean": 1
+              },
+              "namedScores": {
+                "trace_gate": 0,
+                "quality_mean": 1
+              },
+              "assertion": {
+                "type": "python",
+                "value": "file://trace_gate_assert.py",
+                "weight": 1,
+                "config": {
+                  "rubric_path": "fixtures/rubric-drift.json",
+                  "baseline_path": "fixtures/baseline.json"
+                }
+              }
+            }
+          ]
+        },
+        "id": "50d5372a-f99a-44f2-9cc4-fcb2e59fbd8c",
+        "latencyMs": 1,
+        "namedScores": {
+          "trace_gate": 0,
+          "quality_mean": 1
+        },
+        "prompt": {
+          "raw": "{\"trajectories\":[{\"name\":\"synthetic-order-a\",\"steps\":[{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"lookup-1\",\"function\":{\"name\":\"lookup_order\"}}]},{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"reply-1\",\"function\":{\"name\":\"send_reply\"}}]}]},{\"name\":\"synthetic-order-b\",\"steps\":[{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"lookup-1\",\"function\":{\"name\":\"lookup_order\"}}]},{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"reply-1\",\"function\":{\"name\":\"send_reply\"}}]}]}]}",
+          "label": "{{trace_json}}",
+          "config": {}
+        },
+        "promptId": "ac65945d3887a283767d1574e5d84ace842903c011a7069c48cb0e780d370c8c",
+        "promptIdx": 0,
+        "provider": {
+          "id": "echo",
+          "label": ""
+        },
+        "response": {
+          "output": "{\n  \"trajectories\": [\n    {\n      \"name\": \"synthetic-order-a\",\n      \"steps\": [\n        {\n          \"role\": \"assistant\",\n          \"tool_calls\": [\n            {\n              \"id\": \"lookup-1\",\n              \"function\": {\n                \"name\": \"lookup_order\"\n              }\n            }\n          ]\n        },\n        {\n          \"role\": \"assistant\",\n          \"tool_calls\": [\n            {\n              \"id\": \"reply-1\",\n              \"function\": {\n                \"name\": \"send_reply\"\n              }\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"name\": \"synthetic-order-b\",\n      \"steps\": [\n        {\n          \"role\": \"assistant\",\n          \"tool_calls\": [\n            {\n              \"id\": \"lookup-1\",\n              \"function\": {\n                \"name\": \"lookup_order\"\n              }\n            }\n          ]\n        },\n        {\n          \"role\": \"assistant\",\n          \"tool_calls\": [\n            {\n              \"id\": \"reply-1\",\n              \"function\": {\n                \"name\": \"send_reply\"\n              }\n            }\n          ]\n        }\n      ]\n    }\n  ]\n}",
+          "raw": "{\n  \"trajectories\": [\n    {\n      \"name\": \"synthetic-order-a\",\n      \"steps\": [\n        {\n          \"role\": \"assistant\",\n          \"tool_calls\": [\n            {\n              \"id\": \"lookup-1\",\n              \"function\": {\n                \"name\": \"lookup_order\"\n              }\n            }\n          ]\n        },\n        {\n          \"role\": \"assistant\",\n          \"tool_calls\": [\n            {\n              \"id\": \"reply-1\",\n              \"function\": {\n                \"name\": \"send_reply\"\n              }\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"name\": \"synthetic-order-b\",\n      \"steps\": [\n        {\n          \"role\": \"assistant\",\n          \"tool_calls\": [\n            {\n              \"id\": \"lookup-1\",\n              \"function\": {\n                \"name\": \"lookup_order\"\n              }\n            }\n          ]\n        },\n        {\n          \"role\": \"assistant\",\n          \"tool_calls\": [\n            {\n              \"id\": \"reply-1\",\n              \"function\": {\n                \"name\": \"send_reply\"\n              }\n            }\n          ]\n        }\n      ]\n    }\n  ]\n}",
+          "cost": 0,
+          "cached": false,
+          "tokenUsage": {
+            "prompt": 0,
+            "completion": 0,
+            "cached": 0,
+            "total": 0,
+            "numRequests": 1,
+            "completionDetails": {
+              "reasoning": 0,
+              "acceptedPrediction": 0,
+              "rejectedPrediction": 0,
+              "cacheReadInputTokens": 0,
+              "cacheCreationInputTokens": 0
+            },
+            "assertions": {
+              "total": 0,
+              "prompt": 0,
+              "completion": 0,
+              "cached": 0,
+              "numRequests": 0,
+              "completionDetails": {
+                "reasoning": 0,
+                "acceptedPrediction": 0,
+                "rejectedPrediction": 0,
+                "cacheReadInputTokens": 0,
+                "cacheCreationInputTokens": 0
+              }
+            }
+          },
+          "isRefusal": false,
+          "metadata": {}
+        },
+        "score": 0,
+        "success": false,
+        "testCase": {
+          "description": "rubric-drift",
+          "vars": {
+            "trace_json": "{\"trajectories\":[{\"name\":\"synthetic-order-a\",\"steps\":[{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"lookup-1\",\"function\":{\"name\":\"lookup_order\"}}]},{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"reply-1\",\"function\":{\"name\":\"send_reply\"}}]}]},{\"name\":\"synthetic-order-b\",\"steps\":[{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"lookup-1\",\"function\":{\"name\":\"lookup_order\"}}]},{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"reply-1\",\"function\":{\"name\":\"send_reply\"}}]}]}]}"
+          },
+          "assert": [
+            {
+              "type": "python",
+              "value": "file://trace_gate_assert.py",
+              "weight": 1,
+              "config": {
+                "rubric_path": "fixtures/rubric-drift.json",
+                "baseline_path": "fixtures/baseline.json"
+              }
+            }
+          ],
+          "options": {},
+          "metadata": {}
+        },
+        "testIdx": 7,
+        "tokenUsage": {
+          "prompt": 0,
+          "completion": 0,
+          "cached": 0,
+          "total": 0,
+          "numRequests": 1,
+          "completionDetails": {
+            "reasoning": 0,
+            "acceptedPrediction": 0,
+            "rejectedPrediction": 0,
+            "cacheReadInputTokens": 0,
+            "cacheCreationInputTokens": 0
+          },
+          "assertions": {
+            "total": 0,
+            "prompt": 0,
+            "completion": 0,
+            "cached": 0,
+            "numRequests": 0,
+            "completionDetails": {
+              "reasoning": 0,
+              "acceptedPrediction": 0,
+              "rejectedPrediction": 0,
+              "cacheReadInputTokens": 0,
+              "cacheCreationInputTokens": 0
+            }
+          }
+        },
+        "vars": {
+          "trace_json": "{\"trajectories\":[{\"name\":\"synthetic-order-a\",\"steps\":[{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"lookup-1\",\"function\":{\"name\":\"lookup_order\"}}]},{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"reply-1\",\"function\":{\"name\":\"send_reply\"}}]}]},{\"name\":\"synthetic-order-b\",\"steps\":[{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"lookup-1\",\"function\":{\"name\":\"lookup_order\"}}]},{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"reply-1\",\"function\":{\"name\":\"send_reply\"}}]}]}]}"
+        },
+        "metadata": {
+          "_promptfooFileMetadata": {}
+        },
+        "failureReason": 1
+      },
+      {
+        "cost": 0,
+        "error": "MISSING_RUBRIC_FINGERPRINT: baseline has no rubric_sha256; review the rubric and original trajectories, then re-freeze deliberately (legacy baselines are not trusted automatically)",
+        "gradingResult": {
+          "pass": false,
+          "score": 0,
+          "reason": "MISSING_RUBRIC_FINGERPRINT: baseline has no rubric_sha256; review the rubric and original trajectories, then re-freeze deliberately (legacy baselines are not trusted automatically)",
+          "namedScores": {
+            "trace_gate": 0,
+            "quality_mean": 1
+          },
+          "namedScoreWeights": {
+            "trace_gate": 1,
+            "quality_mean": 1
+          },
+          "tokensUsed": {
+            "total": 0,
+            "prompt": 0,
+            "completion": 0,
+            "cached": 0,
+            "numRequests": 0
+          },
+          "componentResults": [
+            {
+              "pass": false,
+              "score": 0,
+              "reason": "MISSING_RUBRIC_FINGERPRINT: baseline has no rubric_sha256; review the rubric and original trajectories, then re-freeze deliberately (legacy baselines are not trusted automatically)",
+              "named_scores": {
+                "trace_gate": 0,
+                "quality_mean": 1
+              },
+              "namedScores": {
+                "trace_gate": 0,
+                "quality_mean": 1
+              },
+              "assertion": {
+                "type": "python",
+                "value": "file://trace_gate_assert.py",
+                "weight": 1,
+                "config": {
+                  "rubric_path": "fixtures/rubric.json",
+                  "baseline_path": "fixtures/baseline-hashless.json"
+                }
+              }
+            }
+          ]
+        },
+        "id": "f0549434-6d95-4cc9-858a-ef727d43f7fc",
+        "latencyMs": 0,
+        "namedScores": {
+          "trace_gate": 0,
+          "quality_mean": 1
+        },
+        "prompt": {
+          "raw": "{\"trajectories\":[{\"name\":\"synthetic-order-a\",\"steps\":[{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"lookup-1\",\"function\":{\"name\":\"lookup_order\"}}]},{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"reply-1\",\"function\":{\"name\":\"send_reply\"}}]}]},{\"name\":\"synthetic-order-b\",\"steps\":[{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"lookup-1\",\"function\":{\"name\":\"lookup_order\"}}]},{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"reply-1\",\"function\":{\"name\":\"send_reply\"}}]}]}]}",
+          "label": "{{trace_json}}",
+          "config": {}
+        },
+        "promptId": "ac65945d3887a283767d1574e5d84ace842903c011a7069c48cb0e780d370c8c",
+        "promptIdx": 0,
+        "provider": {
+          "id": "echo",
+          "label": ""
+        },
+        "response": {
+          "output": "{\n  \"trajectories\": [\n    {\n      \"name\": \"synthetic-order-a\",\n      \"steps\": [\n        {\n          \"role\": \"assistant\",\n          \"tool_calls\": [\n            {\n              \"id\": \"lookup-1\",\n              \"function\": {\n                \"name\": \"lookup_order\"\n              }\n            }\n          ]\n        },\n        {\n          \"role\": \"assistant\",\n          \"tool_calls\": [\n            {\n              \"id\": \"reply-1\",\n              \"function\": {\n                \"name\": \"send_reply\"\n              }\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"name\": \"synthetic-order-b\",\n      \"steps\": [\n        {\n          \"role\": \"assistant\",\n          \"tool_calls\": [\n            {\n              \"id\": \"lookup-1\",\n              \"function\": {\n                \"name\": \"lookup_order\"\n              }\n            }\n          ]\n        },\n        {\n          \"role\": \"assistant\",\n          \"tool_calls\": [\n            {\n              \"id\": \"reply-1\",\n              \"function\": {\n                \"name\": \"send_reply\"\n              }\n            }\n          ]\n        }\n      ]\n    }\n  ]\n}",
+          "raw": "{\n  \"trajectories\": [\n    {\n      \"name\": \"synthetic-order-a\",\n      \"steps\": [\n        {\n          \"role\": \"assistant\",\n          \"tool_calls\": [\n            {\n              \"id\": \"lookup-1\",\n              \"function\": {\n                \"name\": \"lookup_order\"\n              }\n            }\n          ]\n        },\n        {\n          \"role\": \"assistant\",\n          \"tool_calls\": [\n            {\n              \"id\": \"reply-1\",\n              \"function\": {\n                \"name\": \"send_reply\"\n              }\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"name\": \"synthetic-order-b\",\n      \"steps\": [\n        {\n          \"role\": \"assistant\",\n          \"tool_calls\": [\n            {\n              \"id\": \"lookup-1\",\n              \"function\": {\n                \"name\": \"lookup_order\"\n              }\n            }\n          ]\n        },\n        {\n          \"role\": \"assistant\",\n          \"tool_calls\": [\n            {\n              \"id\": \"reply-1\",\n              \"function\": {\n                \"name\": \"send_reply\"\n              }\n            }\n          ]\n        }\n      ]\n    }\n  ]\n}",
+          "cost": 0,
+          "cached": false,
+          "tokenUsage": {
+            "prompt": 0,
+            "completion": 0,
+            "cached": 0,
+            "total": 0,
+            "numRequests": 1,
+            "completionDetails": {
+              "reasoning": 0,
+              "acceptedPrediction": 0,
+              "rejectedPrediction": 0,
+              "cacheReadInputTokens": 0,
+              "cacheCreationInputTokens": 0
+            },
+            "assertions": {
+              "total": 0,
+              "prompt": 0,
+              "completion": 0,
+              "cached": 0,
+              "numRequests": 0,
+              "completionDetails": {
+                "reasoning": 0,
+                "acceptedPrediction": 0,
+                "rejectedPrediction": 0,
+                "cacheReadInputTokens": 0,
+                "cacheCreationInputTokens": 0
+              }
+            }
+          },
+          "isRefusal": false,
+          "metadata": {}
+        },
+        "score": 0,
+        "success": false,
+        "testCase": {
+          "description": "missing-fingerprint",
+          "vars": {
+            "trace_json": "{\"trajectories\":[{\"name\":\"synthetic-order-a\",\"steps\":[{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"lookup-1\",\"function\":{\"name\":\"lookup_order\"}}]},{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"reply-1\",\"function\":{\"name\":\"send_reply\"}}]}]},{\"name\":\"synthetic-order-b\",\"steps\":[{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"lookup-1\",\"function\":{\"name\":\"lookup_order\"}}]},{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"reply-1\",\"function\":{\"name\":\"send_reply\"}}]}]}]}"
+          },
+          "assert": [
+            {
+              "type": "python",
+              "value": "file://trace_gate_assert.py",
+              "weight": 1,
+              "config": {
+                "rubric_path": "fixtures/rubric.json",
+                "baseline_path": "fixtures/baseline-hashless.json"
+              }
+            }
+          ],
+          "options": {},
+          "metadata": {}
+        },
+        "testIdx": 8,
+        "tokenUsage": {
+          "prompt": 0,
+          "completion": 0,
+          "cached": 0,
+          "total": 0,
+          "numRequests": 1,
+          "completionDetails": {
+            "reasoning": 0,
+            "acceptedPrediction": 0,
+            "rejectedPrediction": 0,
+            "cacheReadInputTokens": 0,
+            "cacheCreationInputTokens": 0
+          },
+          "assertions": {
+            "total": 0,
+            "prompt": 0,
+            "completion": 0,
+            "cached": 0,
+            "numRequests": 0,
+            "completionDetails": {
+              "reasoning": 0,
+              "acceptedPrediction": 0,
+              "rejectedPrediction": 0,
+              "cacheReadInputTokens": 0,
+              "cacheCreationInputTokens": 0
+            }
+          }
+        },
+        "vars": {
+          "trace_json": "{\"trajectories\":[{\"name\":\"synthetic-order-a\",\"steps\":[{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"lookup-1\",\"function\":{\"name\":\"lookup_order\"}}]},{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"reply-1\",\"function\":{\"name\":\"send_reply\"}}]}]},{\"name\":\"synthetic-order-b\",\"steps\":[{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"lookup-1\",\"function\":{\"name\":\"lookup_order\"}}]},{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"reply-1\",\"function\":{\"name\":\"send_reply\"}}]}]}]}"
+        },
+        "metadata": {
+          "_promptfooFileMetadata": {}
+        },
+        "failureReason": 1
+      },
+      {
+        "cost": 0,
+        "error": "INVALID_INPUT: Expecting value: line 1 column 17 (char 16)",
+        "gradingResult": {
+          "pass": false,
+          "score": 0,
+          "reason": "INVALID_INPUT: Expecting value: line 1 column 17 (char 16)",
+          "namedScores": {},
+          "tokensUsed": {
+            "total": 0,
+            "prompt": 0,
+            "completion": 0,
+            "cached": 0,
+            "numRequests": 0
+          },
+          "componentResults": [
+            {
+              "pass": false,
+              "score": 0,
+              "reason": "INVALID_INPUT: Expecting value: line 1 column 17 (char 16)",
+              "assertion": {
+                "type": "python",
+                "value": "file://trace_gate_assert.py",
+                "weight": 1,
+                "config": {
+                  "rubric_path": "fixtures/rubric.json",
+                  "baseline_path": "fixtures/baseline.json"
+                }
+              }
+            }
+          ]
+        },
+        "id": "57e43077-2f31-45e7-968c-f76b617514ea",
+        "latencyMs": 13,
+        "namedScores": {},
+        "prompt": {
+          "raw": "{\"trajectories\":",
+          "label": "{{trace_json}}",
+          "config": {}
+        },
+        "promptId": "ac65945d3887a283767d1574e5d84ace842903c011a7069c48cb0e780d370c8c",
+        "promptIdx": 0,
+        "provider": {
+          "id": "echo",
+          "label": ""
+        },
+        "response": {
+          "output": "{\"trajectories\":",
+          "raw": "{\"trajectories\":",
+          "cost": 0,
+          "cached": false,
+          "tokenUsage": {
+            "prompt": 0,
+            "completion": 0,
+            "cached": 0,
+            "total": 0,
+            "numRequests": 1,
+            "completionDetails": {
+              "reasoning": 0,
+              "acceptedPrediction": 0,
+              "rejectedPrediction": 0,
+              "cacheReadInputTokens": 0,
+              "cacheCreationInputTokens": 0
+            },
+            "assertions": {
+              "total": 0,
+              "prompt": 0,
+              "completion": 0,
+              "cached": 0,
+              "numRequests": 0,
+              "completionDetails": {
+                "reasoning": 0,
+                "acceptedPrediction": 0,
+                "rejectedPrediction": 0,
+                "cacheReadInputTokens": 0,
+                "cacheCreationInputTokens": 0
+              }
+            }
+          },
+          "isRefusal": false,
+          "metadata": {}
+        },
+        "score": 0,
+        "success": false,
+        "testCase": {
+          "description": "invalid-json",
+          "vars": {
+            "trace_json": "{\"trajectories\":"
+          },
+          "assert": [
+            {
+              "type": "python",
+              "value": "file://trace_gate_assert.py",
+              "weight": 1,
+              "config": {
+                "rubric_path": "fixtures/rubric.json",
+                "baseline_path": "fixtures/baseline.json"
+              }
+            }
+          ],
+          "options": {},
+          "metadata": {}
+        },
+        "testIdx": 9,
+        "tokenUsage": {
+          "prompt": 0,
+          "completion": 0,
+          "cached": 0,
+          "total": 0,
+          "numRequests": 1,
+          "completionDetails": {
+            "reasoning": 0,
+            "acceptedPrediction": 0,
+            "rejectedPrediction": 0,
+            "cacheReadInputTokens": 0,
+            "cacheCreationInputTokens": 0
+          },
+          "assertions": {
+            "total": 0,
+            "prompt": 0,
+            "completion": 0,
+            "cached": 0,
+            "numRequests": 0,
+            "completionDetails": {
+              "reasoning": 0,
+              "acceptedPrediction": 0,
+              "rejectedPrediction": 0,
+              "cacheReadInputTokens": 0,
+              "cacheCreationInputTokens": 0
+            }
+          }
+        },
+        "vars": {
+          "trace_json": "{\"trajectories\":"
+        },
+        "metadata": {
+          "_promptfooFileMetadata": {}
+        },
+        "failureReason": 1
+      }
+    ],
+    "stats": {
+      "successes": 1,
+      "failures": 9,
+      "errors": 0,
+      "tokenUsage": {
+        "prompt": 0,
+        "completion": 0,
+        "cached": 0,
+        "total": 0,
+        "numRequests": 10,
+        "completionDetails": {
+          "reasoning": 0,
+          "acceptedPrediction": 0,
+          "rejectedPrediction": 0,
+          "cacheReadInputTokens": 0,
+          "cacheCreationInputTokens": 0
+        },
+        "assertions": {
+          "total": 0,
+          "prompt": 0,
+          "completion": 0,
+          "cached": 0,
+          "numRequests": 0,
+          "completionDetails": {
+            "reasoning": 0,
+            "acceptedPrediction": 0,
+            "rejectedPrediction": 0,
+            "cacheReadInputTokens": 0,
+            "cacheCreationInputTokens": 0
+          }
+        }
+      },
+      "durationMs": 2404,
+      "evaluationDurationMs": 2404
+    }
+  },
+  "config": {
+    "tags": {},
+    "description": "trace-gate complete recorded-suite check, synthetic echo provider",
+    "prompts": [
+      "{{trace_json}}"
+    ],
+    "providers": [
+      "echo"
+    ],
+    "tests": [
+      {
+        "description": "good",
+        "vars": {
+          "trace_json": "{\"trajectories\":[{\"name\":\"synthetic-order-a\",\"steps\":[{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"lookup-1\",\"function\":{\"name\":\"lookup_order\"}}]},{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"reply-1\",\"function\":{\"name\":\"send_reply\"}}]}]},{\"name\":\"synthetic-order-b\",\"steps\":[{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"lookup-1\",\"function\":{\"name\":\"lookup_order\"}}]},{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"reply-1\",\"function\":{\"name\":\"send_reply\"}}]}]}]}"
+        },
+        "assert": [
+          {
+            "type": "python",
+            "value": "file://trace_gate_assert.py",
+            "weight": 1,
+            "config": {
+              "rubric_path": "fixtures/rubric.json",
+              "baseline_path": "fixtures/baseline.json"
+            }
+          }
+        ]
+      },
+      {
+        "description": "forbidden-second-call",
+        "vars": {
+          "trace_json": "{\"trajectories\":[{\"name\":\"synthetic-order-a\",\"steps\":[{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"lookup-1\",\"function\":{\"name\":\"lookup_order\"}},{\"id\":\"forbidden-2\",\"function\":{\"name\":\"delete_order\"}}]},{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"reply-1\",\"function\":{\"name\":\"send_reply\"}}]}]},{\"name\":\"synthetic-order-b\",\"steps\":[{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"lookup-1\",\"function\":{\"name\":\"lookup_order\"}}]},{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"reply-1\",\"function\":{\"name\":\"send_reply\"}}]}]}]}"
+        },
+        "assert": [
+          {
+            "type": "python",
+            "value": "file://trace_gate_assert.py",
+            "weight": 1,
+            "config": {
+              "rubric_path": "fixtures/rubric.json",
+              "baseline_path": "fixtures/baseline.json"
+            }
+          }
+        ]
+      },
+      {
+        "description": "malformed-tool-calls",
+        "vars": {
+          "trace_json": "{\"trajectories\":[{\"name\":\"synthetic-order-a\",\"steps\":[{\"role\":\"assistant\",\"tool_calls\":{\"function\":{\"name\":\"lookup_order\"}}},{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"reply-1\",\"function\":{\"name\":\"send_reply\"}}]}]},{\"name\":\"synthetic-order-b\",\"steps\":[{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"lookup-1\",\"function\":{\"name\":\"lookup_order\"}}]},{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"reply-1\",\"function\":{\"name\":\"send_reply\"}}]}]}]}"
+        },
+        "assert": [
+          {
+            "type": "python",
+            "value": "file://trace_gate_assert.py",
+            "weight": 1,
+            "config": {
+              "rubric_path": "fixtures/rubric.json",
+              "baseline_path": "fixtures/baseline.json"
+            }
+          }
+        ]
+      },
+      {
+        "description": "missing-case",
+        "vars": {
+          "trace_json": "{\"trajectories\":[{\"name\":\"synthetic-order-a\",\"steps\":[{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"lookup-1\",\"function\":{\"name\":\"lookup_order\"}}]},{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"reply-1\",\"function\":{\"name\":\"send_reply\"}}]}]}]}"
+        },
+        "assert": [
+          {
+            "type": "python",
+            "value": "file://trace_gate_assert.py",
+            "weight": 1,
+            "config": {
+              "rubric_path": "fixtures/rubric.json",
+              "baseline_path": "fixtures/baseline.json"
+            }
+          }
+        ]
+      },
+      {
+        "description": "extra-case",
+        "vars": {
+          "trace_json": "{\"trajectories\":[{\"name\":\"synthetic-order-a\",\"steps\":[{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"lookup-1\",\"function\":{\"name\":\"lookup_order\"}}]},{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"reply-1\",\"function\":{\"name\":\"send_reply\"}}]}]},{\"name\":\"synthetic-order-b\",\"steps\":[{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"lookup-1\",\"function\":{\"name\":\"lookup_order\"}}]},{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"reply-1\",\"function\":{\"name\":\"send_reply\"}}]}]},{\"name\":\"synthetic-unreviewed\",\"steps\":[{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"lookup-1\",\"function\":{\"name\":\"lookup_order\"}}]},{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"reply-1\",\"function\":{\"name\":\"send_reply\"}}]}]}]}"
+        },
+        "assert": [
+          {
+            "type": "python",
+            "value": "file://trace_gate_assert.py",
+            "weight": 1,
+            "config": {
+              "rubric_path": "fixtures/rubric.json",
+              "baseline_path": "fixtures/baseline.json"
+            }
+          }
+        ]
+      },
+      {
+        "description": "duplicate-case",
+        "vars": {
+          "trace_json": "{\"trajectories\":[{\"name\":\"synthetic-order-a\",\"steps\":[{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"lookup-1\",\"function\":{\"name\":\"lookup_order\"}}]},{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"reply-1\",\"function\":{\"name\":\"send_reply\"}}]}]},{\"name\":\"synthetic-order-b\",\"steps\":[{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"lookup-1\",\"function\":{\"name\":\"lookup_order\"}}]},{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"reply-1\",\"function\":{\"name\":\"send_reply\"}}]}]},{\"name\":\"synthetic-order-a\",\"steps\":[{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"lookup-1\",\"function\":{\"name\":\"lookup_order\"}}]},{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"reply-1\",\"function\":{\"name\":\"send_reply\"}}]}]}]}"
+        },
+        "assert": [
+          {
+            "type": "python",
+            "value": "file://trace_gate_assert.py",
+            "weight": 1,
+            "config": {
+              "rubric_path": "fixtures/rubric.json",
+              "baseline_path": "fixtures/baseline.json"
+            }
+          }
+        ]
+      },
+      {
+        "description": "quality-regression",
+        "vars": {
+          "trace_json": "{\"trajectories\":[{\"name\":\"synthetic-order-a\",\"steps\":[{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"lookup-1\",\"function\":{\"name\":\"lookup_order\"}}]},{\"role\":\"assistant\",\"tool_calls\":[]}]},{\"name\":\"synthetic-order-b\",\"steps\":[{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"lookup-1\",\"function\":{\"name\":\"lookup_order\"}}]},{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"reply-1\",\"function\":{\"name\":\"send_reply\"}}]}]}]}"
+        },
+        "assert": [
+          {
+            "type": "python",
+            "value": "file://trace_gate_assert.py",
+            "weight": 1,
+            "config": {
+              "rubric_path": "fixtures/rubric.json",
+              "baseline_path": "fixtures/baseline.json"
+            }
+          }
+        ]
+      },
+      {
+        "description": "rubric-drift",
+        "vars": {
+          "trace_json": "{\"trajectories\":[{\"name\":\"synthetic-order-a\",\"steps\":[{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"lookup-1\",\"function\":{\"name\":\"lookup_order\"}}]},{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"reply-1\",\"function\":{\"name\":\"send_reply\"}}]}]},{\"name\":\"synthetic-order-b\",\"steps\":[{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"lookup-1\",\"function\":{\"name\":\"lookup_order\"}}]},{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"reply-1\",\"function\":{\"name\":\"send_reply\"}}]}]}]}"
+        },
+        "assert": [
+          {
+            "type": "python",
+            "value": "file://trace_gate_assert.py",
+            "weight": 1,
+            "config": {
+              "rubric_path": "fixtures/rubric-drift.json",
+              "baseline_path": "fixtures/baseline.json"
+            }
+          }
+        ]
+      },
+      {
+        "description": "missing-fingerprint",
+        "vars": {
+          "trace_json": "{\"trajectories\":[{\"name\":\"synthetic-order-a\",\"steps\":[{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"lookup-1\",\"function\":{\"name\":\"lookup_order\"}}]},{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"reply-1\",\"function\":{\"name\":\"send_reply\"}}]}]},{\"name\":\"synthetic-order-b\",\"steps\":[{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"lookup-1\",\"function\":{\"name\":\"lookup_order\"}}]},{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"reply-1\",\"function\":{\"name\":\"send_reply\"}}]}]}]}"
+        },
+        "assert": [
+          {
+            "type": "python",
+            "value": "file://trace_gate_assert.py",
+            "weight": 1,
+            "config": {
+              "rubric_path": "fixtures/rubric.json",
+              "baseline_path": "fixtures/baseline-hashless.json"
+            }
+          }
+        ]
+      },
+      {
+        "description": "invalid-json",
+        "vars": {
+          "trace_json": "{\"trajectories\":"
+        },
+        "assert": [
+          {
+            "type": "python",
+            "value": "file://trace_gate_assert.py",
+            "weight": 1,
+            "config": {
+              "rubric_path": "fixtures/rubric.json",
+              "baseline_path": "fixtures/baseline.json"
+            }
+          }
+        ]
+      }
+    ],
+    "env": {},
+    "outputPath": [
+      "/workspace/shared/trace-gate-promptfoo-2026-11-09/trace-gate/integrations/promptfoo/evidence/gate-results.json"
+    ],
+    "extensions": [],
+    "metadata": {},
+    "evaluateOptions": {},
+    "basePath": "/workspace/shared/trace-gate-promptfoo-2026-11-09/trace-gate/integrations/promptfoo"
+  },
+  "shareableUrl": null,
+  "metadata": {
+    "promptfooVersion": "0.125.1",
+    "nodeVersion": "v24.22.1",
+    "platform": "linux",
+    "arch": "x64",
+    "exportedAt": "2026-11-09T22:30:14.238Z",
+    "evaluationCreatedAt": "2026-11-09T22:30:11.745Z"
+  },
+  "vars": [
+    "trace_json"
+  ],
+  "runtimeOptions": {
+    "eventSource": "cli",
+    "showProgressBar": false,
+    "repeat": 1,
+    "maxConcurrency": 1,
+    "cache": false
+  }
+}

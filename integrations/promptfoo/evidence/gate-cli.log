@@ -1,0 +1,14 @@
+Cache is disabled.
+Starting evaluation eval-hbq-2026-11-09T22:30:11
+Running 10 test cases (up to 1 at a time)...
+✓ Eval complete
+
+
+Results:
+  ✓ 1 passed (10.00%)
+  ✗ 9 failed (90.00%)
+  0 errors (0%)
+Duration: 3s (concurrency: 1)
+
+Writing output to /workspace/shared/trace-gate-promptfoo-2026-11-09/trace-gate/integrations/promptfoo/evidence/gate-results.json
+Pass rate 10.00% is below the threshold of 100%

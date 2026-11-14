@@ -1,0 +1,14 @@
+Cache is disabled.
+Starting evaluation eval-C7T-2026-11-10T07:53:01
+Running 10 test cases (up to 1 at a time)...
+✓ Eval complete
+
+
+Results:
+  ✓ 7 passed (70.00%)
+  ✗ 3 failed (30.00%)
+  0 errors (0%)
+Duration: 1s (concurrency: 1)
+
+Writing output to /workspace/scratch/2ab4182eefa2/trace_gate_readiness/candidate/trace-gate/integrations/promptfoo/evidence/readiness/native-policy-results.json
+Pass rate 70.00% is below the threshold of 100%

@@ -1,0 +1,51 @@
+{
+  "trajectories": [
+    {
+      "name": "synthetic-order-a",
+      "steps": [
+        {
+          "role": "assistant",
+          "tool_calls": [
+            {
+              "id": "lookup-1",
+              "function": {
+                "name": "lookup_order"
+              }
+            }
+          ]
+        },
+        {
+          "role": "assistant",
+          "tool_calls": []
+        }
+      ]
+    },
+    {
+      "name": "synthetic-order-b",
+      "steps": [
+        {
+          "role": "assistant",
+          "tool_calls": [
+            {
+              "id": "lookup-1",
+              "function": {
+                "name": "lookup_order"
+              }
+            }
+          ]
+        },
+        {
+          "role": "assistant",
+          "tool_calls": [
+            {
+              "id": "reply-1",
+              "function": {
+                "name": "send_reply"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

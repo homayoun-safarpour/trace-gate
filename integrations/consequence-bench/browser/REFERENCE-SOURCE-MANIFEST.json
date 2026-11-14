@@ -1,0 +1,11 @@
+{
+  "source_commit": "d4178b8afe98387fecbb5bbbcd380bd7b174a268",
+  "files": {
+    "vendor/tracegate/__init__.py": "3a88e493fb42171a47dbe3106267d07e271445d119c541b25d72503dbbf49863",
+    "vendor/tracegate/baseline.py": "39d6da9f654aa71b5208fd6bc68edd6fb21b6a70845607db08f1751391e9a32b",
+    "vendor/tracegate/cli.py": "ec600d3b213a643d82baddebf809193433543c82330d7a95b8c082a6cd97359e",
+    "vendor/tracegate/otel.py": "eb19a206ee1c6caf455a3c97350219624b0c33504f4efc3b7d05bfb9951ee4c3",
+    "vendor/tracegate/score.py": "efa2068133b1dd71bdead2558ca2224aae01cb99336a88b25fe2d6eb13905b12",
+    "vendor/tracegate/trajectory.py": "019a96ddf4fc7b85308f3d32c62acc3ec6191342239fa5bf8b583875bc41161f"
+  }
+}
