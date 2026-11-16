@@ -1,5 +1,9 @@
 # Automatic evidence, not automatic trust
 
+## Status correction 16 November 2026
+
+The introductory candidate paragraph below is retained as a historical snapshot. The workflow and checker source is now published on `release/0.2.0` at `9b61dff26890c9ce551e7ea63f4d470e798fed9c`, after PR #4 merged into that release branch. Integration into `main` remains separate. Hosted outcomes must be checked against their exact revision; publication alone establishes no successful execution. If the trusted main/base checker is absent, retain `TRUSTED_CHECKER_UNAVAILABLE` and `NOT ASSESSED` rather than executing the candidate checker.
+
 Integration candidate based on release/0.2.0 commit `d4178b8afe98387fecbb5bbbcd380bd7b174a268` for `homayoun-safarpour/trace-gate`. These files have not been pushed, merged, enabled, or run on GitHub. The existing ci.yml workflow definition is unchanged; this candidate also changes the optional runtime dependency lock and source-distribution manifest.
 
 ## What runs after reviewed integration
