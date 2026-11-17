@@ -1,4 +1,4 @@
-+ /workspace/shared/trace-gate-install-2026-11-09/venv/bin/python -I -c 
++ /INSTALL_ROOT/venv/bin/python -I -c 
 import hashlib, importlib.metadata, json, pathlib, sys
 import tracegate
 dist = importlib.metadata.distribution('trace-gate')
@@ -17,13 +17,13 @@ hashes = {
 }
 print(json.dumps({'module': str(module), 'version': dist.version, 'hashes': hashes}))
 
-Verified non-editable wheel import: /workspace/shared/trace-gate-install-2026-11-09/venv/lib/python3.12/site-packages/tracegate/__init__.py
-+ /workspace/shared/trace-gate-install-2026-11-09/venv/bin/python -I -m pytest --import-mode=importlib -q
+Verified non-editable wheel import: /INSTALL_ROOT/venv/lib/python3.12/site-packages/tracegate/__init__.py
++ /INSTALL_ROOT/venv/bin/python -I -m pytest --import-mode=importlib -q
 ........................................................................ [ 65%]
 ......................................                                   [100%]
 110 passed in 0.56s
-+ /tmp/trace-gate-distribution-q0uijfix/runtime/bin/python -I -m pip install --no-index --no-deps --no-cache-dir /workspace/shared/trace-gate-promptfoo-2026-11-09/trace-gate/dist/trace_gate-0.1.0-py3-none-any.whl
-Processing /workspace/shared/trace-gate-promptfoo-2026-11-09/trace-gate/dist/trace_gate-0.1.0-py3-none-any.whl
++ /tmp/trace-gate-distribution-q0uijfix/runtime/bin/python -I -m pip install --no-index --no-deps --no-cache-dir /ORIGINAL_REPO_ROOT/dist/trace_gate-0.1.0-py3-none-any.whl
+Processing /ORIGINAL_REPO_ROOT/dist/trace_gate-0.1.0-py3-none-any.whl
 Installing collected packages: trace-gate
 Successfully installed trace-gate-0.1.0
 + /tmp/trace-gate-distribution-q0uijfix/runtime/bin/python -I -c 

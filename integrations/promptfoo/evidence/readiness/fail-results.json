@@ -288,12 +288,12 @@
     ],
     "env": {},
     "outputPath": [
-      "/workspace/scratch/2ab4182eefa2/trace_gate_readiness/candidate/trace-gate/integrations/promptfoo/evidence/readiness/fail-results.json"
+      "/READINESS_REPO_ROOT/integrations/promptfoo/evidence/readiness/fail-results.json"
     ],
     "extensions": [],
     "metadata": {},
     "evaluateOptions": {},
-    "basePath": "/workspace/scratch/2ab4182eefa2/trace_gate_readiness/candidate/trace-gate/integrations/promptfoo"
+    "basePath": "/READINESS_REPO_ROOT/integrations/promptfoo"
   },
   "shareableUrl": null,
   "metadata": {

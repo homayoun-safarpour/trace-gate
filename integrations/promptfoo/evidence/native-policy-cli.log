@@ -10,5 +10,5 @@ Results:
   0 errors (0%)
 Duration: 2s (concurrency: 1)
 
-Writing output to /workspace/shared/trace-gate-promptfoo-2026-11-09/trace-gate/integrations/promptfoo/evidence/native-policy-results.json
+Writing output to /ORIGINAL_REPO_ROOT/integrations/promptfoo/evidence/native-policy-results.json
 Pass rate 70.00% is below the threshold of 100%

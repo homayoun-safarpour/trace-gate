@@ -11,8 +11,10 @@ The trace-gate candidate works through the real Promptfoo 0.125.1 external Pytho
 assertion interface. The complete-suite envelope preserves exact case coverage,
 matching rubric fingerprints, quality floors and forbidden-tool vetoes.
 
-The integration is private and unpublished. The original candidate was preserved.
-No repository was pushed and no package or site was published.
+At the time of this verification (2026-11-09), the integration was private and
+unpublished. The original candidate was preserved. No repository was pushed
+and no package or site was published as part of that verification. These are
+historical statements, not a claim about the current publication status.
 
 ## Actual CLI comparison
 
@@ -67,6 +69,11 @@ It still returns `pass: false`, `score: 0`, `POLICY_VIOLATION`.
 Raw results, terminal logs and summarized outcomes are in `evidence/`. The verifier
 checks individual rows, exact scenario coverage, errors, CLI exits, provider and
 zero token usage. It returns success because intentional failures occurred.
+
+Clarification, 17 November 2026: the earlier "Raw results" label is retained
+as historical wording. The copies in `evidence/` are path-normalized results,
+terminal logs and summarized outcomes; they are not byte-identical raw logs.
+See `evidence/PATH_NORMALIZATION.md`. No new execution is claimed.
 
 ## Provenance and limits
 

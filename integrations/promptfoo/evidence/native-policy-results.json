@@ -2267,12 +2267,12 @@
     ],
     "env": {},
     "outputPath": [
-      "/workspace/shared/trace-gate-promptfoo-2026-11-09/trace-gate/integrations/promptfoo/evidence/native-policy-results.json"
+      "/ORIGINAL_REPO_ROOT/integrations/promptfoo/evidence/native-policy-results.json"
     ],
     "extensions": [],
     "metadata": {},
     "evaluateOptions": {},
-    "basePath": "/workspace/shared/trace-gate-promptfoo-2026-11-09/trace-gate/integrations/promptfoo"
+    "basePath": "/ORIGINAL_REPO_ROOT/integrations/promptfoo"
   },
   "shareableUrl": null,
   "metadata": {

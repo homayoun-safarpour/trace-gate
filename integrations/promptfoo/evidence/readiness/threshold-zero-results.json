@@ -99,7 +99,7 @@
               },
               "assertion": {
                 "type": "python",
-                "value": "file:///workspace/scratch/2ab4182eefa2/trace_gate_readiness/candidate/trace-gate/integrations/promptfoo/trace_gate_assert.py",
+                "value": "file:///READINESS_REPO_ROOT/integrations/promptfoo/trace_gate_assert.py",
                 "weight": 1,
                 "config": {
                   "rubric_path": "fixtures/rubric.json",
@@ -172,7 +172,7 @@
           "assert": [
             {
               "type": "python",
-              "value": "file:///workspace/scratch/2ab4182eefa2/trace_gate_readiness/candidate/trace-gate/integrations/promptfoo/trace_gate_assert.py",
+              "value": "file:///READINESS_REPO_ROOT/integrations/promptfoo/trace_gate_assert.py",
               "weight": 1,
               "config": {
                 "rubric_path": "fixtures/rubric.json",
@@ -276,7 +276,7 @@
         "assert": [
           {
             "type": "python",
-            "value": "file:///workspace/scratch/2ab4182eefa2/trace_gate_readiness/candidate/trace-gate/integrations/promptfoo/trace_gate_assert.py",
+            "value": "file:///READINESS_REPO_ROOT/integrations/promptfoo/trace_gate_assert.py",
             "weight": 1,
             "config": {
               "rubric_path": "fixtures/rubric.json",
@@ -289,7 +289,7 @@
     ],
     "env": {},
     "outputPath": [
-      "/workspace/scratch/2ab4182eefa2/trace_gate_readiness/candidate/trace-gate/integrations/promptfoo/evidence/readiness/threshold-zero-results.json"
+      "/READINESS_REPO_ROOT/integrations/promptfoo/evidence/readiness/threshold-zero-results.json"
     ],
     "extensions": [],
     "metadata": {},
