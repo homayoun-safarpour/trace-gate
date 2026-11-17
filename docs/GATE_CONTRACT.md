@@ -39,6 +39,9 @@ The parsed report names must match baseline score keys exactly, once each.
 The parser uses `name` when present, otherwise `id`, otherwise `unnamed`.
 Every supplied `name` and `id` must be a non-empty string; invalid values are
 rejected, not stringified or replaced with a fallback.
+
+Clarification, 17 November 2026: a non-empty supplied name or ID must also contain
+at least one non-whitespace character. Whitespace-only strings are rejected.
 Use explicit stable string names. For intentional subsets or CI shards, freeze
 and review distinct baseline files for the exact case set in each invocation.
 There is no implicit subset mode.

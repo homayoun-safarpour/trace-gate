@@ -70,6 +70,11 @@ Raw results, terminal logs and summarized outcomes are in `evidence/`. The verif
 checks individual rows, exact scenario coverage, errors, CLI exits, provider and
 zero token usage. It returns success because intentional failures occurred.
 
+Clarification, 17 November 2026: the earlier "Raw results" label is retained
+as historical wording. The copies in `evidence/` are path-normalized results,
+terminal logs and summarized outcomes; they are not byte-identical raw logs.
+See `evidence/PATH_NORMALIZATION.md`. No new execution is claimed.
+
 ## Provenance and limits
 
 The official repository was cloned read-only at

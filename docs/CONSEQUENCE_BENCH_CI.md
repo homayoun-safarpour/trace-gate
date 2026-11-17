@@ -6,6 +6,15 @@ The introductory candidate paragraph below is retained as a historical snapshot.
 
 Integration candidate based on release/0.2.0 commit `d4178b8afe98387fecbb5bbbcd380bd7b174a268` for `homayoun-safarpour/trace-gate`. These files have not been pushed, merged, enabled, or run on GitHub. The existing ci.yml workflow definition is unchanged; this candidate also changes the optional runtime dependency lock and source-distribution manifest.
 
+## Trace-routing clarification, 17 November 2026
+
+Recorded trace push runs on every branch, including `release/0.2.0`, use the
+checker from `main`. Pull requests targeting `main` use their trusted base
+commit. While that trusted source lacks `scripts/check_pr_trace.py`, the job
+fails with `TRUSTED_CHECKER_UNAVAILABLE` and `NOT ASSESSED`. It does not pass
+or assess candidate code. Main integration and required-check settings still
+need separate review and approval.
+
 ## What runs after reviewed integration
 
 - **Recorded trace evidence:** the head of every remote branch push (including release branches) and each PR targeting main triggers the narrow trace-data check. PRs use the *base commit's* checker, rubric and baseline; pushes use the current trusted main branch's checker/policy, not code from the pushed feature or release branch. Actual checked-out trusted/candidate commit SHAs are recorded. This is not a historical comparison against the previous push. Local commits cannot trigger GitHub until pushed; intermediate commits bundled in one push are not individually checked. The checker consumes only `examples/trajectories/support_good.json` from the head commit, capped at 100,000 bytes. Sparse checkout can also materialize ancestor/root files; this job never executes or imports them. These guarantees describe the unchanged reviewed workflow, not malicious modifications to the workflow YAML itself. The expected happy-path example must still satisfy the existing frozen baseline. No PR Python/JavaScript/tests/package scripts are run by this job. Changes to other files are NOT assessed by this job.

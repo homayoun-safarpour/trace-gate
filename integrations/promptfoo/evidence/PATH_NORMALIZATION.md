@@ -14,3 +14,12 @@ unchanged. Configuration is unchanged except for normalized paths, including
 paths in assertion values. File bytes and checksums necessarily
 change when paths are normalized; these copies are not byte-identical raw logs.
 This does not remove earlier Git history or retract already published copies.
+
+## Scope clarification, 17 November 2026
+
+Each placeholder above replaces one fixed checkout or installation prefix,
+applied one-to-one wherever that prefix occurred. Ephemeral
+`/tmp/trace-gate-distribution-*` and `/tmp/trace-gate-config-*` working paths
+retain their recorded values. The normalization does not claim that every
+absolute path was removed. No additional historical record is changed by
+this clarification.
