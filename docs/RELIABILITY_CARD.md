@@ -1,4 +1,4 @@
-# Reliability card — trace-gate
+# Reliability card: trace-gate
 
 | Field | Value |
 | --- | --- |

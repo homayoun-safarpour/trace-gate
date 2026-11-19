@@ -1,4 +1,4 @@
-"""Agent trajectory model — tool calls extracted from a JSON run record.
+"""Agent trajectory model: tool calls extracted from a JSON run record.
 
 Format is deliberately small and framework-agnostic. A trajectory is a list of
 steps. Each step may name a tool that was called. This is the same *shape* of
