@@ -6,7 +6,7 @@
 ![Python](https://img.shields.io/badge/python-3.10%20%7C%203.11%20%7C%203.12-blue)
 ![License](https://img.shields.io/badge/license-MIT-green)
 
-Fail CI when agent trajectory scores regress against a frozen baseline (exit 0 or 2).
+Agent evaluation: fail CI when agent trajectory scores regress against a frozen baseline (exit 0 or 2).
 
 trace-gate is a small command-line check that reads the recorded run of an AI agent (its messages and tool calls) and compares it with a run that a person has already approved. We built it because a test suite checks the code of an agent, whereas the failures we care about appear in what the agent did during a run, such as calling a tool that the rules forbid. Given a rubric and a frozen baseline, trace-gate scores each new run with fixed rules, keeps the sha256 fingerprint of the rubric beside the stored score, and returns exit 0 or 2, so that a CI job or an agent loop can stop a change that makes the agent worse.
 
@@ -23,6 +23,10 @@ verdict: REGRESSION
 ```
 
 That command exits 2. The same check on `examples/trajectories/support_good.json` exits 0.
+
+![trace-gate: recorded agent run is checked by score against frozen baseline; the result is REGRESSION with exit 2](docs/readme-flow.svg)
+
+[How it works](#how-it-works) · [Results](#what-each-result-means) · [Limits](#limits) · [Interview pack](docs/INTERVIEW.md) · [Cite](#citation) · Part of [a small open stack for checking AI agents and their judges](https://homayoun-safarpour.github.io)
 
 ## What each result means
 
