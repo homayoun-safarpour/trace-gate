@@ -14,7 +14,7 @@ Never treat local tests or an existing main-branch badge as hosted verification.
 3. Record the exact branch commit SHA. The workflow's push event tests the branch
    commit; a pull-request event can instead test GitHub's synthetic merge commit.
    Verify the recorded `Checked revision` and run `head_sha`, not only a green name.
-4. Require all three `test` matrix jobs, `promptfoo`, `loop-engine`, and the aggregate
+4. Require all three `test` matrix jobs, `promptfoo`, `loop-engine`, `action`, and the aggregate
    `Release readiness` check to succeed. The aggregate cannot pass when a dependency
    fails, is skipped or is cancelled. Keep the run links and artifact checksums.
 5. Re-review any new changes after the checks. A green earlier commit does not

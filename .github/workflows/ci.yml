@@ -105,10 +105,46 @@ jobs:
           python -I integrations/loop-engine/verify_integration.py
           --evidence "$RUNNER_TEMP/trace-gate-loop-engine"
 
+  action:
+    name: GitHub Action
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          persist-credentials: false
+      - name: The approved run passes
+        id: good
+        uses: ./
+        with:
+          trajectory: examples/trajectories/support_good.json
+          rubric: examples/rubric.json
+          baseline: examples/baselines/support_v1.json
+      - name: The run that calls a forbidden tool is blocked
+        id: bad
+        continue-on-error: true
+        uses: ./
+        with:
+          trajectory: examples/trajectories/support_regress.json
+          rubric: examples/rubric.json
+          baseline: examples/baselines/support_v1.json
+      - name: Both verdicts are the expected ones
+        shell: bash
+        env:
+          GOOD: ${{ steps.good.outputs.verdict }}
+          BAD: ${{ steps.bad.outputs.verdict }}
+          BAD_OUTCOME: ${{ steps.bad.outcome }}
+          BAD_CODE: ${{ steps.bad.outputs.exit-code }}
+        run: |
+          test "$GOOD" = "PASS"
+          test "$BAD" = "POLICY_VIOLATION"
+          test "$BAD_OUTCOME" = "failure"
+          test "$BAD_CODE" = "2"
+
   release-ready:
     name: Release readiness
     if: ${{ always() }}
-    needs: [test, promptfoo, loop-engine]
+    needs: [test, promptfoo, loop-engine, action]
     runs-on: ubuntu-latest
     timeout-minutes: 2
     steps:
@@ -117,8 +153,10 @@ jobs:
           TEST_RESULT: ${{ needs.test.result }}
           PROMPTFOO_RESULT: ${{ needs.promptfoo.result }}
           LOOP_RESULT: ${{ needs.loop-engine.result }}
+          ACTION_RESULT: ${{ needs.action.result }}
         run: |
           printf 'Matrix: %s; Promptfoo: %s\n' "$TEST_RESULT" "$PROMPTFOO_RESULT"
           test "$TEST_RESULT" = success
           test "$PROMPTFOO_RESULT" = success
           test "$LOOP_RESULT" = success
+          test "$ACTION_RESULT" = success

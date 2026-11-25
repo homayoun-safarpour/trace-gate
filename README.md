@@ -24,9 +24,24 @@ verdict: POLICY_VIOLATION
 
 That command exits 2. The same check on `examples/trajectories/support_good.json` exits 0.
 
-![trace-gate: recorded agent run is checked against a frozen baseline; it called the forbidden tool delete_order, so the result is POLICY_VIOLATION with exit 2](docs/readme-flow.svg)
+![Demo: trace-gate blocks an agent run that called a forbidden tool with exit 2 and passes the approved run with exit 0](docs/demo.svg)
 
 [How it works](#how-it-works) · [Results](#what-each-result-means) · [Limits](#limits) · [Interview pack](docs/INTERVIEW.md) · [Cite](#citation) · Part of [a small open stack for checking AI agents and their judges](https://homayoun-safarpour.github.io)
+
+## Use it in GitHub Actions
+
+Add one step to a workflow. The job fails when the run breaks the rubric or is worse than the baseline, and the verdict appears in the job summary.
+
+```yaml
+- uses: actions/checkout@v4
+- uses: homayoun-safarpour/trace-gate@main
+  with:
+    trajectory: runs/latest.json
+    rubric: eval/rubric.json
+    baseline: eval/baseline.json
+```
+
+The step has two outputs, `verdict` and `exit-code`. Pin a release tag or a commit SHA in place of `main` once a build depends on it. This repository tests the Action on every push: the approved example run must pass, and the run that calls a forbidden tool must be blocked.
 
 ## What each result means
 
@@ -67,6 +82,8 @@ The package is not on PyPI yet. `pip install git+https://github.com/homayoun-saf
 An evaluation library can score one run. A build needs a different answer: did this change make the agent worse than the last approved run? Without a pinned baseline, a score is a single number that nothing can gate on. An average score can also hide one forbidden call, so a forbidden tool has to block the run by itself. Without a fingerprint of the rubric, a teammate can make a failing agent pass by deleting a forbidden tool from the rubric file.
 
 ## How it works
+
+![trace-gate: recorded agent run is checked against a frozen baseline; it called the forbidden tool delete_order, so the result is POLICY_VIOLATION with exit 2](docs/readme-flow.svg)
 
 1. `trace-gate score` reads a run and scores it against the rubric. It only prints diagnostics and exits 0 even when `policy_ok=false`, so it is not the gate.
 2. `trace-gate freeze` stores the score of an approved run as the baseline, with a tolerance and the sha256 fingerprint of the rubric. It refuses a run that called a forbidden tool.

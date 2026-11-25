@@ -1,4 +1,4 @@
-include LICENSE README.md pyproject.toml requirements-ci.txt
+include LICENSE README.md pyproject.toml requirements-ci.txt action.yml
 recursive-include docs *.md *.svg *.json
 recursive-include examples *.json *.txt
 recursive-include scripts *.py
