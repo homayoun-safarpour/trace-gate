@@ -19,3 +19,35 @@ jobs:
       - run: pip install -e . pytest ruff
       - run: ruff check src tests
       - run: pytest -q
+
+  action:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: The approved run passes
+        id: good
+        uses: ./
+        with:
+          trajectory: examples/trajectories/support_good.json
+          rubric: examples/rubric.json
+          baseline: examples/baselines/support_v1.json
+      - name: The regressed run is blocked
+        id: bad
+        continue-on-error: true
+        uses: ./
+        with:
+          trajectory: examples/trajectories/support_regress.json
+          rubric: examples/rubric.json
+          baseline: examples/baselines/support_v1.json
+      - name: Both verdicts are the expected ones
+        shell: bash
+        env:
+          GOOD: ${{ steps.good.outputs.verdict }}
+          BAD: ${{ steps.bad.outputs.verdict }}
+          BAD_OUTCOME: ${{ steps.bad.outcome }}
+          BAD_CODE: ${{ steps.bad.outputs.exit-code }}
+        run: |
+          test "$GOOD" = "PASS"
+          test "$BAD" = "REGRESSION"
+          test "$BAD_OUTCOME" = "failure"
+          test "$BAD_CODE" = "2"
