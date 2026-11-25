@@ -1,0 +1,20 @@
+{
+  "repository": "https://github.com/promptfoo/promptfoo",
+  "source_revision": "b3603fab85bb331da98a8b68ca442e1f4af7e368",
+  "source_package_version": "0.125.1",
+  "runtime_package_version": "0.125.1",
+  "runtime_tarball": "https://registry.npmjs.org/promptfoo/-/promptfoo-0.125.1.tgz",
+  "runtime_integrity": "sha512-nogBhixdp69icwkg1EI0syZ4zAmAjJyWeLcqxAkTldbHi0qirOslwHvkUQhQmg65lQLrIKyMOMLXlBlSc6LRrg==",
+  "license": "MIT",
+  "copyright": "Copyright (c) Promptfoo 2025",
+  "runtime_equals_source_commit": "Not claimed; the published npm release and inspected source revision are pinned separately. Python wrapper and LICENSE bytes match.",
+  "inspected_files_sha256": {
+    "LICENSE": "bf813686553f451e1b833fbd827488aee49b60b189626915bf3108d10b754e44",
+    "package.json": "36ea0811840e3fc82a3392333991b07fd739970990a5f0775ae03627c847715c",
+    "src/python/wrapper.py": "0a4bd9a6c64cc4de6f273cba1b9a175755837327570115f95f953b2f785ea792",
+    "src/assertions/python.ts": "66ef2c52d3441d57b5d26356235dd1aab13ba49840356cc9ce86f6a59783fa21",
+    "src/assertions/scriptResultNormalization.ts": "f3554a33af85e83701845a1621f007b7850d221bbdbf569c68821a5a2be921d0",
+    "src/assertions/assertionsResult.ts": "46cf989e30760d86f14e092c835f4dc942a0544cf97a5560bd4067efecfb3953",
+    "site/docs/configuration/expected-outputs/python.md": "ba0ced339aacf3d1736643caf1cb9f1fdcc1235d7193fedeb43188d5aa037625"
+  }
+}

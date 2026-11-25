@@ -1,0 +1,108 @@
+{
+  "fixture_kind": "synthetic",
+  "forbidden_name_count": 20,
+  "quality_floor": 0.95,
+  "cases": [
+    {
+      "label": "Clean recorded trace",
+      "exit_code": 0,
+      "first_case_score": {
+        "trajectory_name": "demo",
+        "metrics": {
+          "tool_presence": 1.0,
+          "forbidden_tools": 1.0,
+          "tool_order": 1.0,
+          "step_band": 1.0
+        },
+        "composite": 1.0,
+        "forbidden_tools_used": [],
+        "policy_ok": true,
+        "rubric_sha256": "451519feabc88689529ac3fdb9981ede37b5c440be8526fe2103aeac5186041e"
+      },
+      "result": {
+        "verdict": "PASS",
+        "ok": true,
+        "details": [
+          "rubric_sha256 OK (451519feabc8...)",
+          "demo: PASS composite=1.0000 >= floor=0.9500 (pinned=1.0000)"
+        ]
+      }
+    },
+    {
+      "label": "Forbidden second call",
+      "exit_code": 2,
+      "first_case_score": {
+        "trajectory_name": "demo",
+        "metrics": {
+          "tool_presence": 1.0,
+          "forbidden_tools": 0.95,
+          "tool_order": 1.0,
+          "step_band": 1.0
+        },
+        "composite": 0.9875,
+        "forbidden_tools_used": [
+          "deny_0"
+        ],
+        "policy_ok": false,
+        "rubric_sha256": "451519feabc88689529ac3fdb9981ede37b5c440be8526fe2103aeac5186041e"
+      },
+      "result": {
+        "verdict": "POLICY_VIOLATION",
+        "ok": false,
+        "details": [
+          "rubric_sha256 OK (451519feabc8...)",
+          "demo: POLICY_VIOLATION forbidden_tools_used=['deny_0'] (forbidden_tools=0.9500; tolerance does not apply)"
+        ]
+      }
+    },
+    {
+      "label": "Known + unknown cases",
+      "exit_code": 2,
+      "first_case_score": {
+        "trajectory_name": "demo",
+        "metrics": {
+          "tool_presence": 1.0,
+          "forbidden_tools": 1.0,
+          "tool_order": 1.0,
+          "step_band": 1.0
+        },
+        "composite": 1.0,
+        "forbidden_tools_used": [],
+        "policy_ok": true,
+        "rubric_sha256": "451519feabc88689529ac3fdb9981ede37b5c440be8526fe2103aeac5186041e"
+      },
+      "result": {
+        "verdict": "UNKNOWN_TRAJECTORY",
+        "ok": false,
+        "details": [
+          "rubric_sha256 OK (451519feabc8...)",
+          "not in baseline: ['not-pinned']"
+        ]
+      }
+    },
+    {
+      "label": "Legacy pin without hash",
+      "exit_code": 2,
+      "first_case_score": {
+        "trajectory_name": "demo",
+        "metrics": {
+          "tool_presence": 1.0,
+          "forbidden_tools": 1.0,
+          "tool_order": 1.0,
+          "step_band": 1.0
+        },
+        "composite": 1.0,
+        "forbidden_tools_used": [],
+        "policy_ok": true,
+        "rubric_sha256": "451519feabc88689529ac3fdb9981ede37b5c440be8526fe2103aeac5186041e"
+      },
+      "result": {
+        "verdict": "MISSING_RUBRIC_FINGERPRINT",
+        "ok": false,
+        "details": [
+          "baseline has no rubric_sha256; review the rubric and original trajectories, then re-freeze deliberately (legacy baselines are not trusted automatically)"
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "description": "trace-gate complete recorded-suite check, synthetic echo provider",
+  "prompts": [
+    "{{trace_json}}"
+  ],
+  "providers": [
+    "echo"
+  ],
+  "tests": [
+    {
+      "description": "good",
+      "vars": {
+        "trace_json": "{\n  \"trajectories\": [\n    {\n      \"name\": \"synthetic-order-a\",\n      \"steps\": [\n        {\n          \"role\": \"assistant\",\n          \"tool_calls\": [\n            {\n              \"id\": \"lookup-1\",\n              \"function\": {\n                \"name\": \"lookup_order\"\n              }\n            }\n          ]\n        },\n        {\n          \"role\": \"assistant\",\n          \"tool_calls\": [\n            {\n              \"id\": \"reply-1\",\n              \"function\": {\n                \"name\": \"send_reply\"\n              }\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"name\": \"synthetic-order-b\",\n      \"steps\": [\n        {\n          \"role\": \"assistant\",\n          \"tool_calls\": [\n            {\n              \"id\": \"lookup-1\",\n              \"function\": {\n                \"name\": \"lookup_order\"\n              }\n            }\n          ]\n        },\n        {\n          \"role\": \"assistant\",\n          \"tool_calls\": [\n            {\n              \"id\": \"reply-1\",\n              \"function\": {\n                \"name\": \"send_reply\"\n              }\n            }\n          ]\n        }\n      ]\n    }\n  ]\n}\n"
+      },
+      "assert": [
+        {
+          "type": "python",
+          "value": "file://trace_gate_assert.py",
+          "weight": 1,
+          "config": {
+            "rubric_path": "fixtures/rubric.json",
+            "baseline_path": "fixtures/baseline.json"
+          }
+        }
+      ]
+    }
+  ]
+}

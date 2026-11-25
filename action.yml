@@ -22,7 +22,7 @@ inputs:
 
 outputs:
   verdict:
-    description: "PASS, REGRESSION, RUBRIC_DRIFT, MISSING_BASELINE, UNKNOWN_TRAJECTORY, or ERROR."
+    description: "The verdict word printed by trace-gate check (for example PASS, POLICY_VIOLATION or REGRESSION), or ERROR."
     value: ${{ steps.check.outputs.verdict }}
   exit-code:
     description: "Exit code of `trace-gate check` (0 pass, 2 blocked)."
@@ -31,7 +31,7 @@ outputs:
 runs:
   using: "composite"
   steps:
-    - uses: actions/setup-python@v5
+    - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5
       with:
         python-version: ${{ inputs.python-version }}
     - name: Install trace-gate

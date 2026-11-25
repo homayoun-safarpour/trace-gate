@@ -1,4 +1,6 @@
 """The GitHub Action wraps `trace-gate check`; these tests lock its contract and the demo."""
+import html
+import re
 from pathlib import Path
 
 from tracegate.cli import main
@@ -51,7 +53,7 @@ def test_action_runs_the_documented_command_and_keeps_its_exit_code():
 def test_ci_proves_the_action_passes_good_and_blocks_regressed():
     assert "uses: ./" in CI
     assert 'test "$GOOD" = "PASS"' in CI
-    assert 'test "$BAD" = "REGRESSION"' in CI
+    assert 'test "$BAD" = "POLICY_VIOLATION"' in CI
     assert 'test "$BAD_OUTCOME" = "failure"' in CI
 
 
@@ -61,8 +63,14 @@ def test_readme_shows_the_action_after_the_first_screen():
     assert at < README.find("## What each result means")
 
 
+def _visible_text(svg):
+    """The text a reader sees in the SVG, with tags removed and whitespace collapsed."""
+    parts = re.findall(r">([^<>]+)<", svg)
+    return " ".join(html.unescape(" ".join(parts)).split())
+
+
 def test_demo_shows_only_real_output(capsys):
-    demo = (ROOT / "docs" / "demo.svg").read_text(encoding="utf-8")
+    demo = _visible_text((ROOT / "docs" / "demo.svg").read_text(encoding="utf-8"))
     for name, code in (("support_regress", 2), ("support_good", 0)):
         got = main(
             [
@@ -77,6 +85,5 @@ def test_demo_shows_only_real_output(capsys):
         assert got == code
         printed = capsys.readouterr()
         for line in (printed.out + printed.err).strip().splitlines():
-            shown = line.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")
-            assert shown in demo
+            assert " ".join(line.split()) in demo
         assert f"exit {code}" in demo

@@ -9,8 +9,8 @@ authors:
 repository-code: "https://github.com/homayoun-safarpour/trace-gate"
 url: "https://homayoun-safarpour.github.io"
 license: MIT
-version: "0.1.0"
-abstract: "Gate a deploy on agent trajectory scores against a frozen baseline (exit 0 pass / 2 regression)."
+version: "0.2.0"
+abstract: "Fail CI when a recorded agent run calls a forbidden tool or its score regresses against a reviewed baseline (exit 0 pass, 2 refuse)."
 keywords:
   - "agent-loop"
   - "ci"

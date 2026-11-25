@@ -1,0 +1,51 @@
+name: Recorded trace evidence
+on:
+  push:
+    branches: ['**']
+  pull_request:
+    branches: [main]
+permissions:
+  contents: read
+jobs:
+  trace-data:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - name: Trusted base checker and policy
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: ${{ github.event.pull_request.base.sha || 'main' }}
+          path: trusted
+          persist-credentials: false
+      - name: Candidate data only
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          path: candidate
+          persist-credentials: false
+          sparse-checkout: examples/trajectories
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065
+        with:
+          python-version: '3.12'
+      - name: Record resolved checkout identities
+        run: |
+          printf 'TRUSTED_SHA=%s\n' "$(git -C trusted rev-parse HEAD)" >> "$GITHUB_ENV"
+          printf 'CANDIDATE_SHA=%s\n' "$(git -C candidate rev-parse HEAD)" >> "$GITHUB_ENV"
+      - name: Evaluate candidate trace with trusted code
+        run: |
+          if [ ! -f trusted/scripts/check_pr_trace.py ]; then
+            mkdir -p reports/pr-trace
+            printf '{"passed":false,"verdict":"TRUSTED_CHECKER_UNAVAILABLE","trusted_sha":"%s","candidate_sha":"%s","scope":"No candidate input assessed; install the reviewed checker on trusted main first."}\n' "$TRUSTED_SHA" "$CANDIDATE_SHA" > reports/pr-trace/report.json
+            printf '# Recorded trace check\n\nNOT ASSESSED: trusted checker is unavailable. No candidate code was run.\n' > reports/pr-trace/report.md
+            cat reports/pr-trace/report.md >> "$GITHUB_STEP_SUMMARY"
+            exit 1
+          fi
+          python -I trusted/scripts/check_pr_trace.py --candidate candidate --output reports/pr-trace
+      - name: Preserve restricted evidence
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: pr-trace-${{ github.run_id }}-${{ github.run_attempt }}
+          path: reports/pr-trace/
+          if-no-files-found: error
+          retention-days: 14

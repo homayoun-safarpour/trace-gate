@@ -1,0 +1,27 @@
+[
+  {
+    "package": "node_modules/@isaacs/nonrecursive-glob-match",
+    "before": null,
+    "after": "1.1.0"
+  },
+  {
+    "package": "node_modules/basic-ftp",
+    "before": "5.3.1",
+    "after": "6.2.6"
+  },
+  {
+    "package": "node_modules/glob",
+    "before": "13.0.7",
+    "after": "14.0.4"
+  },
+  {
+    "package": "node_modules/minimatch",
+    "before": "10.2.6",
+    "after": "11.0.5"
+  },
+  {
+    "package": "node_modules/path-scurry",
+    "before": "2.0.2",
+    "after": "3.0.0"
+  }
+]
