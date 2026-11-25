@@ -1,4 +1,4 @@
-# Browser-local trace-gate fixture port — fixed-fixture interaction bench
+# Browser-local trace-gate fixture port: fixed-fixture interaction bench
 
 Three connected interactions retained: change the synthetic input, calculate the bounded gate, compare/export exact input-bound receipts. Every check is a fresh local JavaScript calculation. No server call, uploaded material, user authentication data, model API, arbitrary tools or repository execution.
 

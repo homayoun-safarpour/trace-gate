@@ -16,6 +16,10 @@ The project is not declaring a stable 1.0 API or general OTLP conformance.
   tolerance. Exact baseline case coverage and rubric fingerprints are required.
 - Nested calls, including forbidden second calls and repeated calls, are retained.
   Ambiguous or malformed evidence is rejected instead of silently ignored.
+- Without `tool_calls`, a step's `name` counts as a tool only on a step with no
+  `role` or `type`, or on a `tool_use` or `function_call` step. A `name` on a
+  user, assistant or tool-result message is the speaker's name, so a run with
+  no calls can no longer satisfy `required_tools` through message names.
 - The narrow offline OTel/OpenInference profile can inspect supplied JSON and
   requires an explicit coverage declaration before scoring. It does not collect
   live telemetry or prove the declaration is complete.

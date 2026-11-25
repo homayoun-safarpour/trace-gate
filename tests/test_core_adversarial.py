@@ -5,6 +5,7 @@ from dataclasses import replace
 import pytest
 
 from tracegate.baseline import Baseline, check_against_baseline, freeze_baseline, load_baseline
+from tracegate.cli import main
 from tracegate.score import Rubric, score_trajectory
 from tracegate.trajectory import load_json_document, load_trajectory, trajectory_from_dict
 
@@ -103,8 +104,6 @@ def test_score_serialization_includes_rubric_binding():
 ])
 @pytest.mark.parametrize("command", ["score", "check", "freeze"])
 def test_malformed_json_cli_is_controlled_refusal(text, command, tmp_path, capsys):
-    from tracegate.cli import main
-
     trajectory = tmp_path / "trajectory.json"
     trajectory.write_text(text)
     rubric = tmp_path / "rubric.json"

@@ -137,7 +137,7 @@ export, the caller supplies a separate declaration containing exactly:
 The two coverage fields also accept `unknown` and `incomplete`, which remain
 ineligible. Both must be `complete` for scoring, and observed problems still
 block scoring. The case name is explicit and stable across trace IDs; allowed
-characters are letters, digits, underscore, dot and hyphen, up to 128 characters.
+characters are letters, digits, `_`, `.` and `-`, up to 128 characters.
 The declaration's own hash is retained alongside the source hash in diagnostics.
 
 **A declaration is caller attestation, not verified completeness or authenticity.**

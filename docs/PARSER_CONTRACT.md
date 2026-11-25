@@ -2,7 +2,7 @@
 
 This change keeps one Step per input message. Each Step can contain multiple ToolCall records; Trajectory.tools flattens their names in original order, retaining repeated names. ToolCall.id preserves an explicitly supplied nested call ID. IDs may be absent; absence is not a generated identity. Duplicate supplied IDs within one run are rejected.
 
-When tool_calls is present, name is participant metadata rather than a tool alias. Legacy direct tool/name steps and Step(role, tool, content) construction remain supported. Step.tool is a first-call compatibility view for nested messages, not the full list. Consumers requiring complete evidence must use tool_calls or Trajectory.tools.
+When tool_calls is present, name is participant metadata rather than a tool alias. Legacy direct tool steps and Step(role, tool, content) construction remain supported. Without tool_calls, name is read as a tool only on a step with no role or type, or on a tool_use or function_call step; on a user, assistant or tool-result message it is the speaker's name, not a call (code review of 25 Nov 2026, finding 6). Step.tool is a first-call compatibility view for nested messages, not the full list. Consumers requiring complete evidence must use tool_calls or Trajectory.tools.
 
 Input must contain exactly one of steps, messages or trajectory, whose value must be a list of objects. An explicit empty list is structurally valid, but that is not a claim of safe behaviour. Missing/null lists, malformed calls, empty/non-string call names or IDs, duplicate IDs, and mixed direct/nested call representations are rejected. More than one step-list alias is rejected rather than applying a truthiness fallback.
 

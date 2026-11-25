@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import json
+import math
 from dataclasses import dataclass, field
 from pathlib import Path
 from typing import Any
@@ -71,10 +72,22 @@ def _call_from_mapping(raw: Any, location: str) -> ToolCall:
     return ToolCall(name, call_id)
 
 
+_TOOL_BLOCK_TYPES = frozenset({"tool_use", "function_call"})
+
+
+def _name_is_tool_alias(raw: dict[str, Any]) -> bool:
+    if "type" in raw:
+        return raw["type"] in _TOOL_BLOCK_TYPES
+    return "role" not in raw
+
+
 def _step_from_mapping(raw: dict[str, Any], location: str = "step") -> Step:
     # With nested calls, name is message-participant metadata, not a tool alias.
+    # On a message with a role (user, assistant, tool result) it is the
+    # participant name too; only a bare legacy step or a tool_use or
+    # function_call block names a tool with it.
     tool = raw.get("tool")
-    if "tool_calls" not in raw and tool is None:
+    if "tool_calls" not in raw and tool is None and _name_is_tool_alias(raw):
         tool = raw.get("name")
     if "tool" in raw and raw["tool"] is not None:
         tool = _nonempty_string(raw["tool"], f"{location}.tool")
@@ -145,7 +158,6 @@ def load_json_document(value: str) -> Any:
         raise ValueError(f"non-finite JSON constant: {constant}")
 
     def finite_float(number: str) -> float:
-        import math
         result = float(number)
         if not math.isfinite(result):
             raise ValueError(f"non-finite JSON number: {number}")

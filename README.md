@@ -1,18 +1,18 @@
-# trace-gate: regression checks for agent traces
+# trace-gate
 
-**Check what an agent did, catch forbidden calls, and spot regressions before the next CI step.**
+**Unit tests pass while your agent starts calling forbidden tools, because pytest never reads the recorded run.**
 
 [![CI](https://github.com/homayoun-safarpour/trace-gate/actions/workflows/ci.yml/badge.svg)](https://github.com/homayoun-safarpour/trace-gate/actions/workflows/ci.yml)
 ![Python](https://img.shields.io/badge/python-3.10%20%7C%203.11%20%7C%203.12-blue)
 ![License](https://img.shields.io/badge/license-MIT-green)
 
-Give trace-gate a recorded JSON trace, a rubric describing your checks, and a
-reviewed baseline. A forbidden tool call fails the check even when the average
-score looks good. The Python core needs no runtime dependencies or model calls.
+Agent evaluation: fail CI when a recorded agent run calls a forbidden tool or its score regresses against a reviewed baseline (exit 0 or 2).
+
+trace-gate is a small command-line check that reads the recorded run of an AI agent (its messages and tool calls) and compares it with a run that a person has already approved. We built it because a test suite checks the code of an agent, whereas the failures we care about appear in what the agent did during a run, such as calling a tool that the rules forbid. Given a rubric and a frozen baseline, trace-gate blocks any run that called a forbidden tool, scores the rest with fixed rules, keeps the sha256 fingerprint of the rubric beside the stored score, and returns exit 0 or 2, so that a CI job or an agent loop can stop a change that makes the agent worse.
 
 ```bash
-# From this reviewed checkout or extracted source archive:
-python -m pip install .
+git clone https://github.com/homayoun-safarpour/trace-gate
+cd trace-gate && pip install -e .
 trace-gate check examples/trajectories/support_regress.json --rubric examples/rubric.json --baseline examples/baselines/support_v1.json
 ```
 
@@ -22,44 +22,59 @@ verdict: POLICY_VIOLATION
   support-agent-good: POLICY_VIOLATION forbidden_tools_used=['delete_order'] (forbidden_tools=0.5000; tolerance does not apply)
 ```
 
-The check exits **2**. The same command with `support_good.json` exits **0**.
-`score` only prints diagnostics; use **`check`** as your CI gate.
+That command exits 2. The same check on `examples/trajectories/support_good.json` exits 0.
 
-> Prepared for **0.2.0**. The public CI badge does not validate a local archive.
-> Check the exact revision and its CI results before deployment;
-> [verify the installation](docs/INSTALLATION.md) and review the
-> [0.2.0 changes and migration notes](docs/RELEASE_NOTES_0.2.0.md).
+![trace-gate: recorded agent run is checked against a frozen baseline; it called the forbidden tool delete_order, so the result is POLICY_VIOLATION with exit 2](docs/readme-flow.svg)
 
-## A forbidden call fails even when the average passes
+[How it works](#how-it-works) · [Results](#what-each-result-means) · [Limits](#limits) · [Interview pack](docs/INTERVIEW.md) · [Cite](#citation) · Part of [a small open stack for checking AI agents and their judges](https://homayoun-safarpour.github.io)
 
-![Synthetic CLI proof: a clean trace passes, but a forbidden second call fails even at composite 0.9875 above the 0.95 quality floor. Mixed unknown cases and missing fingerprints fail too.](docs/gate-proof.svg)
+## What each result means
 
-This illustration is generated from real CLI results on synthetic fixtures,
-not a production benchmark or a competitor comparison. Reproduce it with
-`python scripts/render_gate_demo.py`; the underlying results are in
-[gate-proof.json](docs/gate-proof.json).
+Only `PASS` exits 0. Every other result exits 2, and a CI job should block on any exit that is not 0.
 
-## Quickstart
+| Verdict | Exit | Meaning |
+|---|---|---|
+| `PASS` | 0 | Every run used only the tools the rubric allows, every case in the baseline was supplied once, and each score is within the tolerance of its pinned score. |
+| `POLICY_VIOLATION` | 2 | A run called a tool listed in `forbidden_tools`. The tolerance does not apply, whatever the score. |
+| `REGRESSION` | 2 | A score fell below the pinned score minus the tolerance. |
+| `RUBRIC_DRIFT` | 2 | The rubric no longer matches the fingerprint stored with the baseline. |
+| `MISSING_RUBRIC_FINGERPRINT` | 2 | The baseline has no rubric fingerprint, so it must be reviewed and frozen again. |
+| `MISSING_BASELINE` | 2 | The baseline has no scores, so there is nothing to compare against. |
+| `UNKNOWN_TRAJECTORY` | 2 | The name of a run, or of any one of several runs, is not in the baseline. |
+| `MISSING_TRAJECTORY` | 2 | A case in the baseline was not supplied. |
+| `DUPLICATE_TRAJECTORY` | 2 | A run name appears more than once. |
+| `INVALID_BASELINE` | 2 | The baseline has an unsupported version, a malformed fingerprint, or a tolerance or score that is not a finite number between 0 and 1. |
 
-### Is this useful for your project?
+A missing or unreadable file, invalid JSON or a malformed run or rubric also exits 2, with one `INVALID_TRAJECTORY`, `INVALID_RUBRIC` or `INVALID_BASELINE` line on stderr and no verdict. `freeze` refuses with one `FREEZE_REFUSED` line, exit 2, and writes no file, also when the run called a forbidden tool.
 
-Use trace-gate when you already record agent tool calls and want a repeatable
-check in CI. For example, a support agent might complete most of a task correctly
-but call `delete_order`, which your policy forbids. That run should fail rather
-than hide behind a high average score.
+A `PASS` shows that the recorded tool use matches the reviewed rubric and has not become worse. It does not show that the reply was correct or helpful. The exit contract is in [`docs/EXIT_CODES.md`](docs/EXIT_CODES.md), and the limits of each claim are in [`docs/RELIABILITY_CARD.md`](docs/RELIABILITY_CARD.md).
 
-The check works on recorded evidence. It does not intercept a live agent or
-stop a tool call before it happens. If you need that boundary, add a separate
-runtime policy check around the executor.
+## Use this when
 
-### Try the example
+| Situation | Use trace-gate? |
+| --- | --- |
+| Your agent's runs are exported as JSON (messages and tool calls) and you want a CI check | Yes |
+| You need exit code `0` or `2` so GitHub Actions or [agent-loop-engine](https://github.com/homayoun-safarpour/agent-loop-engine) can stop on failure | Yes |
+| You want a language-model judge to grade the run | No. Use [langchain-ai/agentevals](https://github.com/langchain-ai/agentevals); this tool uses fixed rules only |
+| Your traces are OpenInference OTLP JSON exports | Yes, offline, with one coverage declaration per export. See [`docs/OTEL_ADAPTER.md`](docs/OTEL_ADAPTER.md) |
+| Your traces are in another OpenTelemetry or Jaeger format | Not directly. Convert them to JSON first |
+| You need to stop a tool call while the agent is running | No. This checks recorded runs after the fact |
 
-Use Python 3.10+. The commands below do not invoke the recorded tools.
+The package is not on PyPI yet. `pip install git+https://github.com/homayoun-safarpour/trace-gate` is the other way to install it. Version 0.2.0 changes are in [`docs/RELEASE_NOTES_0.2.0.md`](docs/RELEASE_NOTES_0.2.0.md).
+
+## The problem
+
+An evaluation library can score one run. A build needs a different answer: did this change make the agent worse than the last approved run? Without a pinned baseline, a score is a single number that nothing can gate on. An average score can also hide one forbidden call, so a forbidden tool has to block the run by itself. Without a fingerprint of the rubric, a teammate can make a failing agent pass by deleting a forbidden tool from the rubric file.
+
+## How it works
+
+1. `trace-gate score` reads a run and scores it against the rubric. It only prints diagnostics and exits 0 even when `policy_ok=false`, so it is not the gate.
+2. `trace-gate freeze` stores the score of an approved run as the baseline, with a tolerance and the sha256 fingerprint of the rubric. It refuses a run that called a forbidden tool.
+3. `trace-gate check` checks each new run in order: rubric fingerprint, forbidden tools, that every baseline case is supplied exactly once, then each score against its floor. It exits 0 only on `PASS`.
 
 ```bash
 trace-gate score examples/trajectories/support_good.json --rubric examples/rubric.json
 
-# Review the trace and rubric before writing or replacing a pin.
 trace-gate freeze examples/trajectories/support_good.json \
   --rubric examples/rubric.json \
   --out baseline.json \
@@ -70,7 +85,7 @@ trace-gate check examples/trajectories/support_good.json \
   --baseline baseline.json
 ```
 
-Expected final check:
+Output of the last command, on the approved run:
 
 ```text
 verdict: PASS
@@ -78,74 +93,31 @@ verdict: PASS
   support-agent-good: PASS composite=1.0000 >= floor=0.9500 (pinned=1.0000)
 ```
 
-Use `--json` with `score` or `check` for machine-readable results. A valid
-`check` result contains `verdict`, `ok` and `details`. Input/file errors go to
-stderr with exit 2, even with `--json`; see [exit codes](docs/EXIT_CODES.md).
+Add `--json` to `score` or `check` for machine-readable output.
 
-## What the gate checks
+| Module | What it does |
+|---|---|
+| `tracegate.trajectory` | Loads a run from JSON, rejects malformed runs, and extracts every tool call, including every entry of a `tool_calls` list |
+| `tracegate.score` | Scores the run against the rubric with fixed rules and no model calls, and lists any forbidden tools it called |
+| `tracegate.baseline` | Freezes, loads and checks a baseline together with the rubric fingerprint |
+| `tracegate.otel` | Reads one offline OpenInference OTLP JSON export (`trace-gate inspect-otel`) |
+| `tracegate.cli` | The `score`, `freeze`, `check` and `inspect-otel` commands |
 
-1. **Supported input shape.** Every nested tool call is retained, including
-   repeated calls. Malformed evidence is rejected before scoring.
-2. **Rubric identity.** A baseline must contain the matching rubric SHA-256.
-   Missing fingerprints require deliberate migration; they do not opt out.
-3. **Hard policy.** Any observed forbidden tool vetoes `check` and `freeze`,
-   regardless of the composite, tolerance or previously pinned score.
-4. **Complete case coverage.** Supply each baseline case exactly once. Unknown,
-   omitted or duplicate case names cannot be hidden by another passing case.
-5. **Quality regression.** Every case must reach `pinned composite - tolerance`.
-   The composite remains the mean of four diagnostic metrics: tool presence,
-   forbidden tools, tool order and step count. Unconstrained metrics score 1.
+Interview pack: [docs/INTERVIEW.md](docs/INTERVIEW.md), three questions and a two-minute demo. Gate order and baseline migration: [`docs/GATE_CONTRACT.md`](docs/GATE_CONTRACT.md). Input format: [`docs/PARSER_CONTRACT.md`](docs/PARSER_CONTRACT.md).
 
-A rubric fingerprint detects a mismatch. It is **not authentication** and does
-not prevent someone from changing both the rubric and baseline. Review and
-protect those files and the CI job that invokes this check.
+## Limits
 
-[Gate and migration contract](docs/GATE_CONTRACT.md) ·
-[Supported input format](docs/PARSER_CONTRACT.md) ·
-[Claim boundaries](docs/RELIABILITY_CARD.md)
+- It is not a language-model judge. It scores tool use only and does not judge the meaning of a reply or check tool arguments.
+- A recorded call is evidence that a tool was called, not that it succeeded. trace-gate neither runs nor stops a live tool call.
+- The run format is minimal. Tool calls are read from `tool`, from every entry of `tool_calls`, and from `name` only on a step with no `role` or `type`, or on a `tool_use` or `function_call` step. A `name` on a user, assistant or tool-result message is the speaker's name, not a call. Other trace formats need a converter first.
+- A baseline is keyed by the run's name. If a run is renamed and the baseline is not updated, the verdict is `UNKNOWN_TRAJECTORY`. A partial set of cases cannot pass against a full baseline, so sharded CI needs one reviewed baseline per shard.
+- The fingerprint detects a changed rubric. It is not authentication: someone who changes both the rubric and the baseline can still change the result, so review and protect those files.
+- Baselines made by 0.1.0 without a fingerprint now fail as `MISSING_RUBRIC_FINGERPRINT`. Baselines do not pin the parser or scorer version, so review old runs after an upgrade before freezing again.
+- It has no runtime dependencies and needs Python 3.10 or later. Every central claim has a named test under `tests/`.
 
-## Fit it into the tools you already use
+## Use it as a gate in a loop
 
-Existing tests often omit agent traces. Pytest can inspect JSON too; trace-gate
-provides a small ready-made scorer, reviewed baseline format and console gate.
-
-| Tool | Where it fits |
-| --- | --- |
-| [Promptfoo](https://www.promptfoo.dev/) | Broader evaluation and red-team workflows, with existing CI thresholds and reports. Use its native gates when they cover your need. |
-| [DeepEval](https://deepeval.com/docs/metrics-tool-permission) | Test-oriented evaluations, including deterministic tool permissions. Forbidden-tool detection is not unique to trace-gate. |
-| [AgentEvals](https://github.com/langchain-ai/agentevals) | Rich trajectory matching, argument matching and optional LLM judges. Prefer it when those capabilities matter. |
-| trace-gate | A small dependency-free check for supported JSON traces, rubric fingerprints, exact case coverage and pinned composite floors. |
-
-No head-to-head accuracy, speed or adoption advantage has been measured. This
-package does not provide an observability platform, runtime tool interception,
-live OpenTelemetry collection, general OTLP conformance, argument checking or
-semantic grading of replies. The narrow offline profile is described below.
-
-## Optional Promptfoo integration
-
-Use the [external Python assertion example](integrations/promptfoo/README.md) to
-check a complete recorded suite inside Promptfoo. It includes a pinned offline
-echo test, positive/negative fixtures, a native configured comparison, and
-explicit warnings about outer thresholds overriding failures. The core runtime
-remains dependency-free; Promptfoo is optional.
-
-## CI integration
-
-Install the reviewed wheel or source archive in your build, keep your rubric,
-traces and baseline in the project, and run:
-
-```bash
-trace-gate check path/to/case-a.json path/to/case-b.json \
-  --rubric rubric.json --baseline baseline.json
-```
-
-Exit **0** means the configured recorded-trace checks passed. Exit **2** means
-refusal. Do not swallow the failure with `|| true` or `continue-on-error`.
-For sharded CI, create a separately reviewed baseline per shard; partial suites
-cannot pass against a full-suite pin.
-
-With [agent-loop-engine](https://github.com/homayoun-safarpour/agent-loop-engine),
-install both packages in the same environment, then run from this source root:
+[agent-loop-engine](https://github.com/homayoun-safarpour/agent-loop-engine) can run this check before it lets an agent continue. A failed gate makes the loop repair before it adds new work. A tick exits 0 even when its decision is `repair`, so read its decision, and use `trace-gate check` directly when CI must fail.
 
 ```bash
 loop-engine tick --state integrations/loop-engine/LOOP_STATE.md \
@@ -153,76 +125,38 @@ loop-engine tick --state integrations/loop-engine/LOOP_STATE.md \
   --gate "trace=trace-gate check examples/trajectories/support_good.json --rubric examples/rubric.json --baseline examples/baselines/support_v1.json"
 ```
 
-The bundled state is synthetic. Keep the journal separate from all inputs.
-**A tick exits 0 even when its decision is `repair`.** Read its decision; use
-`trace-gate check` directly when CI must fail on refusal. See the
-[verified integration and command-safety notes](integrations/loop-engine/README.md).
+## How we did it
 
-## Limits and migration
+1. **Chose the upstream.** [langchain-ai/agentevals](https://github.com/langchain-ai/agentevals) (MIT) showed that teams want to evaluate whole agent runs. Forking its full monorepo (Python, JavaScript and LangChain) would break the aim of an install in under 30 minutes.
+2. **Built one small tool.** The MIT package `trace-gate` takes JSON in, scores it with fixed rules, makes no model calls, and has a command line shaped like the rest of this stack.
+3. **Added two gates.** A frozen baseline with exit `0` or `2`, and a `rubric_sha256` pin, so that the criteria cannot change under the gate without a deliberate new freeze. Named tests: `test_check_detects_regression_below_floor`, `test_check_refuses_when_rubric_fingerprint_mismatches`.
+4. **Made 0.2.0 fail closed.** A forbidden call vetoes the run whatever its score, every baseline case must be supplied once, and malformed input is refused before scoring. Named tests: `test_forbidden_tool_veto_cannot_be_diluted`, `test_known_case_does_not_hide_unknown_case`, `test_missing_fingerprint_is_not_legacy_success`, and the 33 cases of the 25 Nov 2026 code review in `tests/test_fail_closed.py`. The first screen of this README is checked against the real command by `tests/test_readme.py`.
 
-- Recorded calls are evidence of attempted tool use, not proof of successful
-  execution. This package neither executes nor prevents a live tool call.
-- Structural validation cannot establish trace authenticity or completeness.
-  Empty recorded traces can be appropriate if the rubric permits them.
-- Checks use parsed case names. Legacy fallback from `name` to `id` to
-  `unnamed` is retained; give every fixture an explicit stable name.
-- Baseline schema v1 and composite arithmetic remain compatible. Gate behavior
-  is intentionally stricter. Hashless baselines, partial case sets and
-  policy-violating freezes that previously worked now fail.
-- Baselines do not pin parser/scorer versions. Review old traces after parser
-  upgrades, and deliberately re-freeze only when the new evidence is acceptable.
-- A passing check is not a general safety guarantee or a deployment approval.
+## Related tools
 
-The [migration guide](docs/GATE_CONTRACT.md#legacy-baseline-migration) explains
-how to review legacy pins without automatically blessing a failing run.
-[Additional hardening notes](docs/CORE_HARDENING.md) describe stricter
-JSON/policy validation and the new report-rubric binding for Python API users.
-The private follow-up also [stages baseline writes](docs/BASELINE_WRITES.md)
-before replacement so write failures do not truncate the reviewed pin.
+- [agent-loop-engine](https://github.com/homayoun-safarpour/agent-loop-engine): state, gates, the next-step decision and a journal for agent loops.
+- [judge-drift-sentinel](https://github.com/homayoun-safarpour/judge-drift-sentinel): tells a change in the system from a change in the judge.
+- [judge-field-guide](https://github.com/homayoun-safarpour/judge-field-guide): a link-checked map of tools for language-model judges.
 
-## Development and evidence
+## Credit
 
-[Build and test the real distribution](docs/INSTALLATION.md), including packaged
-fixtures and a clean environment containing only the wheel. The CI configuration
-targets Python 3.10–3.12; the accompanying retest report lists the exact
-interpreters and results actually exercised. A configured matrix is not evidence
-that hosted CI has run.
+The idea of evaluating a whole agent run comes from **[langchain-ai/agentevals](https://github.com/langchain-ai/agentevals)** (MIT, Copyright LangChain and contributors). trace-gate is a separate MIT tool with a smaller surface and no LangChain dependency, and it adds the frozen baseline, the forbidden-tool veto and the rubric fingerprint. Use agentevals for language-model judges, and trace-gate for the CI pin.
 
-Central acceptance tests include:
+## Citation
 
-- `test_forbidden_tool_veto_cannot_be_diluted`
-- `test_known_case_does_not_hide_unknown_case`
-- `test_omitting_a_baseline_case_fails_closed`
-- `test_missing_fingerprint_is_not_legacy_success`
-- `test_forbidden_freeze_never_creates_or_overwrites_pin`
+Use the "Cite this repository" button on GitHub, or:
 
-## Attribution and related work
-
-Trajectory-evaluation framing comes from **[langchain-ai/agentevals](https://github.com/langchain-ai/agentevals)** (MIT, Copyright LangChain et al.). This is a separate MIT implementation, not a full fork or a replacement for that project.
-
-- [agent-loop-engine](https://github.com/homayoun-safarpour/agent-loop-engine): consumes exit codes as loop gates.
-- [judge-drift-sentinel](https://github.com/homayoun-safarpour/judge-drift-sentinel): companion judge-reliability diagnostics.
-- [judge-field-guide](https://github.com/homayoun-safarpour/judge-field-guide): map of the LLM-judge ecosystem.
-- [Interview pack](docs/INTERVIEW.md): technical walkthrough.
+```bibtex
+@software{safarpour2026tracegate,
+  author = {Homayoun Safarpour},
+  title  = {trace-gate: gate deploys on frozen agent-trajectory baselines},
+  year   = {2026},
+  url    = {https://github.com/homayoun-safarpour/trace-gate}
+}
+```
 
 Author: Homayoun Safarpour. [LinkedIn](https://www.linkedin.com/in/homayoun-safarpour/)
 
 ## License
 
-MIT. See [LICENSE](LICENSE).
-
-## Offline OpenTelemetry / OpenInference import
-
-`inspect-otel` reads one OpenInference OTLP JSON trace and emits payload-minimized
-evidence. `score` / `freeze` / `check` opt in with
-`--input-format openinference-otlp --coverage declaration.json`. For a suite,
-repeat `--coverage` once per export in matching order; every baseline case must
-be supplied exactly once. Coverage defaults
-to unknown and refuses scoring. This is a narrow, caller-attested profile, not
-full OTLP support or proof of trace completeness. See the
-[contract and synthetic demo](docs/OTEL_ADAPTER.md).
-
-The optional [OpenTelemetry JavaScript compatibility check](integrations/opentelemetry-js/README.md)
-creates synthetic spans with the real SDK, serializes them through its OTLP JSON
-serializer and tests the installed trace-gate CLI. It checks one pinned runtime
-without contacting a collector; it is not a claim of universal exporter support.
+MIT. See [`LICENSE`](LICENSE).

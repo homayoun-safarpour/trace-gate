@@ -6,19 +6,20 @@ import io
 import re
 import runpy
 import tarfile
+import zipfile
+from importlib.metadata import version
 from pathlib import Path
 
 import pytest
+from setuptools.command.egg_info import FileList
+
+import tracegate
 
 VERIFIER = runpy.run_path(str(Path(__file__).resolve().parents[1] /
                             "scripts/verify_distribution.py"))
 
 
 def test_release_version_matches_package_and_metadata():
-    from importlib.metadata import version
-
-    import tracegate
-
     project = (Path(__file__).resolve().parents[1] / "pyproject.toml").read_text()
     declared = re.search(r'^version = "([^"]+)"$', project, re.MULTILINE)
     assert declared is not None
@@ -125,8 +126,6 @@ def test_source_archive_rejects_empty_archive(tmp_path):
 
 
 def distribution_pair(tmp_path, source_code=b"VALUE = 1\n", wheel_code=b"VALUE = 1\n"):
-    import zipfile
-
     source = tmp_path / "source"
     package = source / "src" / "tracegate"
     package.mkdir(parents=True)
@@ -150,8 +149,6 @@ def test_source_wheel_code_mismatch_rejected(tmp_path):
 
 @pytest.mark.parametrize("missing_from", ["source", "wheel"])
 def test_source_wheel_module_set_mismatch_rejected(tmp_path, missing_from):
-    import zipfile
-
     wheel, source = distribution_pair(tmp_path)
     if missing_from == "wheel":
         (source / "src/tracegate/extra.py").write_text("EXTRA = True\n")
@@ -163,8 +160,6 @@ def test_source_wheel_module_set_mismatch_rejected(tmp_path, missing_from):
 
 
 def test_source_wheel_duplicate_module_rejected(tmp_path):
-    import zipfile
-
     wheel, source = distribution_pair(tmp_path)
     with zipfile.ZipFile(wheel, "a") as archive, pytest.warns(UserWarning):
         archive.writestr("tracegate/__init__.py", b"VALUE = 1\n")
@@ -180,8 +175,6 @@ def test_source_wheel_empty_package_rejected(tmp_path):
 
 
 def test_manifest_excludes_installed_promptfoo_dependencies(tmp_path, monkeypatch):
-    from setuptools.command.egg_info import FileList
-
     manifest = (Path(__file__).resolve().parents[1] / "MANIFEST.in").read_text()
     wanted = Path("integrations/promptfoo/runtime-lock/package-lock.json")
     unwanted = Path("integrations/promptfoo/runtime-lock/node_modules/dependency/package.json")

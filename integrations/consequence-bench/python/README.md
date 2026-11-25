@@ -1,4 +1,4 @@
-# trace-gate consequence bench — local interaction bench
+# trace-gate consequence bench: local interaction bench
 
 This extends the existing real-checker local workbench, rather than drawing another decorative scene. Three connected functional areas explain the repository, run its actual core check, then inspect/compare/export evidence.
 
