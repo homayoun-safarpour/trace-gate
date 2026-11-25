@@ -1,0 +1,54 @@
+{
+  "repository": "https://github.com/homayoun-safarpour/agent-loop-engine",
+  "commit": "75992043ec9ae1cee04295d25846a53435f3b4fb",
+  "distribution": "agent-loop-engine",
+  "version": "0.1.0",
+  "license": "MIT",
+  "files": {
+    "src/loopengine/cli.py": {
+      "sha256": "95467e11c30103d6e52240a86d0112efea9a13b385bb8cffdbe0c73400837895",
+      "git_blob_sha": "ad0b463c0e4f0940ace8488618334c22dc279a60",
+      "url": "https://github.com/homayoun-safarpour/agent-loop-engine/blob/75992043ec9ae1cee04295d25846a53435f3b4fb/src/loopengine/cli.py"
+    },
+    "src/loopengine/gates.py": {
+      "sha256": "52a0cbfa0cbbb46026623d39c564fc8925e8dd734b8111dc168fa62e5cd23bb1",
+      "git_blob_sha": "5971fc2ea083fc7cfa32cad6cede925227970bc7",
+      "url": "https://github.com/homayoun-safarpour/agent-loop-engine/blob/75992043ec9ae1cee04295d25846a53435f3b4fb/src/loopengine/gates.py"
+    },
+    "src/loopengine/decide.py": {
+      "sha256": "b24614840240bf979985f2213c79828578f2f08a2565d63cc1660e0f6a15a02b",
+      "git_blob_sha": "2c45b0c87be7b1c556617ede727c2aaeede43c97",
+      "url": "https://github.com/homayoun-safarpour/agent-loop-engine/blob/75992043ec9ae1cee04295d25846a53435f3b4fb/src/loopengine/decide.py"
+    },
+    "src/loopengine/state.py": {
+      "sha256": "ef721af5e4bc42dbab4e2c1a8341869efcbf275256b058478d74e62123af3bb7",
+      "git_blob_sha": "7ad5d42c2af20d0d7c644d1218391de7bfccd9ad",
+      "url": "https://github.com/homayoun-safarpour/agent-loop-engine/blob/75992043ec9ae1cee04295d25846a53435f3b4fb/src/loopengine/state.py"
+    },
+    "src/loopengine/journal.py": {
+      "sha256": "2d3d364bd5f185603cd2f81e3a059b9020789ef0ae12acc3e74263d15610b388",
+      "git_blob_sha": "5c1abce6d952419007f3fc33f355d78152f590bf",
+      "url": "https://github.com/homayoun-safarpour/agent-loop-engine/blob/75992043ec9ae1cee04295d25846a53435f3b4fb/src/loopengine/journal.py"
+    },
+    "pyproject.toml": {
+      "sha256": "b4b9f4243ebceffaaa345e62aa3961f87db575e3c62b7201461eab8d38009d87",
+      "git_blob_sha": "08f6cb51290b4701f35e13a791467bdee0d5021a",
+      "url": "https://github.com/homayoun-safarpour/agent-loop-engine/blob/75992043ec9ae1cee04295d25846a53435f3b4fb/pyproject.toml"
+    },
+    "LICENSE": {
+      "sha256": "25e6416f0795755a988993091bb01126a3d13e8587f996c5a63c336b026458dd",
+      "git_blob_sha": "8208d7d6e019ac3f43316480f56b628bf88f9f4f",
+      "url": "https://github.com/homayoun-safarpour/agent-loop-engine/blob/75992043ec9ae1cee04295d25846a53435f3b4fb/LICENSE"
+    },
+    "src/loopengine/__init__.py": {
+      "sha256": "5f571a8e25a747fe41ae07ce4f752a887125c94fd2176555616932388ce07b91",
+      "git_blob_sha": "2ca38552e079956a75f597ef4753282866bf5227",
+      "url": "https://github.com/homayoun-safarpour/agent-loop-engine/blob/75992043ec9ae1cee04295d25846a53435f3b4fb/src/loopengine/__init__.py"
+    },
+    "README.md": {
+      "sha256": "09d1eb29815adddaee24a4db8a3c577c19d28c8bd0764792b472be0fed5f423c",
+      "git_blob_sha": "e754a74704934d9903f371ea7173df16bae5220b",
+      "url": "https://github.com/homayoun-safarpour/agent-loop-engine/blob/75992043ec9ae1cee04295d25846a53435f3b4fb/README.md"
+    }
+  }
+}

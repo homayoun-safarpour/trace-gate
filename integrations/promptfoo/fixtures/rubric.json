@@ -1,0 +1,34 @@
+{
+  "required_tools": [
+    "lookup_order",
+    "send_reply"
+  ],
+  "forbidden_tools": [
+    "delete_order",
+    "forbidden_demo_0",
+    "forbidden_demo_1",
+    "forbidden_demo_2",
+    "forbidden_demo_3",
+    "forbidden_demo_4",
+    "forbidden_demo_5",
+    "forbidden_demo_6",
+    "forbidden_demo_7",
+    "forbidden_demo_8",
+    "forbidden_demo_9",
+    "forbidden_demo_10",
+    "forbidden_demo_11",
+    "forbidden_demo_12",
+    "forbidden_demo_13",
+    "forbidden_demo_14",
+    "forbidden_demo_15",
+    "forbidden_demo_16",
+    "forbidden_demo_17",
+    "forbidden_demo_18"
+  ],
+  "ordered_tools": [
+    "lookup_order",
+    "send_reply"
+  ],
+  "min_steps": 2,
+  "max_steps": 12
+}

@@ -1,0 +1,393 @@
+{
+  "promptfoo_version": "0.125.1",
+  "python": "3.12.14",
+  "node": "v24.22.1",
+  "platform": "Linux-6.18.57-x86_64-with-glibc2.41",
+  "wrapper_sha256": "0a4bd9a6c64cc4de6f273cba1b9a175755837327570115f95f953b2f785ea792",
+  "gate": {
+    "exit": 2,
+    "stats": {
+      "successes": 1,
+      "failures": 9,
+      "errors": 0,
+      "tokenUsage": {
+        "prompt": 0,
+        "completion": 0,
+        "cached": 0,
+        "total": 0,
+        "numRequests": 10,
+        "completionDetails": {
+          "reasoning": 0,
+          "acceptedPrediction": 0,
+          "rejectedPrediction": 0,
+          "cacheReadInputTokens": 0,
+          "cacheCreationInputTokens": 0
+        },
+        "assertions": {
+          "total": 0,
+          "prompt": 0,
+          "completion": 0,
+          "cached": 0,
+          "numRequests": 0,
+          "completionDetails": {
+            "reasoning": 0,
+            "acceptedPrediction": 0,
+            "rejectedPrediction": 0,
+            "cacheReadInputTokens": 0,
+            "cacheCreationInputTokens": 0
+          }
+        }
+      },
+      "durationMs": 2404,
+      "evaluationDurationMs": 2404
+    },
+    "cases": [
+      {
+        "name": "good",
+        "pass": true,
+        "score": 1,
+        "reason": "PASS: rubric_sha256 OK (37a913dec9b7...); synthetic-order-a: PASS composite=1.0000 >= floor=0.9500 (pinned=1.0000); synthetic-order-b: PASS composite=1.0000 >= floor=0.9500 (pinned=1.0000)"
+      },
+      {
+        "name": "forbidden-second-call",
+        "pass": false,
+        "score": 0,
+        "reason": "POLICY_VIOLATION: rubric_sha256 OK (37a913dec9b7...); synthetic-order-a: POLICY_VIOLATION forbidden_tools_used=['delete_order'] (forbidden_tools=0.9500; tolerance does not apply)"
+      },
+      {
+        "name": "malformed-tool-calls",
+        "pass": false,
+        "score": 0,
+        "reason": "INVALID_INPUT: steps[0].tool_calls: expected a list"
+      },
+      {
+        "name": "missing-case",
+        "pass": false,
+        "score": 0,
+        "reason": "MISSING_TRAJECTORY: rubric_sha256 OK (37a913dec9b7...); baseline cases not supplied: ['synthetic-order-b']"
+      },
+      {
+        "name": "extra-case",
+        "pass": false,
+        "score": 0,
+        "reason": "UNKNOWN_TRAJECTORY: rubric_sha256 OK (37a913dec9b7...); not in baseline: ['synthetic-unreviewed']"
+      },
+      {
+        "name": "duplicate-case",
+        "pass": false,
+        "score": 0,
+        "reason": "DUPLICATE_TRAJECTORY: rubric_sha256 OK (37a913dec9b7...); duplicate case names: ['synthetic-order-a']"
+      },
+      {
+        "name": "quality-regression",
+        "pass": false,
+        "score": 0,
+        "reason": "REGRESSION: rubric_sha256 OK (37a913dec9b7...); synthetic-order-a: REGRESSION composite=0.7500 < floor=0.9500 (pinned=1.0000, tol=0.05); synthetic-order-b: PASS composite=1.0000 >= floor=0.9500 (pinned=1.0000)"
+      },
+      {
+        "name": "rubric-drift",
+        "pass": false,
+        "score": 0,
+        "reason": "RUBRIC_DRIFT: rubric fingerprint mismatch: current=5a3f104fc252... pinned=37a913dec9b7... (criteria changed; re-freeze deliberately or restore the rubric)"
+      },
+      {
+        "name": "missing-fingerprint",
+        "pass": false,
+        "score": 0,
+        "reason": "MISSING_RUBRIC_FINGERPRINT: baseline has no rubric_sha256; review the rubric and original trajectories, then re-freeze deliberately (legacy baselines are not trusted automatically)"
+      },
+      {
+        "name": "invalid-json",
+        "pass": false,
+        "score": 0,
+        "reason": "INVALID_INPUT: Expecting value: line 1 column 17 (char 16)"
+      }
+    ]
+  },
+  "native_policy": {
+    "exit": 2,
+    "stats": {
+      "successes": 7,
+      "failures": 3,
+      "errors": 0,
+      "tokenUsage": {
+        "prompt": 0,
+        "completion": 0,
+        "cached": 0,
+        "total": 0,
+        "numRequests": 10,
+        "completionDetails": {
+          "reasoning": 0,
+          "acceptedPrediction": 0,
+          "rejectedPrediction": 0,
+          "cacheReadInputTokens": 0,
+          "cacheCreationInputTokens": 0
+        },
+        "assertions": {
+          "total": 0,
+          "prompt": 0,
+          "completion": 0,
+          "cached": 0,
+          "numRequests": 0,
+          "completionDetails": {
+            "reasoning": 0,
+            "acceptedPrediction": 0,
+            "rejectedPrediction": 0,
+            "cacheReadInputTokens": 0,
+            "cacheCreationInputTokens": 0
+          }
+        }
+      },
+      "durationMs": 1814,
+      "evaluationDurationMs": 1814
+    },
+    "cases": [
+      {
+        "name": "good",
+        "pass": true,
+        "score": 1,
+        "reason": "configured native tool-policy assertion passed"
+      },
+      {
+        "name": "forbidden-second-call",
+        "pass": false,
+        "score": 0,
+        "reason": "forbidden tools: ['delete_order']"
+      },
+      {
+        "name": "malformed-tool-calls",
+        "pass": false,
+        "score": 0,
+        "reason": "invalid trace: tool_calls must be an array"
+      },
+      {
+        "name": "missing-case",
+        "pass": true,
+        "score": 1,
+        "reason": "configured native tool-policy assertion passed"
+      },
+      {
+        "name": "extra-case",
+        "pass": true,
+        "score": 1,
+        "reason": "configured native tool-policy assertion passed"
+      },
+      {
+        "name": "duplicate-case",
+        "pass": true,
+        "score": 1,
+        "reason": "configured native tool-policy assertion passed"
+      },
+      {
+        "name": "quality-regression",
+        "pass": true,
+        "score": 1,
+        "reason": "configured native tool-policy assertion passed"
+      },
+      {
+        "name": "rubric-drift",
+        "pass": true,
+        "score": 1,
+        "reason": "configured native tool-policy assertion passed"
+      },
+      {
+        "name": "missing-fingerprint",
+        "pass": true,
+        "score": 1,
+        "reason": "configured native tool-policy assertion passed"
+      },
+      {
+        "name": "invalid-json",
+        "pass": false,
+        "score": 0,
+        "reason": "invalid trace: Expecting value: line 1 column 17 (char 16)"
+      }
+    ]
+  },
+  "pass_smoke": {
+    "exit": 0,
+    "stats": {
+      "successes": 1,
+      "failures": 0,
+      "errors": 0,
+      "tokenUsage": {
+        "prompt": 0,
+        "completion": 0,
+        "cached": 0,
+        "total": 0,
+        "numRequests": 1,
+        "completionDetails": {
+          "reasoning": 0,
+          "acceptedPrediction": 0,
+          "rejectedPrediction": 0,
+          "cacheReadInputTokens": 0,
+          "cacheCreationInputTokens": 0
+        },
+        "assertions": {
+          "total": 0,
+          "prompt": 0,
+          "completion": 0,
+          "cached": 0,
+          "numRequests": 0,
+          "completionDetails": {
+            "reasoning": 0,
+            "acceptedPrediction": 0,
+            "rejectedPrediction": 0,
+            "cacheReadInputTokens": 0,
+            "cacheCreationInputTokens": 0
+          }
+        }
+      },
+      "durationMs": 232,
+      "evaluationDurationMs": 232
+    },
+    "cases": [
+      {
+        "name": "good",
+        "pass": true,
+        "score": 1,
+        "reason": "PASS: rubric_sha256 OK (37a913dec9b7...); synthetic-order-a: PASS composite=1.0000 >= floor=0.9500 (pinned=1.0000); synthetic-order-b: PASS composite=1.0000 >= floor=0.9500 (pinned=1.0000)"
+      }
+    ]
+  },
+  "fail_smoke": {
+    "exit": 2,
+    "stats": {
+      "successes": 0,
+      "failures": 1,
+      "errors": 0,
+      "tokenUsage": {
+        "prompt": 0,
+        "completion": 0,
+        "cached": 0,
+        "total": 0,
+        "numRequests": 1,
+        "completionDetails": {
+          "reasoning": 0,
+          "acceptedPrediction": 0,
+          "rejectedPrediction": 0,
+          "cacheReadInputTokens": 0,
+          "cacheCreationInputTokens": 0
+        },
+        "assertions": {
+          "total": 0,
+          "prompt": 0,
+          "completion": 0,
+          "cached": 0,
+          "numRequests": 0,
+          "completionDetails": {
+            "reasoning": 0,
+            "acceptedPrediction": 0,
+            "rejectedPrediction": 0,
+            "cacheReadInputTokens": 0,
+            "cacheCreationInputTokens": 0
+          }
+        }
+      },
+      "durationMs": 256,
+      "evaluationDurationMs": 256
+    },
+    "cases": [
+      {
+        "name": "forbidden-second-call",
+        "pass": false,
+        "score": 0,
+        "reason": "POLICY_VIOLATION: rubric_sha256 OK (37a913dec9b7...); synthetic-order-a: POLICY_VIOLATION forbidden_tools_used=['delete_order'] (forbidden_tools=0.9500; tolerance does not apply)"
+      }
+    ]
+  },
+  "documented_override_hazards": {
+    "weight-zero": {
+      "exit": 0,
+      "stats": {
+        "successes": 1,
+        "failures": 0,
+        "errors": 0,
+        "tokenUsage": {
+          "prompt": 0,
+          "completion": 0,
+          "cached": 0,
+          "total": 0,
+          "numRequests": 1,
+          "completionDetails": {
+            "reasoning": 0,
+            "acceptedPrediction": 0,
+            "rejectedPrediction": 0,
+            "cacheReadInputTokens": 0,
+            "cacheCreationInputTokens": 0
+          },
+          "assertions": {
+            "total": 0,
+            "prompt": 0,
+            "completion": 0,
+            "cached": 0,
+            "numRequests": 0,
+            "completionDetails": {
+              "reasoning": 0,
+              "acceptedPrediction": 0,
+              "rejectedPrediction": 0,
+              "cacheReadInputTokens": 0,
+              "cacheCreationInputTokens": 0
+            }
+          }
+        },
+        "durationMs": 175,
+        "evaluationDurationMs": 175
+      },
+      "cases": [
+        {
+          "name": "forbidden-second-call",
+          "pass": true,
+          "score": 0,
+          "reason": "POLICY_VIOLATION: rubric_sha256 OK (37a913dec9b7...); synthetic-order-a: POLICY_VIOLATION forbidden_tools_used=['delete_order'] (forbidden_tools=0.9500; tolerance does not apply)"
+        }
+      ]
+    },
+    "threshold-zero": {
+      "exit": 0,
+      "stats": {
+        "successes": 1,
+        "failures": 0,
+        "errors": 0,
+        "tokenUsage": {
+          "prompt": 0,
+          "completion": 0,
+          "cached": 0,
+          "total": 0,
+          "numRequests": 1,
+          "completionDetails": {
+            "reasoning": 0,
+            "acceptedPrediction": 0,
+            "rejectedPrediction": 0,
+            "cacheReadInputTokens": 0,
+            "cacheCreationInputTokens": 0
+          },
+          "assertions": {
+            "total": 0,
+            "prompt": 0,
+            "completion": 0,
+            "cached": 0,
+            "numRequests": 0,
+            "completionDetails": {
+              "reasoning": 0,
+              "acceptedPrediction": 0,
+              "rejectedPrediction": 0,
+              "cacheReadInputTokens": 0,
+              "cacheCreationInputTokens": 0
+            }
+          }
+        },
+        "durationMs": 340,
+        "evaluationDurationMs": 340
+      },
+      "cases": [
+        {
+          "name": "forbidden-second-call",
+          "pass": true,
+          "score": 0,
+          "reason": "POLICY_VIOLATION: rubric_sha256 OK (37a913dec9b7...); synthetic-order-a: POLICY_VIOLATION forbidden_tools_used=['delete_order'] (forbidden_tools=0.9500; tolerance does not apply)"
+        }
+      ]
+    }
+  }
+}

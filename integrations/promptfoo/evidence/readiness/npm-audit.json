@@ -1,0 +1,196 @@
+{
+  "auditReportVersion": 2,
+  "vulnerabilities": {
+    "@modelcontextprotocol/server-filesystem": {
+      "name": "@modelcontextprotocol/server-filesystem",
+      "severity": "moderate",
+      "isDirect": false,
+      "via": [
+        "glob",
+        "minimatch"
+      ],
+      "effects": [],
+      "range": "",
+      "nodes": [
+        "node_modules/@modelcontextprotocol/server-filesystem"
+      ],
+      "fixAvailable": true
+    },
+    "basic-ftp": {
+      "name": "basic-ftp",
+      "severity": "high",
+      "isDirect": false,
+      "via": [
+        {
+          "source": 1240853,
+          "name": "basic-ftp",
+          "dependency": "basic-ftp",
+          "title": "basic-ftp: Quadratic-time CPU denial of service in Client.list() Unix directory-listing parser (RE_LINE backtracking)",
+          "url": "https://github.com/advisories/GHSA-c475-qrg2-pj4r",
+          "severity": "high",
+          "cwe": [
+            "CWE-1333"
+          ],
+          "cvss": {
+            "score": 0,
+            "vectorString": null
+          },
+          "range": "<=6.2.0"
+        }
+      ],
+      "effects": [
+        "get-uri"
+      ],
+      "range": "",
+      "nodes": [
+        "node_modules/basic-ftp"
+      ],
+      "fixAvailable": true
+    },
+    "get-uri": {
+      "name": "get-uri",
+      "severity": "high",
+      "isDirect": false,
+      "via": [
+        "basic-ftp"
+      ],
+      "effects": [
+        "pac-proxy-agent"
+      ],
+      "range": "",
+      "nodes": [
+        "node_modules/get-uri"
+      ],
+      "fixAvailable": true
+    },
+    "glob": {
+      "name": "glob",
+      "severity": "moderate",
+      "isDirect": false,
+      "via": [
+        {
+          "source": 1244013,
+          "name": "glob",
+          "dependency": "glob",
+          "title": "Glob: AbortSignal cancellation bypass allows post-timeout filesystem traversal",
+          "url": "https://github.com/advisories/GHSA-3g3m-2fjr-6pw4",
+          "severity": "moderate",
+          "cwe": [
+            "CWE-400"
+          ],
+          "cvss": {
+            "score": 0,
+            "vectorString": null
+          },
+          "range": ">=9.0.0 <=14.0.1"
+        },
+        "minimatch"
+      ],
+      "effects": [
+        "@modelcontextprotocol/server-filesystem",
+        "promptfoo"
+      ],
+      "range": "",
+      "nodes": [
+        "node_modules/glob"
+      ],
+      "fixAvailable": false
+    },
+    "minimatch": {
+      "name": "minimatch",
+      "severity": "moderate",
+      "isDirect": false,
+      "via": [
+        {
+          "source": 1244623,
+          "name": "minimatch",
+          "dependency": "minimatch",
+          "title": "minimatch has potential denial of service via globparts amplification",
+          "url": "https://github.com/advisories/GHSA-g3hv-75wg-m249",
+          "severity": "moderate",
+          "cwe": [
+            "CWE-405"
+          ],
+          "cvss": {
+            "score": 0,
+            "vectorString": null
+          },
+          "range": ">=7.0.0 <11.0.1"
+        }
+      ],
+      "effects": [
+        "glob"
+      ],
+      "range": "",
+      "nodes": [
+        "node_modules/minimatch"
+      ],
+      "fixAvailable": false
+    },
+    "pac-proxy-agent": {
+      "name": "pac-proxy-agent",
+      "severity": "high",
+      "isDirect": false,
+      "via": [
+        "get-uri"
+      ],
+      "effects": [
+        "proxy-agent"
+      ],
+      "range": "",
+      "nodes": [
+        "node_modules/pac-proxy-agent"
+      ],
+      "fixAvailable": true
+    },
+    "promptfoo": {
+      "name": "promptfoo",
+      "severity": "high",
+      "isDirect": true,
+      "via": [
+        "@modelcontextprotocol/server-filesystem",
+        "glob",
+        "minimatch",
+        "proxy-agent"
+      ],
+      "effects": [],
+      "range": "",
+      "nodes": [
+        "node_modules/promptfoo"
+      ],
+      "fixAvailable": false
+    },
+    "proxy-agent": {
+      "name": "proxy-agent",
+      "severity": "high",
+      "isDirect": false,
+      "via": [
+        "pac-proxy-agent"
+      ],
+      "effects": [],
+      "range": "",
+      "nodes": [
+        "node_modules/proxy-agent"
+      ],
+      "fixAvailable": true
+    }
+  },
+  "metadata": {
+    "vulnerabilities": {
+      "info": 0,
+      "low": 0,
+      "moderate": 3,
+      "high": 5,
+      "critical": 0,
+      "total": 8
+    },
+    "dependencies": {
+      "prod": 398,
+      "dev": 0,
+      "optional": 265,
+      "peer": 1,
+      "peerOptional": 0,
+      "total": 663
+    }
+  }
+}
