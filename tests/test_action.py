@@ -38,6 +38,12 @@ def test_action_is_composite_with_the_three_required_inputs():
     assert "verdict:" in ACTION and "exit-code:" in ACTION
 
 
+def test_action_file_ships_in_the_source_package():
+    # CI runs this suite from the unpacked source archive, so the file must be listed there.
+    manifest = (ROOT / "MANIFEST.in").read_text(encoding="utf-8")
+    assert "action.yml" in manifest.splitlines()[0].split()
+
+
 def test_action_never_expands_inputs_inside_a_shell_script():
     scripts = _script_lines(ACTION)
     assert len(scripts) > 5
