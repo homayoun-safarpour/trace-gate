@@ -21,13 +21,13 @@ from pathlib import Path, PurePosixPath
 
 PROBE = r"""
 import hashlib, importlib.metadata, json, pathlib, sys
-import tracegate
-dist = importlib.metadata.distribution('trace-gate')
-if tracegate.__version__ != dist.version:
+import trace_gate
+dist = importlib.metadata.distribution('agent-trace-gate')
+if trace_gate.__version__ != dist.version:
     raise SystemExit('package __version__ differs from distribution metadata')
-module = pathlib.Path(tracegate.__file__).resolve()
+module = pathlib.Path(trace_gate.__file__).resolve()
 if not module.is_relative_to(pathlib.Path(sys.prefix).resolve()):
-    raise SystemExit('tracegate was not imported from this environment')
+    raise SystemExit('trace_gate was not imported from this environment')
 direct = json.loads(dist.read_text('direct_url.json') or '{}')
 if direct.get('dir_info', {}).get('editable'):
     raise SystemExit('editable install is not distribution verification')
@@ -36,7 +36,7 @@ if dist.requires:
 hashes = {
     str(p): hashlib.sha256(dist.locate_file(p).read_bytes()).hexdigest()
     for p in dist.files or []
-    if str(p).startswith('tracegate/') and str(p).endswith('.py')
+    if str(p).startswith('trace_gate/') and str(p).endswith('.py')
 }
 print(json.dumps({'module': str(module), 'version': dist.version, 'hashes': hashes}))
 """
@@ -84,15 +84,20 @@ def extract_source(archive: Path, destination: Path) -> Path:
 
 def check_wheel_source(wheel: Path, source: Path) -> None:
     """Refuse a wheel and source archive containing different package code."""
-    package = source / "src" / "tracegate"
+    package = source / "src" / "trace_gate"
     expected = {
         path.relative_to(source / "src").as_posix(): hashlib.sha256(path.read_bytes()).hexdigest()
         for path in package.rglob("*.py")
         if path.is_file()
     }
     with zipfile.ZipFile(wheel) as archive:
+        # A stale build tree can add the old tracegate/ package; refuse anything else.
+        tops = {PurePosixPath(name).parts[0] for name in archive.namelist() if name.strip("/")}
+        extra = sorted(top for top in tops - {"trace_gate"} if not top.endswith(".dist-info"))
+        if extra:
+            raise ValueError(f"Wheel has top-level entries besides trace_gate: {extra}")
         names = [name for name in archive.namelist()
-                 if name.startswith("tracegate/") and name.endswith(".py")]
+                 if name.startswith("trace_gate/") and name.endswith(".py")]
         if len(names) != len(set(names)):
             raise ValueError("Duplicate Python module in wheel")
         actual = {name: hashlib.sha256(archive.read(name)).hexdigest() for name in names}
@@ -108,7 +113,7 @@ def check_installed(python, wheel, *, cwd, env):
         expected = {
             name: hashlib.sha256(archive.read(name)).hexdigest()
             for name in archive.namelist()
-            if name.startswith("tracegate/") and name.endswith(".py")
+            if name.startswith("trace_gate/") and name.endswith(".py")
         }
     if not expected or installed["hashes"] != expected:
         raise ValueError("Installed package does not match the supplied wheel")
@@ -120,8 +125,8 @@ def main():
     parser.add_argument("--dist-dir", type=Path, default=Path("dist"))
     args = parser.parse_args()
     dist = args.dist_dir.resolve()
-    wheels = list(dist.glob("trace_gate-*.whl"))
-    sources = list(dist.glob("trace_gate-*.tar.gz"))
+    wheels = list(dist.glob("agent_trace_gate-*.whl"))
+    sources = list(dist.glob("agent_trace_gate-*.tar.gz"))
     if len(wheels) != 1 or len(sources) != 1:
         parser.error("Use a clean dist directory with exactly one wheel and one source archive")
     env = {key: value for key, value in os.environ.items()

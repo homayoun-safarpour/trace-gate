@@ -4,8 +4,8 @@ from __future__ import annotations
 
 from pathlib import Path
 
-from tracegate.score import Rubric, score_trajectory
-from tracegate.trajectory import load_trajectory, trajectory_from_dict
+from trace_gate.score import Rubric, score_trajectory
+from trace_gate.trajectory import load_trajectory, trajectory_from_dict
 
 ROOT = Path(__file__).resolve().parents[1]
 EXAMPLES = ROOT / "examples"

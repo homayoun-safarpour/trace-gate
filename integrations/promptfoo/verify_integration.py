@@ -18,7 +18,7 @@ import sys
 import tempfile
 from pathlib import Path
 
-import tracegate
+import trace_gate
 
 HERE = Path(__file__).resolve().parent
 VERSION = "0.125.1"
@@ -131,7 +131,7 @@ def main():
     results = {
         "promptfoo_version": VERSION,
         "tracegate_modules_sha256": {
-            name: hashlib.sha256((Path(tracegate.__file__).parent / name).read_bytes()).hexdigest()
+            name: hashlib.sha256((Path(trace_gate.__file__).parent / name).read_bytes()).hexdigest()
             for name in ("score.py", "baseline.py", "trajectory.py")
         },
         "adapter_sha256": hashlib.sha256((HERE / "trace_gate_assert.py").read_bytes()).hexdigest(),

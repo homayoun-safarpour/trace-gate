@@ -9,11 +9,11 @@ from pathlib import Path
 
 import pytest
 
-import tracegate.baseline as baseline_module
-from tracegate.baseline import freeze_baseline, load_baseline, write_baseline
-from tracegate.cli import main
-from tracegate.score import Rubric, score_trajectory
-from tracegate.trajectory import trajectory_from_dict
+import trace_gate.baseline as baseline_module
+from trace_gate.baseline import freeze_baseline, load_baseline, write_baseline
+from trace_gate.cli import main
+from trace_gate.score import Rubric, score_trajectory
+from trace_gate.trajectory import trajectory_from_dict
 
 ORIGINAL = b"reviewed original bytes\n"
 FAILURES = ("create", "write", "flush", "fsync", "close", "replace")

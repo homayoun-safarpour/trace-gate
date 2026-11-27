@@ -3,7 +3,7 @@ requires = ["setuptools>=68"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "trace-gate"
+name = "agent-trace-gate"
 version = "0.2.0"
 description = "Check recorded agent tool calls and quality regressions against a reviewed baseline in CI."
 readme = "README.md"
@@ -38,7 +38,7 @@ Issues = "https://github.com/homayoun-safarpour/trace-gate/issues"
 Documentation = "https://github.com/homayoun-safarpour/trace-gate#readme"
 
 [project.scripts]
-trace-gate = "tracegate.cli:main"
+trace-gate = "trace_gate.cli:main"
 
 [tool.setuptools.packages.find]
 where = ["src"]

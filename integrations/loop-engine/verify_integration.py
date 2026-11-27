@@ -19,7 +19,7 @@ import sys
 import tempfile
 from pathlib import Path
 
-import tracegate
+import trace_gate
 
 HERE = Path(__file__).resolve().parent
 ROOT = HERE.parents[1]
@@ -41,9 +41,9 @@ def identity() -> dict:
         raise ValueError("installed loop-engine modules differ from the reviewed pin")
     return {"python": platform.python_version(), "loop_engine_version": distribution.version,
             "loop_engine_commit": lock["commit"], "loop_engine_modules": actual,
-            "trace_gate_version": tracegate.__version__, "trace_gate_modules": {
+            "trace_gate_version": trace_gate.__version__, "trace_gate_modules": {
                 path.name: hashlib.sha256(path.read_bytes()).hexdigest()
-                for path in Path(tracegate.__file__).resolve().parent.glob("*.py")}}
+                for path in Path(trace_gate.__file__).resolve().parent.glob("*.py")}}
 
 
 def write_json(path: Path, data) -> Path:
@@ -92,7 +92,7 @@ def build_cases(work: Path) -> list[tuple]:
 def run_case(case: tuple, work: Path, evidence: Path, *, journal: Path | None = None) -> dict:
     label, arguments, expected, verdict = case
     env = {"PATH": os.defpath, "HOME": str(work), "LANG": "C.UTF-8"}
-    command = [sys.executable, "-I", "-m", "tracegate.cli", *(str(arg) for arg in arguments)]
+    command = [sys.executable, "-I", "-m", "trace_gate.cli", *(str(arg) for arg in arguments)]
     direct = subprocess.run(command, env=env, cwd=work, text=True,
                             capture_output=True, timeout=30, check=False)
     if direct.returncode != expected:

@@ -31,7 +31,8 @@ The verifier:
    traversal, link members and duplicate paths (including `./` or repeated-separator
    aliases). It validates archive headers before writing any extracted files.
 2. Confirms that the source archive and wheel contain identical Python package
-   files, then checks that the installed package is non-editable, has no declared runtime
+   files and that the wheel has no top-level entry other than `trace_gate` and its
+   metadata folder, then checks that the installed package is non-editable, has no declared runtime
    dependencies, and its Python files match the supplied wheel by SHA-256.
 3. Runs the source archive's pytest suite with isolated Python, importlib import
    mode, no `PYTHONPATH`, and automatic pytest plugin loading disabled. Tests and
@@ -72,7 +73,7 @@ as an ordinary shell step. A regression is expected to fail that step:
 
 ```yaml
 - name: Install reviewed trace-gate artifact
-  run: python -m pip install --no-index --no-deps artifacts/trace_gate-*.whl
+  run: python -m pip install --no-index --no-deps artifacts/agent_trace_gate-*.whl
 - name: Check agent trajectory
   run: >-
     trace-gate check examples/trajectories/support_good.json

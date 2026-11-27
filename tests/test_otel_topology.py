@@ -3,7 +3,7 @@ from itertools import product
 
 import pytest
 
-from tracegate.otel import ExportValidationError, SpanEvidence, _topology
+from trace_gate.otel import ExportValidationError, SpanEvidence, _topology
 
 
 def span(identity, parent=None):

@@ -3,9 +3,9 @@ import json
 
 import pytest
 
-from tracegate.cli import main
-from tracegate.score import Rubric, score_trajectory
-from tracegate.trajectory import Step, Trajectory, TrajectoryValidationError, trajectory_from_dict
+from trace_gate.cli import main
+from trace_gate.score import Rubric, score_trajectory
+from trace_gate.trajectory import Step, Trajectory, TrajectoryValidationError, trajectory_from_dict
 
 
 def call(name, ident):

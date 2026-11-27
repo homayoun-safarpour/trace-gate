@@ -9,9 +9,9 @@ from __future__ import annotations
 from pathlib import Path
 from typing import Any
 
-from tracegate.baseline import Baseline, check_against_baseline
-from tracegate.score import Rubric, score_trajectory
-from tracegate.trajectory import load_json_document, trajectory_from_dict
+from trace_gate.baseline import Baseline, check_against_baseline
+from trace_gate.score import Rubric, score_trajectory
+from trace_gate.trajectory import load_json_document, trajectory_from_dict
 
 HERE = Path(__file__).resolve().parent
 

@@ -14,14 +14,14 @@ from pathlib import Path
 
 import pytest
 
-from tracegate.baseline import (
+from trace_gate.baseline import (
     Baseline,
     check_against_baseline,
     freeze_baseline,
 )
-from tracegate.cli import main
-from tracegate.score import Rubric, ScoreReport, fingerprint_rubric, score_trajectory
-from tracegate.trajectory import trajectory_from_dict
+from trace_gate.cli import main
+from trace_gate.score import Rubric, ScoreReport, fingerprint_rubric, score_trajectory
+from trace_gate.trajectory import trajectory_from_dict
 
 ROOT = Path(__file__).resolve().parents[1]
 EXAMPLES = ROOT / "examples"

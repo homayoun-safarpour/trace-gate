@@ -7,7 +7,7 @@ from pathlib import Path
 
 import pytest
 
-from tracegate.cli import main
+from trace_gate.cli import main
 
 
 @pytest.fixture

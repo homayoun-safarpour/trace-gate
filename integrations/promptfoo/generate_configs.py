@@ -6,9 +6,9 @@ import copy
 import json
 from pathlib import Path
 
-from tracegate.baseline import freeze_baseline
-from tracegate.score import Rubric, score_trajectory
-from tracegate.trajectory import trajectory_from_dict
+from trace_gate.baseline import freeze_baseline
+from trace_gate.score import Rubric, score_trajectory
+from trace_gate.trajectory import trajectory_from_dict
 
 HERE = Path(__file__).resolve().parent
 

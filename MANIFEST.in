@@ -6,7 +6,7 @@ recursive-include integrations/promptfoo *.py *.json *.md *.txt *.log *.diff
 recursive-include integrations/opentelemetry-js *.py *.json *.md *.cjs
 recursive-include integrations/loop-engine *.py *.json *.md
 recursive-include tests *.py
-include .github/workflows/ci.yml
+include .github/workflows/ci.yml .github/workflows/publish.yml
 global-exclude *.py[cod]
 global-exclude __pycache__
 prune integrations/promptfoo/runtime-lock/node_modules

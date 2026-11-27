@@ -17,7 +17,7 @@ from pathlib import Path
 
 def _run(*args):
     completed = subprocess.run(
-        [sys.executable, "-m", "tracegate.cli", *map(str, args)],
+        [sys.executable, "-m", "trace_gate.cli", *map(str, args)],
         text=True, capture_output=True, timeout=30, check=False,
     )
     if completed.returncode not in (0, 2) or not completed.stdout:
@@ -49,7 +49,7 @@ def capture_demo() -> dict:
         unknown = write("unknown.json", clean_data)
         baseline = work / "baseline.json"
         freeze = subprocess.run(
-            [sys.executable, "-m", "tracegate.cli", "freeze", str(good),
+            [sys.executable, "-m", "trace_gate.cli", "freeze", str(good),
              "--rubric", str(rubric), "--out", str(baseline), "--tolerance", "0.05"],
             capture_output=True, text=True, timeout=30, check=False,
         )

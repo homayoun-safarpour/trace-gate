@@ -26,19 +26,34 @@ not enforce those settings. Recommended required check: `Release readiness`.
 
 ## Final publication checkpoint
 
-Merging, publishing a tag/GitHub release, and publishing to a package registry
-are separate actions requiring the owner's approval of their destination and
-scope. A draft PR is not approval to perform them.
+Merging and publishing a GitHub release are separate actions requiring the
+owner's approval of their destination and scope. A draft PR is not approval to
+perform them. Publishing a final GitHub release is also the request to upload to
+PyPI: `.github/workflows/publish.yml` starts on it (see below). A pre-release
+uploads nothing.
 
-After an authorized merge, check CI on the exact final commit on main. Build the
-release assets from that revision using [INSTALLATION.md](INSTALLATION.md),
-validate the wheel and source archive, and record SHA-256 checksums. If the final
-tree differs from the reviewed tree, repeat review and the full checks.
+After an authorized merge, check CI on the exact final commit on main. If the
+final tree differs from the reviewed tree, repeat review and the full checks.
 
 Only then create the approved `v0.2.0` tag/release pointing to that commit. Do not
-move or overwrite `v0.1.0`. Include the migration notes and matching checksums.
-Package-registry publication is not configured by this repository; verify name
-ownership, credentials, target registry and approval before adding it.
+move or overwrite `v0.1.0`. Include the migration notes.
 
-This workflow never deploys, uploads to PyPI, creates a GitHub release or calls
+`publish.yml` refuses to build unless the release tag equals `v` plus the version
+in `pyproject.toml`, the tagged commit is on `main`, and the CI check
+`Release readiness` passed on that commit. It then builds the wheel and source
+archive, repeats the distribution verification, prints SHA-256 checksums, and
+uploads through PyPI trusted publishing (no stored password or token). The
+build is not byte-reproducible, so a local build has other checksums: the
+checksums of the published files are the ones in that workflow run and on PyPI.
+
+Before the first release, the owner:
+1. creates the environment `pypi` in the repository settings (Environments),
+   with the owner as required reviewer, limited to tags matching `v*`;
+2. adds the pending trusted publisher on PyPI: project name
+   `agent-trace-gate` (from `pyproject.toml`), owner `homayoun-safarpour`,
+   repository `trace-gate`, workflow `publish.yml`, environment `pypi`.
+
+The upload job then waits for the owner's approval in the `pypi` environment.
+
+The CI workflow never deploys, uploads to PyPI, creates a GitHub release or calls
 a model/provider. CI does access registries for pinned test tooling and Promptfoo.

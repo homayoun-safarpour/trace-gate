@@ -16,8 +16,8 @@ import sys
 import tempfile
 from pathlib import Path
 
-import tracegate
-from tracegate.otel import load_export
+import trace_gate
+from trace_gate.otel import load_export
 
 HERE = Path(__file__).resolve().parent
 EXPECTED_ISSUES = {
@@ -109,7 +109,7 @@ def verify(fixtures: Path, evidence: Path) -> dict:
         env = {"PATH": os.environ.get("PATH", ""), "HOME": str(work), "LANG": "C.UTF-8"}
 
         def cli(label, *args, expected=0):
-            command = [sys.executable, "-I", "-m", "tracegate.cli", *(str(a) for a in args)]
+            command = [sys.executable, "-I", "-m", "trace_gate.cli", *(str(a) for a in args)]
             result = subprocess.run(command, env=env, cwd=work, text=True,
                                     capture_output=True, timeout=30, check=False)
             if result.returncode != expected:
@@ -170,9 +170,9 @@ def verify(fixtures: Path, evidence: Path) -> dict:
         assert result.stdout == ""
         verify_suite(fixtures, work, cli)
     return {"checks": checks, "count": len(checks), "python": platform.python_version(),
-            "tracegate_version": tracegate.__version__, "provenance": provenance,
+            "tracegate_version": trace_gate.__version__, "provenance": provenance,
             "otel_module_sha256": hashlib.sha256(
-                (Path(tracegate.__file__).parent / "otel.py").read_bytes()).hexdigest()}
+                (Path(trace_gate.__file__).parent / "otel.py").read_bytes()).hexdigest()}
 
 
 def main():

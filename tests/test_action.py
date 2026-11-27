@@ -3,7 +3,7 @@ import html
 import re
 from pathlib import Path
 
-from tracegate.cli import main
+from trace_gate.cli import main
 
 ROOT = Path(__file__).resolve().parents[1]
 ACTION = (ROOT / "action.yml").read_text(encoding="utf-8")
