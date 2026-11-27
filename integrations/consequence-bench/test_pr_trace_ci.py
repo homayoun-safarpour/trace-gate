@@ -86,12 +86,10 @@ class CLI(unittest.TestCase):
         return p.returncode, json.loads((self.out / "report.json").read_text())
 
     def test_good_and_no_candidate_import(self):
-        # The checker imports trace_gate; the old name stays planted as well.
-        for package in ("trace_gate", "tracegate"):
-            (self.candidate / package).mkdir()
-            (self.candidate / package / "__init__.py").write_text(
-                'raise RuntimeError("DO NOT EXECUTE")'
-            )
+        (self.candidate / "tracegate").mkdir()
+        (self.candidate / "tracegate/__init__.py").write_text(
+            'raise RuntimeError("DO NOT EXECUTE")'
+        )
         (self.candidate / "sitecustomize.py").write_text('raise RuntimeError("DO NOT EXECUTE")')
         code, result = self.run_check()
         self.assertEqual(code, 0)

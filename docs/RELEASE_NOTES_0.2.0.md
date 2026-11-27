@@ -16,7 +16,10 @@ The project is not declaring a stable 1.0 API or general OTLP conformance.
   Another project on PyPI already ships a top-level `tracegate` package, and
   two distributions with one import name overwrite each other's files. The
   distribution name `trace-gate` and the `trace-gate` command are unchanged.
-  Migrate with `import trace_gate` and `python -m trace_gate.cli`.
+  Migrate with `import trace_gate` and `python -m trace_gate.cli`. An editable
+  install (`pip install -e .`) made before this change still points at
+  `tracegate`: after pulling, delete any leftover `src/tracegate/` folder and
+  run `pip install -e .` again.
 - Forbidden tools veto `check` and `freeze`, independent of average quality or
   tolerance. Exact baseline case coverage and rubric fingerprints are required.
 - Nested calls, including forbidden second calls and repeated calls, are retained.

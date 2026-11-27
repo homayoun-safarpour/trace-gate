@@ -167,6 +167,22 @@ def test_source_wheel_duplicate_module_rejected(tmp_path):
         VERIFIER["check_wheel_source"](wheel, source)
 
 
+@pytest.mark.parametrize("extra", ["tracegate/__init__.py", "stray.py", "other/data.txt"])
+def test_source_wheel_extra_top_level_rejected(tmp_path, extra):
+    wheel, source = distribution_pair(tmp_path)
+    with zipfile.ZipFile(wheel, "a") as archive:
+        archive.writestr(extra, b"VALUE = 1\n")
+    with pytest.raises(ValueError, match="top-level entries besides trace_gate"):
+        VERIFIER["check_wheel_source"](wheel, source)
+
+
+def test_source_wheel_metadata_folder_allowed(tmp_path):
+    wheel, source = distribution_pair(tmp_path)
+    with zipfile.ZipFile(wheel, "a") as archive:
+        archive.writestr("trace_gate-0.1.0.dist-info/METADATA", b"Name: trace-gate\n")
+    VERIFIER["check_wheel_source"](wheel, source)
+
+
 def test_source_wheel_empty_package_rejected(tmp_path):
     wheel, source = distribution_pair(tmp_path)
     (source / "src/trace_gate/__init__.py").unlink()

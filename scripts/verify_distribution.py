@@ -91,6 +91,11 @@ def check_wheel_source(wheel: Path, source: Path) -> None:
         if path.is_file()
     }
     with zipfile.ZipFile(wheel) as archive:
+        # A stale build tree can add the old tracegate/ package; refuse anything else.
+        tops = {PurePosixPath(name).parts[0] for name in archive.namelist() if name.strip("/")}
+        extra = sorted(top for top in tops - {"trace_gate"} if not top.endswith(".dist-info"))
+        if extra:
+            raise ValueError(f"Wheel has top-level entries besides trace_gate: {extra}")
         names = [name for name in archive.namelist()
                  if name.startswith("trace_gate/") and name.endswith(".py")]
         if len(names) != len(set(names)):
