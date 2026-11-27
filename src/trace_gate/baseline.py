@@ -18,8 +18,8 @@ from dataclasses import dataclass, field
 from pathlib import Path
 from typing import Any
 
-from tracegate.score import CORE_METRICS, Rubric, ScoreReport, fingerprint_rubric
-from tracegate.trajectory import load_json_document
+from trace_gate.score import CORE_METRICS, Rubric, ScoreReport, fingerprint_rubric
+from trace_gate.trajectory import load_json_document
 
 SHA256_HEX_LENGTH = 64
 COMPOSITE_ABS_TOLERANCE = 1e-12

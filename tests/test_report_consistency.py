@@ -3,9 +3,9 @@ from dataclasses import replace
 
 import pytest
 
-from tracegate.baseline import check_against_baseline, freeze_baseline
-from tracegate.score import CORE_METRICS, Rubric, score_trajectory
-from tracegate.trajectory import trajectory_from_dict
+from trace_gate.baseline import check_against_baseline, freeze_baseline
+from trace_gate.score import CORE_METRICS, Rubric, score_trajectory
+from trace_gate.trajectory import trajectory_from_dict
 
 
 def inputs():

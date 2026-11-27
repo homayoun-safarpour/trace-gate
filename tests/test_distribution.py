@@ -13,7 +13,7 @@ from pathlib import Path
 import pytest
 from setuptools.command.egg_info import FileList
 
-import tracegate
+import trace_gate
 
 VERIFIER = runpy.run_path(str(Path(__file__).resolve().parents[1] /
                             "scripts/verify_distribution.py"))
@@ -23,7 +23,7 @@ def test_release_version_matches_package_and_metadata():
     project = (Path(__file__).resolve().parents[1] / "pyproject.toml").read_text()
     declared = re.search(r'^version = "([^"]+)"$', project, re.MULTILINE)
     assert declared is not None
-    assert declared.group(1) == tracegate.__version__ == version("trace-gate")
+    assert declared.group(1) == trace_gate.__version__ == version("trace-gate")
 
 
 def archive(tmp_path, name, *, symlink=False):
@@ -127,12 +127,12 @@ def test_source_archive_rejects_empty_archive(tmp_path):
 
 def distribution_pair(tmp_path, source_code=b"VALUE = 1\n", wheel_code=b"VALUE = 1\n"):
     source = tmp_path / "source"
-    package = source / "src" / "tracegate"
+    package = source / "src" / "trace_gate"
     package.mkdir(parents=True)
     (package / "__init__.py").write_bytes(source_code)
     wheel = tmp_path / "trace_gate-0.1.0-py3-none-any.whl"
     with zipfile.ZipFile(wheel, "w") as archive:
-        archive.writestr("tracegate/__init__.py", wheel_code)
+        archive.writestr("trace_gate/__init__.py", wheel_code)
     return wheel, source
 
 
@@ -151,10 +151,10 @@ def test_source_wheel_code_mismatch_rejected(tmp_path):
 def test_source_wheel_module_set_mismatch_rejected(tmp_path, missing_from):
     wheel, source = distribution_pair(tmp_path)
     if missing_from == "wheel":
-        (source / "src/tracegate/extra.py").write_text("EXTRA = True\n")
+        (source / "src/trace_gate/extra.py").write_text("EXTRA = True\n")
     else:
         with zipfile.ZipFile(wheel, "a") as archive:
-            archive.writestr("tracegate/extra.py", b"EXTRA = True\n")
+            archive.writestr("trace_gate/extra.py", b"EXTRA = True\n")
     with pytest.raises(ValueError, match="does not match the source archive"):
         VERIFIER["check_wheel_source"](wheel, source)
 
@@ -162,14 +162,14 @@ def test_source_wheel_module_set_mismatch_rejected(tmp_path, missing_from):
 def test_source_wheel_duplicate_module_rejected(tmp_path):
     wheel, source = distribution_pair(tmp_path)
     with zipfile.ZipFile(wheel, "a") as archive, pytest.warns(UserWarning):
-        archive.writestr("tracegate/__init__.py", b"VALUE = 1\n")
+        archive.writestr("trace_gate/__init__.py", b"VALUE = 1\n")
     with pytest.raises(ValueError, match="Duplicate Python module"):
         VERIFIER["check_wheel_source"](wheel, source)
 
 
 def test_source_wheel_empty_package_rejected(tmp_path):
     wheel, source = distribution_pair(tmp_path)
-    (source / "src/tracegate/__init__.py").unlink()
+    (source / "src/trace_gate/__init__.py").unlink()
     with pytest.raises(ValueError, match="does not match the source archive"):
         VERIFIER["check_wheel_source"](wheel, source)
 

@@ -5,7 +5,7 @@ from __future__ import annotations
 import json
 from pathlib import Path
 
-from tracegate.baseline import (
+from trace_gate.baseline import (
     Baseline,
     check_against_baseline,
     fingerprint_rubric,
@@ -13,8 +13,8 @@ from tracegate.baseline import (
     load_baseline,
     write_baseline,
 )
-from tracegate.score import Rubric, ScoreReport, score_trajectory
-from tracegate.trajectory import load_trajectory, trajectory_from_dict
+from trace_gate.score import Rubric, ScoreReport, score_trajectory
+from trace_gate.trajectory import load_trajectory, trajectory_from_dict
 
 ROOT = Path(__file__).resolve().parents[1]
 EXAMPLES = ROOT / "examples"

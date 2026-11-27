@@ -16,7 +16,7 @@ from dataclasses import asdict, dataclass, field
 from pathlib import Path
 from typing import Any
 
-from tracegate.trajectory import Step, ToolCall, Trajectory, TrajectoryValidationError
+from trace_gate.trajectory import Step, ToolCall, Trajectory, TrajectoryValidationError
 
 PROFILE = "openinference-otlp-v1"
 MAX_BYTES = 16 * 1024 * 1024

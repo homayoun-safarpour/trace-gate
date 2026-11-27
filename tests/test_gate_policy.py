@@ -6,9 +6,9 @@ from dataclasses import replace
 
 import pytest
 
-from tracegate.baseline import Baseline, check_against_baseline, freeze_baseline
-from tracegate.score import Rubric, score_trajectory
-from tracegate.trajectory import trajectory_from_dict
+from trace_gate.baseline import Baseline, check_against_baseline, freeze_baseline
+from trace_gate.score import Rubric, score_trajectory
+from trace_gate.trajectory import trajectory_from_dict
 
 
 def report(name="case", tools=("read",), *, rubric):

@@ -5,9 +5,9 @@ from pathlib import Path
 
 import pytest
 
-from tracegate.baseline import check_against_baseline, freeze_baseline
-from tracegate.otel import ExportValidationError, load_export
-from tracegate.score import Rubric, score_trajectory
+from trace_gate.baseline import check_against_baseline, freeze_baseline
+from trace_gate.otel import ExportValidationError, load_export
+from trace_gate.score import Rubric, score_trajectory
 
 FIXTURES = Path(__file__).resolve().parents[1] / "integrations/opentelemetry-js/fixtures"
 PROVENANCE = json.loads((FIXTURES / "provenance.json").read_text())

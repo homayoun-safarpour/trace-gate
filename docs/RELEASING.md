@@ -37,8 +37,14 @@ tree differs from the reviewed tree, repeat review and the full checks.
 
 Only then create the approved `v0.2.0` tag/release pointing to that commit. Do not
 move or overwrite `v0.1.0`. Include the migration notes and matching checksums.
-Package-registry publication is not configured by this repository; verify name
-ownership, credentials, target registry and approval before adding it.
+PyPI publication is configured in `.github/workflows/publish.yml` and runs only
+when the owner publishes a GitHub release. It checks that the release tag equals
+`v` plus the version in `pyproject.toml`, builds the wheel and source archive,
+repeats the distribution verification, records SHA-256 checksums, and uploads
+through PyPI trusted publishing (no stored password or token). Before the first
+release, the owner adds the trusted publisher on PyPI (repository
+`homayoun-safarpour/trace-gate`, workflow `publish.yml`, environment `pypi`).
+A required reviewer on the `pypi` environment adds a last approval step.
 
-This workflow never deploys, uploads to PyPI, creates a GitHub release or calls
+The CI workflow never deploys, uploads to PyPI, creates a GitHub release or calls
 a model/provider. CI does access registries for pinned test tooling and Promptfoo.

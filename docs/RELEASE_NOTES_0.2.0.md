@@ -12,6 +12,11 @@ The project is not declaring a stable 1.0 API or general OTLP conformance.
 
 ## Changes from 0.1.0 / public main 39168cd
 
+- The Python package is imported as `trace_gate`, no longer as `tracegate`.
+  Another project on PyPI already ships a top-level `tracegate` package, and
+  two distributions with one import name overwrite each other's files. The
+  distribution name `trace-gate` and the `trace-gate` command are unchanged.
+  Migrate with `import trace_gate` and `python -m trace_gate.cli`.
 - Forbidden tools veto `check` and `freeze`, independent of average quality or
   tolerance. Exact baseline case coverage and rubric fingerprints are required.
 - Nested calls, including forbidden second calls and repeated calls, are retained.

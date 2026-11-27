@@ -38,7 +38,7 @@ Issues = "https://github.com/homayoun-safarpour/trace-gate/issues"
 Documentation = "https://github.com/homayoun-safarpour/trace-gate#readme"
 
 [project.scripts]
-trace-gate = "tracegate.cli:main"
+trace-gate = "trace_gate.cli:main"
 
 [tool.setuptools.packages.find]
 where = ["src"]

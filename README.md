@@ -75,7 +75,7 @@ A `PASS` shows that the recorded tool use matches the reviewed rubric and has no
 | Your traces are in another OpenTelemetry or Jaeger format | Not directly. Convert them to JSON first |
 | You need to stop a tool call while the agent is running | No. This checks recorded runs after the fact |
 
-The package is not on PyPI yet. `pip install git+https://github.com/homayoun-safarpour/trace-gate` is the other way to install it. Version 0.2.0 changes are in [`docs/RELEASE_NOTES_0.2.0.md`](docs/RELEASE_NOTES_0.2.0.md).
+The package is not on PyPI yet. `pip install git+https://github.com/homayoun-safarpour/trace-gate` is the other way to install it. In Python code the package is imported as `trace_gate`. Version 0.2.0 changes are in [`docs/RELEASE_NOTES_0.2.0.md`](docs/RELEASE_NOTES_0.2.0.md).
 
 ## The problem
 
@@ -114,11 +114,11 @@ Add `--json` to `score` or `check` for machine-readable output.
 
 | Module | What it does |
 |---|---|
-| `tracegate.trajectory` | Loads a run from JSON, rejects malformed runs, and extracts every tool call, including every entry of a `tool_calls` list |
-| `tracegate.score` | Scores the run against the rubric with fixed rules and no model calls, and lists any forbidden tools it called |
-| `tracegate.baseline` | Freezes, loads and checks a baseline together with the rubric fingerprint |
-| `tracegate.otel` | Reads one offline OpenInference OTLP JSON export (`trace-gate inspect-otel`) |
-| `tracegate.cli` | The `score`, `freeze`, `check` and `inspect-otel` commands |
+| `trace_gate.trajectory` | Loads a run from JSON, rejects malformed runs, and extracts every tool call, including every entry of a `tool_calls` list |
+| `trace_gate.score` | Scores the run against the rubric with fixed rules and no model calls, and lists any forbidden tools it called |
+| `trace_gate.baseline` | Freezes, loads and checks a baseline together with the rubric fingerprint |
+| `trace_gate.otel` | Reads one offline OpenInference OTLP JSON export (`trace-gate inspect-otel`) |
+| `trace_gate.cli` | The `score`, `freeze`, `check` and `inspect-otel` commands |
 
 Interview pack: [docs/INTERVIEW.md](docs/INTERVIEW.md), three questions and a two-minute demo. Gate order and baseline migration: [`docs/GATE_CONTRACT.md`](docs/GATE_CONTRACT.md). Input format: [`docs/PARSER_CONTRACT.md`](docs/PARSER_CONTRACT.md).
 

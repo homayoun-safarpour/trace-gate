@@ -81,7 +81,7 @@ def main():
             # -I removes current-directory and PYTHONPATH import injection.
             launcher = (
                 "import sys;sys.path.insert(0,sys.argv.pop(1));"
-                "from tracegate.cli import main;raise SystemExit(main())"
+                "from trace_gate.cli import main;raise SystemExit(main())"
             )
             p = subprocess.run(
                 [

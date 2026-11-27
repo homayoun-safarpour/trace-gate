@@ -1,13 +1,13 @@
 """trace-gate: score agent trajectories and gate deploys on a frozen baseline."""
 
-from tracegate.baseline import (
+from trace_gate.baseline import (
     Baseline,
     check_against_baseline,
     fingerprint_rubric,
     freeze_baseline,
 )
-from tracegate.score import ScoreReport, score_trajectory
-from tracegate.trajectory import Trajectory, load_trajectory
+from trace_gate.score import ScoreReport, score_trajectory
+from trace_gate.trajectory import Trajectory, load_trajectory
 
 __all__ = [
     "Baseline",

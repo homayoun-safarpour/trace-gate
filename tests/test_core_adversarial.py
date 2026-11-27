@@ -4,10 +4,10 @@ from dataclasses import replace
 
 import pytest
 
-from tracegate.baseline import Baseline, check_against_baseline, freeze_baseline, load_baseline
-from tracegate.cli import main
-from tracegate.score import Rubric, score_trajectory
-from tracegate.trajectory import load_json_document, load_trajectory, trajectory_from_dict
+from trace_gate.baseline import Baseline, check_against_baseline, freeze_baseline, load_baseline
+from trace_gate.cli import main
+from trace_gate.score import Rubric, score_trajectory
+from trace_gate.trajectory import load_json_document, load_trajectory, trajectory_from_dict
 
 
 def scored(rubric):

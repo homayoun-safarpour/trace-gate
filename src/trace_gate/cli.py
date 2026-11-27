@@ -9,15 +9,15 @@ import sys
 import tempfile
 from pathlib import Path
 
-from tracegate.baseline import (
+from trace_gate.baseline import (
     check_against_baseline,
     freeze_baseline,
     load_baseline,
     write_baseline,
 )
-from tracegate.otel import ExportValidationError, load_export
-from tracegate.score import Rubric, ScoreReport, score_trajectory
-from tracegate.trajectory import TrajectoryValidationError, load_json_document, load_trajectory
+from trace_gate.otel import ExportValidationError, load_export
+from trace_gate.score import Rubric, ScoreReport, score_trajectory
+from trace_gate.trajectory import TrajectoryValidationError, load_json_document, load_trajectory
 
 
 def _load_rubric(path: str | Path) -> Rubric:

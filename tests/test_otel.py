@@ -7,9 +7,9 @@ from pathlib import Path
 
 import pytest
 
-from tracegate.cli import main
-from tracegate.otel import PROFILE, ExportValidationError, load_export
-from tracegate.score import Rubric, score_trajectory
+from trace_gate.cli import main
+from trace_gate.otel import PROFILE, ExportValidationError, load_export
+from trace_gate.score import Rubric, score_trajectory
 
 TRACE = "0123456789abcdef0123456789ABCDEF"
 ROOT = "0123456789ABCDEF"

@@ -12,7 +12,7 @@ import json
 from dataclasses import dataclass, field
 from typing import Any
 
-from tracegate.trajectory import Trajectory
+from trace_gate.trajectory import Trajectory
 
 CORE_METRICS = ("tool_presence", "forbidden_tools", "tool_order", "step_band")
 
