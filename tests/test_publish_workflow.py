@@ -108,3 +108,11 @@ def test_publish_job_only_downloads_and_uploads():
     ]
     assert PUBLISH.rstrip().endswith("# v1.14.3")
     assert "      name: pypi\n" in PUBLISH
+
+
+def test_environment_url_is_the_project_page():
+    project = (ROOT / "pyproject.toml").read_text()
+    name = re.search(r'^name = "([^"]+)"$', project, re.MULTILINE).group(1)
+    # PyPI refuses "trace-gate": it normalizes to the same name as "tracegate".
+    assert name == "agent-trace-gate"
+    assert f"      url: https://pypi.org/project/{name}/\n" in PUBLISH

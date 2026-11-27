@@ -23,7 +23,7 @@ See `docs/INTERVIEW.md` and `docs/EXIT_CODES.md`.
 - [x] W6 Type R README + worked example + attribution (cost: M) (touched: 2026-08-04)
 - [x] W7 Threat model, comparison table, rubric fingerprint, EXIT_CODES (cost: M) (touched: 2026-08-04)
 - [ ] W8 Adapter: convert agentevals-shaped dumps to this JSON schema (cost: M)
-- [ ] W9 PyPI publish (`pip install trace-gate`) (cost: M)
+- [ ] W9 PyPI publish (`pip install agent-trace-gate`) (cost: M)
 
 ## Next
 

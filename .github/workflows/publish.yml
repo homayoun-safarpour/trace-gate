@@ -73,7 +73,7 @@ jobs:
     timeout-minutes: 10
     environment:
       name: pypi
-      url: https://pypi.org/project/trace-gate/
+      url: https://pypi.org/project/agent-trace-gate/
     permissions:
       id-token: write
     steps:

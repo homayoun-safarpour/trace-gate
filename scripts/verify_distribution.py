@@ -22,7 +22,7 @@ from pathlib import Path, PurePosixPath
 PROBE = r"""
 import hashlib, importlib.metadata, json, pathlib, sys
 import trace_gate
-dist = importlib.metadata.distribution('trace-gate')
+dist = importlib.metadata.distribution('agent-trace-gate')
 if trace_gate.__version__ != dist.version:
     raise SystemExit('package __version__ differs from distribution metadata')
 module = pathlib.Path(trace_gate.__file__).resolve()
@@ -125,8 +125,8 @@ def main():
     parser.add_argument("--dist-dir", type=Path, default=Path("dist"))
     args = parser.parse_args()
     dist = args.dist_dir.resolve()
-    wheels = list(dist.glob("trace_gate-*.whl"))
-    sources = list(dist.glob("trace_gate-*.tar.gz"))
+    wheels = list(dist.glob("agent_trace_gate-*.whl"))
+    sources = list(dist.glob("agent_trace_gate-*.tar.gz"))
     if len(wheels) != 1 or len(sources) != 1:
         parser.error("Use a clean dist directory with exactly one wheel and one source archive")
     env = {key: value for key, value in os.environ.items()

@@ -15,7 +15,10 @@ The project is not declaring a stable 1.0 API or general OTLP conformance.
 - The Python package is imported as `trace_gate`, no longer as `tracegate`.
   Another project on PyPI already ships a top-level `tracegate` package, and
   two distributions with one import name overwrite each other's files. The
-  distribution name `trace-gate` and the `trace-gate` command are unchanged.
+  command stays `trace-gate`. The distribution is now named `agent-trace-gate`,
+  because PyPI counts `trace-gate` as the same name as `tracegate`. Both
+  distributions install the `trace-gate` command, so remove an older install
+  with `pip uninstall trace-gate` before installing this one.
   Migrate with `import trace_gate` and `python -m trace_gate.cli`. An editable
   install (`pip install -e .`) made before this change still points at
   `tracegate`: after pulling, delete any leftover `src/tracegate/` folder and

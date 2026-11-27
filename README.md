@@ -75,7 +75,7 @@ A `PASS` shows that the recorded tool use matches the reviewed rubric and has no
 | Your traces are in another OpenTelemetry or Jaeger format | Not directly. Convert them to JSON first |
 | You need to stop a tool call while the agent is running | No. This checks recorded runs after the fact |
 
-The package is not on PyPI yet. `pip install git+https://github.com/homayoun-safarpour/trace-gate` is the other way to install it. In Python code the package is imported as `trace_gate`. Version 0.2.0 changes are in [`docs/RELEASE_NOTES_0.2.0.md`](docs/RELEASE_NOTES_0.2.0.md).
+The package is not on PyPI yet. `pip install git+https://github.com/homayoun-safarpour/trace-gate` is the other way to install it. Its PyPI name will be `agent-trace-gate`, because PyPI counts `trace-gate` as the same name as an existing project. In Python code the package is imported as `trace_gate`. Version 0.2.0 changes are in [`docs/RELEASE_NOTES_0.2.0.md`](docs/RELEASE_NOTES_0.2.0.md).
 
 ## The problem
 

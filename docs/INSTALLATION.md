@@ -73,7 +73,7 @@ as an ordinary shell step. A regression is expected to fail that step:
 
 ```yaml
 - name: Install reviewed trace-gate artifact
-  run: python -m pip install --no-index --no-deps artifacts/trace_gate-*.whl
+  run: python -m pip install --no-index --no-deps artifacts/agent_trace_gate-*.whl
 - name: Check agent trajectory
   run: >-
     trace-gate check examples/trajectories/support_good.json

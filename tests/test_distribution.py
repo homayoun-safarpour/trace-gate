@@ -23,7 +23,7 @@ def test_release_version_matches_package_and_metadata():
     project = (Path(__file__).resolve().parents[1] / "pyproject.toml").read_text()
     declared = re.search(r'^version = "([^"]+)"$', project, re.MULTILINE)
     assert declared is not None
-    assert declared.group(1) == trace_gate.__version__ == version("trace-gate")
+    assert declared.group(1) == trace_gate.__version__ == version("agent-trace-gate")
 
 
 def archive(tmp_path, name, *, symlink=False):
@@ -42,7 +42,7 @@ def archive(tmp_path, name, *, symlink=False):
 
 
 def test_source_archive_extracts_to_one_root(tmp_path):
-    path = archive(tmp_path, "trace_gate-0.1.0/pyproject.toml")
+    path = archive(tmp_path, "agent_trace_gate-0.1.0/pyproject.toml")
     root = VERIFIER["extract_source"](path, tmp_path / "unpacked")
     assert (root / "pyproject.toml").read_bytes() == b"[build-system]\n"
 
@@ -130,7 +130,7 @@ def distribution_pair(tmp_path, source_code=b"VALUE = 1\n", wheel_code=b"VALUE =
     package = source / "src" / "trace_gate"
     package.mkdir(parents=True)
     (package / "__init__.py").write_bytes(source_code)
-    wheel = tmp_path / "trace_gate-0.1.0-py3-none-any.whl"
+    wheel = tmp_path / "agent_trace_gate-0.1.0-py3-none-any.whl"
     with zipfile.ZipFile(wheel, "w") as archive:
         archive.writestr("trace_gate/__init__.py", wheel_code)
     return wheel, source
@@ -179,7 +179,7 @@ def test_source_wheel_extra_top_level_rejected(tmp_path, extra):
 def test_source_wheel_metadata_folder_allowed(tmp_path):
     wheel, source = distribution_pair(tmp_path)
     with zipfile.ZipFile(wheel, "a") as archive:
-        archive.writestr("trace_gate-0.1.0.dist-info/METADATA", b"Name: trace-gate\n")
+        archive.writestr("agent_trace_gate-0.1.0.dist-info/METADATA", b"Name: agent-trace-gate\n")
     VERIFIER["check_wheel_source"](wheel, source)
 
 

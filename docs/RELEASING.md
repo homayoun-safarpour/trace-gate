@@ -49,9 +49,9 @@ checksums of the published files are the ones in that workflow run and on PyPI.
 Before the first release, the owner:
 1. creates the environment `pypi` in the repository settings (Environments),
    with the owner as required reviewer, limited to tags matching `v*`;
-2. adds the pending trusted publisher on PyPI: the project name from
-   `pyproject.toml`, owner `homayoun-safarpour`, repository `trace-gate`, workflow
-   `publish.yml`, environment `pypi`.
+2. adds the pending trusted publisher on PyPI: project name
+   `agent-trace-gate` (from `pyproject.toml`), owner `homayoun-safarpour`,
+   repository `trace-gate`, workflow `publish.yml`, environment `pypi`.
 
 The upload job then waits for the owner's approval in the `pypi` environment.
 

@@ -55,7 +55,7 @@ Python environment, then install the pinned optional Promptfoo tooling:
 
 ```sh
 python3 -m venv .venv-promptfoo
-.venv-promptfoo/bin/pip install --no-index --no-deps dist/trace_gate-0.2.0-py3-none-any.whl
+.venv-promptfoo/bin/pip install --no-index --no-deps dist/agent_trace_gate-0.2.0-py3-none-any.whl
 cd integrations/promptfoo/runtime-lock
 npm ci --ignore-scripts --omit=optional --no-audit --no-fund
 cd ../../..

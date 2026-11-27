@@ -15,7 +15,7 @@ version 0.1.0. It is not bundled into the trace-gate wheel or source archive.
 With the pinned build tools already installed:
 
 ```sh
-python -m pip install --no-index --no-deps /path/to/trace_gate-0.2.0-py3-none-any.whl
+python -m pip install --no-index --no-deps /path/to/agent_trace_gate-0.2.0-py3-none-any.whl
 python -m pip install --no-deps --no-build-isolation /path/to/reviewed/agent-loop-engine
 ```
 
